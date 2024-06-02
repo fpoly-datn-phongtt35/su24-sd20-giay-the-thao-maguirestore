@@ -1,5 +1,6 @@
 package com.datn.maguirestore.dto;
 
+import com.datn.maguirestore.entity.User;
 import lombok.*;
 
 import java.util.Date;
@@ -10,9 +11,20 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserDTO {
     private Long id;
-    private String username;
-    private Date birthDate;
-    private String image;
-    private String job;
-    private String location;
+    private String login;
+    private String firstName;
+    private String lastName;
+
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.login = user.getLogin();
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                "}";
+    }
 }
