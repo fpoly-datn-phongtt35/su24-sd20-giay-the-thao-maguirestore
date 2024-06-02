@@ -12,10 +12,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserUpdateRequest {
-    private String username;
+    private String firstName;
+    private String lastName;
     private String email;
-    private Date birthDate;
-    private String job;
+    private Date dob;
     private String location;
     //private String password;
 }
