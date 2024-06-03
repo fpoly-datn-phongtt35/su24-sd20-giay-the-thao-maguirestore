@@ -6,6 +6,8 @@ import com.datn.maguirestore.service.AddressService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,7 @@ public class AddressController {
     this.addressRepository = addressRepository;
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @PostMapping("/addresses")
   public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO)
       throws URISyntaxException {
@@ -35,12 +38,14 @@ public class AddressController {
     return ResponseEntity.created(new URI("/api/addresses/" + result.getId())).body(result);
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @GetMapping("/addresses")
   public ResponseEntity<List<AddressDTO>> getAllAddresses() {
     log.debug("REST request to get all Addresses");
     return ResponseEntity.ok(addressService.findAll());
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @DeleteMapping("/addresses/{id}")
   public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
     log.debug("REST request to delete Address : {}", id);
