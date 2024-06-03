@@ -5,6 +5,7 @@ import com.datn.maguirestore.dto.UserDTO;
 import com.datn.maguirestore.entity.ERole;
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.payload.request.SignupRequest;
+import com.datn.maguirestore.payload.request.UserCreateRequest;
 import com.datn.maguirestore.payload.request.UserUpdateRequest;
 import com.datn.maguirestore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public class UserService {
         return user;
     }
 
-    public User createUser(AdminUserDTO userDTO) {
+    public User createUser(UserCreateRequest userDTO) {
         User user = new User();
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
@@ -55,28 +56,31 @@ public class UserService {
         user.setPhone(userDTO.getPhone());
         user.setAddress(userDTO.getAddress());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
+        LocalDate localDate = LocalDate.parse(userDTO.getBirthDate(), formatter);
         Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         user.setDOB(instant);
         if (userDTO.getEmail() != null) {
             user.setEmail(userDTO.getEmail().toLowerCase());
         }
+
+        String encryptedPassword = passwordEncoder.encode(userDTO.getPassword());
+        user.setPassword(encryptedPassword);
+        user.setActivationKey(null);
         user.setCreatedDate(Instant.now());
         user.setActivated(true);
         user.setRole(ERole.ROLE_USER);
-
         userRepository.save(user);
         return user;
     }
 
     public User findByUsername(String login) {
         // Tìm kiếm user theo username
-        return userRepository.findBylogin(login)
+        return userRepository.findByLogin(login)
                 .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng với tên đăng nhập: " + login));
     }
 
     public boolean resetPassword(String newPassword, String login) {
-        Optional<User> optionalUser = userRepository.findBylogin(login);
+        Optional<User> optionalUser = userRepository.findByLogin(login);
         if (optionalUser.isPresent()) {
             User user = optionalUser.get();
             user.setPassword(passwordEncoder.encode(newPassword));
@@ -118,20 +122,16 @@ public class UserService {
             throw new AccessDeniedException("You do not have permission to update this user.");
         }
     }
-//    @Transactional
-//    public User updateUser(UserUpdateRequest userUpdateRequest, User currentUser) {
-//        currentUser.setUsername(userUpdateRequest.getUsername());
-//        currentUser.setEmail(userUpdateRequest.getEmail());
-//        currentUser.setBirthDate(userUpdateRequest.getBirthDate());
-//        currentUser.setLocation(userUpdateRequest.getLocation());
-//
-//        return userRepository.save(currentUser);
-//    }
+
 
     @Transactional
-    public void deleteUser(User user) {
-        // Xóa user
-        userRepository.delete(user);
+    public void deleteUser(String login) {
+        userRepository
+                .findByLogin(login)
+                .ifPresent(user -> {
+                    user.setActivated(false);
+                    userRepository.save(user);
+                });
     }
 
 }
