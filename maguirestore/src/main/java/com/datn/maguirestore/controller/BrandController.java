@@ -6,6 +6,8 @@ import com.datn.maguirestore.service.BrandService;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +25,7 @@ public class BrandController {
 
   private final BrandRepository brandRepository;
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @PostMapping("/brands")
   public ResponseEntity<BrandDTO> createBrand(@RequestBody BrandDTO brandDTO)
       throws URISyntaxException {
@@ -32,6 +35,7 @@ public class BrandController {
     return ResponseEntity.created(new URI("/api/brands/" + result.getId())).body(result);
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @PutMapping("/brands/{id}")
   public ResponseEntity<BrandDTO> updateBrand(
       @PathVariable(value = "id", required = false) final Long id, @RequestBody BrandDTO brandDTO)
@@ -42,12 +46,14 @@ public class BrandController {
     return ResponseEntity.ok().body(result);
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @GetMapping("/brands")
   public ResponseEntity<List<BrandDTO>> getAllBrands() {
     log.debug("REST request to get a page of Brands");
     return ResponseEntity.ok(brandService.findAll());
   }
 
+  @SecurityRequirement(name = "Bearer Authentication")
   @DeleteMapping("/brands/{id}")
   public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
     log.debug("REST request to delete Brand : {}", id);
