@@ -34,6 +34,7 @@ public class SizeController {
 
     private final SizeRepository sizeRepository;
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/sizes")
     public ResponseEntity<List<SizeDTO>> getAllSizes
             (@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
@@ -52,6 +53,7 @@ public class SizeController {
         return ResponseEntity.created(new URI("/api/size/" + result.getId())).body(result);
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/sizes/{id}")
     public ResponseEntity<SizeDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id

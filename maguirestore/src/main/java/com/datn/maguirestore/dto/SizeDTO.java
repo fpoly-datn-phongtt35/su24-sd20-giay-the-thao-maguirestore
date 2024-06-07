@@ -1,6 +1,9 @@
 package com.datn.maguirestore.dto;
 
 import com.datn.maguirestore.entity.Size;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
