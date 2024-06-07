@@ -2,6 +2,7 @@ package com.datn.maguirestore.payload.request;
 
 import lombok.*;
 
+import java.time.Instant;
 import java.util.Date;
 
 @Getter
@@ -18,4 +19,5 @@ public class UserCreateRequest {
     private String lastName;
     private String phone;
     private boolean activated = false;
+
 }

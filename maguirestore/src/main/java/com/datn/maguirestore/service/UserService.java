@@ -5,10 +5,11 @@ import com.datn.maguirestore.dto.UserDTO;
 import com.datn.maguirestore.entity.ERole;
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.payload.request.SignupRequest;
-import com.datn.maguirestore.payload.request.UserCreateRequest;
-import com.datn.maguirestore.payload.request.UserUpdateRequest;
 import com.datn.maguirestore.repository.UserRepository;
+import com.datn.maguirestore.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -48,7 +49,10 @@ public class UserService {
         return user;
     }
 
-    public User createUser(UserCreateRequest userDTO) {
+    public User createUser(AdminUserDTO userDTO) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsImpl userDetails = (UserDetailsImpl) auth.getPrincipal();
+
         User user = new User();
         user.setLogin(userDTO.getLogin().toLowerCase());
         user.setFirstName(userDTO.getFirstName());
@@ -56,7 +60,7 @@ public class UserService {
         user.setPhone(userDTO.getPhone());
         user.setAddress(userDTO.getAddress());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse(userDTO.getBirthDate(), formatter);
+        LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
         Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
         user.setDOB(instant);
         if (userDTO.getEmail() != null) {
@@ -94,6 +98,10 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
+    public Page<AdminUserDTO> getAllUsers(Pageable pageable) {
+        return userRepository.findAll(pageable).map(AdminUserDTO::new);
+    }
+
     public UserDTO getUserById(Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found userId: " + id));
 
@@ -107,7 +115,7 @@ public class UserService {
     }
 
     @Transactional
-    public User updateUser(UserUpdateRequest userUpdateRequest, User currentUser, User targetUser) {
+    public User updateUser(AdminUserDTO userUpdateRequest, User currentUser, User targetUser) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentRole = authentication.getAuthorities().iterator().next().getAuthority();
 
@@ -115,14 +123,20 @@ public class UserService {
             targetUser.setEmail(userUpdateRequest.getEmail());
             targetUser.setFirstName(userUpdateRequest.getFirstName());
             targetUser.setLastName(userUpdateRequest.getLastName());
-            targetUser.setDOB(userUpdateRequest.getDob().toInstant());
+            targetUser.setPhone(userUpdateRequest.getPhone());
+            targetUser.setActivated(!targetUser.isActivated());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate localDate = LocalDate.parse(userUpdateRequest.getDob(), formatter);
+            Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+            targetUser.setDOB(instant);
+
             targetUser.setAddress(userUpdateRequest.getAddress());
+            targetUser.setRole(userUpdateRequest.getRole());
             return userRepository.save(targetUser);
         } else {
             throw new AccessDeniedException("You do not have permission to update this user.");
         }
     }
-
 
     @Transactional
     public void deleteUser(String login) {
