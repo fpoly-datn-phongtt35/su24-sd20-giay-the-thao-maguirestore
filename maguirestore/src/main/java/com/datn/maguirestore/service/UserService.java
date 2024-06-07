@@ -138,31 +138,6 @@ public class UserService {
         }
     }
 
-//    public Optional<AdminUserDTO> updateUser(AdminUserDTO userDTO) {
-//        return Optional
-//                .of(userRepository.findById(userDTO.getId()))
-//                .filter(Optional::isPresent)
-//                .map(Optional::get)
-//                .map(user -> {
-//                    user.setLogin(userDTO.getLogin().toLowerCase());
-//                    user.setFirstName(userDTO.getFirstName());
-//                    user.setLastName(userDTO.getLastName());
-//                    user.setPhone(userDTO.getPhone());
-//                    if (userDTO.getEmail() != null) {
-//                        user.setEmail(userDTO.getEmail().toLowerCase());
-//                    }
-//                    user.setActivated(true);
-//                    user.setAddress(userDTO.getAddress());
-//                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//                    LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
-//                    Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-//                    user.setDOB(instant);
-//                    user.setRole(userDTO.getRole());
-//                    return user;
-//                })
-//                .map(AdminUserDTO::new);
-//    }
-
     @Transactional
     public void deleteUser(String login) {
         userRepository
