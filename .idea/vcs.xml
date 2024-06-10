@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+<<<<<<< HEAD
     <mapping directory="" vcs="Git" />
+=======
+    <mapping directory="$PROJECT_DIR$/su24-sd20-giay-the-thao-maguirestore" vcs="Git" />
+>>>>>>> origin/nhannxph27197
   </component>
 </project>
