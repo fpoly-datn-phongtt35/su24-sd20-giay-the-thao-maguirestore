@@ -1,5 +1,8 @@
 package com.datn.maguirestore.dto;
 
+import com.datn.maguirestore.entity.Brand;
+import com.datn.maguirestore.entity.Category;
+
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
@@ -24,10 +27,16 @@ public class ShoesDTO implements Serializable {
 
     private Instant lastModifiedDate;
 
+    private Brand brand;
+
+    private Category category;
+
+
+
     public ShoesDTO() {
     }
 
-    public ShoesDTO(Long id, String code, String name, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate) {
+    public ShoesDTO(Long id, String code, String name, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Brand brand, Category category) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -37,7 +46,10 @@ public class ShoesDTO implements Serializable {
         this.createdDate = createdDate;
         this.lastModifiedBy = lastModifiedBy;
         this.lastModifiedDate = lastModifiedDate;
+        this.brand = brand;
+        this.category = category;
     }
+
 
     public Long getId() {
         return id;
@@ -111,6 +123,22 @@ public class ShoesDTO implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "ShoesDTO{" +
@@ -123,6 +151,8 @@ public class ShoesDTO implements Serializable {
                 ", createdDate=" + createdDate +
                 ", lastModifiedBy='" + lastModifiedBy + '\'' +
                 ", lastModifiedDate=" + lastModifiedDate +
+                ", brand=" + brand +
+                ", category=" + category +
                 '}';
     }
 

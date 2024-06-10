@@ -1,0 +1,12 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Datasource local storage ignored files
+<<<<<<< HEAD
+/../../../../:\DATN\su24-sd20-giay-the-thao-maguirestore\.idea/dataSources/
+=======
+/../../../:\FPT-SU24-DATN\.idea/dataSources/
+>>>>>>> origin/nhannxph27197
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

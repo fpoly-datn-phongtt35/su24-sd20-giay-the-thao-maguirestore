@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/su24-sd20-giay-the-thao-maguirestore.iml" filepath="$PROJECT_DIR$/.idea/su24-sd20-giay-the-thao-maguirestore.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/FPT-SU24-DATN.iml" filepath="$PROJECT_DIR$/.idea/FPT-SU24-DATN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/su24-sd20-giay-the-thao-maguirestore/maguirestore/maguirestore.iml" filepath="$PROJECT_DIR$/su24-sd20-giay-the-thao-maguirestore/maguirestore/maguirestore.iml" />
+>>>>>>> origin/nhannxph27197
+    </modules>
+  </component>
+</project>
