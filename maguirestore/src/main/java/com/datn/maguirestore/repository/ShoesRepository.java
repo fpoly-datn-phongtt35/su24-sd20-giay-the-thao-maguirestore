@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ShoesRepository extends JpaRepository<Shoes, Long> {
+
+    Shoes findByIdAndStatus(Long id, Integer status);
 }
