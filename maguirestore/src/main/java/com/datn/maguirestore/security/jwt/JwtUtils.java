@@ -12,17 +12,20 @@ import org.springframework.stereotype.Component;
 import javax.crypto.SecretKey;
 import java.util.Date;
 
+/**
+ * @author nguyenkhanhhoa
+ */
 @Component
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("${bezkoder.app.jwtSecret}")
+    @Value("${hoank17.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${bezkoder.app.jwtExpirationMs}")
+    @Value("${hoank17.app.jwtExpirationMs}")
     private Integer jwtExpirationMs;
 
-    @Value("${bezkoder.app.jwtExpChangePass}")
+    @Value("${hoank17.app.jwtExpChangePass}")
     private Integer jwtExpChangePass;
 
     SecretKey key = Keys.secretKeyFor(SignatureAlgorithm.HS512);

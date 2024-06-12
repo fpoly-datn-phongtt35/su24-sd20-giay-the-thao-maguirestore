@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VerifyOtpRequest {
-    private String username;
+    private String login;
     private String otpCode;
 }
