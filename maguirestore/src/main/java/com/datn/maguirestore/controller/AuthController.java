@@ -1,12 +1,10 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.entity.ERole;
 import com.datn.maguirestore.entity.Otp;
 import com.datn.maguirestore.payload.request.LoginRequest;
 import com.datn.maguirestore.payload.request.SignupRequest;
 import com.datn.maguirestore.payload.request.VerifyOtpRequest;
 import com.datn.maguirestore.payload.response.JwtResponse;
-import com.datn.maguirestore.payload.response.MessageResponse;
 import com.datn.maguirestore.payload.response.OtpResponse;
 import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.security.jwt.JwtUtils;

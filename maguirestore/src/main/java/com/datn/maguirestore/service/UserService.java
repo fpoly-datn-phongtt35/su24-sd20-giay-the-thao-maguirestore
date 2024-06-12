@@ -9,7 +9,6 @@ import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.repository.UserRepository;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
@@ -68,6 +67,7 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         user.setPhone(userDTO.getPhone());
+        user.setCreatedBy(userDetails.getUsername());
         user.setAddress(userDTO.getAddress());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
