@@ -8,6 +8,7 @@ import com.datn.maguirestore.payload.request.SignupRequest;
 import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.repository.UserRepository;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,11 +28,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+
+    private final UserRepository userRepository;
+
+    private final BCryptPasswordEncoder passwordEncoder;
 
     public SignupResponse signUp(SignupRequest signupRequest) {
         if (userRepository.existsByLogin(signupRequest.getLogin())) {
