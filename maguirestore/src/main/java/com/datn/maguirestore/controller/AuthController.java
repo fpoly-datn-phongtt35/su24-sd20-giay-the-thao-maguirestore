@@ -1,5 +1,6 @@
 package com.datn.maguirestore.controller;
 
+import com.datn.maguirestore.entity.ERole;
 import com.datn.maguirestore.entity.Otp;
 import com.datn.maguirestore.payload.request.LoginRequest;
 import com.datn.maguirestore.payload.request.SignupRequest;
@@ -80,7 +81,7 @@ public class AuthController {
             UserDetails userDetails = userDetailsService.loadUserByUsername(verifyOtpRequest.getLogin());
             String jwt = jwtUtils.generateJwtToken(new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()));
             Long id = ((UserDetailsImpl) userDetails).getId();
-            String login = ((UserDetailsImpl) userDetails).getUsername();
+            String login = userDetails.getUsername();
             String email = ((UserDetailsImpl) userDetails).getEmail();
             String role = userDetails.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)

@@ -48,10 +48,12 @@ public class UserService {
         user.setCreatedBy("system");
         userRepository.save(user);
 
+        // Chuyển đổi User thành SignupResponse
         SignupResponse signupResponse = new SignupResponse();
         signupResponse.setLogin(user.getLogin());
         signupResponse.setEmail(user.getEmail());
         signupResponse.setRole(user.getRole());
+
         return signupResponse;
     }
 
