@@ -4,195 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/maguirestore.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/MailConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AddressController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/BrandController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/SizeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/AddressDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/AdminUserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/BrandDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/CategoryDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ColorDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDetailsDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/SizeDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/AbstractAuditingEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Address.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Brand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Otp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Shoes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/ShoesDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/Size.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/errors/BadRequestAlertException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/errors/EmailAlreadyUsedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/errors/ErrorConstants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/errors/LoginAlreadyUsedException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/AddressRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/BrandRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/OtpRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesDetailsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/SizeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/AddressService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/BrandService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/EmailService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/OtpService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/SizeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/AddressMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/BrandMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/CategoryMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/ColorMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/EntityMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/ShoesDetailsMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/ShoesMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/SizeMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/UserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/DataUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/HeaderUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/PaginationUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/RandomUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/ResponseUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/SecurityUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/config/Constants$STATUS.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/config/Constants.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/config/MailConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/AddressController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/BrandController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/CategoryController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/ColorController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/ShoesController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/ShoesDetailsController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/SizeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/AddressDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/AdminUserDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/BrandDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/CategoryDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/ColorDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/ShoesDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/ShoesDetailsDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/SizeDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/AbstractAuditingEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Address.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Brand.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Category.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Color.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Otp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Shoes.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/ShoesDetails.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Size.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/errors/BadRequestAlertException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/errors/EmailAlreadyUsedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/errors/ErrorConstants.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/errors/LoginAlreadyUsedException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/AddressRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/BrandRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/CategoryRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/ColorRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/OtpRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/ShoesDetailsRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/ShoesRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/SizeRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/AddressService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/BrandService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/CategoryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/ColorService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/EmailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/OtpService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/ShoesDetailsService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/ShoesService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/SizeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/AddressMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/AddressMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/BrandMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/BrandMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/CategoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/CategoryMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ColorMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ColorMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/EntityMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesDetailsMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesDetailsMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/SizeMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/SizeMapperImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/UserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/DataUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/HeaderUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/PaginationUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/RandomUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/ResponseUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/util/SecurityUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/AddressMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/BrandMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/CategoryMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ColorMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesDetailsMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/SizeMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/datn/maguirestore/MaguirestoreApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/LoginRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/SignupRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/UserCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/UserCreateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/UserUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/UserUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/VerifyOtpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/VerifyOtpRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthEntryPointJwt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthEntryPointJwt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthTokenFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/JwtUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/AuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/UserDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/LoginRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/LoginRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/SignupRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/SignupRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/UserCreateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/UserCreateRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/UserUpdateRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/UserUpdateRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/VerifyOtpRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/request/VerifyOtpRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/AuthEntryPointJwt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/AuthEntryPointJwt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/AuthTokenFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/AuthTokenFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/JwtUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/jwt/JwtUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/services/UserDetailsImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/services/UserDetailsImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/services/UserDetailsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/security/services/UserDetailsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/AuthService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/UserService.class" afterDir="false" />
-    </list>
+    <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -228,15 +40,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
