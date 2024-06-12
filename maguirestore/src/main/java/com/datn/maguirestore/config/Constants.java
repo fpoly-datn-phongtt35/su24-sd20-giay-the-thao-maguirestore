@@ -18,6 +18,14 @@ public final class Constants {
         public static final Integer DELETE = -1;
     }
 
+    public static class DISCOUNT_METHOD {
+
+        public static final Integer TOTAL_MONEY = 1;
+        public static final Integer TOTAL_PERCENT = 2;
+        public static final Integer PER_MONEY = 3;
+        public static final Integer PER_PERCENT = 4;
+    }
+
     private Constants() {}
 
     public static final String KEY_UPLOAD = "bad";

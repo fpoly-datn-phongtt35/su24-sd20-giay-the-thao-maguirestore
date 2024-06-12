@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-10T15:47:21+0700",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
+    date = "2024-06-11T14:04:36+0700",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 18.0.2 (Amazon.com Inc.)"
 )
 @Component
 public class ShoesMapperImpl implements ShoesMapper {
@@ -32,8 +32,6 @@ public class ShoesMapperImpl implements ShoesMapper {
         shoes.setName( dto.getName() );
         shoes.setDescription( dto.getDescription() );
         shoes.setStatus( dto.getStatus() );
-        shoes.setBrand( dto.getBrand() );
-        shoes.setCategory( dto.getCategory() );
 
         return shoes;
     }
@@ -55,8 +53,6 @@ public class ShoesMapperImpl implements ShoesMapper {
         shoesDTO.setCreatedDate( entity.getCreatedDate() );
         shoesDTO.setLastModifiedBy( entity.getLastModifiedBy() );
         shoesDTO.setLastModifiedDate( entity.getLastModifiedDate() );
-        shoesDTO.setBrand( entity.getBrand() );
-        shoesDTO.setCategory( entity.getCategory() );
 
         return shoesDTO;
     }
@@ -122,12 +118,6 @@ public class ShoesMapperImpl implements ShoesMapper {
         if ( dto.getStatus() != null ) {
             entity.setStatus( dto.getStatus() );
         }
-        if ( dto.getBrand() != null ) {
-            entity.setBrand( dto.getBrand() );
-        }
-        if ( dto.getCategory() != null ) {
-            entity.setCategory( dto.getCategory() );
-        }
     }
 
     @Override
@@ -146,8 +136,6 @@ public class ShoesMapperImpl implements ShoesMapper {
         shoesDTO.setCreatedDate( shoes.getCreatedDate() );
         shoesDTO.setLastModifiedBy( shoes.getLastModifiedBy() );
         shoesDTO.setLastModifiedDate( shoes.getLastModifiedDate() );
-        shoesDTO.setBrand( shoes.getBrand() );
-        shoesDTO.setCategory( shoes.getCategory() );
 
         shoesDTO.setStatus( -1 );
 
