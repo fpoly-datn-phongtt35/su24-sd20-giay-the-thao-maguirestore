@@ -1,19 +1,24 @@
 package com.datn.maguirestore.dto;
 
-import com.datn.maguirestore.entity.Brand;
-import com.datn.maguirestore.entity.Category;
+import com.datn.maguirestore.entity.Color;
+import com.datn.maguirestore.entity.Shoes;
+import com.datn.maguirestore.entity.Size;
 
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
-public class ShoesDTO implements Serializable {
+public class ShoesDetailsDTO implements Serializable {
 
     private Long id;
 
-    private String code;
+    private Float price;
 
-    private String name;
+    private Float importPrice;
+
+    private Float tax;
+
+    private Integer quantity;
 
     private String description;
 
@@ -27,29 +32,33 @@ public class ShoesDTO implements Serializable {
 
     private Instant lastModifiedDate;
 
-    private Brand brand;
+    private Shoes shoes;
 
-    private Category category;
+    private Size size;
+
+    private Color color;
 
 
 
-    public ShoesDTO() {
+    public ShoesDetailsDTO() {
     }
 
-    public ShoesDTO(Long id, String code, String name, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Brand brand, Category category) {
+    public ShoesDetailsDTO(Long id, Float price, Float importPrice, Float tax, Integer quantity, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Shoes shoes, Size size, Color color) {
         this.id = id;
-        this.code = code;
-        this.name = name;
+        this.price = price;
+        this.importPrice = importPrice;
+        this.tax = tax;
+        this.quantity = quantity;
         this.description = description;
         this.status = status;
         this.createdBy = createdBy;
         this.createdDate = createdDate;
         this.lastModifiedBy = lastModifiedBy;
         this.lastModifiedDate = lastModifiedDate;
-        this.brand = brand;
-        this.category = category;
+        this.shoes = shoes;
+        this.size = size;
+        this.color = color;
     }
-
 
     public Long getId() {
         return id;
@@ -59,20 +68,36 @@ public class ShoesDTO implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public Float getPrice() {
+        return price;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setPrice(Float price) {
+        this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public Float getImportPrice() {
+        return importPrice;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImportPrice(Float importPrice) {
+        this.importPrice = importPrice;
+    }
+
+    public Float getTax() {
+        return tax;
+    }
+
+    public void setTax(Float tax) {
+        this.tax = tax;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getDescription() {
@@ -123,36 +148,47 @@ public class ShoesDTO implements Serializable {
         this.lastModifiedDate = lastModifiedDate;
     }
 
-    public Brand getBrand() {
-        return brand;
+    public Shoes getShoes() {
+        return shoes;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setShoes(Shoes shoes) {
+        this.shoes = shoes;
     }
 
-    public Category getCategory() {
-        return category;
+    public Size getSize() {
+        return size;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setSize(Size size) {
+        this.size = size;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     @Override
     public String toString() {
-        return "ShoesDTO{" +
+        return "ShoesDetailsDTO{" +
                 "id=" + id +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", importPrice=" + importPrice +
+                ", tax=" + tax +
+                ", quantity=" + quantity +
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", createdBy='" + createdBy + '\'' +
                 ", createdDate=" + createdDate +
                 ", lastModifiedBy='" + lastModifiedBy + '\'' +
                 ", lastModifiedDate=" + lastModifiedDate +
-                ", brand=" + brand +
-                ", category=" + category +
+                ", shoes=" + shoes +
+                ", size=" + size +
+                ", color=" + color +
                 '}';
     }
 
@@ -161,15 +197,15 @@ public class ShoesDTO implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ShoesDTO)) {
+        if (!(o instanceof ShoesDetailsDTO)) {
             return false;
         }
 
-        ShoesDTO shoesDTO = (ShoesDTO) o;
+        ShoesDetailsDTO shoesDetailsDTO = (ShoesDetailsDTO) o;
         if (this.id == null) {
             return false;
         }
-        return Objects.equals(this.id, shoesDTO.id);
+        return Objects.equals(this.id, shoesDetailsDTO.id);
     }
 
     @Override
