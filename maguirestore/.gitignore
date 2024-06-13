@@ -1,0 +1,5 @@
+/maguirestore/target/
+/maguirestore/.gitignore
+/maguirestore/.idea
+/maguirestore/target/classes/com/datn/maguirestore/controller/.gitignore
+/maguirestore/target/classes/com/datn/maguirestore/service/.gitignore
