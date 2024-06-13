@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="[file thông tin cấu hình maven và JDK]">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/AuthController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/ShoesController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/ShoesDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/dto/ShoesDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Brand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Brand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Shoes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/entity/Shoes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/response/JwtResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/payload/response/JwtResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/ShoesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/datn/maguirestore/service/mapper/ShoesMapper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/AddressMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/AddressMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/BrandMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/BrandMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/CategoryMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/CategoryMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ColorMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ColorMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesDetailsMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesDetailsMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/ShoesMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/SizeMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/datn/maguirestore/service/mapper/SizeMapperImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
