@@ -69,6 +69,7 @@ public class UserService {
         user.setPhone(userDTO.getPhone());
         user.setCreatedBy(userDetails.getUsername());
         user.setAddress(userDTO.getAddress());
+        user.setCreatedBy(userDetails.getUsername());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
         Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
