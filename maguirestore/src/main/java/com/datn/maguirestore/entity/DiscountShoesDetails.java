@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 @Entity
 @Table(name = "discount_shoes_details")
@@ -22,7 +23,13 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "discount_amount", precision = 21, scale = 2)
+    @Column(name = "start_date")
+    private Instant startDate;
+
+    @Column(name = "end_date")
+    private Instant endDate;
+
+    @Column(name = "amount")
     private BigDecimal discountAmount;
 
     @Column(name = "status")
@@ -34,6 +41,4 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     @ManyToOne
     private Shoes shoesDetails;
 
-    @Column(name = "brand_id")
-    private Long brandId;
 }
