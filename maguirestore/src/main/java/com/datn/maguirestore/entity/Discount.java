@@ -29,20 +29,8 @@ public class Discount extends AbstractAuditingEntity<Long> implements Serializab
     @Column(name = "name")
     private String name;
 
-    @Column(name = "start_date")
-    private Instant startDate;
-
-    @Column(name = "end_date")
-    private Instant endDate;
-
     @Column(name = "discount_method")
     private Integer discountMethod;
-
-    @Column(name = "discount_amount", precision = 21, scale = 2)
-    private BigDecimal discountAmount;
-
-    @Column(name = "discount_status")
-    private Integer discountStatus;
 
     @Column(name = "status")
     private Integer status;

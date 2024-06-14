@@ -1,18 +1,13 @@
-package com.datn.maguirestore.dto;
+package com.datn.maguirestore.payload.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class DiscountResponseDTO {
-
+public class DiscountUpdateResponse {
     private Long id;
     private String code;
     private String name;
@@ -20,9 +15,6 @@ public class DiscountResponseDTO {
 
     private Integer status;
 
-    private String createdBy;
-    private Instant createdDate;
     private String lastModifiedBy;
     private Instant lastModifiedDate;
-
 }

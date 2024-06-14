@@ -1,9 +1,9 @@
 package com.datn.maguirestore.service.mapper;
 
-import com.datn.maguirestore.dto.DiscountCreateDTO;
 import com.datn.maguirestore.dto.DiscountDTO;
 import com.datn.maguirestore.dto.DiscountResponseDTO;
 import com.datn.maguirestore.entity.Discount;
+import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 
@@ -11,7 +11,7 @@ import org.mapstruct.Named;
 public interface DiscountMapper extends EntityMapper<DiscountDTO, Discount> {
 
     @Named("toDiscountEntity")
-    Discount toDiscountEntity(DiscountCreateDTO createDTO);
+    Discount toDiscountEntity(DiscountUpdateRequest updateDTO);
 
     @Named("toDiscountDTO")
     DiscountResponseDTO toDiscountDTO(Discount discount);
