@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
+/** tuyenpv - Size. */
 @RestController
 @RequestMapping("/api/v1/size")
 @RequiredArgsConstructor
@@ -36,11 +37,18 @@ public class SizeController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/sizes")
-    public ResponseEntity<List<SizeDTO>> getAllSizes
-            (@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
-        log.debug("REST request to get a page of Sizes");
+    public ResponseEntity<List<SizeDTO>> getAllSizes () {
+        log.debug("REST request to get  Sizes");
 
         return ResponseEntity.ok(sizeService.findAll());
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/sizes/{id}")
+    public ResponseEntity<SizeDTO> getSize(@PathVariable Long id) {
+        log.debug("REST request to get Size : {}", id);
+        Optional<SizeDTO> sizeDTO = sizeService.findOne(id);
+        return ResponseUtil.wrapOrNotFound(sizeDTO);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
@@ -65,13 +73,7 @@ public class SizeController {
         return ResponseEntity.ok().body(result);
     }
 
-    @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/sizes/{id}")
-    public ResponseEntity<SizeDTO> getSize(@PathVariable Long id) {
-        log.debug("REST request to get Size : {}", id);
-        Optional<SizeDTO> sizeDTO = sizeService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(sizeDTO);
-    }
+
 
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("/sizes/{id}")
