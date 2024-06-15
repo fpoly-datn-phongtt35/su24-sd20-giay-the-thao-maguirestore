@@ -1,0 +1,6 @@
+/maguirestore/target/
+/maguirestore/.idea
+HELP.md
+mvnw
+mvnw.cmd
+../.gitignore

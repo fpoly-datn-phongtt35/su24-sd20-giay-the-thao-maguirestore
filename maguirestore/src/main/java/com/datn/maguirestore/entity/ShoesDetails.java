@@ -14,13 +14,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-/** nhannxph27197 - Shoes. */
+/** nhannxph27197 - ShoesDetails. */
 @Entity
-@Table(name = "shoes")
+@Table(name = "shoes_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Shoes extends AbstractAuditingEntity<Long> implements Serializable {
+public class ShoesDetails extends AbstractAuditingEntity<Long> implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
@@ -29,11 +29,17 @@ public class Shoes extends AbstractAuditingEntity<Long> implements Serializable 
   @Column(name = "id")
   private Long id;
 
-  @Column(name = "code")
-  private String code;
+  @Column(name = "price")
+  private Float price;
 
-  @Column(name = "name")
-  private String name;
+  @Column(name = "import_price")
+  private Float importPrice;
+
+  @Column(name = "tax")
+  private Float tax;
+
+  @Column(name = "quantity")
+  private Integer quantity;
 
   @Column(name = "description")
   private String description;
@@ -42,11 +48,15 @@ public class Shoes extends AbstractAuditingEntity<Long> implements Serializable 
   private Integer status;
 
   @ManyToOne
-  @JoinColumn(name = "brand_id")
-  private Brand brand;
+  @JoinColumn(name = "shoes_id")
+  private Shoes shoes;
 
   @ManyToOne
-  @JoinColumn(name = "category_id")
-  private Category category;
+  @JoinColumn(name = "size_id")
+  private Size size;
+
+  @ManyToOne
+  @JoinColumn(name = "color_id")
+  private Color color;
 
 }

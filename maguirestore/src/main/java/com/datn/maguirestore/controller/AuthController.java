@@ -7,6 +7,7 @@ import com.datn.maguirestore.payload.request.VerifyOtpRequest;
 import com.datn.maguirestore.payload.response.JwtResponse;
 import com.datn.maguirestore.payload.response.MessageResponse;
 import com.datn.maguirestore.payload.response.OtpResponse;
+import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.security.jwt.JwtUtils;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
 import com.datn.maguirestore.security.services.UserDetailsServiceImpl;
@@ -20,11 +21,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -79,16 +82,20 @@ public class AuthController {
             Long id = ((UserDetailsImpl) userDetails).getId();
             String login = ((UserDetailsImpl) userDetails).getUsername();
             String email = ((UserDetailsImpl) userDetails).getEmail();
-            JwtResponse jwtResponse = new JwtResponse(jwt, id, login, email);
+            String role = userDetails.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .collect(Collectors.joining(","));
+            JwtResponse jwtResponse = new JwtResponse(jwt, id, login, email, role);
             return ResponseEntity.ok(jwtResponse);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("OTP is invalid or has expired");
         }
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
-        userService.signUp(signUpRequest);
-        return ResponseEntity.ok(new MessageResponse("Dang ky thanh cong!"));
+    public ResponseEntity<SignupResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+        SignupResponse signupResponse = userService.signUp(signUpRequest);
+        return ResponseEntity.ok(signupResponse);
     }
 }
