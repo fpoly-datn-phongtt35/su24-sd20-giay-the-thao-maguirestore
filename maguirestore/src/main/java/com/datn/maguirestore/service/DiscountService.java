@@ -42,14 +42,8 @@ public class DiscountService {
     private final DiscountMapper discountMapper;
 
     private final DiscountShoesDetailsRepository discountShoesDetailsRepository;
-    private final DiscountShoesDetailsMapper discountShoesDetailsMapper;
-
-    private final ShoesRepository shoesRepository;
-    private final ShoesMapper shoesMapper;
 
     private static final String ENTITY_NAME = "discount";
-    private final String baseCode = "KM";
-    private final BrandRepository brandRepository;
 
     public DiscountCreateResponse createDiscount(DiscountCreateRequest discountDTO) throws Exception {
         log.debug("Request to save Discount : {}", discountDTO);
@@ -129,12 +123,9 @@ public class DiscountService {
         if (DataUtils.isNull(discount)) {
             throw new BadRequestAlertException("Chương trình khuyến mại không tồn tại", "discount", "exist");
         }
-        DiscountResponseDTO discountCreateDTO = discountMapper.toDiscountDTO(discount);
-//        List<DiscountShoesDetails> discountShoesDetailsList = discountShoesDetailsRepository.findAllByDiscount_IdAndStatus(
-//                id,
-//                Constants.STATUS.ACTIVE
-//        );
-        return discountCreateDTO;
+        DiscountResponseDTO discountResponse= discountMapper.toDiscountDTO(discount);
+
+        return discountResponse;
     }
 
     public List<DiscountSearchDTO> search(String searchText) {
@@ -154,23 +145,4 @@ public class DiscountService {
         discountRepository.save(discount);
     }
 
-
-    private DiscountShoesDetails mapDiscountShoesDetails(DiscountShoesDetailsDTO discountShoesDetailsDTO) {
-        DiscountShoesDetails discountShoesDetails = new DiscountShoesDetails();
-        discountShoesDetails.setShoesDetails(shoesMapper.toEntity(discountShoesDetailsDTO.getShoesDetails()));
-        discountShoesDetails.setId(discountShoesDetailsDTO.getId());
-        discountShoesDetails.setStatus(discountShoesDetailsDTO.getStatus());
-        return discountShoesDetails;
-    }
-
-    public String generateCode() {
-        Instant currentDateTime = DataUtils.getCurrentDateTime();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = formatter.format(LocalDate.ofInstant(currentDateTime, ZoneId.of("UTC")));
-        String dateString = DataUtils.makeLikeStr(formattedDate);
-        List<Discount> list = discountRepository.findByCreatedDate(dateString);
-        int numberInDay = list.size() + 1;
-        String code = DataUtils.replaceSpecialCharacters(formattedDate);
-        return baseCode + code + numberInDay;
-    }
 }
