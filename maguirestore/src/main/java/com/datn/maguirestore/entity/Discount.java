@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDateTime;
 
-/** tuyenpv - Category. */
 @Entity
-@Table(name = "shoes_category")
+@Table(name = "discount")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Category extends AbstractAuditingEntity<Long> implements Serializable {
-
+@NoArgsConstructor
+public class Discount extends AbstractAuditingEntity<Long> implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -27,6 +28,9 @@ public class Category extends AbstractAuditingEntity<Long> implements Serializab
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "discount_method")
+    private Integer discountMethod;
 
     @Column(name = "status")
     private Integer status;

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
+/** tuyenpv - Size. */
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -77,13 +77,6 @@ public class SizeService {
         log.debug("Request to get all Sizes with status = 1");
 
         Page<Size> sizesWithStatus1 = sizeRepository.findByStatus(1, pageable);
-        return sizesWithStatus1.map(sizeMapper::toDto);
-    }
-
-    public Page<SizeDTO> findDelete(Pageable pageable) {
-        log.debug("Request to get all Sizes with status = 0");
-
-        Page<Size> sizesWithStatus1 = sizeRepository.findByStatus(0, pageable);
         return sizesWithStatus1.map(sizeMapper::toDto);
     }
 
