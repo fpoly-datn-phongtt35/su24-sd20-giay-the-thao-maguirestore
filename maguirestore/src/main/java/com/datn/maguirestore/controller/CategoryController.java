@@ -5,6 +5,7 @@ import com.datn.maguirestore.dto.CategoryDTO;
 import com.datn.maguirestore.dto.SizeDTO;
 import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
+import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -38,8 +39,15 @@ public class CategoryController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/category/{id}")
+    public ResponseEntity<CategoryDTO> getOneById(@PathVariable Long id) {
+        log.debug("REST request to get category by id ");
+        return ResponseUtil.wrapOrNotFound(categoryService.findById(id));
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("")
-    public ResponseEntity<CategoryDTO> createShoesCategory(@RequestBody @Valid CategoryDTO shoesCategoryDTO) throws URISyntaxException {
+    public ResponseEntity<CategoryDTO> createCategory(@RequestBody @Valid CategoryDTO shoesCategoryDTO) throws URISyntaxException {
         log.debug("REST request to save Category : {}", shoesCategoryDTO);
 
         CategoryDTO result = categoryService.save(shoesCategoryDTO);
