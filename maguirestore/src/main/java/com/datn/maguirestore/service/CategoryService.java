@@ -62,6 +62,11 @@ public class CategoryService {
         return ds;
     }
 
+    public Optional<CategoryDTO> findById(Long id) {
+        log.debug("Request to get all Category by id");
+
+        return categoryRepository.findById(id).map(categoryMapper::toDto);
+    }
 
     public Page<CategoryDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Sizes with status = 1");

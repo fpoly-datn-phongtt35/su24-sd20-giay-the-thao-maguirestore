@@ -1,0 +1,7 @@
+/maguirestore/target/
+/maguirestore/.idea
+.idea/workspace.xml
+HELP.md
+mvnw
+mvnw.cmd
+../.gitignore

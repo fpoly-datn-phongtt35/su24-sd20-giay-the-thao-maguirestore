@@ -5,7 +5,6 @@ import com.datn.maguirestore.payload.request.LoginRequest;
 import com.datn.maguirestore.payload.request.SignupRequest;
 import com.datn.maguirestore.payload.request.VerifyOtpRequest;
 import com.datn.maguirestore.payload.response.JwtResponse;
-import com.datn.maguirestore.payload.response.MessageResponse;
 import com.datn.maguirestore.payload.response.OtpResponse;
 import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.security.jwt.JwtUtils;
@@ -80,7 +79,7 @@ public class AuthController {
             UserDetails userDetails = userDetailsService.loadUserByUsername(verifyOtpRequest.getLogin());
             String jwt = jwtUtils.generateJwtToken(new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()));
             Long id = ((UserDetailsImpl) userDetails).getId();
-            String login = ((UserDetailsImpl) userDetails).getUsername();
+            String login = userDetails.getUsername();
             String email = ((UserDetailsImpl) userDetails).getEmail();
             String role = userDetails.getAuthorities().stream()
                     .map(GrantedAuthority::getAuthority)
