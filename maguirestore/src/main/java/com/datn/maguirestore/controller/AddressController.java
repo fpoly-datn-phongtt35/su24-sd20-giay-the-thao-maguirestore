@@ -3,53 +3,65 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.service.AddressService;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/address")
 public class AddressController {
 
-  private static final String ENTITY_NAME = "address";
-  private final Logger log = LoggerFactory.getLogger(AddressController.class);
-  private final AddressService addressService;
+    private static final String ENTITY_NAME = "address";
+    private final Logger log = LoggerFactory.getLogger(AddressController.class);
+    private final AddressService addressService;
 
-  private final AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
 
-  public AddressController(AddressService addressService, AddressRepository addressRepository) {
-    this.addressService = addressService;
-    this.addressRepository = addressRepository;
-  }
+    public AddressController(AddressService addressService, AddressRepository addressRepository) {
+        this.addressService = addressService;
+        this.addressRepository = addressRepository;
+    }
 
-  @SecurityRequirement(name = "Bearer Authentication")
-  @PostMapping("/addresses")
-  public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO)
-      throws URISyntaxException {
-    log.debug("REST request to save Address : {}", addressDTO);
+    @SecurityRequirement(name = "Bearer Authentication")
+    @PostMapping("/addresses")
+    public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO)
+            throws URISyntaxException {
+        log.debug("REST request to save Address : {}", addressDTO);
 
-    AddressDTO result = addressService.save(addressDTO);
-    return ResponseEntity.created(new URI("/api/addresses/" + result.getId())).body(result);
-  }
+        AddressDTO result = addressService.save(addressDTO);
+        return ResponseEntity.created(new URI("/api/addresses/" + result.getId())).body(result);
+    }
 
-  @SecurityRequirement(name = "Bearer Authentication")
-  @GetMapping("/addresses")
-  public ResponseEntity<List<AddressDTO>> getAllAddresses() {
-    log.debug("REST request to get all Addresses");
-    return ResponseEntity.ok(addressService.findAll());
-  }
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/addresses")
+    public ResponseEntity<List<AddressDTO>> getAllAddresses() {
+        log.debug("REST request to get all Addresses");
+        return ResponseEntity.ok(addressService.findAll());
+    }
 
-  @SecurityRequirement(name = "Bearer Authentication")
-  @DeleteMapping("/addresses/{id}")
-  public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
-    log.debug("REST request to delete Address : {}", id);
-    addressService.delete(id);
-    return ResponseEntity.noContent().build();
-  }
+    @SecurityRequirement(name = "Bearer Authentication")
+    @PutMapping("/addresses/{id}")
+    public ResponseEntity<AddressDTO> updateAddress(
+            @PathVariable(value = "id", required = false) final Long id, @RequestBody AddressDTO addressDTO)
+            throws URISyntaxException {
+        log.debug("REST request to update Brand : {}, {}", id, addressDTO);
+
+        addressDTO.setId(id);
+        AddressDTO result = addressService.update(addressDTO);
+        return ResponseEntity.ok().body(result);
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @DeleteMapping("/addresses/{id}")
+    public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
+        log.debug("REST request to delete Address : {}", id);
+        addressService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
