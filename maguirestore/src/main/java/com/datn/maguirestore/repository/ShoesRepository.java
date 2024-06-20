@@ -10,7 +10,16 @@ import java.util.List;
 @Repository
 
 public interface ShoesRepository extends JpaRepository<Shoes, Long> {
+
     @Query("select s from Shoes s where s.name like '%' + :keyname + '%' and s.category.id = :categoryId")
     public List<Shoes> findByFiter(String keyname, Long categoryId );
+
+    @Query("select s from Shoes s where s.category.id = :categoryId")
+    public List<Shoes> findByCategory(Long categoryId );
+
+
+    Shoes findByIdAndStatus(Long id, Integer status);
+
+
 
 }

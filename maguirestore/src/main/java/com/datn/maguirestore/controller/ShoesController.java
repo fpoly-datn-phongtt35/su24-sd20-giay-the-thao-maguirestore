@@ -2,6 +2,7 @@ package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ShoesDTO;
 import com.datn.maguirestore.entity.Shoes;
+import com.datn.maguirestore.payload.request.ShoesCreateRequest;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.ShoesService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -35,11 +36,11 @@ public class ShoesController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/shoes")
-    public ResponseEntity<ShoesDTO> createShoes(@RequestBody ShoesDTO shoesDTO)
+    public ResponseEntity<ShoesDTO> createShoes(@RequestBody ShoesCreateRequest shoesCreateRequest)
             throws URISyntaxException {
-        log.debug("REST request to save Shoes : {}", shoesDTO);
+        log.debug("REST request to save Shoes : {}", shoesCreateRequest);
 
-        ShoesDTO result = shoesService.save(shoesDTO);
+        ShoesDTO result = shoesService.save(shoesCreateRequest);
         return ResponseEntity.created(new URI("/api/shoes/" + result.getId())).body(result);
     }
 
@@ -62,6 +63,13 @@ public class ShoesController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/shoes/{id}")
+    public ResponseEntity<ShoesDTO> getById(@PathVariable Long id) {
+        log.debug("REST request to get a page of Shoes");
+        return ResponseEntity.ok(shoesService.findById(id));
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("/shoes/{id}")
     public ResponseEntity<Void> deleteShoes(@PathVariable Long id) {
         log.debug("REST request to delete Shoes : {}", id);
@@ -74,5 +82,12 @@ public class ShoesController {
     public ResponseEntity<List<Shoes>> getShoes(String key, Long categoryId) {
         log.debug("REST request to get a page of Shoes");
         return ResponseEntity.ok(shoesService.findByFiter(key, categoryId));
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/shoes-category")
+    public ResponseEntity<List<ShoesDTO>> getShoes(Long categoryId) {
+        log.debug("REST request to get a page of Shoes");
+        return ResponseEntity.ok(shoesService.findByCategory(categoryId));
     }
 }

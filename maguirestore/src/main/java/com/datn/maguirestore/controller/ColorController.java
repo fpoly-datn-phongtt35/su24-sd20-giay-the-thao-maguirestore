@@ -55,6 +55,14 @@ public class ColorController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/colors/{id}")
+    public ResponseEntity<ColorDTO> getColorById(@PathVariable Long id) {
+        log.debug("REST request to get Color by id");
+
+        return ResponseEntity.ok(colorService.findbyId(id));
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("/colors/{id}")
     public ResponseEntity<Void> deleteColor(@PathVariable Long id) {
         log.debug("REST request to delete Color : {}", id);

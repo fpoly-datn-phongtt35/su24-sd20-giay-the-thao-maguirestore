@@ -1,9 +1,6 @@
 package com.datn.maguirestore.payload.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -11,7 +8,7 @@ import lombok.Setter;
 public class JwtResponse {
     private String token;
     private Long id;
-    private String username;
+    private String login;
     private String email;
-    //private List<String> roles;
+    private String role;
 }

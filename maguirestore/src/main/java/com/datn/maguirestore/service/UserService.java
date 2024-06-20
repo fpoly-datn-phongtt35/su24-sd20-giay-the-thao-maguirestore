@@ -5,9 +5,10 @@ import com.datn.maguirestore.dto.UserDTO;
 import com.datn.maguirestore.entity.ERole;
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.payload.request.SignupRequest;
+import com.datn.maguirestore.payload.response.SignupResponse;
 import com.datn.maguirestore.repository.UserRepository;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
@@ -26,13 +27,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
 
-    public User signUp(SignupRequest signupRequest) {
+    private final UserRepository userRepository;
+
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    public SignupResponse signUp(SignupRequest signupRequest) {
         if (userRepository.existsByLogin(signupRequest.getLogin())) {
             throw new IllegalArgumentException("User already exists");
         }
@@ -46,7 +48,13 @@ public class UserService {
         user.setRole(ERole.ROLE_USER);
         user.setCreatedBy("system");
         userRepository.save(user);
-        return user;
+
+        // Convert User to SignupResponse
+        SignupResponse signupResponse = new SignupResponse();
+        signupResponse.setLogin(user.getLogin());
+        signupResponse.setEmail(user.getEmail());
+        signupResponse.setRole(user.getRole());
+        return signupResponse;
     }
 
     public User createUser(AdminUserDTO userDTO) {
@@ -58,6 +66,7 @@ public class UserService {
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
         user.setPhone(userDTO.getPhone());
+        user.setCreatedBy(userDetails.getUsername());
         user.setAddress(userDTO.getAddress());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.parse(userDTO.getDob(), formatter);
