@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ShoesDTO;
+import com.datn.maguirestore.entity.Shoes;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.ShoesService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -66,5 +67,12 @@ public class ShoesController {
         log.debug("REST request to delete Shoes : {}", id);
         shoesService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/shoess")
+    public ResponseEntity<List<Shoes>> getShoes(String key, Long categoryId) {
+        log.debug("REST request to get a page of Shoes");
+        return ResponseEntity.ok(shoesService.findByFiter(key, categoryId));
     }
 }

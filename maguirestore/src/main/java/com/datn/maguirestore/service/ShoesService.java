@@ -7,6 +7,7 @@ import com.datn.maguirestore.service.mapper.ShoesMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -65,5 +66,7 @@ public class ShoesService {
         }
     }
 
-
+    public List<Shoes> findByFiter(String key, Long categoryId) {
+        return shoesRepository.findByFiter(key, categoryId);
+    }
 }
