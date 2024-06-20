@@ -1,10 +1,11 @@
 package com.datn.maguirestore.service;
 
-import com.datn.maguirestore.dto.CartDTO;
 import com.datn.maguirestore.dto.CartDetailsDTO;
-import com.datn.maguirestore.entity.Cart;
+import com.datn.maguirestore.dto.CartDetailsRequestDTO;
 import com.datn.maguirestore.entity.CartDetails;
 import com.datn.maguirestore.repository.CartDetailsRepository;
+import com.datn.maguirestore.repository.CartRepository;
+import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.service.mapper.CartDetailsMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -26,20 +27,22 @@ public class CartDetailsService {
     private final Logger log = LoggerFactory.getLogger(CartDetailsService.class);
 
     private final CartDetailsRepository cartDetailsRepository;
+    private final CartRepository cartRepository;
+    private final ShoesDetailsRepository shoesDetailsRepository;
 
     private final CartDetailsMapper cartDetailsMapper;
 
-    public CartDetailsDTO save(CartDetailsDTO cartDetailsDTO) {
-        log.debug("Request to save Cart : {}", cartDetailsDTO);
-        CartDetails cart = cartDetailsMapper.toEntity(cartDetailsDTO);
+    public CartDetailsDTO save(CartDetailsRequestDTO requestDTO) {
+        log.debug("Request to save Cart : {}", requestDTO);
+        CartDetails cart = dtoToEntity(requestDTO);
         cart.setStatus(1);
         cart= cartDetailsRepository.save(cart);
         return cartDetailsMapper.toDto(cart);
     }
 
-    public CartDetailsDTO update(CartDetailsDTO cartDetailsDTO) {
-        log.debug("Request to update Cart : {}", cartDetailsDTO);
-        CartDetails cart = cartDetailsMapper.toEntity(cartDetailsDTO);
+    public CartDetailsDTO update(CartDetailsRequestDTO requestDTO) {
+        log.debug("Request to update Cart : {}", requestDTO);
+        CartDetails cart = dtoToEntity(requestDTO);
         cart.setStatus(1);
         cart= cartDetailsRepository.save(cart);
         return cartDetailsMapper.toDto(cart);
@@ -71,5 +74,19 @@ public class CartDetailsService {
             cart.setStatus(0);
             cartDetailsRepository.save(cart);
         }
+    }
+
+    public CartDetails dtoToEntity(CartDetailsRequestDTO requestDTO) {
+        CartDetails details = new CartDetails();
+        details.setId(requestDTO.getId());
+        details.setStatus(requestDTO.getStatus());
+        details.setQuantity(requestDTO.getQuantity());
+        details.setCreatedBy(requestDTO.getCreatedBy());
+        details.setCreatedDate(requestDTO.getCreatedDate());
+        details.setLastModifiedBy(requestDTO.getLastModifiedBy());
+        details.setLastModifiedDate(requestDTO.getLastModifiedDate());
+        details.setCart(cartRepository.findById(requestDTO.getCart()).get());
+        details.setShoesDetails(shoesDetailsRepository.findById(requestDTO.getShoesDetails()).get());
+        return details;
     }
 }

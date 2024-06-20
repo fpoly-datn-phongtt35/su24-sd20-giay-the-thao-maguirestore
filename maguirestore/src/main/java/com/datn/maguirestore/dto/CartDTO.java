@@ -1,9 +1,13 @@
 package com.datn.maguirestore.dto;
 
+import com.datn.maguirestore.entity.Cart;
 import com.datn.maguirestore.entity.User;
+import com.datn.maguirestore.repository.CartRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -64,4 +68,6 @@ public class CartDTO implements Serializable {
     public int hashCode() {
         return Objects.hash(this.id);
     }
+
+
 }

@@ -1,12 +1,21 @@
 package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.dto.CartDTO;
+import com.datn.maguirestore.dto.CartRequestDTO;
+import com.datn.maguirestore.dto.CartRequestPagination;
+import com.datn.maguirestore.dto.CartResponseDTO;
 import com.datn.maguirestore.entity.Cart;
+import com.datn.maguirestore.entity.CartDetails;
+import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.repository.CartRepository;
+import com.datn.maguirestore.repository.UserRepository;
 import com.datn.maguirestore.service.mapper.CartMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,20 +33,21 @@ public class CartService {
     private final Logger log = LoggerFactory.getLogger(CartService.class);
 
     private final CartRepository cartRepository;
-
+    private final UserRepository userRepository;
+    private final CartDetailsRepository cartDetailsRepository;
     private final CartMapper cartMapper;
 
-    public CartDTO save(CartDTO cartDTO) {
+    public CartDTO save(CartRequestDTO cartDTO) {
         log.debug("Request to save Cart : {}", cartDTO);
-        Cart cart = cartMapper.toEntity(cartDTO);
+        Cart cart = DTOToEntity(cartDTO);
         cart.setStatus(1);
         cart= cartRepository.save(cart);
         return cartMapper.toDto(cart);
     }
 
-    public CartDTO update(CartDTO cartDTO) {
+    public CartDTO update(CartRequestDTO cartDTO) {
         log.debug("Request to update Cart : {}", cartDTO);
-        Cart cart = cartMapper.toEntity(cartDTO);
+        Cart cart = DTOToEntity(cartDTO);
         cart.setStatus(1);
         cart= cartRepository.save(cart);
         return cartMapper.toDto(cart);
@@ -50,6 +60,25 @@ public class CartService {
         return cartRepository.findAll().stream()
                 .map(cartMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    @Transactional(readOnly = true)
+    public CartResponseDTO fillDetailByCart(CartRequestPagination pagination) {
+        Cart cart = cartRepository.findById(pagination.getId()).get();
+        Pageable pageable = PageRequest.of(pagination.getPage(), pagination.getSize());
+        Page<CartDetails> list = cartDetailsRepository.getAllByCart(pagination.getId(), pageable);
+
+        CartResponseDTO dto = new CartResponseDTO();
+        dto.setCartDetailsList(list.getContent());
+        dto.setCode(cart.getCode());
+        dto.setCreatedBy(cart.getCreatedBy());
+        dto.setCreatedDate(cart.getCreatedDate());
+        dto.setStatus(cart.getStatus());
+        dto.setId(cart.getId());
+        dto.setUser(cart.getUser());
+        dto.setLastModifiedBy(cart.getLastModifiedBy());
+        dto.setLastModifiedDate(cart.getLastModifiedDate());
+        return dto;
     }
 
     @Transactional(readOnly = true)
@@ -73,4 +102,16 @@ public class CartService {
     }
 
 
+    public Cart DTOToEntity(CartRequestDTO cartRequestDTO) {
+        Cart cart = new Cart();
+        cart.setId(cartRequestDTO.getId());
+        cart.setStatus(cartRequestDTO.getStatus());
+        cart.setCode(cartRequestDTO.getCode());
+        cart.setCreatedBy(cartRequestDTO.getCreatedBy());
+        cart.setCreatedDate(cartRequestDTO.getCreatedDate());
+        cart.setLastModifiedBy(cartRequestDTO.getLastModifiedBy());
+        cart.setLastModifiedDate(cartRequestDTO.getLastModifiedDate());
+        cart.setUser(userRepository.findById(cartRequestDTO.getUser()).get());
+        return cart;
+    }
 }

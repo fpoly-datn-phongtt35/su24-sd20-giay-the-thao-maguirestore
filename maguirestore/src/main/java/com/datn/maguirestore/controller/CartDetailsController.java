@@ -1,6 +1,8 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CartDetailsDTO;
+import com.datn.maguirestore.dto.CartDetailsRequestDTO;
+import com.datn.maguirestore.dto.CartRequestDTO;
 import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.service.CartDetailsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -34,7 +36,7 @@ public class CartDetailsController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/cart-details")
-    public ResponseEntity<CartDetailsDTO> createCart(@RequestBody CartDetailsDTO cartDetailsDTO) throws URISyntaxException {
+    public ResponseEntity<CartDetailsDTO> createCart(@RequestBody CartDetailsRequestDTO cartDetailsDTO) throws URISyntaxException {
         log.debug("REST request to save CartDetail : {}", cartDetailsDTO);
 
         CartDetailsDTO result = cartDetailsService.save(cartDetailsDTO);
@@ -45,7 +47,7 @@ public class CartDetailsController {
     @PutMapping("/cart-details/{id}")
     public ResponseEntity<CartDetailsDTO> updateCart(
             @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody CartDetailsDTO cartDetailsDTO)
+            @RequestBody CartDetailsRequestDTO cartDetailsDTO)
             throws URISyntaxException {
         log.debug("REST request to update Cart : {}, {}", id, cartDetailsDTO);
 
