@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ShoesDetailsDTO;
+import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.service.ShoesDetailsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -34,11 +35,11 @@ public class ShoesDetailsController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/shoes-details")
-    public ResponseEntity<ShoesDetailsDTO> createShoesDetails(@RequestBody ShoesDetailsDTO shoesDetailsDTO)
+    public ResponseEntity<ShoesDetailsDTO> createShoesDetails(@RequestBody ShoesDetailCreateRequest request)
             throws URISyntaxException {
-        log.debug("REST request to save ShoesDetails : {}", shoesDetailsDTO);
+        log.debug("REST request to save ShoesDetails : {}", request);
 
-        ShoesDetailsDTO result = shoesDetailsService.save(shoesDetailsDTO);
+        ShoesDetailsDTO result = shoesDetailsService.save(request);
         return ResponseEntity.created(new URI("/api/shoes-details/" + result.getId())).body(result);
     }
 
@@ -58,6 +59,13 @@ public class ShoesDetailsController {
     public ResponseEntity<List<ShoesDetailsDTO>> getAllShoesDetails() {
         log.debug("REST request to get a page of ShoesDetails");
         return ResponseEntity.ok(shoesDetailsService.fillAll());
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/shoes-details/{id}")
+    public ResponseEntity<ShoesDetailsDTO> getById(@PathVariable Long id) {
+        log.debug("REST request to get a page of ShoesDetails");
+        return ResponseEntity.ok(shoesDetailsService.findById(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")

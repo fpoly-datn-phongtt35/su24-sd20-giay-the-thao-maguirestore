@@ -1,7 +1,11 @@
 package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.dto.ShoesDetailsDTO;
+import com.datn.maguirestore.entity.Color;
+import com.datn.maguirestore.entity.Shoes;
 import com.datn.maguirestore.entity.ShoesDetails;
+import com.datn.maguirestore.entity.Size;
+import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.service.mapper.ShoesDetailsMapper;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +40,36 @@ public class ShoesDetailsService {
         return shoesDetailsMapper.toDto(shoesDetails);
     }
 
+    public ShoesDetailsDTO save(ShoesDetailCreateRequest request) {
+        log.debug("Request to save ShoesDetails : {}", request);
+
+        ShoesDetails shoesDetails = new ShoesDetails();
+        shoesDetails.setPrice(request.getPrice());
+        shoesDetails.setImportPrice(request.getImportPrice());
+        shoesDetails.setTax(request.getTax());
+        shoesDetails.setQuantity(request.getQuantity());
+        shoesDetails.setDescription(request.getDescription());
+
+        shoesDetails.setStatus(1);
+        shoesDetails.setCreatedBy(request.getCreatedBy());
+        shoesDetails.setCreatedDate(request.getCreatedDate());
+
+        Shoes shoes = new Shoes();
+        shoes.setId(request.getShoesId());
+        shoesDetails.setShoes(shoes);
+
+        Size size = new Size();
+        size.setId(request.getSizeId());
+        shoesDetails.setSize(size);
+
+        Color color = new Color();
+        color.setId(request.getColorId());
+        shoesDetails.setColor(color);
+
+        shoesDetails = shoesDetailsRepository.save(shoesDetails);
+        return shoesDetailsMapper.toDto(shoesDetails);
+    }
+
     public ShoesDetailsDTO update(ShoesDetailsDTO shoesDetailsDTO) {
         log.debug("Request to update ShoesDetails : {}", shoesDetailsDTO);
 
@@ -52,6 +86,10 @@ public class ShoesDetailsService {
         return shoesDetailsRepository.findAll().stream()
                 .map(shoesDetailsMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    public ShoesDetailsDTO findById(Long aLong) {
+        return shoesDetailsMapper.toDto(shoesDetailsRepository.findById(aLong).orElse(null));
     }
 
     public void delete(Long id){

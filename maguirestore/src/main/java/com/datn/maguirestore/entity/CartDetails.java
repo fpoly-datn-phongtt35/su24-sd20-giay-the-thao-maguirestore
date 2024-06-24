@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/** tuyenpv - Category. */
+/** sonnsph26215 - CartDetails. */
 @Entity
-@Table(name = "shoes_category")
+@Table(name = "cart_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category extends AbstractAuditingEntity<Long> implements Serializable {
+public class CartDetails extends AbstractAuditingEntity<Long> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,12 +22,17 @@ public class Category extends AbstractAuditingEntity<Long> implements Serializab
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "code")
-    private String code;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "quantity")
+    private Integer quantity;
 
     @Column(name = "status")
     private Integer status;
+
+    @ManyToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+    @ManyToOne
+    @JoinColumn(name = "shoes_details_id")
+    private ShoesDetails shoesDetails;
 }
