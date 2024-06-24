@@ -66,6 +66,8 @@ public class WebSecurityConfig {
                 .antMatchers("/api/auth/**").permitAll()
                 .antMatchers("/api/test/**", "/swagger-ui/**", "/api-docs/**", "/swagger-resources/**").permitAll()
                 //.antMatchers("/api/v1/auth/**", "/api/v1/users/getTokenToChangePassword").permitAll()
+//                .antMatchers("api/v1/admin/**").hasRole("ADMIN")
+//                .antMatchers("api/v1/user/**").hasRole("USER")
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());

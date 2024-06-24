@@ -113,8 +113,8 @@ public class DataUtils {
         }
     }
 
-    public static Instant parseToInstant_yyyy_MM_dd_HH_mm_ss(String dateString) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static Instant parseToInstant(String dateString) {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime startDate = LocalDateTime.parse(dateString, df);
         Instant instant = startDate.toInstant(ZoneOffset.UTC);
         return instant;

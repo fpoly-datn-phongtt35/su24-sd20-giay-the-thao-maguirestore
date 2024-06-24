@@ -1,5 +1,6 @@
 package com.datn.maguirestore.dto;
 
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +18,7 @@ public class DiscountResponseDTO {
     private String code;
     private String name;
     private Integer discountMethod;
+    private BigDecimal discountAmount;
 
     private Integer status;
 
