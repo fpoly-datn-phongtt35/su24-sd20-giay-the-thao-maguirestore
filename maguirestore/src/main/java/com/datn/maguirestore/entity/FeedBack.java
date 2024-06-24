@@ -32,4 +32,9 @@ public class FeedBack extends AbstractAuditingEntity<Long> implements Serializab
     @Column(name = "status")
     private Integer status;
 
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private ShoesDetails shoes;
 }
