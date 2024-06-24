@@ -1,5 +1,6 @@
 package com.datn.maguirestore.payload.response;
 
+import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ public class DiscountUpdateResponse {
     private String code;
     private String name;
     private Integer discountMethod;
+    private BigDecimal discountAmount;
 
     private Integer status;
 
