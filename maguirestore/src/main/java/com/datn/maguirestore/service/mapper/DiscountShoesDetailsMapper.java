@@ -1,6 +1,7 @@
 package com.datn.maguirestore.service.mapper;
 
 import com.datn.maguirestore.dto.DiscountDTO;
+import com.datn.maguirestore.dto.DiscountDetailsDTO;
 import com.datn.maguirestore.dto.DiscountShoesDetailsDTO;
 import com.datn.maguirestore.dto.ShoesDTO;
 import com.datn.maguirestore.entity.Discount;
@@ -16,6 +17,8 @@ public interface DiscountShoesDetailsMapper extends EntityMapper<DiscountShoesDe
     //    @Mapping(target = "discount", source = "discount", qualifiedByName = "discountId")
     //    @Mapping(target = "shoesDetails", source = "shoesDetails", qualifiedByName = "shoesDetailsId")
     DiscountShoesDetailsDTO toDto(DiscountShoesDetails s);
+
+    DiscountDetailsDTO convertDTO(DiscountShoesDetails cd);
 
     @Named("discountId")
     @BeanMapping(ignoreByDefault = true)

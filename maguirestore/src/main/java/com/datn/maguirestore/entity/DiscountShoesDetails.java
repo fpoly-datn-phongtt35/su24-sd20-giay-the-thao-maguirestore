@@ -23,15 +23,6 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "start_date")
-    private Instant startDate;
-
-    @Column(name = "end_date")
-    private Instant endDate;
-
-    @Column(name = "amount")
-    private BigDecimal discountAmount;
-
     @Column(name = "status")
     private Integer status;
 

@@ -22,9 +22,6 @@ public class CategoryDTO implements Serializable {
     @NotBlank(message = "error.shoes.category.name.notBlank")
     private String name;
 
-//    @Valid
-//    private List<ShoesCategoryValueDTO> shoesCategoryValueDTOList;
-
     private Integer status;
 
     private String lastModifiedBy;
