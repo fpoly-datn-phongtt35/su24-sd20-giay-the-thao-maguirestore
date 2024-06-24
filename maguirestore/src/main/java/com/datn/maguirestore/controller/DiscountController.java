@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -46,6 +47,7 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<DiscountCreateResponse> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
         log.debug("REST request to save Discount : {}", createDTO);
         DiscountCreateResponse discountDTO = discountService.createDiscount(createDTO);
@@ -63,6 +65,7 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<DiscountUpdateResponse> updateDiscount(@PathVariable(value = "id", required = false) final Long id,
                                                                  @RequestBody DiscountUpdateRequest discountDTO) {
         if (null == discountDTO.getId()) {
@@ -114,6 +117,7 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteDiscount(@PathVariable Long id) throws Exception {
         log.debug("REST request to delete Discount : {}", id);
         discountService.delete(id);
