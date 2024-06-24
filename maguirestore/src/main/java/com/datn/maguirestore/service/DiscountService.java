@@ -18,6 +18,7 @@ import com.datn.maguirestore.service.mapper.DiscountMapper;
 import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
 import com.datn.maguirestore.service.mapper.ShoesMapper;
 import com.datn.maguirestore.util.DataUtils;
+import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -46,15 +47,16 @@ public class DiscountService {
     private static final String ENTITY_NAME = "discount";
 
     public DiscountCreateResponse createDiscount(DiscountCreateRequest discountDTO) throws Exception {
-        log.debug("Request to save Discount : {}", discountDTO);
-
-        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
+       String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Discount discount = new Discount();
-        discount.setId(discountDTO.getId());
+        //discount.setId(discountDTO.getId());
         discount.setCode(discountDTO.getCode());
         discount.setName(discountDTO.getName());
         discount.setStatus(Constants.STATUS.ACTIVE);
+        discount.setStartDate(discountDTO.getStartDate());
+        discount.setEndDate(discountDTO.getEndDate());
+        discount.setDiscountAmount(discountDTO.getDiscountAmount());
 
         switch (discountDTO.getDiscountMethod()) {
             case 1:
@@ -81,7 +83,11 @@ public class DiscountService {
         dto.setCode(discount.getCode());
         dto.setName(discount.getName());
         dto.setDiscountMethod(discount.getDiscountMethod());
+        dto.setDiscountAmount(discount.getDiscountAmount());
         dto.setStatus(discount.getStatus());
+        dto.setStartDate(discount.getStartDate());
+        dto.setEndDate(discount.getEndDate());
+
         dto.setCreatedBy(discount.getCreatedBy());
         dto.setCreatedDate(discount.getCreatedDate());
 
@@ -95,6 +101,7 @@ public class DiscountService {
         Discount discount = discountMapper.toDiscountEntity(discountDTO);
         discount.setStatus(discountDTO.getStatus());
         discount.setLastModifiedBy(loggedUser);
+        discount.setDiscountAmount(discountDTO.getDiscountAmount());
         discountRepository.save(discount);
 
         DiscountUpdateResponse dto = new DiscountUpdateResponse();

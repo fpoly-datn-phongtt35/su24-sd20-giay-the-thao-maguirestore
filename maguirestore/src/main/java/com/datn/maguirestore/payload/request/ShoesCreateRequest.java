@@ -1,30 +1,33 @@
-package com.datn.maguirestore.dto;
+package com.datn.maguirestore.payload.request;
 
-import java.math.BigDecimal;
+import com.datn.maguirestore.entity.Brand;
+import com.datn.maguirestore.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DiscountResponseDTO {
-
+public class ShoesCreateRequest {
     private Long id;
+
     private String code;
+
     private String name;
-    private Integer discountMethod;
-    private BigDecimal discountAmount;
+
+    private String description;
 
     private Integer status;
 
     private String createdBy;
-    private Instant createdDate;
-    private String lastModifiedBy;
-    private Instant lastModifiedDate;
 
+    private Instant createdDate;
+
+    private Long brandId;
+
+    private Long categoryId;
 }

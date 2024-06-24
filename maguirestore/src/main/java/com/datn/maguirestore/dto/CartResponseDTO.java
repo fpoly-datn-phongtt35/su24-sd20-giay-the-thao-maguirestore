@@ -1,30 +1,35 @@
 package com.datn.maguirestore.dto;
 
-import java.math.BigDecimal;
+import com.datn.maguirestore.entity.CartDetails;
+import com.datn.maguirestore.entity.User;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DiscountResponseDTO {
+public class CartResponseDTO implements Serializable {
 
     private Long id;
+
     private String code;
-    private String name;
-    private Integer discountMethod;
-    private BigDecimal discountAmount;
 
     private Integer status;
 
+    private User user;
+
     private String createdBy;
+
     private Instant createdDate;
+
     private String lastModifiedBy;
+
     private Instant lastModifiedDate;
 
+    private List<CartDetails> cartDetailsList;
 }

@@ -4,13 +4,14 @@ import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.entity.Brand;
 import com.datn.maguirestore.repository.BrandRepository;
 import com.datn.maguirestore.service.mapper.BrandMapper;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,12 +48,13 @@ public class BrandService {
   }
 
   @Transactional(readOnly = true)
-  public List<BrandDTO> findAll() {
+  public Page<BrandDTO> findAll(
+      int pageNo, int pageSize, String sortBy, String sortDirection, String keyword) {
     log.debug("Request to get all Brands");
+    Pageable pageable =
+        PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.fromString(sortDirection), sortBy));
 
-    return brandRepository.findAll().stream()
-        .map(brandMapper::toDto)
-        .collect(Collectors.toCollection(LinkedList::new));
+    return brandRepository.findAll(keyword, pageable).map(brandMapper::toDto);
   }
 
   public void delete(Long id) {

@@ -4,11 +4,12 @@ import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.entity.Address;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.service.mapper.AddressMapper;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -42,11 +43,13 @@ public class AddressService {
   }
 
   @Transactional(readOnly = true)
-  public List<AddressDTO> findAll() {
+  public Page<AddressDTO> findAll(
+      int pageNo, int pageSize, String sortBy, String sortDirection, String keyword) {
     log.debug("Request to get all Addresses");
-    return addressRepository.findAll().stream()
-        .map(addressMapper::toDto)
-        .collect(Collectors.toCollection(LinkedList::new));
+    Pageable pageable =
+        PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.fromString(sortDirection), sortBy));
+
+    return addressRepository.findAll(keyword, pageable).map(addressMapper::toDto);
   }
 
   public void delete(Long id) {

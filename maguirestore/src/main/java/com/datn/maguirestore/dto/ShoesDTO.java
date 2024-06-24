@@ -23,10 +23,6 @@ public class ShoesDTO implements Serializable {
 
     private Instant createdDate;
 
-    private String lastModifiedBy;
-
-    private Instant lastModifiedDate;
-
     private Brand brand;
 
     private Category category;
@@ -36,7 +32,7 @@ public class ShoesDTO implements Serializable {
     public ShoesDTO() {
     }
 
-    public ShoesDTO(Long id, String code, String name, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Brand brand, Category category) {
+    public ShoesDTO(Long id, String code, String name, String description, Integer status, String createdBy, Instant createdDate, Brand brand, Category category) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -44,8 +40,6 @@ public class ShoesDTO implements Serializable {
         this.status = status;
         this.createdBy = createdBy;
         this.createdDate = createdDate;
-        this.lastModifiedBy = lastModifiedBy;
-        this.lastModifiedDate = lastModifiedDate;
         this.brand = brand;
         this.category = category;
     }
@@ -75,13 +69,7 @@ public class ShoesDTO implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public Integer getStatus() {
         return status;
@@ -107,21 +95,6 @@ public class ShoesDTO implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public String getLastModifiedBy() {
-        return lastModifiedBy;
-    }
-
-    public void setLastModifiedBy(String lastModifiedBy) {
-        this.lastModifiedBy = lastModifiedBy;
-    }
-
-    public Instant getLastModifiedDate() {
-        return lastModifiedDate;
-    }
-
-    public void setLastModifiedDate(Instant lastModifiedDate) {
-        this.lastModifiedDate = lastModifiedDate;
-    }
 
     public Brand getBrand() {
         return brand;
@@ -148,9 +121,6 @@ public class ShoesDTO implements Serializable {
                 ", description='" + description + '\'' +
                 ", status=" + status +
                 ", createdBy='" + createdBy + '\'' +
-                ", createdDate=" + createdDate +
-                ", lastModifiedBy='" + lastModifiedBy + '\'' +
-                ", lastModifiedDate=" + lastModifiedDate +
                 ", brand=" + brand +
                 ", category=" + category +
                 '}';
