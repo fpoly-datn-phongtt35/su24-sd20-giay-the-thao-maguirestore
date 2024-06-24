@@ -3,13 +3,12 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.service.AddressService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,9 +39,27 @@ public class AddressController {
 
   @SecurityRequirement(name = "Bearer Authentication")
   @GetMapping("/addresses")
-  public ResponseEntity<List<AddressDTO>> getAllAddresses() {
+  public ResponseEntity<Page<AddressDTO>> getAllAddresses(
+      @RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "5") int size,
+      @RequestParam(required = false, defaultValue = "id") String sortBy,
+      @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
+      @RequestParam(required = false, defaultValue = "") String keyword) {
     log.debug("REST request to get all Addresses");
-    return ResponseEntity.ok(addressService.findAll());
+    return ResponseEntity.ok(addressService.findAll(page, size, sortBy, sortDirection, keyword));
+  }
+
+  @SecurityRequirement(name = "Bearer Authentication")
+  @PutMapping("/addresses/{id}")
+  public ResponseEntity<AddressDTO> updateAddress(
+      @PathVariable(value = "id", required = false) final Long id,
+      @RequestBody AddressDTO addressDTO)
+      throws URISyntaxException {
+    log.debug("REST request to update Brand : {}, {}", id, addressDTO);
+
+    addressDTO.setId(id);
+    AddressDTO result = addressService.update(addressDTO);
+    return ResponseEntity.ok().body(result);
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
