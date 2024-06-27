@@ -34,7 +34,7 @@ public class DiscountService {
 
     private static final String ENTITY_NAME = "discount";
 
-    public DiscountResponse createDiscount(DiscountCreateRequest discountDTO) throws Exception {
+    public DiscountDTO createDiscount(DiscountCreateRequest discountDTO) throws Exception {
        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Discount discount = new Discount();
@@ -66,18 +66,14 @@ public class DiscountService {
         discount.setCreatedDate(Instant.now());
         discountRepository.save(discount);
 
-        DiscountResponse dto = new DiscountResponse();
+        DiscountDTO dto = new DiscountDTO();
         dto.setId(discount.getId());
         dto.setCode(discount.getCode());
         dto.setName(discount.getName());
         dto.setDiscountMethod(discount.getDiscountMethod());
         dto.setDiscountAmount(discount.getDiscountAmount());
-        dto.setStatus(discount.getStatus());
         dto.setStartDate(discount.getStartDate());
         dto.setEndDate(discount.getEndDate());
-
-        dto.setCreatedBy(discount.getCreatedBy());
-        dto.setCreatedDate(discount.getCreatedDate());
 
         return dto;
     }
