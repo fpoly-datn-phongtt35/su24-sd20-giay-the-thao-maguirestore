@@ -1,5 +1,6 @@
 package com.datn.maguirestore.controller;
 
+import com.datn.maguirestore.dto.DiscountDTO;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
 import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.entity.Discount;
@@ -44,9 +45,9 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/")
-    public ResponseEntity<DiscountResponse> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
+    public ResponseEntity<DiscountDTO> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
         log.debug("REST request to save Discount : {}", createDTO);
-        DiscountResponse discountDTO = discountService.createDiscount(createDTO);
+        DiscountDTO discountDTO = discountService.createDiscount(createDTO);
         return ResponseEntity
                 .created(new URI("/api/v1/discount/" + discountDTO.getCode()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, discountDTO.getCode()))

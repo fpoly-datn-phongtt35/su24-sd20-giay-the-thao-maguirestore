@@ -1,10 +1,8 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.DiscountDetailsDTO;
-import com.datn.maguirestore.dto.DiscountShoesDetailsDTO;
-import com.datn.maguirestore.entity.DiscountShoesDetails;
-import com.datn.maguirestore.payload.response.DiscountDetaildResponseDTO;
-import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
+import com.datn.maguirestore.payload.request.DiscountDetailsRequest;
+import com.datn.maguirestore.payload.response.DiscountDetailsResponseDTO;
 import com.datn.maguirestore.service.DiscountDetailsService;
 import com.datn.maguirestore.util.HeaderUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -34,10 +32,10 @@ public class DiscountDetailsController {
 
     @PostMapping("")
     @SecurityRequirement(name = "Bearer Authentication")
-    public ResponseEntity<DiscountDetaildResponseDTO> createDiscountShoesDetails(@RequestBody DiscountDetailsDTO discountShoesDetailsDTO)
+    public ResponseEntity<DiscountDetailsDTO> createDiscountShoesDetails(@RequestBody DiscountDetailsRequest request)
             throws Exception {
 
-        DiscountDetaildResponseDTO result = service.save(discountShoesDetailsDTO);
+        DiscountDetailsDTO result = service.save(request);
         return ResponseEntity
                 .created(new URI("/api/discount-details/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
