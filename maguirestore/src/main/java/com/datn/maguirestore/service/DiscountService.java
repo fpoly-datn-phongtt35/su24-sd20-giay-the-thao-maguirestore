@@ -2,23 +2,15 @@ package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.config.Constants;
 import com.datn.maguirestore.dto.*;
-import com.datn.maguirestore.entity.Brand;
 import com.datn.maguirestore.entity.Discount;
-import com.datn.maguirestore.entity.DiscountShoesDetails;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
 import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
-import com.datn.maguirestore.payload.response.DiscountCreateResponse;
-import com.datn.maguirestore.payload.response.DiscountUpdateResponse;
-import com.datn.maguirestore.repository.BrandRepository;
+import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
-import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.mapper.DiscountMapper;
-import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
-import com.datn.maguirestore.service.mapper.ShoesMapper;
 import com.datn.maguirestore.util.DataUtils;
-import java.time.LocalDateTime;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -26,12 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -46,7 +34,7 @@ public class DiscountService {
 
     private static final String ENTITY_NAME = "discount";
 
-    public DiscountCreateResponse createDiscount(DiscountCreateRequest discountDTO) throws Exception {
+    public DiscountResponse createDiscount(DiscountCreateRequest discountDTO) throws Exception {
        String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Discount discount = new Discount();
@@ -78,7 +66,7 @@ public class DiscountService {
         discount.setCreatedDate(Instant.now());
         discountRepository.save(discount);
 
-        DiscountCreateResponse dto = new DiscountCreateResponse();
+        DiscountResponse dto = new DiscountResponse();
         dto.setId(discount.getId());
         dto.setCode(discount.getCode());
         dto.setName(discount.getName());
@@ -94,7 +82,7 @@ public class DiscountService {
         return dto;
     }
 
-    public DiscountUpdateResponse update(DiscountUpdateRequest discountDTO) {
+    public DiscountResponse update(DiscountUpdateRequest discountDTO) {
         String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
         log.debug("Request to update Discount : {}", discountDTO);
 
@@ -104,7 +92,7 @@ public class DiscountService {
         discount.setDiscountAmount(discountDTO.getDiscountAmount());
         discountRepository.save(discount);
 
-        DiscountUpdateResponse dto = new DiscountUpdateResponse();
+        DiscountResponse dto = new DiscountResponse();
         dto.setId(discount.getId());
         dto.setCode(discount.getCode());
         dto.setName(discount.getName());
@@ -124,13 +112,13 @@ public class DiscountService {
     }
 
     @Transactional(readOnly = true)
-    public DiscountResponseDTO findById(Long id) {
+    public DiscountResponse findById(Long id) {
         log.debug("Request to get Discount : {}", id);
         Discount discount = discountRepository.findByIdAndStatus(id, Constants.STATUS.ACTIVE);
         if (DataUtils.isNull(discount)) {
             throw new BadRequestAlertException("Chương trình khuyến mại không tồn tại", "discount", "exist");
         }
-        DiscountResponseDTO discountResponse= discountMapper.toDiscountDTO(discount);
+        DiscountResponse discountResponse= discountMapper.toDiscountDTO(discount);
 
         return discountResponse;
     }

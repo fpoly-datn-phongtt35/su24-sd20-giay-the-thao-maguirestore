@@ -1,12 +1,10 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
-import com.datn.maguirestore.dto.DiscountResponseDTO;
+import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
-import com.datn.maguirestore.payload.response.DiscountCreateResponse;
-import com.datn.maguirestore.payload.response.DiscountUpdateResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.service.DiscountService;
 import com.datn.maguirestore.util.HeaderUtil;
@@ -46,9 +44,9 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/")
-    public ResponseEntity<DiscountCreateResponse> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
+    public ResponseEntity<DiscountResponse> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
         log.debug("REST request to save Discount : {}", createDTO);
-        DiscountCreateResponse discountDTO = discountService.createDiscount(createDTO);
+        DiscountResponse discountDTO = discountService.createDiscount(createDTO);
         return ResponseEntity
                 .created(new URI("/api/v1/discount/" + discountDTO.getCode()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, discountDTO.getCode()))
@@ -63,7 +61,7 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
-    public ResponseEntity<DiscountUpdateResponse> updateDiscount(@PathVariable(value = "id", required = false) final Long id,
+    public ResponseEntity<DiscountResponse> updateDiscount(@PathVariable(value = "id", required = false) final Long id,
                                                                  @RequestBody DiscountUpdateRequest discountDTO) {
         if (null == discountDTO.getId()) {
             throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "null");
@@ -74,7 +72,7 @@ public class DiscountController {
         if (!discountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "notfound");
         }
-        DiscountUpdateResponse result = discountService.update(discountDTO);
+        DiscountResponse result = discountService.update(discountDTO);
 
         return ResponseEntity
                 .ok()
@@ -100,9 +98,9 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{id}")
-    public ResponseEntity<DiscountResponseDTO> getDiscountById(@PathVariable Long id) {
+    public ResponseEntity<DiscountResponse> getDiscountById(@PathVariable Long id) {
         log.debug("REST request to get Discount : {}", id);
-        DiscountResponseDTO discountDTO = discountService.findById(id);
+        DiscountResponse discountDTO = discountService.findById(id);
         return ResponseEntity.ok(discountDTO);
     }
 

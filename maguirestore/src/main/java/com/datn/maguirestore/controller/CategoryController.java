@@ -1,8 +1,6 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.dto.CategoryDTO;
-import com.datn.maguirestore.dto.SizeDTO;
 import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
 import com.datn.maguirestore.util.ResponseUtil;
