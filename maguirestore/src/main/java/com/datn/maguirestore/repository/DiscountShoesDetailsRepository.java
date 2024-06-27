@@ -1,5 +1,6 @@
 package com.datn.maguirestore.repository;
 
+import com.datn.maguirestore.dto.DiscountShoesDetailsDTO;
 import com.datn.maguirestore.entity.DiscountShoesDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -4,19 +4,16 @@ import com.datn.maguirestore.dto.DiscountDetailsDTO;
 import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.entity.DiscountShoesDetails;
 import com.datn.maguirestore.entity.Shoes;
-import com.datn.maguirestore.entity.ShoesDetails;
-import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.response.*;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
-import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.LocalDateTime;
 
 @Service
 @Transactional
@@ -27,38 +24,14 @@ public class DiscountDetailsService {
 
     private final DiscountRepository discountRepository;
     private final ShoesRepository shoesRepository;
-
-//    public DiscountDetailsDTO save(DiscountDetailsDTO dto) throws Exception {
-//        DiscountShoesDetails discountShoesDetails = new DiscountShoesDetails();
-//        discountShoesDetails.setStatus(1);
-//
-//        // Tìm discount từ ID
-//        Discount discount = discountRepository.findById(dto.getDiscountId())
-//                .orElseThrow(() -> new Exception("Discount not found"));
-//
-//        // Tìm shoes details từ ID
-//        Shoes shoesDetails = shoesRepository.findById(dto.getShoesDetailsId())
-//                .orElseThrow(() -> new Exception("Shoes details not found"));
-//
-//        discountShoesDetails.setDiscount(discount);
-//        discountShoesDetails.setShoesDetails(shoesDetails);
-//        discountShoesDetailsRepository.save(discountShoesDetails);
-//
-//        DiscountDetailsDTO detailsDTO = new DiscountDetailsDTO();
-//        detailsDTO.setId(discountShoesDetails.getId());
-//        detailsDTO.setStatus(discountShoesDetails.getStatus());
-//        detailsDTO.setDiscountId(discount.getId());
-//        detailsDTO.setShoesDetailsId(shoesDetails.getId());
-//
-//        return detailsDTO;
-//    }
+    private final DiscountShoesDetailsMapper mapper;
 
     public DiscountDetaildResponseDTO save(DiscountDetailsDTO dto) throws Exception {
         DiscountShoesDetails discountShoesDetails = new DiscountShoesDetails();
         discountShoesDetails.setStatus(dto.getStatus());
 
         // Tìm discount từ ID
-        Discount discount = discountRepository.findById(dto.getId())
+        Discount discount = discountRepository.findById(dto.getDiscount().getId())
                 .orElseThrow(() -> new Exception("DiscountId not found"));
 
         // Tìm shoes details từ ID
@@ -102,6 +75,13 @@ public class DiscountDetailsService {
         detailsDTO.setShoesDetails(shoesDetailsDTO);
 
         return detailsDTO;
+    }
+
+    public List<DiscountDetailsDTO> findAll() {
+        List<DiscountShoesDetails> discountDetailsList = discountShoesDetailsRepository.findAll();
+        return discountDetailsList.stream()
+            .map(mapper::convertDTO)
+            .collect(Collectors.toList());
     }
 
 }

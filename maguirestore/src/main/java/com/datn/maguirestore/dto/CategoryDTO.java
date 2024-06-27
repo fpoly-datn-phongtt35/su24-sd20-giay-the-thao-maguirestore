@@ -24,7 +24,4 @@ public class CategoryDTO implements Serializable {
 
     private Integer status;
 
-    private String lastModifiedBy;
-
-    private Instant lastModifiedDate;
 }

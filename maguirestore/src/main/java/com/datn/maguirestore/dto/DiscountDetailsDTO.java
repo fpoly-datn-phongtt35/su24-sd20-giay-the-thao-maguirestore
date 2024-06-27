@@ -12,10 +12,7 @@ import lombok.Setter;
 public class DiscountDetailsDTO {
 
     private Long id;
-
-    private Long discountId;
-
-    private Long shoesDetailsId;
-
     private Integer status;
+    private DiscountDTO discount;
+    private ShoesDTO shoesDetails;
 }
