@@ -1,5 +1,6 @@
 package com.datn.maguirestore.service;
 
+import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.entity.Brand;
 import com.datn.maguirestore.repository.BrandRepository;
@@ -14,6 +15,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @Transactional
@@ -45,6 +48,15 @@ public class BrandService {
     brand = brandRepository.save(brand);
 
     return brandMapper.toDto(brand);
+  }
+
+  @Transactional(readOnly = true)
+  public BrandDTO findbyId(Long id) {
+    log.debug("Request to get Color by id");
+
+    return brandRepository.findById(id)
+            .map(brandMapper::toDto)
+            .orElseThrow(() -> new EntityNotFoundException("Brand not found with id " + id));
   }
 
   @Transactional(readOnly = true)

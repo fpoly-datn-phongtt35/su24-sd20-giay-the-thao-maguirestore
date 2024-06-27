@@ -1,6 +1,7 @@
 package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.dto.AddressDTO;
+import com.datn.maguirestore.dto.ColorDTO;
 import com.datn.maguirestore.entity.Address;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.service.mapper.AddressMapper;
@@ -12,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @Transactional
@@ -40,6 +43,15 @@ public class AddressService {
     Address address = addressMapper.toEntity(addressDTO);
     address = addressRepository.save(address);
     return addressMapper.toDto(address);
+  }
+
+  @Transactional(readOnly = true)
+  public AddressDTO findbyId(Long id) {
+    log.debug("Request to get Color by id");
+
+    return addressRepository.findById(id)
+            .map(addressMapper::toDto)
+            .orElseThrow(() -> new EntityNotFoundException("Address not found with id " + id));
   }
 
   @Transactional(readOnly = true)

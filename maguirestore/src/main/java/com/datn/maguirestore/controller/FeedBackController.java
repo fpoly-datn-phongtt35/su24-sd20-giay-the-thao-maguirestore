@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 
+import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.dto.FeedBackDTO;
 import com.datn.maguirestore.service.FeedBackService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -53,6 +54,14 @@ public class FeedBackController {
         feedBackDTO.setId(id);
         FeedBackDTO result = feedBackService.update(feedBackDTO);
         return ResponseEntity.ok().body(result);
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/feed-backs/{id}")
+    public ResponseEntity<FeedBackDTO> getFeedbackById(@PathVariable Long id) {
+        log.debug("REST request to get feedback by id");
+
+        return ResponseEntity.ok(feedBackService.findbyId(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
