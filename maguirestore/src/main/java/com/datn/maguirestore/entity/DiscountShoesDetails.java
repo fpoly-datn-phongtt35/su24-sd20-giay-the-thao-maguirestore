@@ -1,5 +1,6 @@
 package com.datn.maguirestore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,9 +28,11 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     private Integer status;
 
     @ManyToOne
+    @JsonIgnore
     private Discount discount;
 
     @ManyToOne
+    @JsonIgnore
     private Shoes shoes;
 
 }

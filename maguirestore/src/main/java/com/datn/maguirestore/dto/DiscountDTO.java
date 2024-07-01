@@ -1,5 +1,6 @@
 package com.datn.maguirestore.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,4 @@ public class DiscountDTO implements Serializable {
     private Instant endDate;
     private Integer discountMethod;
     private BigDecimal discountAmount;
-
 }

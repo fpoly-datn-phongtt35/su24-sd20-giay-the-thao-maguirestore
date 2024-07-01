@@ -1,5 +1,7 @@
 package com.datn.maguirestore.service;
 
+import com.datn.maguirestore.config.Constants;
+import com.datn.maguirestore.config.Constants.STATUS;
 import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.dto.CategoryDTO;
 import com.datn.maguirestore.dto.DiscountDTO;
@@ -8,8 +10,10 @@ import com.datn.maguirestore.dto.ShoesDTO;
 import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.entity.DiscountShoesDetails;
 import com.datn.maguirestore.entity.Shoes;
+import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountDetailsRequest;
-import com.datn.maguirestore.payload.response.*;
+import com.datn.maguirestore.payload.request.UpdateDiscountDetailsRequest;
+import com.datn.maguirestore.payload.response.UpdateDiscountDetailsResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
 import com.datn.maguirestore.repository.ShoesRepository;
@@ -27,7 +31,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class DiscountDetailsService {
 
-    private final DiscountShoesDetailsRepository discountShoesDetailsRepository;
+    private final DiscountShoesDetailsRepository discountDetailsRepository;
 
     private final DiscountRepository discountRepository;
     private final ShoesRepository shoesRepository;
@@ -47,7 +51,7 @@ public class DiscountDetailsService {
 
         discountShoesDetails.setDiscount(discount);
         discountShoesDetails.setShoes(shoes);
-        discountShoesDetailsRepository.save(discountShoesDetails);
+        discountDetailsRepository.save(discountShoesDetails);
 
         DiscountDetailsDTO detailsDTO = new DiscountDetailsDTO();
         detailsDTO.setId(discountShoesDetails.getId());
@@ -86,15 +90,72 @@ public class DiscountDetailsService {
         return detailsDTO;
     }
 
+    public UpdateDiscountDetailsResponse update(Long id, UpdateDiscountDetailsRequest request) {
+        // Lấy Discount từ CSDL
+        Discount discount = discountRepository.findById(request.getDiscountId())
+            .orElseThrow(() -> new BadRequestAlertException("Discount not found", "discount", "notfound"));
+
+        // Lấy Shoes từ CSDL
+        Shoes shoes = shoesRepository.findById(request.getShoesId())
+            .orElseThrow(() -> new BadRequestAlertException("Shoes not found", "shoes", "notfound"));
+
+        // Lấy DiscountDetails hiện tại từ CSDL
+        DiscountShoesDetails discountDetails = discountDetailsRepository.findById(id)
+            .orElseThrow(() -> new BadRequestAlertException("DiscountDetails not found", "discountDetails", "notfound"));
+
+        // Cập nhật DiscountDetails
+        discountDetails.setStatus(request.getStatus());
+        discountDetails.setDiscount(discount);
+        discountDetails.setShoes(shoes);
+
+        discountDetailsRepository.save(discountDetails);
+
+        // Tạo response DTO
+        UpdateDiscountDetailsResponse response = new UpdateDiscountDetailsResponse();
+        response.setId(discountDetails.getId());
+        response.setStatus(discountDetails.getStatus());
+        response.setDiscountId(discount);
+        response.setShoesId(shoes);
+
+        return response;
+    }
+
+    public DiscountShoesDetails convertToEntity(DiscountDetailsDTO dto) {
+        DiscountShoesDetails details = new DiscountShoesDetails();
+        details.setId(dto.getId());
+        details.setStatus(dto.getStatus());
+
+        Discount discount = new Discount();
+        discount.setId(dto.getDiscount().getId());
+        details.setDiscount(discount);
+
+        Shoes shoes = new Shoes();
+        shoes.setId(dto.getShoes().getId());
+        details.setShoes(shoes);
+
+        return details;
+    }
+
     public Optional<DiscountDetailsDTO> findById(Long id) {
-        return discountShoesDetailsRepository.findById(id).map(mapper::convertDTO);
+        return discountDetailsRepository.findById(id).map(mapper::convertDTO);
     }
 
     public List<DiscountDetailsDTO> findAll() {
-        List<DiscountShoesDetails> discountDetailsList = discountShoesDetailsRepository.findAll();
+        List<DiscountShoesDetails> discountDetailsList = discountDetailsRepository.findAll();
         return discountDetailsList.stream()
             .map(mapper::convertDTO)
             .collect(Collectors.toList());
+    }
+
+    public void delete(Long id) throws Exception {
+        Optional<DiscountShoesDetails> details = Optional.ofNullable(
+            discountDetailsRepository.findById(id).orElseThrow(
+                () -> new Exception("ID does not exists")));
+        if (details.isPresent()) {
+            DiscountShoesDetails discountDetails = details.get();
+            discountDetails.setStatus(STATUS.IN_ACTIVE);
+            discountDetailsRepository.save(discountDetails);
+        }
     }
 
 }

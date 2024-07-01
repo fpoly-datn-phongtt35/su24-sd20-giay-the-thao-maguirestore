@@ -15,10 +15,8 @@ import lombok.Setter;
 public class ShoesDTO implements Serializable {
 
     private Long id;
-    @JsonIgnore
     private String code;
     private String name;
-    @JsonIgnore
     private Integer status;
     private BrandDTO brand;
     private CategoryDTO category;

@@ -62,23 +62,18 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
-    public ResponseEntity<DiscountResponse> updateDiscount(@PathVariable(value = "id", required = false) final Long id,
-                                                                 @RequestBody DiscountUpdateRequest discountDTO) {
-        if (null == discountDTO.getId()) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "null");
-        }
-        if (!Objects.equals(id, discountDTO.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "invalid");
-        }
+    public ResponseEntity<DiscountResponse> updateDiscount(@PathVariable(value = "id") final Long id,
+        @RequestBody DiscountUpdateRequest discountDTO) {
         if (!discountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "notfound");
         }
-        DiscountResponse result = discountService.update(discountDTO);
+
+        DiscountResponse result = discountService.update(id, discountDTO);
 
         return ResponseEntity
-                .ok()
-                .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, discountDTO.getId().toString()))
-                .body(result);
+            .ok()
+            .headers(HeaderUtil.createEntityUpdateAlert(applicationName, false, ENTITY_NAME, discountDTO.getId().toString()))
+            .body(result);
     }
 
     /**
@@ -86,7 +81,7 @@ public class DiscountController {
      * @return List of all discounts
      */
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/discounts")
+    @GetMapping("")
     public List<Discount> getAllDiscounts() {
         log.debug("REST request to get all Discounts");
         return discountService.findAll();
