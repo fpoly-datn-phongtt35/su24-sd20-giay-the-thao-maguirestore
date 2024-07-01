@@ -54,6 +54,13 @@ public class ColorController {
         return ResponseEntity.ok(colorService.findAll());
     }
 
+    @GetMapping("/removed")
+    public ResponseEntity<List<ColorDTO>> getColorRemove() {
+        log.debug("REST request to get a page of Color");
+
+        return ResponseEntity.ok(colorService.findAllByRemove());
+    }
+
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/colors/{id}")
     public ResponseEntity<ColorDTO> getColorById(@PathVariable Long id) {
