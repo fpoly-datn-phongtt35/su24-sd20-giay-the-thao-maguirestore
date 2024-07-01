@@ -16,6 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
+
+import java.util.Collections;
 
 /**
  * @author nguyenkhanhhoa
@@ -64,6 +69,7 @@ public class WebSecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()
                 .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/v1/**").permitAll() //ko áp dụng authen lên api (để test)
                 .antMatchers("/api/test/**", "/swagger-ui/**", "/api-docs/**", "/swagger-resources/**").permitAll()
                 //.antMatchers("/api/v1/auth/**", "/api/v1/users/getTokenToChangePassword").permitAll()
 //                .antMatchers("api/v1/admin/**").hasRole("ADMIN")
@@ -76,6 +82,17 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-
+    //    cấu hình CORS
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.setAllowedOriginPatterns(Collections.singletonList("*"));
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config);
+        return new org.springframework.web.filter.CorsFilter(source);
+    }
 }
-

@@ -110,10 +110,21 @@ export class AppMenuComponent implements OnInit {
                 icon: "pi pi-fw pi-sitemap",
                 routerLink: ["/admin/size"],
               },
+              // {
+              //   label: "Đã xóa",
+              //   icon: "pi pi-fw pi-circle-fill",
+              //   routerLink: ["/admin/removedSize"],
+              // },
+            ],
+          },
+          {
+            label: "Category",
+            icon: "pi pi-fw pi-sitemap",
+            items: [
               {
-                label: "Đã xóa",
-                icon: "pi pi-fw pi-circle-fill",
-                routerLink: ["/admin/removedSize"],
+                label: "Category",
+                icon: "pi pi-fw pi-sitemap",
+                routerLink: ["/admin/category"],
               },
             ],
           },
