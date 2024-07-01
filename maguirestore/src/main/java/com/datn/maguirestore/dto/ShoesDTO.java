@@ -37,11 +37,10 @@ public class ShoesDTO implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ShoesDTO)) {
+        if (!(o instanceof ShoesDTO shoesDTO)) {
             return false;
         }
 
-        ShoesDTO shoesDTO = (ShoesDTO) o;
         if (this.id == null) {
             return false;
         }

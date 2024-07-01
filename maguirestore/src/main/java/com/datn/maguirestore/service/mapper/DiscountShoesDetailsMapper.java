@@ -1,16 +1,9 @@
 package com.datn.maguirestore.service.mapper;
 
-import com.datn.maguirestore.dto.DiscountDTO;
 import com.datn.maguirestore.dto.DiscountDetailsDTO;
 import com.datn.maguirestore.dto.DiscountShoesDetailsDTO;
-import com.datn.maguirestore.dto.ShoesDTO;
-import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.entity.DiscountShoesDetails;
-import com.datn.maguirestore.entity.Shoes;
-import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface DiscountShoesDetailsMapper extends EntityMapper<DiscountShoesDetailsDTO, DiscountShoesDetails> {
