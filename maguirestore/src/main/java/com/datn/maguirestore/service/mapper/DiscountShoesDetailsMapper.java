@@ -19,17 +19,4 @@ public interface DiscountShoesDetailsMapper extends EntityMapper<DiscountShoesDe
     DiscountShoesDetailsDTO toDto(DiscountShoesDetails s);
 
     DiscountDetailsDTO convertDTO(DiscountShoesDetails cd);
-
-    DiscountShoesDetails convertEntity(DiscountDetailsDTO dto);
-
-
-    @Named("discountId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    DiscountDTO toDtoDiscountId(Discount discount);
-
-    @Named("shoesDetailsId")
-    @BeanMapping(ignoreByDefault = true)
-    @Mapping(target = "id", source = "id")
-    ShoesDTO toDtoShoesDetailsId(Shoes shoes);
 }

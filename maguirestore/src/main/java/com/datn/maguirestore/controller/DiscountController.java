@@ -20,7 +20,6 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/v1/discount")
@@ -40,7 +39,7 @@ public class DiscountController {
     /**
      * {@code POST  /discounts} : Create a new discount.
      * @param createDTO
-     * @return
+     * @return ResponseEntity<DiscountDTO>
      * @throws URISyntaxException
      */
     @SecurityRequirement(name = "Bearer Authentication")
@@ -58,7 +57,7 @@ public class DiscountController {
      * Updates an existing discount.
      * @param id
      * @param discountDTO
-     * @return
+     * @return ResponseEntity<DiscountResponse>
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")

@@ -34,11 +34,10 @@ public class DiscountService {
 
   private static final String ENTITY_NAME = "discount";
 
-  public DiscountDTO createDiscount(DiscountCreateRequest discountDTO) throws Exception {
+  public DiscountDTO createDiscount(DiscountCreateRequest discountDTO) {
     String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
     Discount discount = new Discount();
-    //discount.setId(discountDTO.getId());
     discount.setCode(discountDTO.getCode());
     discount.setName(discountDTO.getName());
     discount.setStatus(Constants.STATUS.ACTIVE);
@@ -60,7 +59,6 @@ public class DiscountService {
         discount.setDiscountMethod(Constants.DISCOUNT_METHOD.PER_PERCENT);
         break;
       default:
-        ;
     }
 
     discount.setCreatedBy(loggedUser);
@@ -125,13 +123,8 @@ public class DiscountService {
       throw new BadRequestAlertException("Chương trình khuyến mại không tồn tại", "discount",
           "exist");
     }
-    DiscountResponse discountResponse = discountMapper.toDiscountDTO(discount);
 
-    return discountResponse;
-  }
-
-  public List<DiscountSearchDTO> search(String searchText) {
-    return discountRepository.search(searchText);
+    return discountMapper.toDiscountDTO(discount);
   }
 
   public void delete(Long id) throws Exception {

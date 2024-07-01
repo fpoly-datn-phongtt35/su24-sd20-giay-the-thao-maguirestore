@@ -1,6 +1,5 @@
 package com.datn.maguirestore.service;
 
-import com.datn.maguirestore.config.Constants;
 import com.datn.maguirestore.config.Constants.STATUS;
 import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.dto.CategoryDTO;
@@ -110,7 +109,6 @@ public class DiscountDetailsService {
 
         discountDetailsRepository.save(discountDetails);
 
-        // Tạo response DTO
         UpdateDiscountDetailsResponse response = new UpdateDiscountDetailsResponse();
         response.setId(discountDetails.getId());
         response.setStatus(discountDetails.getStatus());
@@ -118,22 +116,6 @@ public class DiscountDetailsService {
         response.setShoesId(shoes);
 
         return response;
-    }
-
-    public DiscountShoesDetails convertToEntity(DiscountDetailsDTO dto) {
-        DiscountShoesDetails details = new DiscountShoesDetails();
-        details.setId(dto.getId());
-        details.setStatus(dto.getStatus());
-
-        Discount discount = new Discount();
-        discount.setId(dto.getDiscount().getId());
-        details.setDiscount(discount);
-
-        Shoes shoes = new Shoes();
-        shoes.setId(dto.getShoes().getId());
-        details.setShoes(shoes);
-
-        return details;
     }
 
     public Optional<DiscountDetailsDTO> findById(Long id) {

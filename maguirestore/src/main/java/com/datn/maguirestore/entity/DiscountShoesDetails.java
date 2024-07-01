@@ -7,11 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.Instant;
 
 @Entity
-@Table(name = "discount_shoes_details")
+@Table(name = "discount_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
