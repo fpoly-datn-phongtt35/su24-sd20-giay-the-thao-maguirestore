@@ -3,6 +3,7 @@ package com.datn.maguirestore.dto;
 
 import com.datn.maguirestore.entity.Brand;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -11,10 +12,12 @@ public class BrandDTO implements Serializable {
 
     private Long id;
 
+    @JsonIgnore
     private String code;
 
     private String name;
 
+    @JsonIgnore
     private Integer status;
 
     public BrandDTO() {

@@ -4,23 +4,20 @@ import java.io.Serializable;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class ShoesDTO implements Serializable {
 
     private Long id;
-
     private String code;
-
     private String name;
-
     private Integer status;
-
     private BrandDTO brand;
-
     private CategoryDTO category;
 
     @Override
@@ -40,11 +37,10 @@ public class ShoesDTO implements Serializable {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ShoesDTO)) {
+        if (!(o instanceof ShoesDTO shoesDTO)) {
             return false;
         }
 
-        ShoesDTO shoesDTO = (ShoesDTO) o;
         if (this.id == null) {
             return false;
         }

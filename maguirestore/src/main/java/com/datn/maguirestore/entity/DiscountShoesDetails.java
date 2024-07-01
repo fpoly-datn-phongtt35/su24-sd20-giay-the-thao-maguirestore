@@ -1,16 +1,15 @@
 package com.datn.maguirestore.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.Instant;
 
 @Entity
-@Table(name = "discount_shoes_details")
+@Table(name = "discount_details")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,9 +26,11 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     private Integer status;
 
     @ManyToOne
+    @JsonIgnore
     private Discount discount;
 
     @ManyToOne
-    private Shoes shoesDetails;
+    @JsonIgnore
+    private Shoes shoes;
 
 }

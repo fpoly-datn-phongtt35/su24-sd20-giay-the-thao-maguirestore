@@ -20,9 +20,4 @@ public class DiscountResponse {
     private Instant startDate;
     private Instant endDate;
 
-    private String createdBy;
-    private Instant createdDate;
-
-    private String lastModifiedBy;
-    private Instant lastModifiedDate;
 }
