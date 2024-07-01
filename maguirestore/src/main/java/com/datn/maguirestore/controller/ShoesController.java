@@ -1,7 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ShoesDTO;
-import com.datn.maguirestore.entity.Shoes;
+import com.datn.maguirestore.entity.*;
 import com.datn.maguirestore.payload.request.ShoesCreateRequest;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.ShoesService;
