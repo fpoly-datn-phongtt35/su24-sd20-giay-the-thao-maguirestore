@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/brand")
@@ -49,14 +50,15 @@ public class BrandController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/brands")
-    public ResponseEntity<Page<BrandDTO>> getAllBrands(
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
-            @RequestParam(required = false, defaultValue = "id") String sortBy,
-            @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
-            @RequestParam(required = false, defaultValue = "") String keyword) {
+    public ResponseEntity<List<BrandDTO>> getAllBrands(
+//            @RequestParam(defaultValue = "0") int page,
+//            @RequestParam(defaultValue = "5") int size,
+//            @RequestParam(required = false, defaultValue = "id") String sortBy,
+//            @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
+//            @RequestParam(required = false, defaultValue = "") String keyword
+    ) {
         log.debug("REST request to get a page of Brands");
-        return ResponseEntity.ok(brandService.findAll(page, size, sortBy, sortDirection, keyword));
+        return ResponseEntity.ok(brandService.findAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
