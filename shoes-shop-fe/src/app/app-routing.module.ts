@@ -41,6 +41,8 @@ import { LoginCustomerComponent } from "./components/login-customer/login-custom
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
 // import { OrderReturnDetailsComponent } from "./components/order-return-details/order-return-details.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
+import { SizeComponent } from "./components/size/size.component";
+import { CategoryComponent } from "./components/category/category.component";
 import { BrandComponent } from "./components/brand/brand.component";
 import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
@@ -74,7 +76,8 @@ const routes: Routes = [
       //   component: OrderReturnDetailsComponent,
       // },
       { path: "color", component: ColorComponent },
-      // { path: "size", component: SizeComponent },
+      { path: "size", component: SizeComponent },
+      { path: "category", component: CategoryComponent },
       // { path: "orders", component: OderComponent },
       // { path: "shoes-detail", component: ShoesDetailComponent },
       // { path: "shoes", component: ShoesComponent },

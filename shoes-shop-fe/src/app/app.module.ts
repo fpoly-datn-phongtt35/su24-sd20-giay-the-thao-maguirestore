@@ -63,7 +63,7 @@ import { TabViewModule } from "primeng/tabview";
 import { InputNumberModule } from "primeng/inputnumber";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { ColorComponent } from "./components/color/color.component";
-// import { SizeComponent } from "./components/size/size.component";
+import { SizeComponent } from "./components/size/size.component";
 // import { UserComponent } from "./components/user/user.component";
 import { BadgeModule } from "primeng/badge";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -97,6 +97,7 @@ import { InplaceModule } from "primeng/inplace";
 // import { ShoesComponent } from "./components/shoes/shoes.component";
 // import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
+import { CategoryComponent } from './components/category/category.component';
 import { BrandComponent } from "./components/brand/brand.component";
 import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
@@ -124,7 +125,8 @@ import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.
     // DiscountComponent,
     // DiscountAddComponent,
     ColorComponent,
-    // SizeComponent,
+    SizeComponent,
+    CategoryComponent,
     // UserComponent,
     DashboardComponent,
     // LandingComponent,
@@ -147,6 +149,7 @@ import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.
     // OrderReturnAdminComponent,
     // OrderReturnDetailsComponent,
     ColorRemovedComponent,
+    CategoryComponent,
     // SizeRemovedComponent,
     BrandRemovedComponent,
     // ProfileComponent,

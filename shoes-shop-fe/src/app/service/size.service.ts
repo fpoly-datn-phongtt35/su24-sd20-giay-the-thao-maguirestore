@@ -8,7 +8,7 @@ import { SizeSave } from '../model/AddSize';
   providedIn: 'root'
 })
 export class SizeService {
-  private apiUrl = 'http://localhost:8088/api/sizes';
+  private apiUrl = 'http://localhost:8080/api/v1/sizes';
 
   constructor(private http: HttpClient) { }
 

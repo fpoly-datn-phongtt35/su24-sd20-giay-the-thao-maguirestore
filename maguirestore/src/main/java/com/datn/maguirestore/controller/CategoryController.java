@@ -27,14 +27,14 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/category")
+    @GetMapping("")
     public ResponseEntity<List<CategoryDTO>> getAll() {
         log.debug("REST request to get all categories");
         return ResponseEntity.ok(categoryService.findAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/category/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getOneById(@PathVariable Long id) {
         log.debug("REST request to get category by id ");
         return ResponseUtil.wrapOrNotFound(categoryService.findById(id));
@@ -51,8 +51,8 @@ public class CategoryController {
 
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/sizes/{id}")
-    public ResponseEntity<CategoryDTO> updateSize(
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryDTO> update(
             @PathVariable(value = "id", required = false) final Long id
             , @RequestBody CategoryDTO categoryDTO) {
         log.debug("REST request to update Size : {}, {}", id, categoryDTO);
@@ -63,7 +63,7 @@ public class CategoryController {
 
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         log.debug("REST request to delete category : {}", id);
         categoryService.delete(id);
