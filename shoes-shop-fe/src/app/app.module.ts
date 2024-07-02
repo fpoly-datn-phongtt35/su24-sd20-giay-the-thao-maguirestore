@@ -97,6 +97,8 @@ import { InplaceModule } from "primeng/inplace";
 // import { ShoesComponent } from "./components/shoes/shoes.component";
 // import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
+import { BrandComponent } from "./components/brand/brand.component";
+import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
@@ -115,7 +117,7 @@ import { ColorRemovedComponent } from "./components/color-removed/color-removed.
     ForgotPasswordComponent,
     // ShoesCategoryComponent,
     // ProductComponent,
-    // BrandComponent,
+    BrandComponent,
     // OderComponent,
     // ShoesDetailComponent,
     // ShoesDetailAddComponent,
@@ -146,7 +148,7 @@ import { ColorRemovedComponent } from "./components/color-removed/color-removed.
     // OrderReturnDetailsComponent,
     ColorRemovedComponent,
     // SizeRemovedComponent,
-    // BrandRemovedComponent,
+    BrandRemovedComponent,
     // ProfileComponent,
     // CodeForgotPasswordComponent,
     // ShoesDeleteComponent,
