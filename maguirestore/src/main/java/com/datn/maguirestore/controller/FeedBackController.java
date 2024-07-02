@@ -43,8 +43,7 @@ public class FeedBackController {
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
     public ResponseEntity<FeedBackDTO> updateFeedBacks(
-            @PathVariable(value = "id", required = false) final Long id, @RequestBody FeedBackDTO feedBackDTO)
-            throws URISyntaxException {
+            @PathVariable(value = "id", required = false) final Long id, @RequestBody FeedBackDTO feedBackDTO) {
         log.debug("REST request to update Brand : {}, {}", id, feedBackDTO);
         feedBackDTO.setId(id);
         FeedBackDTO result = feedBackService.update(feedBackDTO);

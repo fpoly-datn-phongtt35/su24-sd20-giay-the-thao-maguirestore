@@ -2,8 +2,6 @@ package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CartDetailsDTO;
 import com.datn.maguirestore.dto.CartDetailsRequestDTO;
-import com.datn.maguirestore.dto.CartRequestDTO;
-import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.service.CartDetailsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -46,8 +44,7 @@ public class CartDetailsController {
     @PutMapping("/{id}")
     public ResponseEntity<CartDetailsDTO> updateCart(
             @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody CartDetailsRequestDTO cartDetailsDTO)
-            throws URISyntaxException {
+            @RequestBody CartDetailsRequestDTO cartDetailsDTO) {
         log.debug("REST request to update Cart : {}, {}", id, cartDetailsDTO);
 
         CartDetailsDTO result = cartDetailsService.update(cartDetailsDTO);

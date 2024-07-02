@@ -1,21 +1,14 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.dto.SizeDTO;
-import com.datn.maguirestore.repository.SizeRepository;
 import com.datn.maguirestore.service.SizeService;
-import com.datn.maguirestore.util.PaginationUtil;
 import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -63,8 +56,7 @@ public class SizeController {
     @PutMapping("/{id}")
     public ResponseEntity<SizeDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id
-            , @RequestBody SizeDTO sizeDTO)
-            throws URISyntaxException {
+            , @RequestBody SizeDTO sizeDTO) {
         log.debug("REST request to update Size : {}, {}", id, sizeDTO);
 
         SizeDTO result = sizeService.update(sizeDTO);

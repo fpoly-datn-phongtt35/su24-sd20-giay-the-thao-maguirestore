@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ColorDTO;
-import com.datn.maguirestore.repository.ColorRepository;
 import com.datn.maguirestore.service.ColorService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +35,7 @@ public class ColorController {
     @PutMapping("/{id}")
     public ResponseEntity<ColorDTO> updateColor(
             @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody ColorDTO colorDTO)
-            throws URISyntaxException {
+            @RequestBody ColorDTO colorDTO) {
         log.debug("REST request to update Color : {}, {}", id, colorDTO);
 
         ColorDTO result = colorService.update(colorDTO);

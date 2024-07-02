@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CategoryDTO;
-import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
 import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -55,8 +54,7 @@ public class CategoryController {
     @PutMapping("/sizes/{id}")
     public ResponseEntity<CategoryDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id
-            , @RequestBody CategoryDTO categoryDTO)
-            throws URISyntaxException {
+            , @RequestBody CategoryDTO categoryDTO) {
         log.debug("REST request to update Size : {}, {}", id, categoryDTO);
 
         CategoryDTO result = categoryService.update(categoryDTO);

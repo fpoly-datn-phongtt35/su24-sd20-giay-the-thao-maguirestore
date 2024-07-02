@@ -3,7 +3,6 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.dto.ShoesDTO;
 import com.datn.maguirestore.entity.*;
 import com.datn.maguirestore.payload.request.ShoesCreateRequest;
-import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.ShoesService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -45,8 +44,7 @@ public class ShoesController {
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
     public ResponseEntity<ShoesDTO> updateShoes(
-            @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDTO shoesDTO)
-            throws URISyntaxException {
+            @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDTO shoesDTO) {
         log.debug("REST request to update Shoes : {}, {}", id, shoesDTO);
 
         ShoesDTO result = shoesService.update(shoesDTO);

@@ -12,8 +12,6 @@ import java.util.List;
 @Repository
 public interface DiscountShoesDetailsRepository extends JpaRepository<DiscountDetails, Long> {
 
-    List<DiscountDetails> findAllByDiscount_IdAndStatus(Long idDiscount, Integer status);
-
     @Query(
             value = "select * from discount_details dsd \n" +
                     "join discount d on d.id = dsd.discount_id \n" +

@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.BrandDTO;
-import com.datn.maguirestore.repository.BrandRepository;
 import com.datn.maguirestore.service.BrandService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
@@ -35,8 +34,7 @@ public class BrandController {
   @SecurityRequirement(name = "Bearer Authentication")
   @PutMapping("/{id}")
   public ResponseEntity<BrandDTO> updateBrand(
-      @PathVariable(value = "id", required = false) final Long id, @RequestBody BrandDTO brandDTO)
-      throws URISyntaxException {
+      @PathVariable(value = "id", required = false) final Long id, @RequestBody BrandDTO brandDTO) {
     log.debug("REST request to update Brand : {}, {}", id, brandDTO);
 
     brandDTO.setId(id);
