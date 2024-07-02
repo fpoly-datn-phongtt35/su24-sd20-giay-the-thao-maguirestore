@@ -43,6 +43,8 @@ import { LoginCustomerComponent } from "./components/login-customer/login-custom
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
 import { SizeComponent } from "./components/size/size.component";
 import { CategoryComponent } from "./components/category/category.component";
+import { BrandComponent } from "./components/brand/brand.component";
+import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
@@ -64,7 +66,7 @@ const routes: Routes = [
       //   path: "shoes-category",
       //   component: ShoesCategoryComponent,
       // },
-      // { path: "brand", component: BrandComponent },
+      { path: "brand", component: BrandComponent },
       // { path: "discount", component: DiscountComponent },
       // { path: "order-returns", component: OrderReturnAdminComponent },
       // { path: "discount-add", component: DiscountAddComponent },
@@ -84,7 +86,7 @@ const routes: Routes = [
       // { path: "order-details/:id", component: OrderDetailsComponent },
       { path: "removedColor", component: ColorRemovedComponent },
       // { path: "removedSize", component: SizeRemovedComponent },
-      // { path: "removedBrand", component: BrandRemovedComponent },
+      { path: "removedBrand", component: BrandRemovedComponent },
       // { path: "removedShoes", component: ShoesDeleteComponent },
     ],
   },

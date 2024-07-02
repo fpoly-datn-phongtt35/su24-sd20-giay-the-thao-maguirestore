@@ -1,8 +1,6 @@
 package com.datn.maguirestore.dto;
 
-import com.datn.maguirestore.entity.Color;
-import com.datn.maguirestore.entity.Shoes;
-import com.datn.maguirestore.entity.Size;
+import com.datn.maguirestore.entity.*;
 
 import java.io.Serializable;
 import java.time.Instant;

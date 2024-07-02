@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DiscountDetaildResponseDTO {
+public class DiscountDetailsResponseDTO {
     private Long id;
     private DiscountResponseDTO discount;
-    private ShoesResponseDTO shoesDetails;
+    private ShoesResponseDTO shoes;
     private Integer status;
 }

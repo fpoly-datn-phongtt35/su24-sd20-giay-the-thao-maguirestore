@@ -6,6 +6,7 @@ import com.datn.maguirestore.service.AddressService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
 import java.net.URISyntaxException;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -14,31 +15,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/address")
+@RequiredArgsConstructor
 public class AddressController {
 
   private static final String ENTITY_NAME = "address";
   private final Logger log = LoggerFactory.getLogger(AddressController.class);
   private final AddressService addressService;
 
-  private final AddressRepository addressRepository;
-
-  public AddressController(AddressService addressService, AddressRepository addressRepository) {
-    this.addressService = addressService;
-    this.addressRepository = addressRepository;
-  }
-
   @SecurityRequirement(name = "Bearer Authentication")
-  @PostMapping("/addresses")
+  @PostMapping("")
   public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO)
       throws URISyntaxException {
     log.debug("REST request to save Address : {}", addressDTO);
 
     AddressDTO result = addressService.save(addressDTO);
-    return ResponseEntity.created(new URI("/api/addresses/" + result.getId())).body(result);
+    return ResponseEntity.created(new URI("/api/v1/address" + result.getId())).body(result);
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @GetMapping("/addresses")
+  @GetMapping("")
   public ResponseEntity<Page<AddressDTO>> getAllAddresses(
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "5") int size,
@@ -50,11 +45,10 @@ public class AddressController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @PutMapping("/addresses/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<AddressDTO> updateAddress(
       @PathVariable(value = "id", required = false) final Long id,
-      @RequestBody AddressDTO addressDTO)
-      throws URISyntaxException {
+      @RequestBody AddressDTO addressDTO) {
     log.debug("REST request to update Brand : {}, {}", id, addressDTO);
 
     addressDTO.setId(id);
@@ -63,7 +57,7 @@ public class AddressController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @DeleteMapping("/addresses/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
     log.debug("REST request to delete Address : {}", id);
     addressService.delete(id);
