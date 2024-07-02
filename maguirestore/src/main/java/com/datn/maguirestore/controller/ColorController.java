@@ -23,19 +23,17 @@ public class ColorController {
     private final Logger log = LoggerFactory.getLogger(ColorController.class);
     private final ColorService colorService;
 
-    private final ColorRepository colorRepository;
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/color")
+    @PostMapping("")
     public ResponseEntity<ColorDTO> createColor(@RequestBody ColorDTO colorDTO) throws URISyntaxException {
         log.debug("REST request to save Color : {}", colorDTO);
 
         ColorDTO result = colorService.save(colorDTO);
-        return ResponseEntity.created(new URI("/api/color/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/color" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/color/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ColorDTO> updateColor(
             @PathVariable(value = "id", required = false) final Long id,
             @RequestBody ColorDTO colorDTO)
@@ -47,7 +45,7 @@ public class ColorController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/colors")
+    @GetMapping("")
     public ResponseEntity<List<ColorDTO>> getAllColor() {
         log.debug("REST request to get a page of Color");
 
@@ -55,7 +53,7 @@ public class ColorController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/colors/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ColorDTO> getColorById(@PathVariable Long id) {
         log.debug("REST request to get Color by id");
 
@@ -63,7 +61,7 @@ public class ColorController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/colors/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteColor(@PathVariable Long id) {
         log.debug("REST request to delete Color : {}", id);
         colorService.delete(id);

@@ -13,6 +13,8 @@ import com.datn.maguirestore.service.mapper.DiscountMapper;
 import com.datn.maguirestore.util.DataUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -109,10 +111,10 @@ public class DiscountService {
   }
 
   @Transactional(readOnly = true)
-  public List<Discount> findAll() {
+  public Page<Discount> findAll(String search, Pageable pageable) {
     log.debug("Request to get all Discounts");
     return discountRepository
-        .findAllByStatus(Constants.STATUS.ACTIVE);
+        .findAllByStatusAndNameContaining(Constants.STATUS.ACTIVE, search, pageable);
   }
 
   @Transactional(readOnly = true)

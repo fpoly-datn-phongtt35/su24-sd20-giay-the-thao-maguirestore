@@ -32,20 +32,18 @@ public class ShoesController {
     private final Logger log = LoggerFactory.getLogger(ShoesController.class);
     private final ShoesService shoesService;
 
-    private final ShoesRepository shoesRepository;
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/shoes")
+    @PostMapping("")
     public ResponseEntity<ShoesDTO> createShoes(@RequestBody ShoesCreateRequest shoesCreateRequest)
             throws URISyntaxException {
         log.debug("REST request to save Shoes : {}", shoesCreateRequest);
 
         ShoesDTO result = shoesService.save(shoesCreateRequest);
-        return ResponseEntity.created(new URI("/api/shoes/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/shoes" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/shoes/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ShoesDTO> updateShoes(
             @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDTO shoesDTO)
             throws URISyntaxException {
@@ -56,21 +54,21 @@ public class ShoesController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes")
+    @GetMapping("")
     public ResponseEntity<List<ShoesDTO>> getAllShoes() {
         log.debug("REST request to get a page of Shoes");
         return ResponseEntity.ok(shoesService.fillAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ShoesDTO> getById(@PathVariable Long id) {
         log.debug("REST request to get a page of Shoes");
         return ResponseEntity.ok(shoesService.findById(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/shoes/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteShoes(@PathVariable Long id) {
         log.debug("REST request to delete Shoes : {}", id);
         shoesService.delete(id);

@@ -28,17 +28,17 @@ public class AddressController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @PostMapping("/addresses")
+  @PostMapping("")
   public ResponseEntity<AddressDTO> createAddress(@RequestBody AddressDTO addressDTO)
       throws URISyntaxException {
     log.debug("REST request to save Address : {}", addressDTO);
 
     AddressDTO result = addressService.save(addressDTO);
-    return ResponseEntity.created(new URI("/api/addresses/" + result.getId())).body(result);
+    return ResponseEntity.created(new URI("/api/v1/address" + result.getId())).body(result);
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @GetMapping("/addresses")
+  @GetMapping("")
   public ResponseEntity<Page<AddressDTO>> getAllAddresses(
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "5") int size,
@@ -50,7 +50,7 @@ public class AddressController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @PutMapping("/addresses/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<AddressDTO> updateAddress(
       @PathVariable(value = "id", required = false) final Long id,
       @RequestBody AddressDTO addressDTO)
@@ -63,7 +63,7 @@ public class AddressController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @DeleteMapping("/addresses/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteAddress(@PathVariable Long id) {
     log.debug("REST request to delete Address : {}", id);
     addressService.delete(id);

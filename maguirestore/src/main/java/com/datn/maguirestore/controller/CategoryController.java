@@ -17,7 +17,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class CategoryController {
@@ -26,8 +26,6 @@ public class CategoryController {
     private static final String ENTITY_NAME = "Category";
 
     private final CategoryService categoryService;
-
-    private final CategoryRepository categoryRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/category")
@@ -49,7 +47,7 @@ public class CategoryController {
         log.debug("REST request to save Category : {}", shoesCategoryDTO);
 
         CategoryDTO result = categoryService.save(shoesCategoryDTO);
-        return ResponseEntity.created(new URI("/api/category" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/categories" + result.getId())).body(result);
     }
 
 

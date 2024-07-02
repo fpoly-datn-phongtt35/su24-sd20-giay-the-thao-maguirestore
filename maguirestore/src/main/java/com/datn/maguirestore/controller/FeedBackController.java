@@ -4,6 +4,7 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.dto.FeedBackDTO;
 import com.datn.maguirestore.service.FeedBackService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -15,37 +16,32 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/feed-back")
+@RequiredArgsConstructor
 public class FeedBackController {
 
     private static final String ENTITY_NAME = "feedBack";
     private final Logger log = LoggerFactory.getLogger(FeedBackController.class);
     private final FeedBackService feedBackService;
 
-
-    public FeedBackController(FeedBackService feedBackService) {
-        this.feedBackService = feedBackService;
-    }
-
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/feed-backs")
+    @PostMapping("")
     public ResponseEntity<FeedBackDTO> createFeedBack(@RequestBody FeedBackDTO feedBackDTO)
             throws URISyntaxException {
         log.debug("REST request to save Address : {}", feedBackDTO);
 
         FeedBackDTO result = feedBackService.save(feedBackDTO);
-        return ResponseEntity.created(new URI("/api/feedbacks/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/feed-back" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/feed-backs")
+    @GetMapping("")
     public ResponseEntity<List<FeedBackDTO>> getAllFeedBacks() {
         log.debug("REST request to get all Addresses");
         return ResponseEntity.ok(feedBackService.findAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/feed-backs/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<FeedBackDTO> updateFeedBacks(
             @PathVariable(value = "id", required = false) final Long id, @RequestBody FeedBackDTO feedBackDTO)
             throws URISyntaxException {
@@ -56,7 +52,7 @@ public class FeedBackController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/feed-backs/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteFeedBacks(@PathVariable Long id) {
         log.debug("REST request to delete Address : {}", id);
         feedBackService.delete(id);

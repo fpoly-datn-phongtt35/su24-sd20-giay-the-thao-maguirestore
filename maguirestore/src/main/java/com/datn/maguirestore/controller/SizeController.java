@@ -33,8 +33,6 @@ public class SizeController {
 
     private final SizeService sizeService;
 
-    private final SizeRepository sizeRepository;
-
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/sizes")
     public ResponseEntity<List<SizeDTO>> getAllSizes () {
@@ -52,17 +50,17 @@ public class SizeController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/sizes")
+    @PostMapping("")
     public ResponseEntity<SizeDTO> createSize(@RequestBody SizeDTO sizeDTO)
             throws URISyntaxException {
         log.debug("REST request to save size : {}", sizeDTO);
 
         SizeDTO result = sizeService.save(sizeDTO);
-        return ResponseEntity.created(new URI("/api/size/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/size" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/sizes/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<SizeDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id
             , @RequestBody SizeDTO sizeDTO)
@@ -73,10 +71,8 @@ public class SizeController {
         return ResponseEntity.ok().body(result);
     }
 
-
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/sizes/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSize(@PathVariable Long id) {
         log.debug("REST request to delete Size : {}", id);
         sizeService.delete(id);

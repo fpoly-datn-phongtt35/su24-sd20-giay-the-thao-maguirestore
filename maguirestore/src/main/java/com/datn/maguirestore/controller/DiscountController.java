@@ -13,6 +13,9 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,12 +46,12 @@ public class DiscountController {
      * @throws URISyntaxException
      */
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/")
+    @PostMapping("")
     public ResponseEntity<DiscountDTO> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
         log.debug("REST request to save Discount : {}", createDTO);
         DiscountDTO discountDTO = discountService.createDiscount(createDTO);
         return ResponseEntity
-                .created(new URI("/api/v1/discount/" + discountDTO.getCode()))
+                .created(new URI("/api/v1/discount" + discountDTO.getCode()))
                 .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, discountDTO.getCode()))
                 .body(discountDTO);
     }
@@ -81,9 +84,10 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("")
-    public List<Discount> getAllDiscounts() {
+    public Page<Discount> getAllDiscounts(@RequestParam(value = "search", required = false, defaultValue = "") String search,
+                                            @PageableDefault(size = 10) Pageable pageable) {
         log.debug("REST request to get all Discounts");
-        return discountService.findAll();
+        return discountService.findAll(search, pageable);
     }
 
     /**
