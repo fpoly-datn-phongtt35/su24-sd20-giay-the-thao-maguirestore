@@ -2,8 +2,6 @@ package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CartDetailsDTO;
 import com.datn.maguirestore.dto.CartDetailsRequestDTO;
-import com.datn.maguirestore.dto.CartRequestDTO;
-import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.service.CartDetailsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -24,10 +22,9 @@ public class CartDetailsController {
     private static final String ENTITY_NAME = "cart_details";
     private final Logger log = LoggerFactory.getLogger(CartDetailsController.class);
     private final CartDetailsService cartDetailsService;
-    private final CartDetailsRepository cartDetailsRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/cart-details/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CartDetailsDTO> getCartById(@PathVariable Long id) {
         log.debug("REST request to get CartDetail by id");
 
@@ -35,20 +32,19 @@ public class CartDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/cart-details")
+    @PostMapping("")
     public ResponseEntity<CartDetailsDTO> createCart(@RequestBody CartDetailsRequestDTO cartDetailsDTO) throws URISyntaxException {
         log.debug("REST request to save CartDetail : {}", cartDetailsDTO);
 
         CartDetailsDTO result = cartDetailsService.save(cartDetailsDTO);
-        return ResponseEntity.created(new URI("/api/cart-details/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/cart-details/" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/cart-details/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CartDetailsDTO> updateCart(
             @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody CartDetailsRequestDTO cartDetailsDTO)
-            throws URISyntaxException {
+            @RequestBody CartDetailsRequestDTO cartDetailsDTO) {
         log.debug("REST request to update Cart : {}, {}", id, cartDetailsDTO);
 
         CartDetailsDTO result = cartDetailsService.update(cartDetailsDTO);
@@ -56,7 +52,7 @@ public class CartDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/cart-details")
+    @GetMapping("")
     public ResponseEntity<List<CartDetailsDTO>> getAllCart() {
         log.debug("REST request to get a page of Cart");
 
@@ -64,7 +60,7 @@ public class CartDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/cart-details/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCart(@PathVariable Long id) {
         log.debug("REST request to delete Cart : {}", id);
         cartDetailsService.delete(id);

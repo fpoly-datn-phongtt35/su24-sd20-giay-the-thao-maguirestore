@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.BrandDTO;
-import com.datn.maguirestore.repository.BrandRepository;
 import com.datn.maguirestore.service.BrandService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
@@ -22,23 +21,20 @@ public class BrandController {
   private final Logger log = LoggerFactory.getLogger(BrandController.class);
   private final BrandService brandService;
 
-  private final BrandRepository brandRepository;
-
   @SecurityRequirement(name = "Bearer Authentication")
-  @PostMapping("/brands")
+  @PostMapping("")
   public ResponseEntity<BrandDTO> createBrand(@RequestBody BrandDTO brandDTO)
       throws URISyntaxException {
     log.debug("REST request to save Brand : {}", brandDTO);
 
     BrandDTO result = brandService.save(brandDTO);
-    return ResponseEntity.created(new URI("/api/brands/" + result.getId())).body(result);
+    return ResponseEntity.created(new URI("/api/v1/brand" + result.getId())).body(result);
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @PutMapping("/brands/{id}")
+  @PutMapping("/{id}")
   public ResponseEntity<BrandDTO> updateBrand(
-      @PathVariable(value = "id", required = false) final Long id, @RequestBody BrandDTO brandDTO)
-      throws URISyntaxException {
+      @PathVariable(value = "id", required = false) final Long id, @RequestBody BrandDTO brandDTO) {
     log.debug("REST request to update Brand : {}, {}", id, brandDTO);
 
     brandDTO.setId(id);
@@ -47,7 +43,7 @@ public class BrandController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @GetMapping("/brands")
+  @GetMapping("")
   public ResponseEntity<Page<BrandDTO>> getAllBrands(
       @RequestParam(defaultValue = "0") int page,
       @RequestParam(defaultValue = "5") int size,
@@ -59,7 +55,7 @@ public class BrandController {
   }
 
   @SecurityRequirement(name = "Bearer Authentication")
-  @DeleteMapping("/brands/{id}")
+  @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
     log.debug("REST request to delete Brand : {}", id);
     brandService.delete(id);

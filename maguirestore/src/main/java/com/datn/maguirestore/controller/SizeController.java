@@ -1,21 +1,14 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.dto.SizeDTO;
-import com.datn.maguirestore.repository.SizeRepository;
 import com.datn.maguirestore.service.SizeService;
-import com.datn.maguirestore.util.PaginationUtil;
 import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -32,8 +25,6 @@ public class SizeController {
     private final Logger log = LoggerFactory.getLogger(SizeController.class);
 
     private final SizeService sizeService;
-
-    private final SizeRepository sizeRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/sizes")
@@ -52,31 +43,28 @@ public class SizeController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/sizes")
+    @PostMapping("")
     public ResponseEntity<SizeDTO> createSize(@RequestBody SizeDTO sizeDTO)
             throws URISyntaxException {
         log.debug("REST request to save size : {}", sizeDTO);
 
         SizeDTO result = sizeService.save(sizeDTO);
-        return ResponseEntity.created(new URI("/api/size/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/size" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/sizes/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<SizeDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id
-            , @RequestBody SizeDTO sizeDTO)
-            throws URISyntaxException {
+            , @RequestBody SizeDTO sizeDTO) {
         log.debug("REST request to update Size : {}, {}", id, sizeDTO);
 
         SizeDTO result = sizeService.update(sizeDTO);
         return ResponseEntity.ok().body(result);
     }
 
-
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/sizes/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteSize(@PathVariable Long id) {
         log.debug("REST request to delete Size : {}", id);
         sizeService.delete(id);

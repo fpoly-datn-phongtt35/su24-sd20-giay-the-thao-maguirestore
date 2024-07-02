@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CategoryDTO;
-import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
 import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -17,7 +16,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class CategoryController {
@@ -26,8 +25,6 @@ public class CategoryController {
     private static final String ENTITY_NAME = "Category";
 
     private final CategoryService categoryService;
-
-    private final CategoryRepository categoryRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/category")
@@ -49,7 +46,7 @@ public class CategoryController {
         log.debug("REST request to save Category : {}", shoesCategoryDTO);
 
         CategoryDTO result = categoryService.save(shoesCategoryDTO);
-        return ResponseEntity.created(new URI("/api/category" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/categories" + result.getId())).body(result);
     }
 
 
@@ -57,8 +54,7 @@ public class CategoryController {
     @PutMapping("/sizes/{id}")
     public ResponseEntity<CategoryDTO> updateSize(
             @PathVariable(value = "id", required = false) final Long id
-            , @RequestBody CategoryDTO categoryDTO)
-            throws URISyntaxException {
+            , @RequestBody CategoryDTO categoryDTO) {
         log.debug("REST request to update Size : {}, {}", id, categoryDTO);
 
         CategoryDTO result = categoryService.update(categoryDTO);

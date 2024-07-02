@@ -2,7 +2,6 @@ package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.ShoesDetailsDTO;
 import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
-import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.service.ShoesDetailsService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -31,23 +30,20 @@ public class ShoesDetailsController {
     private final Logger log = LoggerFactory.getLogger(ShoesDetailsController.class);
     private final ShoesDetailsService shoesDetailsService;
 
-    private final ShoesDetailsRepository shoesDetailsRepository;
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/shoes-details")
+    @PostMapping("")
     public ResponseEntity<ShoesDetailsDTO> createShoesDetails(@RequestBody ShoesDetailCreateRequest request)
             throws URISyntaxException {
         log.debug("REST request to save ShoesDetails : {}", request);
 
         ShoesDetailsDTO result = shoesDetailsService.save(request);
-        return ResponseEntity.created(new URI("/api/shoes-details/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/shoes-details" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/shoes-details/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ShoesDetailsDTO> updateShoesDetails(
-            @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDetailsDTO shoesDetailsDTO)
-            throws URISyntaxException {
+            @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDetailsDTO shoesDetailsDTO) {
         log.debug("REST request to update ShoesDetails : {}, {}", id, shoesDetailsDTO);
 
         ShoesDetailsDTO result = shoesDetailsService.update(shoesDetailsDTO);
@@ -55,21 +51,21 @@ public class ShoesDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes-details")
+    @GetMapping("")
     public ResponseEntity<List<ShoesDetailsDTO>> getAllShoesDetails() {
         log.debug("REST request to get a page of ShoesDetails");
         return ResponseEntity.ok(shoesDetailsService.fillAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes-details/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ShoesDetailsDTO> getById(@PathVariable Long id) {
         log.debug("REST request to get a page of ShoesDetails");
         return ResponseEntity.ok(shoesDetailsService.findById(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/shoes-details/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteShoesDetails(@PathVariable Long id) {
         log.debug("REST request to delete ShoesDetails : {}", id);
         shoesDetailsService.delete(id);
