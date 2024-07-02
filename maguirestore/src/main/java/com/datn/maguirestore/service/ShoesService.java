@@ -75,7 +75,15 @@ public class ShoesService {
     public List<ShoesDTO> fillAll(){
         log.debug("Request to get all Shoes");
 
-        return shoesRepository.findAll().stream()
+        return shoesRepository.findAllActive().stream()
+                .map(shoesMapper::toDto)
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    public List<ShoesDTO> fillAllNoActive(){
+        log.debug("Request to get all Shoes");
+
+        return shoesRepository.findAllNoActive().stream()
                 .map(shoesMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
     }

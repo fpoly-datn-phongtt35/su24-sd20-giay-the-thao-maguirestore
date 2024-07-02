@@ -94,10 +94,10 @@ import { InplaceModule } from "primeng/inplace";
 // import { ReturnOrderComponent } from "./components/return-order/return-order.component";
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
 // import { OrderReturnDetailsComponent } from "./components/order-return-details/order-return-details.component";
-// import { ShoesComponent } from "./components/shoes/shoes.component";
+import { ShoesComponent } from "./components/shoes/shoes.component";
 // import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
-import { CategoryComponent } from './components/category/category.component';
+import { CategoryComponent } from "./components/category/category.component";
 import { BrandComponent } from "./components/brand/brand.component";
 import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
@@ -143,7 +143,7 @@ import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.
     // UserOrderComponent,
     // PaySuccessComponent,
     // PayFaileComponent,
-    // ShoesComponent,
+    ShoesComponent,
     // FeedbackManagComponent,
     // ReturnOrderComponent,
     // OrderReturnAdminComponent,

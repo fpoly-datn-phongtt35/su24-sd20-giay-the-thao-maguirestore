@@ -35,7 +35,7 @@ import { LoginCustomerComponent } from "./components/login-customer/login-custom
 // import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
-// import { ShoesComponent } from "./components/shoes/shoes.component";
+import { ShoesComponent } from "./components/shoes/shoes.component";
 // import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 // import { ReturnOrderComponent } from "./components/return-order/return-order.component";
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
@@ -80,7 +80,7 @@ const routes: Routes = [
       { path: "category", component: CategoryComponent },
       // { path: "orders", component: OderComponent },
       // { path: "shoes-detail", component: ShoesDetailComponent },
-      // { path: "shoes", component: ShoesComponent },
+      { path: "shoes", component: ShoesComponent },
       // { path: "shoes-detail-add", component: ShoesDetailAddComponent },
       // { path: "users", component: UserComponent },
       // { path: "order-details/:id", component: OrderDetailsComponent },
