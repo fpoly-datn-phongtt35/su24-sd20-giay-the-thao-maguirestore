@@ -50,13 +50,7 @@ public class BrandController {
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/brands")
-    public ResponseEntity<List<BrandDTO>> getAllBrands(
-//            @RequestParam(defaultValue = "0") int page,
-//            @RequestParam(defaultValue = "5") int size,
-//            @RequestParam(required = false, defaultValue = "id") String sortBy,
-//            @RequestParam(required = false, defaultValue = "ASC") String sortDirection,
-//            @RequestParam(required = false, defaultValue = "") String keyword
-    ) {
+    public ResponseEntity<List<BrandDTO>> getAllBrands() {
         log.debug("REST request to get a page of Brands");
         return ResponseEntity.ok(brandService.findAll());
     }
