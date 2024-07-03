@@ -21,5 +21,4 @@ public class DiscountDTO implements Serializable {
     private Instant endDate;
     private Integer discountMethod;
     private BigDecimal discountAmount;
-
 }

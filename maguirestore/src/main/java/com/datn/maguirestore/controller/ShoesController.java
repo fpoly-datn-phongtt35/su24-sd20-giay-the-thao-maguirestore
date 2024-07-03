@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/shoes")
 @RequiredArgsConstructor
 public class ShoesController {
@@ -35,7 +37,7 @@ public class ShoesController {
     private final ShoesRepository shoesRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/shoes")
+    @PostMapping()
     public ResponseEntity<ShoesDTO> createShoes(@RequestBody ShoesCreateRequest shoesCreateRequest)
             throws URISyntaxException {
         log.debug("REST request to save Shoes : {}", shoesCreateRequest);
@@ -45,7 +47,7 @@ public class ShoesController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/shoes/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ShoesDTO> updateShoes(
             @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDTO shoesDTO)
             throws URISyntaxException {
@@ -56,21 +58,21 @@ public class ShoesController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes")
+    @GetMapping()
     public ResponseEntity<List<ShoesDTO>> getAllShoes() {
         log.debug("REST request to get a page of Shoes");
         return ResponseEntity.ok(shoesService.fillAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ShoesDTO> getById(@PathVariable Long id) {
         log.debug("REST request to get a page of Shoes");
         return ResponseEntity.ok(shoesService.findById(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/shoes/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteShoes(@PathVariable Long id) {
         log.debug("REST request to delete Shoes : {}", id);
         shoesService.delete(id);
