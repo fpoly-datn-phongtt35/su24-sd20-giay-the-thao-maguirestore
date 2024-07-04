@@ -17,6 +17,6 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
   @Query(
       "SELECT b FROM Brand  b "
-          + "WHERE (:keyword is null OR UPPER(b.name) LIKE CONCAT('%', UPPER(:keyword), '%') )")
+          + "WHERE (:keyword is null or :keyword = '' OR UPPER(b.name) LIKE CONCAT('%', UPPER(:keyword), '%') )")
   Page<Brand> findAll(String keyword, Pageable pageable);
 }

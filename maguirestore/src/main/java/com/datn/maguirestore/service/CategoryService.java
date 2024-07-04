@@ -62,6 +62,10 @@ public class CategoryService {
         return ds;
     }
 
+    public List<CategoryDTO> fillAlll(){
+        return categoryRepository.findAll().stream().map(categoryMapper::toDto) .collect(Collectors.toList());
+    }
+
     public Optional<CategoryDTO> findById(Long id) {
         log.debug("Request to get all Category by id");
 

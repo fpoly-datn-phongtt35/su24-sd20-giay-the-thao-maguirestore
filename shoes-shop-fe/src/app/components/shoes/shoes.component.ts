@@ -4,6 +4,9 @@ import { ShoesService } from "../../service/shoes.service";
 import { Shoes } from "src/app/model/Shoes";
 import { ShoesSave } from "src/app/model/AddShoes";
 import { DialogModule } from "primeng/dialog";
+import { BrandService } from "src/app/service/brand.service";
+import { AutoCompleteCompleteEvent } from "primeng/autocomplete";
+import { CategoryService } from "src/app/service/category.service";
 
 @Component({
   selector: "app-Shoes",
@@ -17,9 +20,29 @@ export class ShoesComponent implements OnInit {
   descriptionError: boolean = false;
   searchText: string = "";
   filteredShoess: Shoes[] = [];
-
+  items: any[] = [];
   onSearchInputChange() {
     this.filterShoess();
+  }
+
+  filteredBrand: any[] = [];
+
+  filteredCategory: any[] = [];
+
+  filterBrand(event: any) {
+    let query = event.query; // Lấy giá trị từ sự kiện tìm kiếm
+
+    this.filteredBrand = this.items?.filter(
+      (item) => item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
+  }
+
+  filterCategory(event: any) {
+    let query = event.query; // Lấy giá trị từ sự kiện tìm kiếm
+
+    this.filteredCategory = this.items?.filter(
+      (item) => item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    );
   }
 
   filterShoess() {
@@ -55,10 +78,12 @@ export class ShoesComponent implements OnInit {
   selectedShoesId: number = 0;
   displayAddDialog: boolean = false;
   visible: boolean = false;
-  newShoes: ShoesSave = { code: "", name: "" };
+  newShoes: ShoesSave = { code: "", name: "", category: "", brand: "" };
 
   constructor(
     private ShoesService: ShoesService,
+    private brandService: BrandService,
+    private categoryService: CategoryService,
     private messageService: MessageService
   ) {}
 
@@ -72,6 +97,16 @@ export class ShoesComponent implements OnInit {
         );
       });
     });
+
+    this.brandService.getAllBrand().subscribe((data: any) => {
+      this.items = data;
+    });
+    this.filteredBrand = this.items;
+
+    this.categoryService.getAllCategory().subscribe((data: any) => {
+      this.items = data;
+    });
+    this.filteredCategory = this.items;
 
     this.statuses = [
       { label: "In Stock", value: "INSTOCK" },

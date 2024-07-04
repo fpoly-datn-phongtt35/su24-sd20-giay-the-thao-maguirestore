@@ -4,7 +4,11 @@ import com.datn.maguirestore.dto.BrandDTO;
 import com.datn.maguirestore.entity.Brand;
 import com.datn.maguirestore.repository.BrandRepository;
 import com.datn.maguirestore.service.mapper.BrandMapper;
+
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,6 +49,10 @@ public class BrandService {
     brand = brandRepository.save(brand);
 
     return brandMapper.toDto(brand);
+  }
+
+  public List<BrandDTO> findAll() {
+    return brandRepository.findAll().stream().map(brandMapper::toDto)  .collect(Collectors.toList());
   }
 
   @Transactional(readOnly = true)
