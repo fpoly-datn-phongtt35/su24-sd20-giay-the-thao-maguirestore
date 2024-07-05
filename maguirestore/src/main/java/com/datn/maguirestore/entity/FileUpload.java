@@ -1,5 +1,6 @@
 package com.datn.maguirestore.entity;
 
+import java.io.Serial;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class FileUpload extends AbstractAuditingEntity<Long> implements Serializable {
 
+  @Serial
   private static final long serialVersionUID = 1L;
 
   @Id

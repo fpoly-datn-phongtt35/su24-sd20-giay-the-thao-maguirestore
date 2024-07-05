@@ -1,11 +1,8 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.entity.FileUpload;
-import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.repository.FileUploadRepository;
 import com.datn.maguirestore.service.FileUploadService;
 import com.datn.maguirestore.util.HeaderUtil;
-import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.io.IOException;
 import java.net.URI;
@@ -18,9 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,8 +30,6 @@ public class FileUploadController {
 
   @Value("${clientApp.name}")
   private String applicationName;
-
-  private final FileUploadRepository fileUploadRepository;
 
   private final FileUploadService fileService;
 
@@ -57,20 +50,5 @@ public class FileUploadController {
           HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
-
-//  @PostMapping("")
-//  public ResponseEntity<FileUpload> createFileUpload(@RequestBody FileUpload fileUpload)
-//      throws URISyntaxException {
-//    log.debug("REST request to create upload file", fileUpload);
-//    if (null != fileUpload.getId()) {
-//      throw new BadRequestAlertException("A new fileUpload cannot already have an ID", ENTITY_NAME,
-//          "idexists");
-//    }
-//    FileUpload result = fileUploadRepository.save(fileUpload);
-//    return ResponseEntity
-//        .created(new URI("/api/v1/file-upload" + result.getId()))
-//        .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
-//        .body(result);
-//  }
 
 }

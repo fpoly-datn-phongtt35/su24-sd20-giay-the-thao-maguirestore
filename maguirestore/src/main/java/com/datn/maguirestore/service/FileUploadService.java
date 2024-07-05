@@ -8,7 +8,6 @@ import com.datn.maguirestore.entity.FileUpload;
 import com.datn.maguirestore.repository.FileUploadRepository;
 import java.io.IOException;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -82,7 +81,7 @@ public class FileUploadService {
   }
 
   @Transactional(readOnly = true)
-  public Optional<FileUploadDTO> findOneByPath(String path) {
+  public Optional<FileUploadDTO> findByFilePath(String path) {
     log.debug("Request to get FileUpload : {}", path);
     return fileUploadRepository.findFirstByFilePath(path).map(this::convertToDto);
   }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FileUploadRepository extends JpaRepository<FileUpload, Long> {
 
-  Optional<FileUpload> findByFilePath(String path);
+  //Optional<FileUpload> findByFilePath(String path);
 
   Optional<FileUpload> findFirstByFilePath(String path);
 

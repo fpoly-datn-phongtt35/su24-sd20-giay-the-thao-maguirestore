@@ -8,9 +8,7 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 import com.amazonaws.util.IOUtils;
-import java.io.File;
 import java.io.IOException;
-import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -36,10 +34,6 @@ public class AWSS3Config {
         .withRegion(Regions.AP_SOUTHEAST_2)
         .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
         .build();
-  }
-
-  public void uploadImage(String key, File file) {
-    s3Client.putObject(bucketName, key, file);
   }
 
   public byte[] downloadImage(String key) {
