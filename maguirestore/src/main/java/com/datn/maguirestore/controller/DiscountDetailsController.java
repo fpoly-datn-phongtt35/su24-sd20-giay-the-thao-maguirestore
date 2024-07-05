@@ -5,7 +5,7 @@ import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountDetailsRequest;
 import com.datn.maguirestore.payload.request.UpdateDiscountDetailsRequest;
 import com.datn.maguirestore.payload.response.UpdateDiscountDetailsResponse;
-import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
+import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.service.DiscountDetailsService;
 import com.datn.maguirestore.util.HeaderUtil;
 import com.datn.maguirestore.util.ResponseUtil;
@@ -40,7 +40,7 @@ public class DiscountDetailsController {
 
     private final DiscountDetailsService service;
 
-    private final DiscountShoesDetailsRepository discountDetailsRepository;
+    private final DiscountDetailsRepository discountDetailsRepository;
 
     @PostMapping("")
     @SecurityRequirement(name = "Bearer Authentication")

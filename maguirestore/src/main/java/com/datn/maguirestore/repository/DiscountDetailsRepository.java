@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DiscountShoesDetailsRepository extends JpaRepository<DiscountDetails, Long> {
+public interface DiscountDetailsRepository extends JpaRepository<DiscountDetails, Long> {
 
     @Query(
             value = "select * from discount_details dsd \n" +
