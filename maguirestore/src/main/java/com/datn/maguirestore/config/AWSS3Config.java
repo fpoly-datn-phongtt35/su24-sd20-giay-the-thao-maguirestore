@@ -18,8 +18,10 @@ public class AWSS3Config {
 
   private static AmazonS3 s3Client;
 
+  @Value("${aws.s3.accessKey}")
   private String accessKey;
 
+  @Value("${aws.s3.secretKey}")
   private String secretKey;
 
   @Value("${aws.s3.bucketName}")
