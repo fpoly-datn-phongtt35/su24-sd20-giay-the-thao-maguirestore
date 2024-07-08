@@ -6,15 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/BrandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/BrandRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/SizeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/SizeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/brand.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/brand.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +55,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DATN-shoes\su24-sd20-giay-the-thao-maguirestore\maguirestore\src\main\java\com\datn\maguirestore\controller" />
       <recent name="E:\DATN_4\su24-sd20-giay-the-thao-maguirestore\maguirestore\src\main\java\com\datn\maguirestore\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -94,6 +90,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

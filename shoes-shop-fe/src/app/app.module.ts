@@ -100,6 +100,8 @@ import { ColorRemovedComponent } from "./components/color-removed/color-removed.
 import { CategoryComponent } from "./components/category/category.component";
 import { BrandComponent } from "./components/brand/brand.component";
 import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
+import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
+import { CategoryRemovedComponent } from "./components/category-removed/category-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
@@ -150,7 +152,8 @@ import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.
     // OrderReturnDetailsComponent,
     ColorRemovedComponent,
     CategoryComponent,
-    // SizeRemovedComponent,
+    SizeRemovedComponent,
+    CategoryRemovedComponent,
     BrandRemovedComponent,
     // ProfileComponent,
     // CodeForgotPasswordComponent,

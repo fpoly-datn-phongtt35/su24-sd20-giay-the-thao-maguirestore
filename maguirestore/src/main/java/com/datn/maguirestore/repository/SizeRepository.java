@@ -22,4 +22,5 @@ public interface SizeRepository extends JpaRepository<Size, Long> {
     List<Size> findByShoesIdAndColor(@Param("shoesId") Long shoesId, @Param("colorId") Long colorId, @Param("status") Integer status);
 
     Page<Size> findByStatus(int status, Pageable pageable);
+    List<Size> findByStatus(int status );
 }
