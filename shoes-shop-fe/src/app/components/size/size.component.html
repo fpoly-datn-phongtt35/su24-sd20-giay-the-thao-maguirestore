@@ -18,8 +18,8 @@
                 <th>Mã</th>
                 <th>Tên</th>
                 <!-- <th>Trạng thái</th> -->
-                <th>Người cập nhật</th>
-                <th>Ngày cập nhật</th>
+                <!-- <th>Người cập nhật</th>
+                <th>Ngày cập nhật</th> -->
                 <th></th>
             </tr>
         </ng-template>
@@ -47,8 +47,8 @@
                     </p-cellEditor>
                 </td>
                 <!-- <td>{{ Size.status }}</td> -->
-                <td>{{ Size.lastModifiedBy }}</td>
-                <td>{{ Size.lastModifiedDate | date: 'dd/MM/yyyy'}}</td>
+                <!-- <td>{{ Size.lastModifiedBy }}</td>
+                <td>{{ Size.lastModifiedDate | date: 'dd/MM/yyyy'}}</td> -->
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-spin pi-cog" style="font-size: 2rem" (click)="onRowEditInit(Size)" class="p-button-rounded p-button-text"></button>
