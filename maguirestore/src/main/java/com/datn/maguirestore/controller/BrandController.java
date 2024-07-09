@@ -5,6 +5,9 @@ import com.datn.maguirestore.service.BrandService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
+import java.util.stream.Stream;
+
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/brand")
 @RequiredArgsConstructor
 public class BrandController {
@@ -20,6 +24,7 @@ public class BrandController {
   private static final String ENTITY_NAME = "brand";
   private final Logger log = LoggerFactory.getLogger(BrandController.class);
   private final BrandService brandService;
+
 
   @SecurityRequirement(name = "Bearer Authentication")
   @PostMapping("")
@@ -53,6 +58,12 @@ public class BrandController {
     log.debug("REST request to get a page of Brands");
     return ResponseEntity.ok(brandService.findAll(page, size, sortBy, sortDirection, keyword));
   }
+  @GetMapping("/all")
+  public ResponseEntity<List<BrandDTO>> getAllBrandsx() {
+    log.debug("REST request to get a page of Brands");
+    return ResponseEntity.ok(brandService.findAll());
+  }
+
 
   @SecurityRequirement(name = "Bearer Authentication")
   @DeleteMapping("/{id}")

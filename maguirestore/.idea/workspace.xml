@@ -20,6 +20,9 @@
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" afterDir="false" />
+     
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +56,31 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../shoes-store" />
+
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DATN-shoes\su24-sd20-giay-the-thao-maguirestore\maguirestore\src\main\java\com\datn\maguirestore\controller" />
       <recent name="E:\DATN_4\su24-sd20-giay-the-thao-maguirestore\maguirestore\src\main\java\com\datn\maguirestore\controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -76,7 +92,7 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.MaguirestoreApplication">
+  <component name="RunManager" selected="Spring Boot.MaguirestoreApplication">
     <configuration name="MaguirestoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.datn.maguirestore.MaguirestoreApplication" />
       <module name="maguirestore" />
@@ -103,6 +119,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+
     <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="maguirestore" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
@@ -134,6 +162,7 @@
       <workItem from="1720454398684" duration="2232000" />
       <workItem from="1720497571070" duration="1228000" />
       <workItem from="1720532888173" duration="1235000" />
+
     </task>
     <servers />
   </component>
@@ -141,6 +170,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
