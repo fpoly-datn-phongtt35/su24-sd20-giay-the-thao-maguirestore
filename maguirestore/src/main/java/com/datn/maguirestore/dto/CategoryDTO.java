@@ -15,14 +15,14 @@ public class CategoryDTO implements Serializable {
 
     private Long id;
 
-    @NotBlank(message = "error.shoes.category.code.notBlank")
-    @JsonIgnore
+//    @NotBlank(message = "error.shoes.category.code.notBlank")
+//    @JsonIgnore
     private String code;
 
-    @NotBlank(message = "error.shoes.category.name.notBlank")
+//    @NotBlank(message = "error.shoes.category.name.notBlank")
     private String name;
 
-    @JsonIgnore
+//    @JsonIgnore
     private Integer status;
 
 }
