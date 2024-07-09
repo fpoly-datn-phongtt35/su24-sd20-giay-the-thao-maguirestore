@@ -5,14 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +55,13 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../shoes-store" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -90,15 +103,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+    <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="maguirestore" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,6 +129,11 @@
       <workItem from="1719757194749" duration="459000" />
       <workItem from="1719757883085" duration="4093000" />
       <workItem from="1719919501626" duration="1080000" />
+      <workItem from="1720001687070" duration="1094000" />
+      <workItem from="1720108166944" duration="1301000" />
+      <workItem from="1720454398684" duration="2232000" />
+      <workItem from="1720497571070" duration="1228000" />
+      <workItem from="1720532888173" duration="1235000" />
     </task>
     <servers />
   </component>

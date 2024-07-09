@@ -1,5 +1,29 @@
 .footerclient {
-  background-color: #2b2e2e;
-  color: white;
+  background-color: rgb(238, 238, 238);
+  color: #000;
   font-size: large;
+  padding: 20px;
+}
+.footerclient h5 {
+  font-weight: 700;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.footer-bottom {
+  padding: 20px;
+}
+
+.footer-bottom h6 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-bottom ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+.footer-bottom ul li {
+  margin-bottom: 10px;
 }

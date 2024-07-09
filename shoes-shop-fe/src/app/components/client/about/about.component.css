@@ -1,0 +1,36 @@
+.content-section {
+    padding: 1em;
+    max-width: 800px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.about-item {
+    margin-top: 30px;
+}
+.about-item-image {
+    position: relative;
+}
+.about-item-image > img {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+.about-item-content {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+.content-about {
+    width: 100%;
+}
+.content-about > ul{
+    list-style-type: decimal;
+}
+.content-about li {
+    margin-bottom: 10px;
+}
+.content-about > h5 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
