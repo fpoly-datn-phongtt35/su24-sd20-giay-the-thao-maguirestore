@@ -17,7 +17,7 @@ import java.util.Optional;
 
 /** tuyenpv - Size. */
 @RestController
-@RequestMapping("/api/v1/size")
+@RequestMapping("/api/v1/sizes")
 @RequiredArgsConstructor
 public class SizeController {
 
@@ -27,7 +27,7 @@ public class SizeController {
     private final SizeService sizeService;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/sizes")
+    @GetMapping("")
     public ResponseEntity<List<SizeDTO>> getAllSizes () {
         log.debug("REST request to get  Sizes");
 
@@ -35,7 +35,15 @@ public class SizeController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/sizes/{id}")
+    @GetMapping("/removed")
+    public ResponseEntity<List<SizeDTO>> getAllSizesRemoved () {
+        log.debug("REST request to get  Sizes");
+
+        return ResponseEntity.ok(sizeService.findDelete());
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/{id}")
     public ResponseEntity<SizeDTO> getSize(@PathVariable Long id) {
         log.debug("REST request to get Size : {}", id);
         Optional<SizeDTO> sizeDTO = sizeService.findOne(id);
