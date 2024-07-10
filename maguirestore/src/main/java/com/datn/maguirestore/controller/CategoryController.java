@@ -33,6 +33,14 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.findAll());
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/removed")
+    public ResponseEntity<List<CategoryDTO>> getAllSizesRemoved () {
+        log.debug("REST request to get  Sizes");
+
+        return ResponseEntity.ok(categoryService.findDelete());
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDTO>> getAllCategoryx() {
         log.debug("REST request to get all categories");

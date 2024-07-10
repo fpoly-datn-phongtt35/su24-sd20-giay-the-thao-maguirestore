@@ -62,6 +62,13 @@ public class CategoryService {
         return ds;
     }
 
+    public List<CategoryDTO> findDelete() {
+        log.debug("Request to get all Sizes with status = 0");
+
+        return categoryRepository.findByStatus(0).stream()
+                .map(categoryMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
+    }
+
     public List<CategoryDTO> fillAlll(){
         return categoryRepository.findAll().stream().map(categoryMapper::toDto) .collect(Collectors.toList());
     }
