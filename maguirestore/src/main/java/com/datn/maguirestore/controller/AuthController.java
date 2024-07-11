@@ -14,6 +14,7 @@ import com.datn.maguirestore.service.EmailService;
 import com.datn.maguirestore.service.OtpService;
 import com.datn.maguirestore.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,25 +31,21 @@ import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
-    @Autowired
-    AuthenticationManager authenticationManager;
+    
+    private final AuthenticationManager authenticationManager;
+    
+    private final UserService userService;
 
-    @Autowired
-    UserService userService;
+    private final JwtUtils jwtUtils;
 
-    @Autowired
-    JwtUtils jwtUtils;
+    private final OtpService otpService;
+    
+    private final EmailService emailService;
 
-    @Autowired
-    OtpService otpService;
-
-    @Autowired
-    private EmailService emailService;
-
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
     @CrossOrigin("http://localhost:4200/")
     @SecurityRequirement(name = "Bearer Authentication")
