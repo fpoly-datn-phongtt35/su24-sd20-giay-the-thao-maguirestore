@@ -1,6 +1,8 @@
 package com.datn.maguirestore.security.jwt;
 
 import com.datn.maguirestore.security.services.UserDetailsServiceImpl;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,22 +32,30 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
 
-        try {
-            String jwt = parseJwt(request);
-            if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
-                String subject = jwtUtils.getSubjectFromJwtToken(jwt);
+        String token = parseJwt(request);
 
-                UserDetails userDetails = userDetailsService.loadUserByUsername(subject);
-                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-                        userDetails, null, userDetails.getAuthorities());
-                auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        if (token != null) {
+            try {
+                Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(jwtUtils.getKey())
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
 
-                SecurityContextHolder.getContext().setAuthentication(auth);
+                String tokenType = claims.get("type", String.class);
+
+                if ("password_reset".equals(tokenType) && !request.getRequestURI().equals("/resetPassword")) {
+                    response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                    response.getWriter().write("Token cannot be used for this API.");
+                    return;
+                }
+            } catch (Exception e) {
+                response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+                response.getWriter().write("Invalid token.");
+                return;
             }
-        } catch (Exception e) {
-            LOGGER.error("Cannot set user authentication: {}", e);
         }
         filterChain.doFilter(request, response);
     }

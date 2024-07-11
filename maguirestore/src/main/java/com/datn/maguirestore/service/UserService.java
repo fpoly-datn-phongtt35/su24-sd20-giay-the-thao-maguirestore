@@ -3,11 +3,16 @@ package com.datn.maguirestore.service;
 import com.datn.maguirestore.dto.AdminUserDTO;
 import com.datn.maguirestore.dto.UserDTO;
 import com.datn.maguirestore.entity.ERole;
+import com.datn.maguirestore.entity.ResetToken;
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.payload.request.SignupRequest;
 import com.datn.maguirestore.payload.response.SignupResponse;
+import com.datn.maguirestore.repository.ResetTokenRepository;
 import com.datn.maguirestore.repository.UserRepository;
+import com.datn.maguirestore.security.jwt.JwtUtils;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,7 +38,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    private final BCryptPasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    private final ResetTokenRepository resetTokenRepository;
+
+    private final JwtUtils jwtUtils;
 
     public SignupResponse signUp(SignupRequest signupRequest) {
         if (userRepository.existsByLogin(signupRequest.getLogin())) {
@@ -92,13 +102,36 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("Không tìm thấy người dùng với tên đăng nhập: " + login));
     }
 
-    public boolean resetPassword(String newPassword, String login) {
-        Optional<User> optionalUser = userRepository.findByLogin(login);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            user.setPassword(passwordEncoder.encode(newPassword));
-            userRepository.save(user);
-            return true;
+    public boolean resetPassword(String newPassword, String email, String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                .setSigningKey(jwtUtils.getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+            if (!"password_reset".equals(claims.get("type", String.class))) {
+                return false;
+            }
+
+            Optional<User> optionalUser = userRepository.findByEmail(email);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+
+                ResetToken resetToken = resetTokenRepository.findByToken(token);
+                if (null == resetToken || resetToken.isUsed()) {
+                    return false;
+                }
+                resetToken.setUsed(true);
+                resetTokenRepository.save(resetToken);
+
+                user.setPassword(passwordEncoder.encode(newPassword));
+                userRepository.save(user);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+            return false;
         }
         return false;
     }

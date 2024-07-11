@@ -8,7 +8,7 @@ import com.datn.maguirestore.payload.request.DiscountCreateRequest;
 import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
 import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
-import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
+import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.service.mapper.DiscountMapper;
 import com.datn.maguirestore.util.DataUtils;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class DiscountService {
   private final DiscountRepository discountRepository;
   private final DiscountMapper discountMapper;
 
-  private final DiscountShoesDetailsRepository discountShoesDetailsRepository;
+  private final DiscountDetailsRepository discountDetailsRepository;
 
   private static final String ENTITY_NAME = "discount";
 
@@ -138,7 +138,7 @@ public class DiscountService {
     discount.setStatus(Constants.STATUS.DELETE);
     discount.setLastModifiedBy(loggedUser);
     discount.setLastModifiedDate(Instant.now().plus(7, ChronoUnit.HOURS));
-    this.discountShoesDetailsRepository.updateStatus(Collections.singletonList(id), -1);
+    this.discountDetailsRepository.updateStatus(Collections.singletonList(id), -1);
     discountRepository.save(discount);
   }
 
