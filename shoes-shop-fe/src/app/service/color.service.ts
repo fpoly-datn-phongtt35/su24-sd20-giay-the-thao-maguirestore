@@ -8,12 +8,12 @@ import { ColorSave } from '../model/AddColor';
   providedIn: 'root'
 })
 export class ColorService {
-  private apiUrl = 'http://localhost:8088/api/colors';
+  private apiUrl = 'http://localhost:8080/api/v1/color';
 
   constructor(private http: HttpClient) { }
 
   getColor() {
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrl + '/');
   }
 
   getColorRemoved() {
@@ -25,7 +25,7 @@ export class ColorService {
   }
 
   saveColor(Color: ColorSave): Observable<ColorData> {
-      return this.http.post<ColorData>(this.apiUrl, Color);
+      return this.http.post<ColorData>(this.apiUrl + '/', Color);
     }
   
   deleteColor(id: number): Observable<any> {

@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 // import { HomeComponent } from "./components/home/home.component";
-// import { ShopComponent } from "./components/shop/shop.component";
+import { ShopComponent } from "./components/shop/shop.component";
 // import { ManageComponent } from "./components/manage/manage.component";
 import { LoginComponent } from "./components/login/login.component";
 import { RegisterComponent } from "./components/register/register.component";
@@ -22,16 +22,16 @@ import { ColorComponent } from "./components/color/color.component";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
 // import { LandingComponent } from "./components/landing/landing.component";
 import { LayoutComponent } from "./layout/client/layout/layout.component";
-// import { ClientHomeComponent } from "./components/client/home/client.home.component";
-// import { CartComponent } from "./components/client/cart/cart.component";
+import { ClientHomeComponent } from "./components/client/home/client.home.component";
+import { CartComponent } from "./components/client/cart/cart.component";
 // import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
 // import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
 // import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
-// import { AboutComponent } from "./components/client/about/about.component";
-// import { ContactComponent } from "./components/client/contact/contact.component";
+import { AboutComponent } from "./components/client/about/about.component";
+import { ContactComponent } from "./components/client/contact/contact.component";
 // import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
@@ -97,16 +97,16 @@ const routes: Routes = [
     path: "client",
     component: LayoutComponent,
     children: [
-      // { path: "", component: ClientHomeComponent },
-      // { path: "home", component: ClientHomeComponent },
-      // { path: "cart", component: CartComponent },
+      { path: "", component: ClientHomeComponent },
+      { path: "home", component: ClientHomeComponent },
+      { path: "cart", component: CartComponent },
       // { path: "shoes-detail", component: ShoesInspectComponent },
       // { path: "shoes-detail/:id", component: ShoesInspectComponent },
       // { path: "return-order/:id", component: ReturnOrderComponent },
-      // { path: "shop", component: ShopComponent },
+      { path: "shop", component: ShopComponent },
       // { path: "pay", component: PayComponent },
-      // { path: "about", component: AboutComponent },
-      // { path: "contact", component: ContactComponent },
+      { path: "about", component: AboutComponent },
+      { path: "contact", component: ContactComponent },
       { path: "login-customer", component: LoginCustomerComponent },
       // { path: "register-customer", component: RegisterCustomerComponent },
       // { path: "discount", component: DiscountShoesComponent },
@@ -126,7 +126,7 @@ const routes: Routes = [
   /////CLIENT-LINKs
   // { path: "home", component: HomeComponent },
   // { path: "product", component: ProductComponent },
-  // { path: "shop", component: ShopComponent },
+  { path: "shop", component: ShopComponent },
   // { path: "manage", component: ManageComponent },
   { path: "register", component: RegisterComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },

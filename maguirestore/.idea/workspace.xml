@@ -6,10 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" afterDir="false" />
+     
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" afterDir="false" />
     </list>
@@ -59,10 +74,12 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -105,6 +122,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+
     <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="maguirestore" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
@@ -145,6 +163,7 @@
       <workItem from="1720516240562" duration="1911000" />
       <workItem from="1720518882749" duration="158000" />
       <workItem from="1720519061150" duration="972000" />
+
     </task>
     <servers />
   </component>

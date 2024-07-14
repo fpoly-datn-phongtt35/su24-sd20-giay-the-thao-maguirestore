@@ -1,6 +1,6 @@
 .hinh-tron {
   border-radius: 50%;
-  background: #cfdbe9;
+  /* background: #cfdbe9; */
   width: 50px;
   margin-right: -1vw;
 }
@@ -15,7 +15,7 @@
 
 .layout-topbar {
   border: 5px solid white;
-  border-radius: 1.5vw;
+  /* border-radius: 1.5vw; */
 }
 
 .nav-link {
