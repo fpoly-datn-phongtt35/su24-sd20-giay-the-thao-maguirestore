@@ -21,6 +21,7 @@ export class ShoesComponent implements OnInit {
   searchText: string = "";
   filteredShoess: Shoes[] = [];
   items: any[] = [];
+  itemss: any[] = [];
   onSearchInputChange() {
     this.filterShoess();
   }
@@ -40,7 +41,7 @@ export class ShoesComponent implements OnInit {
   filterCategory(event: any) {
     let query = event.query; // Lấy giá trị từ sự kiện tìm kiếm
 
-    this.filteredCategory = this.items?.filter(
+    this.filteredCategory = this.itemss?.filter(
       (item) => item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
     );
   }
@@ -104,9 +105,9 @@ export class ShoesComponent implements OnInit {
     this.filteredBrand = this.items;
 
     this.categoryService.getAllCategory().subscribe((data: any) => {
-      this.items = data;
+      this.itemss = data;
     });
-    this.filteredCategory = this.items;
+    this.filteredCategory = this.itemss;
 
     this.statuses = [
       { label: "In Stock", value: "INSTOCK" },

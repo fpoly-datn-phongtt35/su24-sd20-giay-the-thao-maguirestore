@@ -14,7 +14,7 @@ import com.datn.maguirestore.payload.request.DiscountDetailsRequest;
 import com.datn.maguirestore.payload.request.UpdateDiscountDetailsRequest;
 import com.datn.maguirestore.payload.response.UpdateDiscountDetailsResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
-import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
+import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
 import java.util.List;
@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class DiscountDetailsService {
 
-    private final DiscountShoesDetailsRepository discountDetailsRepository;
+    private final DiscountDetailsRepository discountDetailsRepository;
 
     private final DiscountRepository discountRepository;
     private final ShoesRepository shoesRepository;

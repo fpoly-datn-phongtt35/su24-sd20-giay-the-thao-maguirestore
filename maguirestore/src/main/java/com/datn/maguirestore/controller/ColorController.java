@@ -23,10 +23,9 @@ public class ColorController {
     private final ColorService colorService;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("")
+    @PostMapping("/")
     public ResponseEntity<ColorDTO> createColor(@RequestBody ColorDTO colorDTO) throws URISyntaxException {
         log.debug("REST request to save Color : {}", colorDTO);
-
         ColorDTO result = colorService.save(colorDTO);
         return ResponseEntity.created(new URI("/api/v1/color" + result.getId())).body(result);
     }
@@ -43,11 +42,17 @@ public class ColorController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("")
+    @GetMapping("/")
     public ResponseEntity<List<ColorDTO>> getAllColor() {
         log.debug("REST request to get a page of Color");
-
         return ResponseEntity.ok(colorService.findAll());
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/removed")
+    public ResponseEntity<List<ColorDTO>> getColorRemoved() {
+        log.debug("REST request to get a page of Color");
+        return ResponseEntity.ok(colorService.findRemoved());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
