@@ -18,9 +18,9 @@
                 <th>Mã</th>
                 <th>Tên</th>
                 <!-- <th>Trạng thái</th> -->
-                <th>Người cập nhật</th>
-                <th>Ngày cập nhật</th>
-                <th></th>
+                <!-- <th>Người cập nhật</th>
+                <th>Ngày cập nhật</th> -->
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-Category let-editing="editing" let-ri="rowIndex">
@@ -47,12 +47,12 @@
                     </p-cellEditor>
                 </td>
                 <!-- <td>{{ Category.status?'hoạt động':'dừng' }}</td> -->
-                <td>{{ Category.lastModifiedBy }}</td>
-                <td>{{ Category.lastModifiedDate | date: 'dd/MM/yyyy'}}</td>
+                <!-- <td>{{ Category.lastModifiedBy }}</td>
+                <td>{{ Category.lastModifiedDate | date: 'dd/MM/yyyy'}}</td> -->
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-spin pi-cog" style="font-Category: 2rem" (click)="onRowEditInit(Category)" class="p-button-rounded p-button-text"></button>
-                        <!-- <button *ngIf="editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-trash" style="font-Category: 2rem" (click)="onRowDeleteInit(Category.id)" class="p-button-rounded p-button-text"></button> -->
+                        <button *ngIf="editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-trash" style="font-Category: 2rem" (click)="onRowDeleteInit(Category.id)" class="p-button-rounded p-button-text"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(Category)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
                         <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(Category, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
                     </div>

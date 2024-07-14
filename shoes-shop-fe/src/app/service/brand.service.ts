@@ -8,12 +8,14 @@ import { BrandSave } from "../model/AddBrand";
   providedIn: "root",
 })
 export class BrandService {
-  private apiUrl = "http://localhost:8080/api/v1/brand";
+  private apiUrl = "http://localhost:8088/api/v1/brand";
 
   constructor(private http: HttpClient) {}
-
-  getBrand() {
-    return this.http.get(this.apiUrl + "/brands");
+  getAllBrand() {
+    return this.http.get(this.apiUrl + "/all");
+  }
+  getBrand(keyword?: string) {
+    return this.http.get(this.apiUrl + "?keyword=" + keyword);
   }
   getBrandRemoved() {
     return this.http.get(this.apiUrl + "/removed");
