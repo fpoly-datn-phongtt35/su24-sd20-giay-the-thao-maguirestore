@@ -139,6 +139,15 @@ export class SizeComponent implements OnInit {
       // Hiển thị thông báo lỗi nếu có lỗi
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please correct the errors before saving.' });
     } else {
+
+       // Kiểm tra trùng tên
+       const checkEqual = this.Size.find(o => o.name === this.newSize.name);
+       if (checkEqual) {
+         // Nếu có tên trùng, hiển thị thông báo lỗi
+         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Size name already exists.' });
+         return;
+       }
+
       // Nếu không có lỗi, thực hiện lưu dữ liệu
       this.SizeService.saveSize(this.newSize).subscribe(
         (response: SizeData) => {

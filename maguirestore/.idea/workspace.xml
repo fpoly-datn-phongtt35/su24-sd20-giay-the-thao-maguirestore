@@ -7,6 +7,8 @@
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" afterDir="false" />
@@ -48,6 +50,17 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller" />
   </component>
   <component name="RecentsManager">
@@ -90,6 +103,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="maguirestore" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -121,6 +137,17 @@
       <workItem from="1719756224293" duration="412000" />
       <workItem from="1719757194749" duration="459000" />
       <workItem from="1719757883085" duration="4093000" />
+      <workItem from="1719919501626" duration="1518000" />
+      <workItem from="1720081770778" duration="1015000" />
+      <workItem from="1720085380019" duration="5709000" />
+      <workItem from="1720101522844" duration="1846000" />
+      <workItem from="1720515492812" duration="31000" />
+      <workItem from="1720515547801" duration="669000" />
+      <workItem from="1720516240562" duration="1911000" />
+      <workItem from="1720518882749" duration="158000" />
+      <workItem from="1720519061150" duration="972000" />
+      <workItem from="1720538971384" duration="87000" />
+      <workItem from="1720539071359" duration="711000" />
       <workItem from="1719919501626" duration="1080000" />
     </task>
     <servers />

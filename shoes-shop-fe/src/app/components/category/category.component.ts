@@ -143,6 +143,14 @@ export class CategoryComponent {
       // Hiển thị thông báo lỗi nếu có lỗi
       this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please correct the errors before saving.' });
     } else {
+      // Kiểm tra trùng tên
+      const checkEqual = this.Category.find(o => o.name === this.newCategory.name);
+      if (checkEqual) {
+        // Nếu có tên trùng, hiển thị thông báo lỗi
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Category name already exists.' });
+        return;
+      }
+
       // Nếu không có lỗi, thực hiện lưu dữ liệu
       this.CategoryService.saveCategory(this.newCategory).subscribe(
         (response: CategoryData) => {
