@@ -34,7 +34,7 @@ public class ShoesDetailsController {
     private final ShoesDetailsRepository shoesDetailsRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/shoes-details")
+    @PostMapping()
     public ResponseEntity<ShoesDetailsDTO> createShoesDetails(@RequestBody ShoesDetailCreateRequest request)
             throws URISyntaxException {
         log.debug("REST request to save ShoesDetails : {}", request);
@@ -44,7 +44,7 @@ public class ShoesDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/shoes-details/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ShoesDetailsDTO> updateShoesDetails(
             @PathVariable(value = "id", required = false) final Long id, @RequestBody ShoesDetailsDTO shoesDetailsDTO)
             throws URISyntaxException {
@@ -55,21 +55,21 @@ public class ShoesDetailsController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes-details")
+    @GetMapping()
     public ResponseEntity<List<ShoesDetailsDTO>> getAllShoesDetails() {
         log.debug("REST request to get a page of ShoesDetails");
         return ResponseEntity.ok(shoesDetailsService.fillAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/shoes-details/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ShoesDetailsDTO> getById(@PathVariable Long id) {
         log.debug("REST request to get a page of ShoesDetails");
         return ResponseEntity.ok(shoesDetailsService.findById(id));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/shoes-details/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteShoesDetails(@PathVariable Long id) {
         log.debug("REST request to delete ShoesDetails : {}", id);
         shoesDetailsService.delete(id);
