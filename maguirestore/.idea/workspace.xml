@@ -6,15 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" afterDir="false" />
-=======
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" afterDir="false" />
->>>>>>> 388f385586c9d18c1c00d263f98128f32866213e
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +51,8 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-=======
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../DATN/su24-sd20-giay-the-thao-maguirestore/maguirestore" />
->>>>>>> 388f385586c9d18c1c00d263f98128f32866213e
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -111,17 +105,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="maguirestore" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
@@ -150,21 +133,18 @@
       <workItem from="1719919501626" duration="1518000" />
       <workItem from="1720081770778" duration="1015000" />
       <workItem from="1720085380019" duration="5709000" />
-<<<<<<< HEAD
       <workItem from="1720101522844" duration="2442000" />
       <workItem from="1720250708137" duration="1909000" />
       <workItem from="1720359237446" duration="312000" />
       <workItem from="1720359613870" duration="1072000" />
       <workItem from="1720429270167" duration="3216000" />
       <workItem from="1720689388621" duration="9000" />
-=======
       <workItem from="1720101522844" duration="1846000" />
       <workItem from="1720515492812" duration="31000" />
       <workItem from="1720515547801" duration="669000" />
       <workItem from="1720516240562" duration="1911000" />
       <workItem from="1720518882749" duration="158000" />
       <workItem from="1720519061150" duration="972000" />
->>>>>>> 388f385586c9d18c1c00d263f98128f32866213e
     </task>
     <servers />
   </component>
