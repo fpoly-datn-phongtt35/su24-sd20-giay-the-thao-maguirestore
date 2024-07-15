@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +45,6 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../DATN/su24-sd20-giay-the-thao-maguirestore/maguirestore" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
