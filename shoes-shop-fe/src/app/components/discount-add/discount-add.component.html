@@ -1,0 +1,345 @@
+<div class="container-fuild">
+    <div class="card">
+      <div class="card-body">
+        <form action="" [formGroup]="formDiscount">
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+                <div class="col-10">
+                  <div class="flex align-items-center justify-content-between">
+                    <h3>Chương trình khuyến mãi</h3>
+                  </div>
+                </div>
+                <div class="col-2">
+                  <div class="flex align-items-center flex-row-reverse">
+                    <p-button label="Lưu" (click)="saveFormDiscount()"></p-button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="categoryCode">Mã khuyến mãi</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="discountCode"
+                      aria-describedby="emailHelp"
+                      placeholder="Nhập mã khuyến mãi"
+                      formControlName="code"
+                    />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="categoryCode">Tên khuyến mãi</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="discountName"
+                      aria-describedby="emailHelp"
+                      placeholder="Nhập tên khuyến mãi"
+                      formControlName="name"
+                      required
+                    />
+                    <small
+                      class="p-error"
+                      *ngIf="
+                        formDiscount.get('name')?.hasError('required') &&
+                        isFormControlInvalidAndTouched('name')
+                      "
+                    >
+                      Tên khuyến mãi không được để trống.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect2"
+                      >Hình thức khuyến mãi</label
+                    >
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect2"
+                      formControlName="discountMethod"
+                      (change)="isVisiable()"
+                    >
+                      <option value="" disabled selected>
+                        --Chọn hình thức--
+                      </option>
+                      <option
+                        *ngFor="let discountMethod of discountMethods"
+                        value="{{ discountMethod.id }}"
+                      >
+                        {{ discountMethod.name }}
+                      </option>
+                    </select>
+                    <small
+                      class="p-error"
+                      *ngIf="
+                        formDiscount
+                          .get('discountMethod')
+                          ?.hasError('required') &&
+                        isFormControlInvalidAndTouched('discountMethod')
+                      "
+                    >
+                      Hình thức khuyến mãi không được để trống.
+                    </small>
+                  </div>
+                </div>
+                <div
+                  class="col-6"
+                  *ngIf="
+                    formDiscount.controls['discountMethod'].value == '1' ||
+                    formDiscount.controls['discountMethod'].value == '2'
+                  "
+                >
+                  <div class="form-group">
+                    <label for="categoryCode">Giảm giá</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="discountName"
+                      aria-describedby="emailHelp"
+                      placeholder="Nhập số phần trăm giảm"
+                      formControlName="discountAmount"
+                      [required]="
+                        formDiscount.controls['discountMethod'].value == '1' ||
+                        formDiscount.controls['discountMethod'].value == '2'
+                      "
+                    />
+                    <small
+                      class="p-error"
+                      *ngIf="
+                        formDiscount
+                          .get('discountAmount')
+                          ?.hasError('required') &&
+                        isFormControlInvalidAndTouched('discountAmount')
+                      "
+                    >
+                      Giảm giá không được để trống.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="categoryCode">Ngày hiệu lực</label>
+                    <input
+                      type="datetime-local"
+                      class="form-control"
+                      id="discountName"
+                      aria-describedby="emailHelp"
+                      formControlName="startDate"
+                      required=""
+                    />
+                    <small
+                      class="p-error"
+                      *ngIf="
+                        formDiscount.get('startDate')?.hasError('required') &&
+                        isFormControlInvalidAndTouched('startDate')
+                      "
+                    >
+                      Ngày hiệu lực không được để trống.
+                    </small>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="categoryCode">Ngày hết hiệu lực</label>
+                    <input
+                      type="datetime-local"
+                      class="form-control"
+                      id="discountName"
+                      aria-describedby="emailHelp"
+                      formControlName="endDate"
+                      required=""
+                    />
+                    <small
+                      class="p-error"
+                      *ngIf="
+                        formDiscount.get('endDate')?.hasError('required') &&
+                        isFormControlInvalidAndTouched('endDate')
+                      "
+                    >
+                      Ngày hết hiệu lực không được để trống.
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-10">
+                  <h4>Giày</h4>
+                </div>
+                <div class="col-2">
+                  <div class="flex align-items-center flex-row-reverse">
+                    <p-button
+                      label="Thêm giày"
+                      (click)="openShoesDetailsDialog()"
+                    ></p-button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <p-table
+                    *ngIf="enable"
+                    [value]="
+                      formDiscount.controls.discountShoesDetailsDTOS.controls
+                    "
+                    [tableStyle]="{ 'min-width': '60rem' }"
+                    styleClass="p-datatable-gridlines table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline"
+                    formArrayName="discountShoesDetailsDTOS"
+                  >
+                    <ng-template pTemplate="header">
+                      <tr>
+                        <th>STT</th>
+                        <th>Tên giày</th>
+                        <th>Nhãn hiệu</th>
+                        <th
+                          *ngIf="
+                            formDiscount.controls['discountMethod'].value ===
+                              '3' ||
+                            formDiscount.controls['discountMethod'].value === '4'
+                          "
+                        >
+                          Khuyến mãi
+                        </th>
+                        <th></th>
+                      </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-shoes let-index="rowIndex">
+                      <tr
+                        [formGroupName]="index"
+                        *ngIf="shoes.value.status === 1"
+                      >
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ shoes.value.brand + " " + shoes.value.name }}</td>
+                        <td>{{ shoes.value.brand }}</td>
+                        <td
+                          *ngIf="
+                            formDiscount.controls['discountMethod'].value ===
+                              '3' ||
+                            formDiscount.controls['discountMethod'].value === '4'
+                          "
+                        >
+                          <input
+                            formControlName="discountAmount"
+                            class="form-control"
+                          />
+                        </td>
+                        <td class="table-action">
+                          <a
+                            type="button"
+                            href="javascript:void(0);"
+                            class="action-icon"
+                            (click)="deleteShoesDetails(index)"
+                          >
+                            <i class="mdi mdi-delete"></i
+                          ></a>
+                        </td>
+                      </tr>
+                    </ng-template>
+                  </p-table>
+                  <br />
+                  <br />
+                  <!-- <pre>{{ formDiscount.value | json }}</pre> -->
+                </div>
+              </div>
+              <div class="dialog">
+                <p-toast></p-toast>
+                <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <p-dialog
+    header="Thêm mới giá trị"
+    [(visible)]="shoesDetailsDialog"
+    [modal]="true"
+    styleClass="container-fuild"
+    [draggable]="false"
+    [resizable]="true"
+  >
+    <div class="row">
+      <div class="col-12">
+        <div class="card flex justify-content-center">
+          <h5>Thương Hiệu</h5>
+          <p-selectButton
+            [options]="brandOptions"
+            [(ngModel)]="selectedBrand"
+            optionLabel="name"
+            (onOptionClick)="fetchProducts()"
+            optionValue="value"
+            #tablos
+          >
+          </p-selectButton>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p-table
+          #dt1
+          dataKey="id"
+          [value]="shoesDetails"
+          [tableStyle]="{ 'min-width': '60rem' }"
+          styleClass="p-datatable-gridlines table table-centered w-100 dt-responsive nowrap dataTable no-footer dtr-inline"
+          [paginator]="true"
+          [rows]="10"
+          [rowsPerPageOptions]="[10, 25, 50]"
+          [(selection)]="selectedShoes"
+          [globalFilterFields]="['shoesCode', 'name']"
+        >
+          <ng-template pTemplate="caption">
+            <div class="flex">
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input
+                  pInputText
+                  type="text"
+                  (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Nhập mã hoặc tên giày"
+                />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
+              <th>Tên giày</th>
+              <th>Hãng</th>
+              <th>Giá</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-shoes let-index="rowIndex">
+            <tr>
+              <td>
+                <p-tableCheckbox [value]="shoes"></p-tableCheckbox>
+              </td>
+              <td>
+                {{ shoes.name }}
+                <span *ngIf="shoes.discount_method" style="margin-bottom: 15px">
+                  <p-badge value="salling"></p-badge>
+                </span>
+              </td>
+              <td>
+                {{ shoes.brandName }}
+              </td>
+              <td>{{ shoes.price | currency : "VND" }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="col-12">
+        <p-button label="Lưu" (click)="pushShoes()"></p-button>
+      </div>
+    </div>
+  </p-dialog>
+  
