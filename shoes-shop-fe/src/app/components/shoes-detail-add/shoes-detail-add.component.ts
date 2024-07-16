@@ -163,22 +163,22 @@ export class ShoesDetailAddComponent implements OnInit {
     //   this.shoesVariantsList = response.shoesVariantsList;
     // });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/shoes")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes")
       .subscribe((response) => {
         this.shoes = response;
       });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/sizes")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/sizes")
       .subscribe((response) => {
         this.sizes = response;
       });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/colors")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/color/")
       .subscribe((response) => {
         this.colors = response;
       });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/shoes-details")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes-details")
       .subscribe((response) => {
         this.shoesVariantsList = response;
       });
