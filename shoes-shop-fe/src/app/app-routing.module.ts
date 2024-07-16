@@ -12,10 +12,17 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
 // import { ProductComponent } from "./components/product/product.component";
 // import { BrandComponent } from "./components/brand/brand.component";
 // import { OderComponent } from "./components/oder/oder.component";
+<<<<<<< HEAD
 import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
 import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 // import { DiscountComponent } from "./components/discount/discount.component";
 // import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
+=======
+// import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
+// import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
+import { DiscountComponent } from "./components/discount/discount.component";
+import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
+>>>>>>> 8205cab5cb8655935bf7a7968fc9d6e941eb21a3
 import { ColorComponent } from "./components/color/color.component";
 // import { SizeComponent } from "./components/size/size.component";
 // import { UserComponent } from "./components/user/user.component";
@@ -69,10 +76,10 @@ const routes: Routes = [
       //   component: ShoesCategoryComponent,
       // },
       { path: "brand", component: BrandComponent },
-      // { path: "discount", component: DiscountComponent },
+      { path: "discount", component: DiscountComponent },
       // { path: "order-returns", component: OrderReturnAdminComponent },
-      // { path: "discount-add", component: DiscountAddComponent },
-      // { path: "discount-details/:id", component: DiscountAddComponent },
+      { path: "discount-add", component: DiscountAddComponent },
+      { path: "discount-details/:id", component: DiscountAddComponent },
       // {
       //   path: "order-return-details/:id",
       //   component: OrderReturnDetailsComponent,

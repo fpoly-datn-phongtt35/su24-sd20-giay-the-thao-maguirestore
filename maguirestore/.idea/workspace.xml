@@ -5,16 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-constants.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DashBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DashBoardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/size.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/size.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +136,7 @@
       <workItem from="1721126727024" duration="3808000" />
       <workItem from="1721137647116" duration="645000" />
       <workItem from="1721139255571" duration="652000" />
-      <workItem from="1721140923714" duration="853000" />
+      <workItem from="1721140923714" duration="1701000" />
     </task>
     <servers />
   </component>
