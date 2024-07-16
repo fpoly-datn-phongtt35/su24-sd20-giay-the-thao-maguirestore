@@ -13,19 +13,19 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ShoesCreateRequest {
-    private Long id;
+//    private Long id;
 
     private String code;
 
     private String name;
 
-    private String description;
+   // private String description;
 
-    private Integer status;
+   // private Integer status;
 
-    private String createdBy;
+    //private String createdBy;
 
-    private Instant createdDate;
+    //private Instant createdDate;
 
     private Long brandId;
 
