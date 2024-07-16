@@ -11,7 +11,9 @@ export class SizeService {
   private apiUrl = "http://localhost:8088/api/v1/sizes";
 
   constructor(private http: HttpClient) {}
-
+  getAllSize() {
+    return this.http.get(this.apiUrl + "/all");
+  }
   getSize() {
     return this.http.get(this.apiUrl);
   }

@@ -55,8 +55,8 @@ import { DropdownModule } from "primeng/dropdown";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ToastModule } from "primeng/toast";
 // import { OderComponent } from "./components/oder/oder.component";
-// import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
-// import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
+import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
+import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 import { TabViewModule } from "primeng/tabview";
 // import { DiscountComponent } from "./components/discount/discount.component";
 // import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
@@ -77,7 +77,7 @@ import { MultiSelectModule } from "primeng/multiselect";
 // import { LandingComponent } from "./components/landing/landing.component";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { SliderModule } from "primeng/slider";
-// import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
+//import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
 // import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
@@ -122,8 +122,8 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // ProductComponent,
     BrandComponent,
     // OderComponent,
-    // ShoesDetailComponent,
-    // ShoesDetailAddComponent,
+    ShoesDetailComponent,
+    ShoesDetailAddComponent,
     // DiscountComponent,
     // DiscountAddComponent,
     ColorComponent,
@@ -134,7 +134,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // LandingComponent,
     ClientHomeComponent,
     CartComponent,
-    // ShoesInspectComponent,
+    //ShoesInspectComponent,
     // OrderDetailsComponent,
     // PayComponent,
     LoginCustomerComponent,

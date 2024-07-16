@@ -12,8 +12,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
 // import { ProductComponent } from "./components/product/product.component";
 // import { BrandComponent } from "./components/brand/brand.component";
 // import { OderComponent } from "./components/oder/oder.component";
-// import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
-// import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
+import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
+import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 // import { DiscountComponent } from "./components/discount/discount.component";
 // import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
 import { ColorComponent } from "./components/color/color.component";
@@ -81,9 +81,9 @@ const routes: Routes = [
       { path: "size", component: SizeComponent },
       { path: "category", component: CategoryComponent },
       // { path: "orders", component: OderComponent },
-      // { path: "shoes-detail", component: ShoesDetailComponent },
+      { path: "shoes-detail", component: ShoesDetailComponent },
       { path: "shoes", component: ShoesComponent },
-      // { path: "shoes-detail-add", component: ShoesDetailAddComponent },
+      { path: "shoes-detail-add", component: ShoesDetailAddComponent },
       // { path: "users", component: UserComponent },
       // { path: "order-details/:id", component: OrderDetailsComponent },
       { path: "removedColor", component: ColorRemovedComponent },
@@ -100,8 +100,8 @@ const routes: Routes = [
       { path: "", component: ClientHomeComponent },
       { path: "home", component: ClientHomeComponent },
       { path: "cart", component: CartComponent },
-      // { path: "shoes-detail", component: ShoesInspectComponent },
-      // { path: "shoes-detail/:id", component: ShoesInspectComponent },
+      //{ path: "shoes-detail", component: ShoesInspectComponent },
+      //{ path: "shoes-detail/:id", component: ShoesInspectComponent },
       // { path: "return-order/:id", component: ReturnOrderComponent },
       { path: "shop", component: ShopComponent },
       // { path: "pay", component: PayComponent },

@@ -1,6 +1,8 @@
 export interface ShoesSave {
   code: string;
   name: string;
-  brand: string;
-  category: string;
+  brand: any;
+  category: any;
+  brandId: string;
+  categoryId: string;
 }

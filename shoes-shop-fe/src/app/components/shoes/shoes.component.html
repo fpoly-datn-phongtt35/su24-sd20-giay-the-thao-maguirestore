@@ -152,7 +152,7 @@
       header="Add Shoes"
       [modal]="true"
       [(visible)]="displayAddDialog"
-      [style]="{ width: '30vw' }"
+      [style]="{ width: '30vw', height: 'auto' }"
       [maximizable]="true"
     >
       <div *ngIf="codeError" class="p-error">
@@ -217,6 +217,7 @@
               autoHighlight="true"
               required="true"
               id="float-input-brand"
+              [(ngModel)]="newShoes.brand"
               forceSelection="true"
               [dropdown]="true"
               [style]="{ width: '100%' }"
@@ -243,6 +244,7 @@
               autoHighlight="true"
               required="true"
               id="float-input-category"
+              [(ngModel)]="newShoes.category"
               forceSelection="true"
               [dropdown]="true"
               [style]="{ width: '100%' }"
@@ -253,7 +255,7 @@
           <small class="p-error"> Hãy chọn thể loại. </small>
         </div>
       </li>
-
+      <h1 style="height: 100px"></h1>
       <ng-template pTemplate="footer">
         <p-button
           icon="pi pi-check"

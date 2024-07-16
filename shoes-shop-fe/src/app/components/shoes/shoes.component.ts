@@ -79,7 +79,14 @@ export class ShoesComponent implements OnInit {
   selectedShoesId: number = 0;
   displayAddDialog: boolean = false;
   visible: boolean = false;
-  newShoes: ShoesSave = { code: "", name: "", category: "", brand: "" };
+  newShoes: ShoesSave = {
+    code: "",
+    name: "",
+    category: "",
+    brand: "",
+    brandId: "",
+    categoryId: "",
+  };
 
   constructor(
     private ShoesService: ShoesService,
@@ -241,6 +248,8 @@ export class ShoesComponent implements OnInit {
   onSaveNewShoes() {
     // Kiểm tra lỗi trước khi lưu
     this.validateField("name");
+    console.log(this.loadShoes());
+    console.log(this.newShoes);
 
     if (this.nameError) {
       // Hiển thị thông báo lỗi nếu có lỗi
@@ -250,6 +259,8 @@ export class ShoesComponent implements OnInit {
         detail: "Please correct the errors before saving.",
       });
     } else {
+      this.newShoes.brandId = this.newShoes.brand.id;
+      this.newShoes.categoryId = this.newShoes.category.id;
       // Nếu không có lỗi, thực hiện lưu dữ liệu
       this.ShoesService.saveShoes(this.newShoes).subscribe(
         (response: Shoes) => {
@@ -281,8 +292,18 @@ export class ShoesComponent implements OnInit {
     this.displayAddDialog = false;
   }
   loadShoes() {
+    // this.ShoesService.getShoes().subscribe((data: any) => {
+    //   this.Shoes = data;
+    // });
+
     this.ShoesService.getShoes().subscribe((data: any) => {
-      this.Shoes = data;
+      this.allShoes = data;
+      this.Shoes = this.allShoes.filter((s, index) => {
+        return (
+          this.currentPage * this.page <= index &&
+          index < (this.currentPage + 1) * this.page
+        );
+      });
     });
   }
 }
