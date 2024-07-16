@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class DiscountService {
-  private baseUrl: string = "http://localhost:8088/api/";
+  private baseUrl: string = "http://localhost:8088/api/v1/";
   constructor(private http: HttpClient) {}
   public getDiscounts() {
     return this.http.get<any>(this.baseUrl + "discounts", {

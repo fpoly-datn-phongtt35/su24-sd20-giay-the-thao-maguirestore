@@ -58,8 +58,8 @@ import { ToastModule } from "primeng/toast";
 // import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
 // import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 import { TabViewModule } from "primeng/tabview";
-// import { DiscountComponent } from "./components/discount/discount.component";
-// import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
+import { DiscountComponent } from "./components/discount/discount.component";
+import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
 import { InputNumberModule } from "primeng/inputnumber";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { ColorComponent } from "./components/color/color.component";
@@ -85,7 +85,7 @@ import { LoginCustomerComponent } from "./components/login-customer/login-custom
 import { AboutComponent } from "./components/client/about/about.component";
 import { ContactComponent } from "./components/client/contact/contact.component";
 import { CardModule } from "primeng/card";
-// import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
+import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
 // import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
@@ -124,8 +124,8 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // OderComponent,
     // ShoesDetailComponent,
     // ShoesDetailAddComponent,
-    // DiscountComponent,
-    // DiscountAddComponent,
+    DiscountComponent,
+    DiscountAddComponent,
     ColorComponent,
     SizeComponent,
     CategoryComponent,
@@ -141,7 +141,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // RegisterCustomerComponent,
     AboutComponent,
     ContactComponent,
-    // DiscountShoesComponent,
+    DiscountShoesComponent,
     // UserOrderComponent,
     // PaySuccessComponent,
     // PayFaileComponent,
