@@ -16,7 +16,7 @@ import { TagModule } from "primeng/tag";
 import { ButtonModule } from "primeng/button";
 import { RatingModule } from "primeng/rating";
 // import { HomeComponent } from "./components/home/home.component";
-// import { ShopComponent } from "./components/shop/shop.component";
+import { ShopComponent } from "./components/shop/shop.component";
 // import { ManageComponent } from "./components/manage/manage.component";
 import { TableModule } from "primeng/table";
 import { DialogModule } from "primeng/dialog";
@@ -71,8 +71,8 @@ import { CommonModule } from "@angular/common";
 import { PanelMenuModule } from "primeng/panelmenu";
 import { StyleClassModule } from "primeng/styleclass";
 import { MenuModule } from "primeng/menu";
-// import { ClientHomeComponent } from "./components/client/home/client.home.component";
-// import { CartComponent } from "./components/client/cart/cart.component";
+import { ClientHomeComponent } from "./components/client/home/client.home.component";
+import { CartComponent } from "./components/client/cart/cart.component";
 import { MultiSelectModule } from "primeng/multiselect";
 // import { LandingComponent } from "./components/landing/landing.component";
 import { SelectButtonModule } from "primeng/selectbutton";
@@ -82,8 +82,8 @@ import { SliderModule } from "primeng/slider";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
 // import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
-// import { AboutComponent } from "./components/client/about/about.component";
-// import { ContactComponent } from "./components/client/contact/contact.component";
+import { AboutComponent } from "./components/client/about/about.component";
+import { ContactComponent } from "./components/client/contact/contact.component";
 import { CardModule } from "primeng/card";
 // import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
@@ -111,7 +111,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
   declarations: [
     AppComponent,
     // HomeComponent,
-    // ShopComponent,
+    ShopComponent,
     // ManageComponent,
     HeaderComponent,
     FooterComponent,
@@ -132,15 +132,15 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // UserComponent,
     DashboardComponent,
     // LandingComponent,
-    // ClientHomeComponent,
-    // CartComponent,
+    ClientHomeComponent,
+    CartComponent,
     // ShoesInspectComponent,
     // OrderDetailsComponent,
     // PayComponent,
     LoginCustomerComponent,
     // RegisterCustomerComponent,
-    // AboutComponent,
-    // ContactComponent,
+    AboutComponent,
+    ContactComponent,
     // DiscountShoesComponent,
     // UserOrderComponent,
     // PaySuccessComponent,
