@@ -8,7 +8,7 @@ import { ColorSave } from '../model/AddColor';
   providedIn: 'root'
 })
 export class ColorService {
-  private apiUrl = 'http://localhost:8080/api/v1/color';
+  private apiUrl = 'http://localhost:8088/api/v1/color';
 
   constructor(private http: HttpClient) { }
 
