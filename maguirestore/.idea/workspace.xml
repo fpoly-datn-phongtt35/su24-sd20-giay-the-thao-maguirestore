@@ -5,25 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DashBoardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DashBoardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +50,9 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
@@ -137,6 +122,7 @@
       <workItem from="1721137647116" duration="645000" />
       <workItem from="1721139255571" duration="652000" />
       <workItem from="1721140923714" duration="1701000" />
+      <workItem from="1721307082995" duration="132000" />
     </task>
     <servers />
   </component>
@@ -144,6 +130,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="RECENT_FILTERS">
       <map>
         <entry key="Branch">
