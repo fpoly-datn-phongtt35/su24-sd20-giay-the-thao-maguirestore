@@ -66,7 +66,7 @@
             <span class="p-float">
               <p-inputNumber
                 id="p-float"
-                formControlName="import_price"
+                formControlName="importPrice"
                 inputId="currency-vn"
                 mode="currency"
                 currency="VND"
@@ -74,18 +74,18 @@
                 ocale="vi-VN"
                 max="999999999"
                 [class.ng-invalid]="
-                  isFormControlInvalidAndTouched('import_price')
+                  isFormControlInvalidAndTouched('importPrice')
                 "
                 [class.ng-dirty]="
-                  isFormControlInvalidAndTouched('import_price')
+                  isFormControlInvalidAndTouched('importPrice')
                 "
               >
               </p-inputNumber>
               <small
                 class="p-error mx-2"
                 *ngIf="
-                  formGroup.get('import_price')?.hasError('required') &&
-                  isFormControlInvalidAndTouched('import_price')
+                  formGroup.get('importPrice')?.hasError('required') &&
+                  isFormControlInvalidAndTouched('importPrice')
                 "
               >
                 Hãy nhập giá thu.
@@ -137,7 +137,7 @@
               <small
                 class="p-error mx-2"
                 *ngIf="
-                  formGroup.get('import_price')?.hasError('required') &&
+                  formGroup.get('importPrice')?.hasError('required') &&
                   isFormControlInvalidAndTouched('tax')
                 "
               >
@@ -375,8 +375,8 @@
             <th pSortableColumn="tax" style="min-width: 10rem">
               Thuế <p-sortIcon field="tax"></p-sortIcon>
             </th>
-            <th pSortableColumn="import_price" style="min-width: 10rem">
-              Giá Nhập(VNĐ) <p-sortIcon field="import_price"></p-sortIcon>
+            <th pSortableColumn="importPrice" style="min-width: 10rem">
+              Giá Nhập(VNĐ) <p-sortIcon field="importPrice"></p-sortIcon>
             </th>
 
             <th pSortableColumn="price" style="min-width: 10rem">
@@ -400,13 +400,13 @@
             </td>
             <td>{{ product.code }}</td>
             <td>
-              {{ product.brand.name + " " + product.shoes.name }} [{{
+              {{ product.shoes.name }} [{{
                 product.color.name
               }}
               - {{ product.size.name }}]
             </td>
             <td>{{ product.tax | currency : "VND" }}</td>
-            <td>{{ product.import_price | currency : "VND" }}</td>
+            <td>{{ product.importPrice | currency : "VND" }}</td>
             <td>{{ product.price | currency : "VND" }}</td>
             <td>{{ product.quantity }}</td>
             <td>
@@ -489,21 +489,21 @@
             >
           </div>
           <div class="p-field">
-            <label for="import_price">Import Price (VNĐ)</label>
+            <label for="importPrice">Import Price (VNĐ)</label>
             <p-inputNumber
-              value="{{ product.import_price }}"
+              value="{{ product.importPrice }}"
               type="number"
-              id="import_price"
+              id="importPrice"
               mode="currency"
               currency="VND"
               styleClass="w-full"
               locale="vi-VN"
               max="999999999"
               min="0"
-              [(ngModel)]="product.import_price"
+              [(ngModel)]="product.importPrice"
             >
             </p-inputNumber>
-            <small class="p-error" *ngIf="product.import_price == null"
+            <small class="p-error" *ngIf="product.importPrice == null"
               >import price must >= 0.</small
             >
           </div>

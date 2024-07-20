@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -26,6 +27,9 @@ public class DiscountDetails extends AbstractAuditingEntity<Long> implements Ser
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "discount_amount", precision = 21, scale = 2)
+    private BigDecimal discountAmount;
+
     @Column(name = "status")
     private Integer status;
 
@@ -35,6 +39,9 @@ public class DiscountDetails extends AbstractAuditingEntity<Long> implements Ser
 
     @ManyToOne
     @JsonIgnore
+    @JoinColumn(name = "shoes_id")
     private Shoes shoes;
 
+    @Column(name = "brand_id")
+    private Long brandId;
 }

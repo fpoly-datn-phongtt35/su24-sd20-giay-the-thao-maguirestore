@@ -29,6 +29,9 @@ public class ShoesDetails extends AbstractAuditingEntity<Long> implements Serial
   @Column(name = "id")
   private Long id;
 
+  @Column(name = "code")
+  private String code;
+
   @Column(name = "price")
   private Float price;
 
@@ -48,8 +51,12 @@ public class ShoesDetails extends AbstractAuditingEntity<Long> implements Serial
   private Integer status;
 
   @ManyToOne
-  @JoinColumn(name = "shoes_id")
+  @JoinColumn
   private Shoes shoes;
+
+  @ManyToOne
+  @JoinColumn(name = "brand_id")
+  private Brand brand;
 
   @ManyToOne
   @JoinColumn(name = "size_id")
