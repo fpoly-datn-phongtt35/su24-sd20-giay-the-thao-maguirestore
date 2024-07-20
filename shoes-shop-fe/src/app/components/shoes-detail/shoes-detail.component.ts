@@ -15,7 +15,7 @@ interface Product {
   id: number;
   code: string;
   price: number;
-  import_price: number;
+  importPrice: number;
   tax: number;
   quantity: number;
   description: string;
@@ -76,7 +76,7 @@ export class ShoesDetailComponent {
       id: [null, Validators.required],
       code: [null, Validators.required],
       price: [null, Validators.required],
-      import_price: [null, Validators.required],
+      importPrice: [null, Validators.required],
       tax: [null, Validators.required],
       quantity: [null, Validators.required],
       description: [null, Validators.required],
@@ -108,7 +108,7 @@ export class ShoesDetailComponent {
       accept: () => {
         this.selectedProducts?.every((e) => {
           this.http.delete(
-            AppConstants.BASE_URL_API + "/api/shoes-details/" + e.id
+            AppConstants.BASE_URL_API + "/api/v1/shoes-details/" + e.id
           );
         });
         this.products = this.products.filter(
@@ -140,7 +140,7 @@ export class ShoesDetailComponent {
       id: productData.id,
       code: productData.code,
       price: productData.price,
-      import_price: productData.import_price,
+      importPrice: productData.importPrice,
       tax: productData.tax,
       quantity: productData.quantity,
       description: productData.description,
@@ -157,7 +157,7 @@ export class ShoesDetailComponent {
       accept: () => {
         this.http
           .delete(
-            AppConstants.BASE_URL_API + "/api/shoes-details/" + product.id
+            AppConstants.BASE_URL_API + "/api/v1/shoes-details/" + product.id
           )
           .subscribe(
             (response) => {
@@ -209,8 +209,8 @@ export class ShoesDetailComponent {
           this.product.id = this.productForm.get("id")?.value;
           this.product.code = this.productForm.get("code")?.value;
           this.product.price = this.productForm.get("price")?.value;
-          this.product.import_price =
-            this.productForm.get("import_price")?.value;
+          this.product.importPrice =
+            this.productForm.get("importPrice")?.value;
           this.product.tax = this.productForm.get("tax")?.value;
           this.product.quantity = this.productForm.get("quantity")?.value;
           this.product.description = this.productForm.get("description")?.value;
@@ -233,7 +233,7 @@ export class ShoesDetailComponent {
           });
           this.http
             .put<any>(
-              "http://localhost:8088/api/shoes-details-image",
+              "http://localhost:8088/api/v1/shoes-details/shoes-details-image",
               objectTest,
               httpOptions
             )
@@ -251,7 +251,7 @@ export class ShoesDetailComponent {
                     producty.tax = response.tax;
                     producty.description = response.description;
                     producty.quantity = response.quantity;
-                    producty.import_price = response.import_price;
+                    producty.importPrice = response.importPrice;
                     producty.price = response.price;
                     producty.status = response.status;
                     if (producty.status != sts)

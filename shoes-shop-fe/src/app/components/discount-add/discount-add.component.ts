@@ -140,7 +140,7 @@ export class DiscountAddComponent implements OnInit {
 
     // Gửi yêu cầu POST
     this.http
-      .post<any>("http://localhost:8088/api/shoes-details/shop", searchData)
+      .post<any>("http://localhost:8088/api/v1/shoes-details/shop", searchData)
       .subscribe(
         (data) => {
           this.shoesDetails = data;

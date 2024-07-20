@@ -27,7 +27,7 @@ export interface ShoesDetail {
   id?: number;
   code: string;
   price: number;
-  import_price: number;
+  importPrice: number;
   tax: number;
   quantity: number;
   status: number;
@@ -111,7 +111,7 @@ export class ShoesDetailAddComponent implements OnInit {
       checked: [false, Validators.required],
       brand: [null, Validators.required],
       description: [null, Validators.required],
-      import_price: [
+      importPrice: [
         null,
         [Validators.required, Validators.min(0), Validators.max(999999999)],
       ],
@@ -285,21 +285,22 @@ export class ShoesDetailAddComponent implements OnInit {
             const objectTest = new FormData();
             const { images, ...variantWithoutImages } = variant;
             console.log(variantWithoutImages);
-            let jsonBlob = new Blob([JSON.stringify(variant)], {
+            let jsonBlob = new Blob([JSON.stringify(variantWithoutImages)], {
               type: "application/json",
             });
+            console.log("blob");
             objectTest.append(
               "shoesDetailsDTO",
-              jsonBlob,
-              "shoesDetailsDTO.json"
+              jsonBlob
             );
-            console.log(JSON.stringify(variantWithoutImages));
+            
             variant.images.forEach((image) => {
               objectTest.append("images", image);
             });
+            console.log(objectTest);
             this.http
               .post<any>(
-                "http://localhost:8088/api/shoes-details-image",
+                AppConstants.BASE_URL_API + "/api/v1/shoes-details/shoes-details-image",
                 objectTest,
                 httpOptions
               )
@@ -325,7 +326,7 @@ export class ShoesDetailAddComponent implements OnInit {
         });
         this.shoeVariants = [];
         this.http
-          .get<any>(AppConstants.BASE_URL_API + "/api/shoes-details")
+          .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes-details")
           .subscribe((response) => {
             this.shoesVariantsList = response;
           });
@@ -335,7 +336,7 @@ export class ShoesDetailAddComponent implements OnInit {
 
   async generateShoeVariants(selectedColors: any[], selectedSizes: any[]) {
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/shoes-details")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes-details")
       .subscribe((response) => {
         this.shoesVariantsList = response;
       });
@@ -349,17 +350,17 @@ export class ShoesDetailAddComponent implements OnInit {
           status: this.formGroup?.get("checked")?.value == false ? 0 : 1,
           quantity: this.formGroup?.get("quantity")?.value,
           description: this.formGroup?.get("description")?.value,
-          import_price: this.formGroup?.get("import_price")?.value,
+          importPrice: this.formGroup?.get("importPrice")?.value,
           price: this.formGroup?.get("price")?.value,
           tax: this.formGroup?.get("tax")?.value,
-          code: shoes.code + brand.code + color.code + size.code,
+          code: shoes.code + color.code + size.code,
           color: { id: color.id, name: color.name },
           size: { id: size.id, name: size.name },
           images: [...this.uploadedFiles],
         };
         const isCodeFound = await this.fetchProducts(
           shoes.id,
-          brand.id,
+          // brand.id,
           size.id,
           color.id
         );
@@ -402,9 +403,9 @@ export class ShoesDetailAddComponent implements OnInit {
     return variants;
   }
 
-  async fetchProducts(shid: any, brid: any, siid: any, clid: any) {
-    const productId = { shid: shid, brid: brid, siid: siid, clid: clid };
-    const apiUrl = `http://localhost:8088/api/shoes-details/shop/detail`;
+  async fetchProducts(shid: any, siid: any, clid: any) {
+    const productId = { shid: shid, siid: siid, clid: clid };
+    const apiUrl = `http://localhost:8088/api/v1/shoes-details/shop/detail`;
     // Make the HTTP request
     try {
       const response = await this.http.post<any>(apiUrl, productId).toPromise();
@@ -426,9 +427,12 @@ export class ShoesDetailAddComponent implements OnInit {
   }
 
   async showTable() {
-    if (this.formGroup.valid) {
+    // if (this.formGroup.valid) {
       const selectedColors = this.formGroup?.get("color")?.value;
       const selectedSizes = this.formGroup?.get("size")?.value;
+
+      console.log(selectedColors);
+      console.log(selectedSizes);
 
       // Sử dụng await để đợi kết quả từ generateShoeVariants
       this.shoeVariants = await this.generateShoeVariants(
@@ -437,15 +441,15 @@ export class ShoesDetailAddComponent implements OnInit {
       );
       console.log(this.shoeVariants);
       this.displayTable = true;
-    } else {
-      this.markAllFormControlsAsTouched(this.formGroup);
-      this.messageService.add({
-        severity: "error",
-        summary: "ERROR",
-        detail: "Variants Create Validate Error",
-        life: 3000,
-      });
-    }
+    // } else {
+    //   this.markAllFormControlsAsTouched(this.formGroup);
+    //   this.messageService.add({
+    //     severity: "error",
+    //     summary: "ERROR",
+    //     detail: "Variants Create Validate Error",
+    //     life: 3000,
+    //   });
+    // }
   }
 
   deleteSelectedProducts() {
@@ -534,7 +538,9 @@ export class ShoesDetailAddComponent implements OnInit {
     switch (filteredList) {
       case "shoes": {
         this.filteredShoes = filtered;
+        this.filteredBrands = filtered.map(shoe => shoe.brand);
         console.log(this.filteredShoes);
+        console.log(this.filteredBrands);
         break;
       }
 
@@ -546,9 +552,6 @@ export class ShoesDetailAddComponent implements OnInit {
         this.filteredColors = filtered;
         break;
       }
-      // case "categorys": {
-      //   this.filteredCategories = filtered;
-      // }
       default: {
         break;
       }

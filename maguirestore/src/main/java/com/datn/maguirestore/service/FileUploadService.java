@@ -67,11 +67,12 @@ public class FileUploadService {
         fileName);
   }
 
-  public FileUploadDTO save(FileUploadDTO dto) {
-    log.debug("Request to save FileUpload : {}", dto);
-    FileUpload fileUpload = convertToEntity(dto);
+  public FileUpload save(FileUpload fileUpload) {
+//    log.debug("Request to save FileUpload : {}", dto);
+    System.out.println("save file upload");
+//    FileUpload fileUpload = convertToEntity(dto);
     fileUpload = fileUploadRepository.save(fileUpload);
-    return convertToDto(fileUpload);
+    return fileUpload;
   }
 
   public FileUploadDTO update(FileUploadDTO dto) {
@@ -81,9 +82,9 @@ public class FileUploadService {
   }
 
   @Transactional(readOnly = true)
-  public Optional<FileUploadDTO> findByFilePath(String path) {
+  public Optional<FileUpload> findByFilePath(String path) {
     log.debug("Request to get FileUpload : {}", path);
-    return fileUploadRepository.findFirstByFilePath(path).map(this::convertToDto);
+    return fileUploadRepository.findFirstByFilePath(path);
   }
 
   public FileUpload convertToEntity(FileUploadDTO dto) {
@@ -95,8 +96,8 @@ public class FileUploadService {
     fileUpload.setLastModifiedBy(loggedInUser);
     fileUpload.setLastModifiedDate(Instant.now());
     //fileUpload.setId( dto.getId() );
-    fileUpload.setFilePath(dto.getPath());
-    fileUpload.setFileName(dto.getName());
+    fileUpload.setFilePath(dto.getFilePath());
+    fileUpload.setFileName(dto.getFileName());
     fileUpload.setStatus(dto.getStatus());
 
     return fileUpload;
@@ -108,8 +109,8 @@ public class FileUploadService {
     }
     FileUploadDTO fileUploadDTO = new FileUploadDTO();
     //fileUploadDTO.setId( entity.getId() );
-    fileUploadDTO.setPath(entity.getFilePath());
-    fileUploadDTO.setName(entity.getFileName());
+    fileUploadDTO.setFilePath(entity.getFilePath());
+    fileUploadDTO.setFileName(entity.getFileName());
     fileUploadDTO.setStatus(entity.getStatus());
 
     return fileUploadDTO;

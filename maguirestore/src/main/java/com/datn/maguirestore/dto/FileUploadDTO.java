@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class FileUploadDTO {
-//  private Long id;
-  private String path;
-  private String name;
+  private Long id;
+  private String filePath;
+  private String fileName;
   private Integer status;
 
 }

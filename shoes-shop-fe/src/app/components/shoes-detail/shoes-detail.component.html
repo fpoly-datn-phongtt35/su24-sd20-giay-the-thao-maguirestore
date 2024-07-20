@@ -48,8 +48,8 @@
 				<th pSortableColumn="name" style="min-width:15rem">Tên Sản Phẩm <p-sortIcon field="name"></p-sortIcon>
 				</th>
 				<th pSortableColumn="tax" style="min-width:10rem">Thuế <p-sortIcon field="tax"></p-sortIcon>
-				<th pSortableColumn="import_price" style="min-width:10rem">Giá Nhập(VNĐ) <p-sortIcon
-						field="import_price"></p-sortIcon>
+				<th pSortableColumn="importPrice" style="min-width:10rem">Giá Nhập(VNĐ) <p-sortIcon
+						field="importPrice"></p-sortIcon>
 				<th pSortableColumn="price" style="min-width:10rem">Giá Bán(VNĐ) <p-sortIcon field="price"></p-sortIcon>
 				<th pSortableColumn="quantity" style="min-width:10rem">Số Lượng(đôi) <p-sortIcon
 						field="quantity"></p-sortIcon>
@@ -65,9 +65,9 @@
 				</td>
 				<td><img [src]="product.path" [alt]="product.name" width="50" class="shadow-4" /></td>
 				<td>{{ product.code }}</td>
-				<td>{{ product.name +'[' + product.color_name + '-' + product.size_name +']' }}</td>
+				<td>{{ product.shoes.name +'[' + product.color.name + '-' + product.size.name +']' }}</td>
 				<td>{{ product.tax }}</td>
-				<td>{{ product.import_price }}</td>
+				<td>{{ product.importPrice }}</td>
 				<td>{{ product.price }}</td>
 				<td>{{ product.quantity }}</td>
 				<td>
@@ -97,12 +97,12 @@
 			<div class="grid formgrid">
 				<div class="col-12 mt-2 lg:col-4 lg:mb-1">
 					<label for="p-float">Giá mua</label>
-					<p-inputNumber id="p-float" placeholder="Giá Nhập" formControlName="import_price"
+					<p-inputNumber id="p-float" placeholder="Giá Nhập" formControlName="importPrice"
 						inputId="currency-vn" mode="currency" currency="VND" styleClass="w-full" ocale="vi-VN"
-						max="999999999" [class.ng-invalid]="isFormControlInvalidAndTouched('import_price')"
-						[class.ng-dirty]="isFormControlInvalidAndTouched('import_price')"> </p-inputNumber>
+						max="999999999" [class.ng-invalid]="isFormControlInvalidAndTouched('importPrice')"
+						[class.ng-dirty]="isFormControlInvalidAndTouched('importPrice')"> </p-inputNumber>
 					<small class="p-error" *ngIf="  productForm
-.get('import_price')?.hasError('required') && isFormControlInvalidAndTouched('import_price')">
+.get('importPrice')?.hasError('required') && isFormControlInvalidAndTouched('importPrice')">
 						Hãy nhập giá thu.
 					</small>
 
@@ -125,7 +125,7 @@
 						[class.ng-invalid]="isFormControlInvalidAndTouched('tax')"
 						[class.ng-dirty]="isFormControlInvalidAndTouched('tax')">> </p-inputNumber>
 					<small class="p-error" *ngIf="  productForm
-.get('import_price')?.hasError('required') && isFormControlInvalidAndTouched('tax')">
+.get('importPrice')?.hasError('required') && isFormControlInvalidAndTouched('tax')">
 						Hãy nhập thuế.
 					</small>
 				</div>
