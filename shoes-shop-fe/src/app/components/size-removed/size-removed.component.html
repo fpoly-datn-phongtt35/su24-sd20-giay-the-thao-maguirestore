@@ -13,7 +13,7 @@
         editMode="row"
         [tableStyle]="{ 'min-width': '50rem' }"
         [paginator]="true"
-        [rows]="5"
+        [rows]="10"
     >
         <ng-template pTemplate="header">
             <tr>
@@ -22,7 +22,7 @@
                 <th>Tên</th>
                 <!-- <th>Người cập nhật</th>
                 <th>Ngày cập nhật</th> -->
-                <th></th>
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-Size let-editing="editing" let-ri="rowIndex">
