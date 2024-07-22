@@ -11,6 +11,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,9 +37,9 @@ public class FileUploadService {
     List<String> fileUrls = new ArrayList<>();
 
     for (MultipartFile file : files) {
-      String originalFilename = file.getOriginalFilename();
+      String originalFilename = UUID.randomUUID() + file.getOriginalFilename();
 
-      if (originalFilename == null || originalFilename.isEmpty()) {
+      if (originalFilename.isEmpty()) {
         log.error("Trống");
         throw new IllegalArgumentException("Lỗi không lấy được fileName");
       }

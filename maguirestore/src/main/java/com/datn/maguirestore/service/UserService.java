@@ -88,7 +88,6 @@ public class UserService {
 
         String encryptedPassword = passwordEncoder.encode(userDTO.getPassword());
         user.setPassword(encryptedPassword);
-        user.setActivationKey(null);
         user.setCreatedDate(Instant.now());
         user.setActivated(true);
         user.setRole(ERole.ROLE_USER);

@@ -62,11 +62,6 @@ public class User extends AbstractAuditingEntity<Long> implements Serializable {
     @Column(nullable = false)
     private boolean activated = false;
 
-    @Size(max = 20)
-    @Column(name = "activation_key", length = 20)
-    @JsonIgnore
-    private String activationKey;
-
     @Enumerated(EnumType.STRING)
     private ERole role;
 
