@@ -83,7 +83,7 @@ public class AWSS3Config {
     try {
       byteArray = IOUtils.toByteArray(inputStream);
     } catch (IOException e) {
-      e.printStackTrace();
+      e.printStackTrace(System.err);
     }
     return byteArray;
   }
