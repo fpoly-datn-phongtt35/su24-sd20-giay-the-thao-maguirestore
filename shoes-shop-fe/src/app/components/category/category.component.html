@@ -1,0 +1,179 @@
+<div class="card">
+    <p-dialog [(visible)]="displayConfirmDialog" (onHide)="onDeleteCategory(false)">
+        <p-header>
+            <h2>Confirm Delete</h2>
+        </p-header>
+        <p-footer>
+            <button
+                type="button"
+                pButton
+                icon="pi pi-check"
+                (click)="onDeleteCategory(true)"
+                label="Yes"
+            ></button>
+            <button
+                type="button"
+                pButton
+                icon="pi pi-times"
+                (click)="onDeleteCategory(false)"
+                label="No"
+            ></button>
+        </p-footer>
+    </p-dialog>
+
+    <p-toast></p-toast>
+    <input
+        pInputText
+        type="text"
+        placeholder="Tìm kiếm"
+        [(ngModel)]="searchText"
+        (input)="onSearchInputChange()"
+    />
+    <p-table
+        [value]="filteredCategorys.length ? filteredCategorys : Category"
+        dataKey="id"
+        editMode="row"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="10"
+    >
+        <ng-template pTemplate="header">
+            <tr>
+                <th>ID</th>
+                <th>Mã</th>
+                <th>Tên</th>
+                <!-- <th>Trạng thái</th> -->
+                <!-- <th>Người cập nhật</th>
+                <th>Ngày cập nhật</th> -->
+                <th>Action</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-Category let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="Category">
+                <td>{{ Category.id }}</td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="Category.code" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ Category.code }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <input pInputText type="text" [(ngModel)]="Category.name" />
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{ Category.name }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <!-- <td>{{ Category.status?'hoạt động':'dừng' }}</td> -->
+                <!-- <td>{{ Category.lastModifiedBy }}</td>
+                <td>{{ Category.lastModifiedDate | date: 'dd/MM/yyyy'}}</td> -->
+                <td>
+                    <div class="flex align-items-center justify-content-center gap-2">
+                        <button
+                            *ngIf="!editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pInitEditableRow
+                            icon="pi pi-spin pi-cog"
+                            style="font-category: 2rem"
+                            (click)="onRowEditInit(Category)"
+                            class="p-button-rounded p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pInitEditableRow
+                            icon="pi pi-trash"
+                            style="font-category: 2rem"
+                            (click)="onRowDeleteInit(Category.id)"
+                            class="p-button-rounded p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="onRowEditSave(Category)"
+                            class="p-button-rounded p-button-text p-button-success mr-2"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pCancelEditableRow
+                            icon="pi pi-times"
+                            (click)="onRowEditCancel(Category, ri)"
+                            class="p-button-rounded p-button-text p-button-danger"
+                        ></button>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+    <div class="card flex justify-content-center">
+        <p-button
+            (click)="showDialog()"
+            icon="pi pi-external-link"
+            label="Thêm Category"
+        ></p-button>
+        <p-dialog
+            header="Add Category"
+            [modal]="true"
+            [(visible)]="displayAddDialog"
+            [style]="{ width: '30vw' }"
+            [maximizable]="true"
+        >
+            <div *ngIf="codeError" class="p-error">
+                Code is required and must be less than 50 characters.
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-inputgroup-addon">
+                    <i class="pi pi-book"></i>
+                </span>
+                <input
+                    [style]="{ width: '20vw' }"
+                    placeholder="Name"
+                    id="name"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="newCategory.name"
+                    name="name"
+                    required
+                    maxlength="50"
+                    (blur)="validateField('name')"
+                />
+            </div>
+            <div *ngIf="nameError" class="p-error">
+                Name is required and must be less than 50 characters.
+            </div>
+
+            <ng-template pTemplate="footer">
+                <p-button
+                    icon="pi pi-check"
+                    (click)="onSaveNewCategory()"
+                    label="Save"
+                    styleClass="p-button-text"
+                ></p-button>
+                <p-button
+                    icon="pi pi-times"
+                    (click)="hideDialog()"
+                    label="Cancel"
+                    styleClass="p-button-text"
+                ></p-button>
+            </ng-template>
+        </p-dialog>
+    </div>
+</div>

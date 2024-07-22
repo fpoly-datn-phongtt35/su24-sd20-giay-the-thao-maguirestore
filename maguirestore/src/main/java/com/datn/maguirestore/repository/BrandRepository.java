@@ -15,8 +15,10 @@ public interface BrandRepository extends JpaRepository<Brand, Long> {
 
   List<Brand> findByIdInAndStatus(List<Long> ids, int status);
 
+  List<Brand> findByStatus(int status);
+
   @Query(
       "SELECT b FROM Brand  b "
-          + "WHERE (:keyword is null OR UPPER(b.name) LIKE CONCAT('%', UPPER(:keyword), '%') )")
+          + "WHERE (:keyword is null or :keyword = '' OR UPPER(b.name) LIKE CONCAT('%', UPPER(:keyword), '%') )")
   Page<Brand> findAll(String keyword, Pageable pageable);
 }

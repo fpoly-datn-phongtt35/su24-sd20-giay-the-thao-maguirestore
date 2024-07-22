@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,14 @@ public class FeedBackService {
         return feedBackMapper.toDto(feedBack);
     }
 
+    @Transactional(readOnly = true)
+    public FeedBackDTO findbyId(Long id) {
+        log.debug("Request to get Color by id");
+
+        return feedBackRepository.findById(id)
+                .map(feedBackMapper::toDto)
+                .orElseThrow(() -> new EntityNotFoundException("Feedback not found with id " + id));
+    }
 
 
     @Transactional(readOnly = true)

@@ -17,7 +17,11 @@ public interface ShoesRepository extends JpaRepository<Shoes, Long> {
     @Query("select s from Shoes s where s.category.id = :categoryId")
     public List<Shoes> findByCategory(Long categoryId );
 
+    @Query("select s from Shoes s where s.status > 0")
+    public List<Shoes> findAllActive();
 
+    @Query("select s from Shoes s where s.status = 0")
+    public List<Shoes> findAllNoActive();
     Shoes findByIdAndStatus(Long id, Integer status);
 
 

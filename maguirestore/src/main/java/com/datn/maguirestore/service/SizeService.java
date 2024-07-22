@@ -64,6 +64,7 @@ public class SizeService {
                 .map(sizeMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
     public List<SizeDTO> findAll() {
         log.debug("Request to get all Sizes with status = 1");
 
@@ -71,6 +72,13 @@ public class SizeService {
                 .map(sizeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
 
         return ds;
+    }
+    @Transactional(readOnly = true)
+    public List<SizeDTO> findDelete() {
+        log.debug("Request to get all Sizes with status = 0");
+
+        return sizeRepository.findByStatus(0).stream()
+                .map(sizeMapper::toDto).collect(Collectors.toCollection(LinkedList::new));
     }
 
     public Page<SizeDTO> findAll(Pageable pageable) {

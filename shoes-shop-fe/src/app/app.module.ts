@@ -16,7 +16,7 @@ import { TagModule } from "primeng/tag";
 import { ButtonModule } from "primeng/button";
 import { RatingModule } from "primeng/rating";
 // import { HomeComponent } from "./components/home/home.component";
-// import { ShopComponent } from "./components/shop/shop.component";
+import { ShopComponent } from "./components/shop/shop.component";
 // import { ManageComponent } from "./components/manage/manage.component";
 import { TableModule } from "primeng/table";
 import { DialogModule } from "primeng/dialog";
@@ -55,15 +55,15 @@ import { DropdownModule } from "primeng/dropdown";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ToastModule } from "primeng/toast";
 // import { OderComponent } from "./components/oder/oder.component";
-// import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
-// import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
+import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
+import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 import { TabViewModule } from "primeng/tabview";
-// import { DiscountComponent } from "./components/discount/discount.component";
-// import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
+import { DiscountComponent } from "./components/discount/discount.component";
+import { DiscountAddComponent } from "./components/discount-add/discount-add.component";
 import { InputNumberModule } from "primeng/inputnumber";
 import { InputSwitchModule } from "primeng/inputswitch";
 import { ColorComponent } from "./components/color/color.component";
-// import { SizeComponent } from "./components/size/size.component";
+import { SizeComponent } from "./components/size/size.component";
 // import { UserComponent } from "./components/user/user.component";
 import { BadgeModule } from "primeng/badge";
 import { DashboardComponent } from "./components/dashboard/dashboard.component";
@@ -71,21 +71,21 @@ import { CommonModule } from "@angular/common";
 import { PanelMenuModule } from "primeng/panelmenu";
 import { StyleClassModule } from "primeng/styleclass";
 import { MenuModule } from "primeng/menu";
-// import { ClientHomeComponent } from "./components/client/home/client.home.component";
-// import { CartComponent } from "./components/client/cart/cart.component";
+import { ClientHomeComponent } from "./components/client/home/client.home.component";
+import { CartComponent } from "./components/client/cart/cart.component";
 import { MultiSelectModule } from "primeng/multiselect";
 // import { LandingComponent } from "./components/landing/landing.component";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { SliderModule } from "primeng/slider";
-// import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
+//import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
 // import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
 // import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
-// import { AboutComponent } from "./components/client/about/about.component";
-// import { ContactComponent } from "./components/client/contact/contact.component";
+import { AboutComponent } from "./components/client/about/about.component";
+import { ContactComponent } from "./components/client/contact/contact.component";
 import { CardModule } from "primeng/card";
-// import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
+import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
 // import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
@@ -94,9 +94,14 @@ import { InplaceModule } from "primeng/inplace";
 // import { ReturnOrderComponent } from "./components/return-order/return-order.component";
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
 // import { OrderReturnDetailsComponent } from "./components/order-return-details/order-return-details.component";
-// import { ShoesComponent } from "./components/shoes/shoes.component";
+import { ShoesComponent } from "./components/shoes/shoes.component";
 // import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
+import { CategoryComponent } from "./components/category/category.component";
+import { BrandComponent } from "./components/brand/brand.component";
+import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
+import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
+import { CategoryRemovedComponent } from "./components/category-removed/category-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
@@ -106,7 +111,7 @@ import { ColorRemovedComponent } from "./components/color-removed/color-removed.
   declarations: [
     AppComponent,
     // HomeComponent,
-    // ShopComponent,
+    ShopComponent,
     // ManageComponent,
     HeaderComponent,
     FooterComponent,
@@ -115,38 +120,47 @@ import { ColorRemovedComponent } from "./components/color-removed/color-removed.
     ForgotPasswordComponent,
     // ShoesCategoryComponent,
     // ProductComponent,
-    // BrandComponent,
+    BrandComponent,
     // OderComponent,
-    // ShoesDetailComponent,
-    // ShoesDetailAddComponent,
+
+    ShoesDetailComponent,
+    ShoesDetailAddComponent,
     // DiscountComponent,
     // DiscountAddComponent,
+
+    // ShoesDetailComponent,
+    // ShoesDetailAddComponent,
+    DiscountComponent,
+    DiscountAddComponent,
     ColorComponent,
-    // SizeComponent,
+    SizeComponent,
+    CategoryComponent,
     // UserComponent,
     DashboardComponent,
     // LandingComponent,
-    // ClientHomeComponent,
-    // CartComponent,
-    // ShoesInspectComponent,
+    ClientHomeComponent,
+    CartComponent,
+    //ShoesInspectComponent,
     // OrderDetailsComponent,
     // PayComponent,
     LoginCustomerComponent,
     // RegisterCustomerComponent,
-    // AboutComponent,
-    // ContactComponent,
-    // DiscountShoesComponent,
+    AboutComponent,
+    ContactComponent,
+    DiscountShoesComponent,
     // UserOrderComponent,
     // PaySuccessComponent,
     // PayFaileComponent,
-    // ShoesComponent,
+    ShoesComponent,
     // FeedbackManagComponent,
     // ReturnOrderComponent,
     // OrderReturnAdminComponent,
     // OrderReturnDetailsComponent,
     ColorRemovedComponent,
-    // SizeRemovedComponent,
-    // BrandRemovedComponent,
+    CategoryComponent,
+    SizeRemovedComponent,
+    CategoryRemovedComponent,
+    BrandRemovedComponent,
     // ProfileComponent,
     // CodeForgotPasswordComponent,
     // ShoesDeleteComponent,

@@ -1,8 +1,6 @@
 package com.datn.maguirestore.controller;
 
-import com.datn.maguirestore.dto.AddressDTO;
 import com.datn.maguirestore.dto.CategoryDTO;
-import com.datn.maguirestore.dto.SizeDTO;
 import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
 import com.datn.maguirestore.util.ResponseUtil;
@@ -19,7 +17,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class CategoryController {
@@ -29,17 +27,29 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-    private final CategoryRepository categoryRepository;
-
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/category")
+    @GetMapping("")
     public ResponseEntity<List<CategoryDTO>> getAll() {
         log.debug("REST request to get all categories");
         return ResponseEntity.ok(categoryService.findAll());
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/category/{id}")
+    @GetMapping("/removed")
+    public ResponseEntity<List<CategoryDTO>> getAllSizesRemoved () {
+        log.debug("REST request to get  Sizes");
+
+        return ResponseEntity.ok(categoryService.findDelete());
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<CategoryDTO>> getAllCategoryx() {
+        log.debug("REST request to get all categories");
+        return ResponseEntity.ok(categoryService.fillAlll());
+    }
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getOneById(@PathVariable Long id) {
         log.debug("REST request to get category by id ");
         return ResponseUtil.wrapOrNotFound(categoryService.findById(id));
@@ -51,16 +61,15 @@ public class CategoryController {
         log.debug("REST request to save Category : {}", shoesCategoryDTO);
 
         CategoryDTO result = categoryService.save(shoesCategoryDTO);
-        return ResponseEntity.created(new URI("/api/category" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/categories" + result.getId())).body(result);
     }
 
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/sizes/{id}")
-    public ResponseEntity<CategoryDTO> updateSize(
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoryDTO> update(
             @PathVariable(value = "id", required = false) final Long id
-            , @RequestBody CategoryDTO categoryDTO)
-            throws URISyntaxException {
+            , @RequestBody CategoryDTO categoryDTO) {
         log.debug("REST request to update Size : {}, {}", id, categoryDTO);
 
         CategoryDTO result = categoryService.update(categoryDTO);
@@ -69,7 +78,7 @@ public class CategoryController {
 
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         log.debug("REST request to delete category : {}", id);
         categoryService.delete(id);

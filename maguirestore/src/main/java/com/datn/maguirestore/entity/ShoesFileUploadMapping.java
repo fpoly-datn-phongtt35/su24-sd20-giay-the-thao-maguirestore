@@ -6,15 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.Instant;
 
 @Entity
-@Table(name = "discount_shoes_details")
+@Table(name = "shoes_file_upload_mapping")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implements Serializable {
+public class ShoesFileUploadMapping extends AbstractAuditingEntity<Long> implements Serializable  {
 
     private static final long serialVersionUID = 1L;
 
@@ -23,22 +21,12 @@ public class DiscountShoesDetails extends AbstractAuditingEntity<Long> implement
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "start_date")
-    private Instant startDate;
-
-    @Column(name = "end_date")
-    private Instant endDate;
-
-    @Column(name = "amount")
-    private BigDecimal discountAmount;
-
     @Column(name = "status")
     private Integer status;
 
     @ManyToOne
-    private Discount discount;
+    private FileUpload fileUpload;
 
     @ManyToOne
-    private Shoes shoesDetails;
-
+    private ShoesDetails shoesDetails;
 }

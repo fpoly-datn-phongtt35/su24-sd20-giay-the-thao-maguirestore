@@ -1,7 +1,6 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.*;
-import com.datn.maguirestore.repository.CartRepository;
 import com.datn.maguirestore.service.CartService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/api/v1/cart")
 @RequiredArgsConstructor
@@ -23,10 +21,9 @@ public class CartController {
     private static final String ENTITY_NAME = "cart";
     private final Logger log = LoggerFactory.getLogger(CartController.class);
     private final CartService cartService;
-    private final CartRepository cartRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/cart/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<CartDTO> getCartById(@PathVariable Long id) {
         log.debug("REST request to get Cart by id");
 
@@ -34,20 +31,19 @@ public class CartController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PostMapping("/cart")
+    @PostMapping("")
     public ResponseEntity<CartDTO> createCart(@RequestBody CartRequestDTO cartDTO) throws URISyntaxException {
         log.debug("REST request to save Cart : {}", cartDTO);
 
         CartDTO result = cartService.save(cartDTO);
-        return ResponseEntity.created(new URI("/api/cart/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/cart" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @PutMapping("/cart/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<CartDTO> updateCart(
             @PathVariable(value = "id", required = false) final Long id,
-            @RequestBody CartRequestDTO cartDTO)
-            throws URISyntaxException {
+            @RequestBody CartRequestDTO cartDTO) {
         log.debug("REST request to update Cart : {}, {}", id, cartDTO);
 
         CartDTO result = cartService.update(cartDTO);
@@ -55,7 +51,7 @@ public class CartController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/carts")
+    @GetMapping("")
     public ResponseEntity<List<CartDTO>> getAllCart() {
         log.debug("REST request to get a page of Cart");
 
@@ -63,14 +59,14 @@ public class CartController {
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @GetMapping("/carts/detail")
+    @GetMapping("/detail")
     public ResponseEntity<CartResponseDTO> getDetailByCart(CartRequestPagination pagination) {
         log.debug("REST request to get a page of Cart");
         return ResponseEntity.ok(cartService.fillDetailByCart(pagination));
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
-    @DeleteMapping("/cart/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCart(@PathVariable Long id) {
         log.debug("REST request to delete Cart : {}", id);
         cartService.delete(id);

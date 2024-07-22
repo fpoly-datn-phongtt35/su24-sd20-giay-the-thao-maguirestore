@@ -58,8 +58,15 @@ public class ColorService {
     @Transactional(readOnly = true)
     public List<ColorDTO> findAll() {
         log.debug("Request to get all Color");
+        return colorRepository.findByStatus(1).stream()
+                .map(colorMapper::toDto)
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
 
-        return colorRepository.findAll().stream()
+    @Transactional(readOnly = true)
+    public List<ColorDTO> findRemoved() {
+        log.debug("Request to get all Color");
+        return colorRepository.findByStatus(0).stream()
                 .map(colorMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
     }

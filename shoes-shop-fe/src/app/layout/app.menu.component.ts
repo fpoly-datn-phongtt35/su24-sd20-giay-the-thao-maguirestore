@@ -117,6 +117,22 @@ export class AppMenuComponent implements OnInit {
               },
             ],
           },
+          {
+            label: "Category",
+            icon: "pi pi-fw pi-sitemap",
+            items: [
+              {
+                label: "Category",
+                icon: "pi pi-fw pi-sitemap",
+                routerLink: ["/admin/category"],
+              },
+              {
+                label: "Đã xóa",
+                icon: "pi pi-fw pi-circle-fill",
+                routerLink: ["/admin/removedCategory"],
+              },
+            ],
+          },
         ],
       },
       {

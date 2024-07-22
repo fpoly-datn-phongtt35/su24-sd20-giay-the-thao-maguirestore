@@ -7,14 +7,14 @@ import com.datn.maguirestore.dto.DiscountDTO;
 import com.datn.maguirestore.dto.DiscountDetailsDTO;
 import com.datn.maguirestore.dto.ShoesDTO;
 import com.datn.maguirestore.entity.Discount;
-import com.datn.maguirestore.entity.DiscountShoesDetails;
+import com.datn.maguirestore.entity.DiscountDetails;
 import com.datn.maguirestore.entity.Shoes;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountDetailsRequest;
 import com.datn.maguirestore.payload.request.UpdateDiscountDetailsRequest;
 import com.datn.maguirestore.payload.response.UpdateDiscountDetailsResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
-import com.datn.maguirestore.repository.DiscountShoesDetailsRepository;
+import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
 import java.util.List;
@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class DiscountDetailsService {
 
-    private final DiscountShoesDetailsRepository discountDetailsRepository;
+    private final DiscountDetailsRepository discountDetailsRepository;
 
     private final DiscountRepository discountRepository;
     private final ShoesRepository shoesRepository;
@@ -38,9 +38,9 @@ public class DiscountDetailsService {
 
     public DiscountDetailsDTO save(DiscountDetailsRequest dto) throws Exception {
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        DiscountShoesDetails discountShoesDetails = new DiscountShoesDetails();
-        discountShoesDetails.setStatus(1);
-        discountShoesDetails.setCreatedBy(loggedInUser);
+        DiscountDetails discountDetails = new DiscountDetails();
+        discountDetails.setStatus(1);
+        discountDetails.setCreatedBy(loggedInUser);
 
         Discount discount = discountRepository.findById(dto.getDiscountId())
                 .orElseThrow(() -> new Exception("DiscountId not found"));
@@ -48,13 +48,13 @@ public class DiscountDetailsService {
         Shoes shoes = shoesRepository.findById(dto.getShoeId())
                 .orElseThrow(() -> new Exception("Shoes detailsID not found"));
 
-        discountShoesDetails.setDiscount(discount);
-        discountShoesDetails.setShoes(shoes);
-        discountDetailsRepository.save(discountShoesDetails);
+        discountDetails.setDiscount(discount);
+        discountDetails.setShoes(shoes);
+        discountDetailsRepository.save(discountDetails);
 
         DiscountDetailsDTO detailsDTO = new DiscountDetailsDTO();
-        detailsDTO.setId(discountShoesDetails.getId());
-        detailsDTO.setStatus(discountShoesDetails.getStatus());
+        detailsDTO.setId(discountDetails.getId());
+        detailsDTO.setStatus(discountDetails.getStatus());
 
         // Build DiscountDTO
         DiscountDTO discountDTO = new DiscountDTO();
@@ -99,7 +99,7 @@ public class DiscountDetailsService {
             .orElseThrow(() -> new BadRequestAlertException("Shoes not found", "shoes", "notfound"));
 
         // Lấy DiscountDetails hiện tại từ CSDL
-        DiscountShoesDetails discountDetails = discountDetailsRepository.findById(id)
+        DiscountDetails discountDetails = discountDetailsRepository.findById(id)
             .orElseThrow(() -> new BadRequestAlertException("DiscountDetails not found", "discountDetails", "notfound"));
 
         // Cập nhật DiscountDetails
@@ -123,18 +123,18 @@ public class DiscountDetailsService {
     }
 
     public List<DiscountDetailsDTO> findAll() {
-        List<DiscountShoesDetails> discountDetailsList = discountDetailsRepository.findAll();
+        List<DiscountDetails> discountDetailsList = discountDetailsRepository.findAll();
         return discountDetailsList.stream()
             .map(mapper::convertDTO)
             .collect(Collectors.toList());
     }
 
     public void delete(Long id) throws Exception {
-        Optional<DiscountShoesDetails> details = Optional.ofNullable(
+        Optional<DiscountDetails> details = Optional.ofNullable(
             discountDetailsRepository.findById(id).orElseThrow(
                 () -> new Exception("ID does not exists")));
         if (details.isPresent()) {
-            DiscountShoesDetails discountDetails = details.get();
+            DiscountDetails discountDetails = details.get();
             discountDetails.setStatus(STATUS.IN_ACTIVE);
             discountDetailsRepository.save(discountDetails);
         }

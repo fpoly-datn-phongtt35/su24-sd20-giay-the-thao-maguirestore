@@ -1,13 +1,12 @@
 package com.datn.maguirestore.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.time.Instant;
 
 @Data
 @Getter
@@ -16,18 +15,14 @@ public class CategoryDTO implements Serializable {
 
     private Long id;
 
-    @NotBlank(message = "error.shoes.category.code.notBlank")
+//    @NotBlank(message = "error.shoes.category.code.notBlank")
+//    @JsonIgnore
     private String code;
 
-    @NotBlank(message = "error.shoes.category.name.notBlank")
+//    @NotBlank(message = "error.shoes.category.name.notBlank")
     private String name;
 
-//    @Valid
-//    private List<ShoesCategoryValueDTO> shoesCategoryValueDTOList;
-
+//    @JsonIgnore
     private Integer status;
 
-    private String lastModifiedBy;
-
-    private Instant lastModifiedDate;
 }

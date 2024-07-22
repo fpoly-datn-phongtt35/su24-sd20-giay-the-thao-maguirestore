@@ -6,11 +6,14 @@ import com.datn.maguirestore.entity.Size;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 import java.util.Objects;
 
 public class ShoesDetailsDTO implements Serializable {
 
     private Long id;
+
+    private String code;
 
     private Float price;
 
@@ -38,13 +41,14 @@ public class ShoesDetailsDTO implements Serializable {
 
     private Color color;
 
-
+    private List<String> imgPath;
 
     public ShoesDetailsDTO() {
     }
 
-    public ShoesDetailsDTO(Long id, Float price, Float importPrice, Float tax, Integer quantity, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Shoes shoes, Size size, Color color) {
+    public ShoesDetailsDTO(Long id, String code, Float price, Float importPrice, Float tax, Integer quantity, String description, Integer status, String createdBy, Instant createdDate, String lastModifiedBy, Instant lastModifiedDate, Shoes shoes, Size size, Color color) {
         this.id = id;
+        this.code = code;
         this.price = price;
         this.importPrice = importPrice;
         this.tax = tax;
@@ -170,6 +174,14 @@ public class ShoesDetailsDTO implements Serializable {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Override
