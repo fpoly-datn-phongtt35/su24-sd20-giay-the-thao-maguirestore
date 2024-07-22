@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.DiscountDTO;
+import com.datn.maguirestore.dto.DiscountSearchDTO;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
 import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.entity.Discount;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/discount")
@@ -117,5 +119,12 @@ public class DiscountController {
                 .noContent()
                 .headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString()))
                 .build();
+    }
+
+    @PostMapping("/search")
+    public ResponseEntity<List<DiscountSearchDTO>> search(@RequestBody String searchText) {
+        log.debug("REST request to get Discount ");
+        List<DiscountSearchDTO> discountDTO = discountService.search(searchText);
+        return ResponseEntity.ok(discountDTO);
     }
 }

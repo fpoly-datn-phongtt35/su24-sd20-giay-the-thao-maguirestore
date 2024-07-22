@@ -5,11 +5,11 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root",
 })
 export class ShoesdetailService {
-  private apiUrl: string = "http://localhost:8088/api/shoes-details/new";
+  private apiUrl: string = "http://localhost:8088/api/v1/shoes-details/new";
   private apiUrl1: string =
-    "http://localhost:8088/api/shoes-details/newDiscount";
+    "http://localhost:8088/api/v1/shoes-details/newDiscount";
   private apiUrl2: string =
-    "http://localhost:8088/api/shoes-details/bestseller";
+    "http://localhost:8088/api/v1/shoes-details/bestseller";
   constructor(private http: HttpClient) {}
 
   getNewShoesDetail() {

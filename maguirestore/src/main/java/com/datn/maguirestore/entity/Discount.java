@@ -1,5 +1,6 @@
 package com.datn.maguirestore.entity;
 
+import com.datn.maguirestore.dto.DiscountSearchDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,30 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDateTime;
 
+@SqlResultSetMappings(
+        value = {
+                @SqlResultSetMapping(
+                        name = "discount_search_result",
+                        classes = {
+                                @ConstructorResult(
+                                        targetClass = DiscountSearchDTO.class,
+                                        columns = {
+                                                @ColumnResult(name = "id", type = Long.class),
+                                                @ColumnResult(name = "code", type = String.class),
+                                                @ColumnResult(name = "name", type = String.class),
+                                                @ColumnResult(name = "discountMethod", type = Integer.class),
+                                                @ColumnResult(name = "discountMethodName", type = String.class),
+                                                @ColumnResult(name = "status", type = String.class),
+                                                @ColumnResult(name = "startDate", type = Instant.class),
+                                                @ColumnResult(name = "endDate", type = Instant.class),
+                                                @ColumnResult(name = "lastModifiedDate", type = Instant.class),
+                                                @ColumnResult(name = "lastModifiedBy", type = String.class),
+                                        }
+                                ),
+                        }
+                ),
+        }
+)
 @Entity
 @Table(name = "discount")
 @Data

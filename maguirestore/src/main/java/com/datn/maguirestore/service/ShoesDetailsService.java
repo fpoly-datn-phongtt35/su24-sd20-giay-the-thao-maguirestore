@@ -1,5 +1,6 @@
 package com.datn.maguirestore.service;
 
+import com.datn.maguirestore.dto.ShoesDetailDTOCustom;
 import com.datn.maguirestore.dto.ShoesDetailsDTO;
 import com.datn.maguirestore.entity.Color;
 import com.datn.maguirestore.entity.Shoes;
@@ -103,5 +104,17 @@ public class ShoesDetailsService {
         }
     }
 
+    public List<ShoesDetailDTOCustom> getNewShoesDetail() {
 
+        return shoesDetailsRepository.getNewShoesDetail();
+    }
+
+    public List<ShoesDetailDTOCustom> getNewDiscountShoesDetail() {
+        return shoesDetailsRepository.getNewDiscountShoesDetail();
+    }
+
+    public List<ShoesDetailDTOCustom> getBestSellerShoesDetail() {
+
+        return shoesDetailsRepository.getBestSeller();
+    }
 }

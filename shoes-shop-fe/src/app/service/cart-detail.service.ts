@@ -8,12 +8,12 @@ import { CartDetailSave } from "../model/AddCartDetail";
   providedIn: "root",
 })
 export class CartDetailService {
-  private apiUrl = "http://localhost:8088/api/cart-details/";
-  private apiUrl1 = "http://localhost:8088/api/cart-details";
+  private apiUrl = "http://localhost:8088/api/v1/cart-details";
+  // private apiUrl1 = "http://localhost:8088/api/cart-details";
   constructor(private http: HttpClient) {}
 
   getAllCartDetail() {
-    return this.http.get<any>(this.apiUrl + "all", {
+    return this.http.get<any>(this.apiUrl, {
       withCredentials: true,
     });
   }
@@ -54,24 +54,24 @@ export class CartDetailService {
     });
   }
   saveCartDetail(cartDetail: CartDetailSave): Observable<CartDetail> {
-    return this.http.post<CartDetail>(this.apiUrl1, cartDetail);
+    return this.http.post<CartDetail>(this.apiUrl, cartDetail);
   }
 
   deleteCartDetail(id: number) {
     // Để xóa sản phẩm, gửi yêu cầu HTTP DELETE với id của sản phẩm cần xóa
-    return this.http.delete<any>(this.apiUrl + id, {
+    return this.http.delete<any>(this.apiUrl + "/" + id, {
       withCredentials: true,
     });
   }
 
   getCartDetailById(id: number) {
-    return this.http.get<any>(this.apiUrl + id, {
+    return this.http.get<any>(this.apiUrl + "/" + id, {
       withCredentials: true,
     });
   }
 
   getCount() {
-    return this.http.get<any>(this.apiUrl + "count", {
+    return this.http.get<any>(this.apiUrl + "/count", {
       withCredentials: true,
     });
   }

@@ -142,4 +142,7 @@ public class DiscountService {
     discountRepository.save(discount);
   }
 
+  public List<DiscountSearchDTO> search(String searchText) {
+    return discountRepository.search(searchText);
+  }
 }

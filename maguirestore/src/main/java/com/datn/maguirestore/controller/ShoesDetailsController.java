@@ -236,4 +236,21 @@ public class ShoesDetailsController {
         }
     }
 
+    @GetMapping("/new")
+    public ResponseEntity<List<ShoesDetailDTOCustom>> getNewShoesDetail() {
+        List<ShoesDetailDTOCustom> shoesDetailsDTOs = shoesDetailsService.getNewShoesDetail();
+        return ResponseEntity.ok().body(shoesDetailsDTOs);
+    }
+
+    @GetMapping("/newDiscount")
+    public ResponseEntity<List<ShoesDetailDTOCustom>> getNewDiscountShoesDetail() {
+        List<ShoesDetailDTOCustom> shoesDetailsDTOs = shoesDetailsService.getNewDiscountShoesDetail();
+        return ResponseEntity.ok().body(shoesDetailsDTOs);
+    }
+
+   /* @GetMapping("/bestseller")
+    public ResponseEntity<List<ShoesDetailDTOCustom>> getBestSellerShoesDetail() {
+        List<ShoesDetailDTOCustom> shoesDetailsDTOs = shoesDetailsService.getBestSellerShoesDetail();
+        return ResponseEntity.ok().body(shoesDetailsDTOs);
+    }*/
 }

@@ -24,7 +24,7 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import { LayoutComponent } from "./layout/client/layout/layout.component";
 import { ClientHomeComponent } from "./components/client/home/client.home.component";
 import { CartComponent } from "./components/client/cart/cart.component";
-// import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
+import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
 // import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
@@ -100,8 +100,8 @@ const routes: Routes = [
       { path: "", component: ClientHomeComponent },
       { path: "home", component: ClientHomeComponent },
       { path: "cart", component: CartComponent },
-      //{ path: "shoes-detail", component: ShoesInspectComponent },
-      //{ path: "shoes-detail/:id", component: ShoesInspectComponent },
+      { path: "shoes-detail", component: ShoesInspectComponent },
+      { path: "shoes-detail/:id", component: ShoesInspectComponent },
       // { path: "return-order/:id", component: ReturnOrderComponent },
       { path: "shop", component: ShopComponent },
       // { path: "pay", component: PayComponent },
