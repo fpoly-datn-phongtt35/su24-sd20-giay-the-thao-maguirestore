@@ -56,6 +56,13 @@ public class BrandController {
         return ResponseEntity.ok(brandService.findAll());
     }
 
+    @SecurityRequirement(name = "Bearer Authentication")
+    @GetMapping("/removed")
+    public ResponseEntity<List<BrandDTO>> getBrandsRemoved() {
+        log.debug("REST request to get a page of Color");
+        return ResponseEntity.ok(brandService.findRemoved());
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<BrandDTO>> getAllBrandx() {
         log.debug("REST request to get all brands");
