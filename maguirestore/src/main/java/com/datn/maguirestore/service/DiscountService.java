@@ -6,7 +6,7 @@ import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
 import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
-import com.datn.maguirestore.payload.response.DiscountResponse;
+import com.datn.maguirestore.payload.response.DiscountUpdateResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.service.mapper.DiscountMapper;
@@ -79,7 +79,7 @@ public class DiscountService {
     return dto;
   }
 
-  public DiscountResponse update(Long id, DiscountUpdateRequest discountDTO) {
+  public DiscountUpdateResponse update(Long id, DiscountUpdateRequest discountDTO) {
     String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
     log.debug("Request to update Discount : {}", discountDTO);
 
@@ -91,21 +91,21 @@ public class DiscountService {
     discount.setName(discountDTO.getName());
     discount.setStatus(discountDTO.getStatus());
     discount.setDiscountMethod(discountDTO.getDiscountMethod());
-    discount.setStartDate(discountDTO.getStartDate());
-    discount.setEndDate(discountDTO.getEndDate());
+//    discount.setStartDate(discountDTO.getStartDate());
+//    discount.setEndDate(discountDTO.getEndDate());
     discount.setDiscountAmount(discountDTO.getDiscountAmount());
     discount.setLastModifiedBy(loggedUser);
     discountRepository.save(discount);
 
-    DiscountResponse dto = new DiscountResponse();
+    DiscountUpdateResponse dto = new DiscountUpdateResponse();
     dto.setId(discount.getId());
     dto.setCode(discount.getCode());
     dto.setName(discount.getName());
     dto.setStatus(discount.getStatus());
     dto.setDiscountMethod(discount.getDiscountMethod());
     dto.setDiscountAmount(discount.getDiscountAmount());
-    dto.setStartDate(discount.getStartDate());
-    dto.setEndDate(discount.getEndDate());
+//    dto.setStartDate(discount.getStartDate());
+//    dto.setEndDate(discount.getEndDate());
 
     return dto;
   }
@@ -118,7 +118,7 @@ public class DiscountService {
   }
 
   @Transactional(readOnly = true)
-  public DiscountResponse findById(Long id) {
+  public DiscountResponseDTO findById(Long id) {
     log.debug("Request to get Discount : {}", id);
     Discount discount = discountRepository.findByIdAndStatus(id, Constants.STATUS.ACTIVE);
     if (DataUtils.isNull(discount)) {

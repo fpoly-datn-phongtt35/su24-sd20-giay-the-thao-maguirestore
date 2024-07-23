@@ -64,6 +64,7 @@ public class SizeService {
                 .map(sizeMapper::toDto);
     }
 
+    @Transactional(readOnly = true)
     public List<SizeDTO> findAll() {
         log.debug("Request to get all Sizes with status = 1");
 
@@ -72,6 +73,7 @@ public class SizeService {
 
         return ds;
     }
+    @Transactional(readOnly = true)
     public List<SizeDTO> findDelete() {
         log.debug("Request to get all Sizes with status = 0");
 

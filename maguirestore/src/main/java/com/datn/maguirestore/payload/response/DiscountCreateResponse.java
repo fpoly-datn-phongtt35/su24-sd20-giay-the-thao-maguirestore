@@ -8,7 +8,7 @@ import java.time.Instant;
 
 @Getter
 @Setter
-public class DiscountResponse {
+public class DiscountCreateResponse {
     private Long id;
     private String code;
     private String name;
@@ -20,4 +20,6 @@ public class DiscountResponse {
     private Instant startDate;
     private Instant endDate;
 
+    private String createdBy;
+    private Instant createdDate;
 }

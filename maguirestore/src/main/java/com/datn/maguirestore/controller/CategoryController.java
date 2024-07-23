@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.CategoryDTO;
+import com.datn.maguirestore.repository.CategoryRepository;
 import com.datn.maguirestore.service.CategoryService;
 import com.datn.maguirestore.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

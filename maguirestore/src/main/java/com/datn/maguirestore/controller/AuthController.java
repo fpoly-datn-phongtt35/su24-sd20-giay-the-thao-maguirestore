@@ -47,7 +47,6 @@ public class AuthController {
 
     private final UserDetailsServiceImpl userDetailsService;
 
-    @CrossOrigin("http://localhost:4200/")
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

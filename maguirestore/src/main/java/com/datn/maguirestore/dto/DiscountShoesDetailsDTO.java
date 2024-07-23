@@ -19,6 +19,11 @@ public class DiscountShoesDetailsDTO {
 
     private DiscountDTO discountId;
 
-    private ShoesDTO shoes;
+    private ShoesDTO shoesDetails;
 
+    private Long brandId;
+
+    private String brandName;
+
+    private Integer status;
 }

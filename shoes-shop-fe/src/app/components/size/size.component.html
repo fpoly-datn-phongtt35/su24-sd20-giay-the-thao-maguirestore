@@ -4,14 +4,39 @@
             <h2>Confirm Delete</h2>
         </p-header>
         <p-footer>
-            <button type="button" pButton icon="pi pi-check" (click)="onDeleteSize(true)" label="Yes"></button>
-            <button type="button" pButton icon="pi pi-times" (click)="onDeleteSize(false)" label="No"></button>
+            <button
+                type="button"
+                pButton
+                icon="pi pi-check"
+                (click)="onDeleteSize(true)"
+                label="Yes"
+            ></button>
+            <button
+                type="button"
+                pButton
+                icon="pi pi-times"
+                (click)="onDeleteSize(false)"
+                label="No"
+            ></button>
         </p-footer>
     </p-dialog>
-    
+
     <p-toast></p-toast>
-    <input pInputText type="text" placeholder="Tìm kiếm" [(ngModel)]="searchText" (input)="onSearchInputChange()" />
-    <p-table [value]="filteredSizes.length ? filteredSizes : Size" dataKey="id" editMode="row" [tableStyle]="{'min-width': '50rem'}">
+    <input
+        pInputText
+        type="text"
+        placeholder="Tìm kiếm"
+        [(ngModel)]="searchText"
+        (input)="onSearchInputChange()"
+    />
+    <p-table
+        [value]="filteredSizes.length ? filteredSizes : Size"
+        dataKey="id"
+        editMode="row"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        [paginator]="true"
+        [rows]="10"
+    >
         <ng-template pTemplate="header">
             <tr>
                 <th>ID</th>
@@ -20,7 +45,7 @@
                 <!-- <th>Trạng thái</th> -->
                 <!-- <th>Người cập nhật</th>
                 <th>Ngày cập nhật</th> -->
-                <th></th>
+                <th>Action</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-Size let-editing="editing" let-ri="rowIndex">
@@ -29,7 +54,7 @@
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="Size.code">
+                            <input pInputText type="text" [(ngModel)]="Size.code" />
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{ Size.code }}
@@ -39,7 +64,7 @@
                 <td>
                     <p-cellEditor>
                         <ng-template pTemplate="input">
-                            <input pInputText type="text" [(ngModel)]="Size.name">
+                            <input pInputText type="text" [(ngModel)]="Size.name" />
                         </ng-template>
                         <ng-template pTemplate="output">
                             {{ Size.name }}
@@ -51,10 +76,48 @@
                 <td>{{ Size.lastModifiedDate | date: 'dd/MM/yyyy'}}</td> -->
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
-                        <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-spin pi-cog" style="font-size: 2rem" (click)="onRowEditInit(Size)" class="p-button-rounded p-button-text"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-trash" style="font-size: 2rem" (click)="onRowDeleteInit(Size.id)" class="p-button-rounded p-button-text"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(Size)" class="p-button-rounded p-button-text p-button-success mr-2"></button>
-                        <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(Size, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                        <button
+                            *ngIf="!editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pInitEditableRow
+                            icon="pi pi-spin pi-cog"
+                            style="font-size: 2rem"
+                            (click)="onRowEditInit(Size)"
+                            class="p-button-rounded p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pInitEditableRow
+                            icon="pi pi-trash"
+                            style="font-size: 2rem"
+                            (click)="onRowDeleteInit(Size.id)"
+                            class="p-button-rounded p-button-text"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="onRowEditSave(Size)"
+                            class="p-button-rounded p-button-text p-button-success mr-2"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            pRipple
+                            type="button"
+                            pCancelEditableRow
+                            icon="pi pi-times"
+                            (click)="onRowEditCancel(Size, ri)"
+                            class="p-button-rounded p-button-text p-button-danger"
+                        ></button>
                     </div>
                 </td>
             </tr>
@@ -62,23 +125,51 @@
     </p-table>
     <div class="card flex justify-content-center">
         <p-button (click)="showDialog()" icon="pi pi-external-link" label="Thêm size"></p-button>
-        <p-dialog header="Add Size" [modal]="true" [(visible)]="displayAddDialog" [style]="{width: '30vw'}" [maximizable]="true">
-            <div *ngIf="codeError" class="p-error">Code is required and must be less than 50 characters.</div>
+        <p-dialog
+            header="Add Size"
+            [modal]="true"
+            [(visible)]="displayAddDialog"
+            [style]="{ width: '30vw' }"
+            [maximizable]="true"
+        >
+            <div *ngIf="codeError" class="p-error">
+                Code is required and must be less than 50 characters.
+            </div>
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon">
                     <i class="pi pi-book"></i>
                 </span>
-                <input [style]="{width: '20vw'}" placeholder="Name" id="name" pInputText type="text" [(ngModel)]="newSize.name" name="name" required maxlength="50" (blur)="validateField('name')" />
+                <input
+                    [style]="{ width: '20vw' }"
+                    placeholder="Name"
+                    id="name"
+                    pInputText
+                    type="text"
+                    [(ngModel)]="newSize.name"
+                    name="name"
+                    required
+                    maxlength="50"
+                    (blur)="validateField('name')"
+                />
             </div>
-            <div *ngIf="nameError" class="p-error">Name is required and must be less than 50 characters.</div>
-            
-            
+            <div *ngIf="nameError" class="p-error">
+                Name is required and must be less than 50 characters.
+            </div>
+
             <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="onSaveNewSize()" label="Save" styleClass="p-button-text"></p-button>
-                <p-button icon="pi pi-times" (click)="hideDialog()" label="Cancel" styleClass="p-button-text"></p-button>
+                <p-button
+                    icon="pi pi-check"
+                    (click)="onSaveNewSize()"
+                    label="Save"
+                    styleClass="p-button-text"
+                ></p-button>
+                <p-button
+                    icon="pi pi-times"
+                    (click)="hideDialog()"
+                    label="Cancel"
+                    styleClass="p-button-text"
+                ></p-button>
             </ng-template>
         </p-dialog>
     </div>
 </div>
-
-

@@ -3,8 +3,8 @@ package com.datn.maguirestore.dto;
 
 import com.datn.maguirestore.entity.Brand;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
 
@@ -12,13 +12,21 @@ public class BrandDTO implements Serializable {
 
     private Long id;
 
-    @JsonIgnore
     private String code;
 
     private String name;
 
-    @JsonIgnore
+    private String description;
+
     private Integer status;
+
+    private String createdBy;
+
+    private Instant createdDate;
+
+    private String lastModifiedBy;
+
+    private Instant lastModifiedDate;
 
     public BrandDTO() {
     }
@@ -27,6 +35,9 @@ public class BrandDTO implements Serializable {
         this.id = brand.getId();
         this.code = brand.getCode();
         this.name = brand.getName();
+        this.description = brand.getDescription();
+        this.lastModifiedBy = brand.getLastModifiedBy();
+        this.lastModifiedDate = brand.getLastModifiedDate();
     }
 
     public Long getId() {
@@ -53,12 +64,52 @@ public class BrandDTO implements Serializable {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Instant createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
+    }
+
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Instant lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 
     @Override
@@ -89,7 +140,12 @@ public class BrandDTO implements Serializable {
             "id=" + getId() +
             ", code='" + getCode() + "'" +
             ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
             ", status=" + getStatus() +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
             "}";
     }
 }

@@ -64,7 +64,14 @@ public class BrandService {
 //    Pageable pageable =
 //        PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.fromString(sortDirection), sortBy));
 
-        return brandRepository.findAll().stream()
+        return brandRepository.findByStatus(1).stream()
+                .map(brandMapper::toDto)
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
+    @Transactional(readOnly = true)
+    public List<BrandDTO> findRemoved() {
+        log.debug("Request to get all Color");
+        return brandRepository.findByStatus(0).stream()
                 .map(brandMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
     }

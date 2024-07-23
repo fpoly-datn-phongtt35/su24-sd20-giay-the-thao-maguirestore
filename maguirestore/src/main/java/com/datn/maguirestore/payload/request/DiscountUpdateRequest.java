@@ -1,7 +1,6 @@
 package com.datn.maguirestore.payload.request;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,9 +20,9 @@ public class DiscountUpdateRequest {
     @NotNull(message = "{error.discount.method.not.null}")
     private Integer discountMethod;
 
-    private Instant startDate;
-    private Instant endDate;
-
     private BigDecimal discountAmount;
 
+    private Integer discountStatus;
+
+    private String lastModifiedBy;
 }
