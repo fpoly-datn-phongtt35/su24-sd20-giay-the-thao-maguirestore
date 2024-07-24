@@ -20,7 +20,7 @@ public interface ShoesFileUploadMappingMapper extends EntityMapper<ShoesFileUplo
     @Named("fileUploadId")
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "id", source = "id")
-    FileUploadDTO toDtoFileUploadId(FileUpload fileUpload);
+    FileUpload toDtoFileUploadId(FileUpload fileUpload);
 
     @Named("shoesDetailsId")
     @BeanMapping(ignoreByDefault = true)

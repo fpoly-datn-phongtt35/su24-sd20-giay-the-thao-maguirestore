@@ -1,12 +1,13 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.DiscountDTO;
+import com.datn.maguirestore.dto.DiscountResponseDTO;
 import com.datn.maguirestore.dto.DiscountSearchDTO;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
-import com.datn.maguirestore.payload.response.DiscountResponse;
 import com.datn.maguirestore.entity.Discount;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
+import com.datn.maguirestore.payload.response.DiscountUpdateResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.service.DiscountService;
 import com.datn.maguirestore.util.HeaderUtil;
@@ -65,13 +66,13 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @PutMapping("/{id}")
-    public ResponseEntity<DiscountResponse> updateDiscount(@PathVariable(value = "id") final Long id,
+    public ResponseEntity<DiscountUpdateResponse> updateDiscount(@PathVariable(value = "id") final Long id,
         @RequestBody DiscountUpdateRequest discountDTO) {
         if (!discountRepository.existsById(id)) {
             throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "notfound");
         }
 
-        DiscountResponse result = discountService.update(id, discountDTO);
+        DiscountUpdateResponse result = discountService.update(id, discountDTO);
 
         return ResponseEntity
             .ok()
@@ -98,9 +99,9 @@ public class DiscountController {
      */
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{id}")
-    public ResponseEntity<DiscountResponse> getDiscountById(@PathVariable Long id) {
+    public ResponseEntity<DiscountResponseDTO> getDiscountById(@PathVariable Long id) {
         log.debug("REST request to get Discount : {}", id);
-        DiscountResponse discountDTO = discountService.findById(id);
+        DiscountResponseDTO discountDTO = discountService.findById(id);
         return ResponseEntity.ok(discountDTO);
     }
 
