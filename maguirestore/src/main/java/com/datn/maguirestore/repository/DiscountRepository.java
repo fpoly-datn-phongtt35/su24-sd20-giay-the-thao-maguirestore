@@ -16,5 +16,4 @@ public interface DiscountRepository extends JpaRepository<Discount, Long>, Disco
     Page<Discount> findAllByStatusAndNameContaining(Integer status, String name, Pageable pageable);
 
     Discount findByIdAndStatus(Long id, Integer status);
-
 }

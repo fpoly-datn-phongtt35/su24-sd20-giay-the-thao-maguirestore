@@ -1,8 +1,12 @@
 package com.datn.maguirestore.controller;
 
+import com.datn.maguirestore.dto.CartDetailDTO;
 import com.datn.maguirestore.dto.CartDetailsDTO;
 import com.datn.maguirestore.dto.CartDetailsRequestDTO;
+import com.datn.maguirestore.entity.Cart;
+import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.service.CartDetailsService;
+import com.datn.maguirestore.service.CartService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -22,6 +26,8 @@ public class CartDetailsController {
     private static final String ENTITY_NAME = "cart_details";
     private final Logger log = LoggerFactory.getLogger(CartDetailsController.class);
     private final CartDetailsService cartDetailsService;
+    private final CartService cartService;
+    private final CartDetailsRepository cartDetailsRepository;
 
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{id}")
@@ -65,5 +71,13 @@ public class CartDetailsController {
         log.debug("REST request to delete Cart : {}", id);
         cartDetailsService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/allCartDetail")
+    public ResponseEntity<List<CartDetailDTO>> getAllPathCartDetail() {
+        List<Cart> cart = cartService.findByOwnerIsCurrentUser();
+        Cart cart1 = cart.get(0);
+        List<CartDetailDTO> cartDetailsDTOS = cartDetailsRepository.findCartDetailsByCart_Id(cart1.getId());
+        return ResponseEntity.ok().body(cartDetailsDTOS);
     }
 }

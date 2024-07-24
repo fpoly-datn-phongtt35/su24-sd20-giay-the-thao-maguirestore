@@ -77,7 +77,7 @@ import { MultiSelectModule } from "primeng/multiselect";
 // import { LandingComponent } from "./components/landing/landing.component";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { SliderModule } from "primeng/slider";
-//import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
+import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
 // import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 // import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
@@ -140,7 +140,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // LandingComponent,
     ClientHomeComponent,
     CartComponent,
-    //ShoesInspectComponent,
+    ShoesInspectComponent,
     // OrderDetailsComponent,
     // PayComponent,
     LoginCustomerComponent,

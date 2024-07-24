@@ -33,9 +33,9 @@ public class DiscountRepositoryCustomImpl implements DiscountRepositoryCustom {
             "    \twhen d.discount_method = 4 then 'Giảm % cho từng giày'\n" +
             "    end as discountMethodName,\n" +
             "    case\n" +
-            "    \twhen d.discount_status = 0 then 'Chưa áp dụng'\n" +
-            "    \twhen d.discount_status = 1 then 'Đang áp dụng'\n" +
-            "    \twhen d.discount_status = 2 then 'Hết hạn'\n" +
+            "    \twhen d.status = 0 then 'Chưa áp dụng'\n" +
+            "    \twhen d.status = 1 then 'Đang áp dụng'\n" +
+            "    \twhen d.status = 2 then 'Hết hạn'\n" +
             "    end as status,\n" +
             "    d.start_date as startDate, d.end_date as endDate,\n" +
             "    d.last_modified_date as lastModifiedDate,d.last_modified_by as lastModifiedBy\n" +

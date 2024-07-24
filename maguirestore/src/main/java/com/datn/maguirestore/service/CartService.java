@@ -114,4 +114,8 @@ public class CartService {
         cart.setUser(userRepository.findById(cartRequestDTO.getUser()).get());
         return cart;
     }
+
+    public List<Cart> findByOwnerIsCurrentUser() {
+        return cartRepository.findByOwnerIsCurrentUser();
+    }
 }
