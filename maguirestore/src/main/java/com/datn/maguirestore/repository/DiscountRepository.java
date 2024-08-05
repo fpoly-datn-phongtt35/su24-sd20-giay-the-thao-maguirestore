@@ -16,4 +16,7 @@ public interface DiscountRepository extends JpaRepository<Discount, Long>, Disco
     Page<Discount> findAllByStatusAndNameContaining(Integer status, String name, Pageable pageable);
 
     Discount findByIdAndStatus(Long id, Integer status);
+
+    @Query(value = "SELECT jo.* FROM discount jo WHERE jo.created_date LIKE :date", nativeQuery = true)
+    List<Discount> findByCreatedDate(@Param("date") String date);
 }

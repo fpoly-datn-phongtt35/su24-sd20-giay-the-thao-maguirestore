@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -118,6 +119,64 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
             nativeQuery = true
     )
     List<ShoesDetailDTOCustom> getNewShoesDetail();
+
+    @Query(
+            nativeQuery = true,
+            value = "SELECT \n" +
+                    "CONCAT(br.name, ' ', sh.name) as name, br.name as brandName ,sh.code as shoesCode, " +
+                    "sd.* ,\n" +
+                    "iu.path, \n" +
+                    "GROUP_CONCAT(distinct sz.id order by sz.id) as sizes,\n" +
+                    "GROUP_CONCAT(distinct cl.id order by cl.id) as colors,\n " +
+                    "GROUP_CONCAT(distinct cl.name order by cl.id) as color_names ," +
+                    "GROUP_CONCAT(distinct iu.path) as paths ," +
+                    "d.name as discount_name ," +
+                    "d.discount_method as discount_method ,  " +
+                    "dsd.discount_amount as discount_amount , " +
+                    "CAST(COALESCE(avg(fb.rate), 0) AS SIGNED ) as rating  " +
+                    "FROM\n" +
+                    "    `shoes-store`.shoes_details sd\n" +
+                    "JOIN (\n" +
+                    "    SELECT\n" +
+                    "        shoes_id,\n" +
+                    "        brand_id,\n" +
+                    "        MIN(price) AS lowest_price\n" +
+                    "    FROM\n" +
+                    "        `shoes-store`.shoes_details \n" +
+                    "WHERE status = 1 " +
+                    "    GROUP BY\n" +
+                    "        shoes_id, brand_id\n" +
+                    ") min_prices ON sd.shoes_id = min_prices.shoes_id\n" +
+                    "    AND sd.brand_id = min_prices.brand_id\n" +
+                    "    AND sd.price = min_prices.lowest_price\n" +
+                    "    AND sd.size_id in (:idSizes)" +
+                    "LEFT JOIN\n" +
+                    "    `shoes-store`.shoes_file_upload_mapping sfum ON sd.id = sfum.shoes_details_id\n" +
+                    "LEFT JOIN\n" +
+                    "    `shoes-store`.file_upload iu ON sfum.file_upload_id = iu.id\n " +
+                    "AND iu.status = 1 " +
+                    "JOIN\n " +
+                    "    `shoes-store`.brand br ON sd.brand_id = br.id\n " +
+                    "JOIN\n" +
+                    "    `shoes-store`.shoes sh ON sd.shoes_id = sh.id and sh.status = 1\n" +
+                    "LEFT JOIN `shoes-store`.discount_details dsd ON dsd.shoes_id = sd.shoes_id\n" +
+                    "    AND dsd.status = 1 AND dsd.brand_id = sd.brand_id\n" +
+                    "LEFT JOIN `shoes-store`.discount d ON dsd.discount_id = d.id\n" +
+                    "    AND d.start_date <= NOW() AND d.end_date >= NOW() AND d.status = 1 " +
+                    "JOIN\n" +
+                    " `shoes-store`.size sz ON sd.size_id = sz.id\n" +
+                    "JOIN\n" +
+                    "`shoes-store`.color cl ON sd.color_id = cl.id\n " +
+                    "LEFT JOIN `shoes-store`.feed_back fb ON fb.shoes_id in (select id from shoes_details where brand_id = sd.brand_id and shoes_id = sd.shoes_id)  and fb.status = 1 " +
+                    "WHERE sd.status = 1 AND (sd.brand_id = :idBrands OR :idBrands IS NULL) and sd.price between :startPrice and :endPrice " +
+                    "GROUP BY shoes_id, brand_id, br.name, sh.name, sh.code, sd.id, iu.path, d.name, d.discount_method, dsd.discount_amount\n"
+    )
+    List<ShopShoesDTO> findDistinctByShoesAndBrandOrderBySellPriceDesc(
+            @Param("idSizes") List<Long> idSizes,
+            @Param("idBrands") Long brandId,
+            @Param("startPrice") BigDecimal startPrice,
+            @Param("endPrice") BigDecimal endPrice
+    );
 
     @Query(
             value = "SELECT fu.path, sd.price, s.name, s.id AS idsh, sz.id AS idsz, c.id AS idc, b.id AS idb,\n" +

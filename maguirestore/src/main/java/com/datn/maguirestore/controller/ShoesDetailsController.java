@@ -3,10 +3,12 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.config.Constants;
 import com.datn.maguirestore.dto.*;
 import com.datn.maguirestore.entity.FileUpload;
+import com.datn.maguirestore.entity.Size;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.repository.ShoesFileUploadMappingRepository;
+import com.datn.maguirestore.repository.SizeRepository;
 import com.datn.maguirestore.service.FileUploadService;
 import com.datn.maguirestore.service.ShoesDetailsService;
 import com.datn.maguirestore.service.ShoesFileUploadMappingService;
@@ -31,6 +33,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -47,6 +50,7 @@ public class ShoesDetailsController {
     private static final String ENTITY_NAME = "shoes-details";
     private final Logger log = LoggerFactory.getLogger(ShoesDetailsController.class);
     private final ShoesDetailsService shoesDetailsService;
+    private final SizeRepository sizeRepository;
     private final FileUploadService fileUploadService;
     private final FileUploadMapper fileUploadMapper;
     private final ShoesFileUploadMappingService shoesFileUploadMappingService;
@@ -95,6 +99,24 @@ public class ShoesDetailsController {
         log.debug("REST request to delete ShoesDetails : {}", id);
         shoesDetailsService.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/shop")
+    public ResponseEntity<List<ShopShoesDTO>> testing(@RequestBody SearchSDsResponse response) {
+        List<Long> ids = response.getSizeIds();
+        if (response.getSizeIds().isEmpty()) {
+            ids = sizeRepository.findAll().stream().map(Size::getId).collect(Collectors.toList());
+        }
+        return ResponseEntity
+                .ok()
+                .body(
+                        shoesDetailsRepository.findDistinctByShoesAndBrandOrderBySellPriceDesc(
+                                ids,
+                                response.getBrandId(),
+                                response.getStartPrice(),
+                                response.getEndPrice()
+                        )
+                );
     }
 
     @PostMapping("/shop/detail")
