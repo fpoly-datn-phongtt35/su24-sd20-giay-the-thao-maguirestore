@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="khanhhoa17-commit-[set authorize for DiscountAPI]">
+      <change afterPath="$PROJECT_DIR$/305258033_1515576628902739_3247710093424557605_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/305466589_1515576745569394_3703775270929461913_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/AWSS3Config.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DashBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/FileUploadController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/FileUploadDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/FindingOneDtos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDetailDTOCustom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesFileUploadMappingDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShopShoesDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/FileUpload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/ResetToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/ShoesFileUploadMapping.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/FileUploadRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ResetTokenRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesFileUploadMappingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DashBoardService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/FileUploadService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesFileUploadMappingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/FileUploadMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/ShoesFileUploadMappingMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/util/AWSS3Util.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand-removed/brand-removed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand-removed/brand-removed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand-removed/brand-removed.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand-removed/brand-removed.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand/brand.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand/brand.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand/brand.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/brand/brand.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category-removed/category-removed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category-removed/category-removed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category-removed/category-removed.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category-removed/category-removed.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/category/category.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/about/about.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/about/about.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/about/about.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/about/about.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/cart/cart.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/cart/cart.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/cart/cart.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/cart/cart.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/contact/contact.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/contact/contact.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/contact/contact.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/contact/contact.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/home/client.home.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/home/client.home.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/home/client.home.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/client/home/client.home.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-add/discount-add.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount-shoes/discount-shoes.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/discount/discount.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail-add/shoes-detail-add.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail-add/shoes-detail-add.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail-add/shoes-detail-add.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail-add/shoes-detail-add.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes- detail.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes-detail/shoes-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shoes/shoes.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shop/shop.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shop/shop.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shop/shop.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/shop/shop.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size-removed/size-removed.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size-removed/size-removed.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size-removed/size-removed.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size-removed/size-removed.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size/size.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size/size.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size/size.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/size/size.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddCategory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/CategoryData.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/category.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/LogoShoe.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner-about.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner-about1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner-about2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner-about3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner-about4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/images/banner4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AddressController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CartDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CartDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ColorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DiscountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DiscountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DiscountDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/DiscountDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/FeedBackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/FeedBackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/ShoesDetailsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/SizeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/SizeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/CategoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDetailsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/dto/ShoesDetailsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/DiscountShoesDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/DiscountDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/ShoesDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/entity/ShoesDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/ShoesCreateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/payload/request/ShoesCreateRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/BrandRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ColorRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/DiscountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/DiscountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/DiscountShoesDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/DiscountDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/OtpRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/OtpRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesDetailsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesDetailsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/ShoesRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/SizeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/repository/SizeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthTokenFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/AuthTokenFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/JwtUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/jwt/JwtUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/security/services/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/AddressService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ColorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DiscountDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DiscountDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DiscountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/DiscountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/FeedBackService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/FeedBackService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/ShoesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/SizeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/SizeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/DiscountShoesDetailsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datn/maguirestore/service/mapper/DiscountShoesDetailsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color-removed/color-removed.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color-removed/color-removed.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color/color.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color/color.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color/color.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/color/color.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/components/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.menu.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.menu.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.topbar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/app.topbar.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/footer/footer.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/layout.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/layout/client/layout/menu/menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/model/AddShoes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/brand.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/brand.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/color.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/discount.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/login.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/shoes.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/shoes.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/size.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/app/service/size.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../shoes-shop-fe/src/assets/layout/styles/layout/layout.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="bcd572d71bff24f72bb345392467370f0a46a981" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2hJwkiVb8e5JxANXlwEGcMVmpLW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../DATN/su24-sd20-giay-the-thao-maguirestore/maguirestore" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MaguirestoreApplication">
+    <configuration name="MaguirestoreApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.datn.maguirestore.MaguirestoreApplication" />
+      <module name="maguirestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.datn.maguirestore.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Shoes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.datn.maguirestore.entity.Shoes" />
+      <module name="maguirestore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.datn.maguirestore.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MaguirestoreApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="maguirestore" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.datn.maguirestore.MaguirestoreApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Shoes" />
+        <item itemvalue="Application.MaguirestoreApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22fdba81-92a0-49ea-a98f-f1136fb25c57" name="Changes" comment="" />
+      <created>1717325633316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717325633316</updated>
+      <workItem from="1719756224293" duration="412000" />
+      <workItem from="1719757194749" duration="459000" />
+      <workItem from="1719757883085" duration="4093000" />
+      <workItem from="1719825811108" duration="123000" />
+      <workItem from="1719825967772" duration="864000" />
+      <workItem from="1719827877925" duration="4100000" />
+      <workItem from="1719892412432" duration="195000" />
+      <workItem from="1719912853137" duration="3573000" />
+      <workItem from="1721121120000" duration="1811000" />
+      <workItem from="1721124433273" duration="1297000" />
+      <workItem from="1721126727024" duration="3808000" />
+      <workItem from="1721137647116" duration="645000" />
+      <workItem from="1721139255571" duration="652000" />
+      <workItem from="1721140923714" duration="1701000" />
+      <workItem from="1721307082995" duration="132000" />
+      <workItem from="1721307237515" duration="725000" />
+      <workItem from="1721625833607" duration="957000" />
+      <workItem from="1721628096760" duration="595000" />
+      <workItem from="1721628987514" duration="465000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="khanhhoa17" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="khanhhoa17-commit-[set authorize for DiscountAPI]" />
+    <option name="LAST_COMMIT_MESSAGE" value="khanhhoa17-commit-[set authorize for DiscountAPI]" />
+  </component>
+</project>

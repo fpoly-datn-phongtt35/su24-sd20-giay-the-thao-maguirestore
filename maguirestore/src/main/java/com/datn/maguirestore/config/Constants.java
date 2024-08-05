@@ -1,6 +1,8 @@
 package com.datn.maguirestore.config;
 
 /**
+ * @author nguyenkhanhhoa
+ *
  * Application constants.
  */
 public final class Constants {
@@ -18,7 +20,50 @@ public final class Constants {
         public static final Integer DELETE = -1;
     }
 
+    public static class ORDER_STATUS {
+
+        public static final Integer PENDING = 0;
+        public static final Integer WAIT_DELIVERY = 1;
+        public static final Integer SHIPPING = 2;
+        public static final Integer SUCCESS = 3;
+        public static final Integer CANCELED = -1;
+        public static final Integer PENDING_CHECKOUT = 4;
+    }
+
+    public static class PAYMENT_METHOD {
+
+        public static final Integer CASH = 1;
+        public static final Integer CREDIT = 2;
+    }
+
+    public static class ORDER_RETURN {
+
+        public static final Integer PENDING = 1;
+        public static final Integer PROCESSING = 2;
+        public static final Integer FINISH = 3;
+        public static final Integer CANCEL = 4;
+    }
+
+    public static class PAYMENT_STATUS {
+
+        public static final Integer DONE = 1;
+        public static final Integer NONE = 2;
+    }
+
+    public static class PAID_METHOD {
+
+        public static final Integer OFF = 1;
+        public static final Integer ON = 2;
+    }
+
+    public static class DISCOUNT_METHOD {
+
+        public static final Integer TOTAL_MONEY = 1;
+        public static final Integer TOTAL_PERCENT = 2;
+        public static final Integer PER_MONEY = 3;
+        public static final Integer PER_PERCENT = 4;
+    }
+
     private Constants() {}
 
-    public static final String KEY_UPLOAD = "bad";
 }

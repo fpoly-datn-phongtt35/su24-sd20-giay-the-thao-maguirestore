@@ -113,22 +113,22 @@ public class DataUtils {
         }
     }
 
-    public static Instant parseToInstant_yyyy_MM_dd_HH_mm_ss(String dateString) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static Instant parseToInstant(String dateString) {
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime startDate = LocalDateTime.parse(dateString, df);
         Instant instant = startDate.toInstant(ZoneOffset.UTC);
         return instant;
     }
 
     public static Instant getStartOfDay_yyyy_MM_dd_HH_mm_ss(String dateString) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDate startDate = LocalDate.parse(dateString, df);
         Instant instant = startDate.atStartOfDay().toInstant(ZoneOffset.UTC);
         return instant;
     }
 
     public static Instant getEndOfDay_yyyy_MM_dd_HH_mm_ss(String dateString) {
-        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDate date = LocalDate.parse(dateString, df);
         LocalDateTime endOfDay = date.atTime(LocalTime.MAX);
         Instant instant = endOfDay.toInstant(ZoneOffset.UTC);
@@ -148,6 +148,6 @@ public class DataUtils {
     }
 
     public static Instant toInstant(String instant) {
-        return LocalDateTime.parse(instant).toInstant(ZoneOffset.UTC);
+        return LocalDateTime.parse(instant).toInstant(ZoneOffset.MAX);
     }
 }

@@ -12,7 +12,10 @@ import com.datn.maguirestore.security.services.UserDetailsImpl;
 import com.datn.maguirestore.service.UserService;
 import com.datn.maguirestore.util.HeaderUtil;
 import com.datn.maguirestore.util.PaginationUtil;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +30,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -41,6 +43,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/users")
 @Slf4j
+@RequiredArgsConstructor
 public class UserController {
 
     private static final List<String> ALLOWED_ORDERED_PROPERTIES = Collections.unmodifiableList(
@@ -58,17 +61,55 @@ public class UserController {
             )
     );
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private JwtUtils jwtUtils;
-    @Autowired
-    private HttpServletRequest request;
-    @Autowired
-    private UserRepository userRepository;
+    
+    private final UserService userService;
+    
+    private final JwtUtils jwtUtils;
+    
+    private final UserRepository userRepository;
 
     @Value("${clientApp.name}")
     private String applicationName;
+
+    @SecurityRequirement(name = "Bearer Authentication")
+    @PostMapping("/getTokenToChangePassword")
+    public ResponseEntity<String> getToken(@RequestParam("email") @RequestBody String email){
+        try {
+            String jwtToken = jwtUtils.generateJwtTokenToChangePassword(email);
+            return ResponseEntity.ok("JWT token for email " + email + ": " + jwtToken);
+        } catch (Exception e) {
+            throw new IllegalStateException("Error generating JWT token for email " + email);
+        }
+    }
+
+    // forgot Password
+    @SecurityRequirement(name = "Bearer Authentication")
+    @PostMapping("/resetPassword")
+    public ResponseEntity<String> resetPassword(@RequestParam("newPassword") String newPassword,
+        @RequestParam("token") String token) {
+        try {
+            Claims claims = Jwts.parserBuilder()
+                .setSigningKey(jwtUtils.getKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
+
+            String tokenType = claims.get("type", String.class);
+            if (!"password_reset".equals(tokenType)) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid token type.");
+            }
+
+            String email = claims.getSubject();
+            if (userService.resetPassword(newPassword, email, token)) {
+                return ResponseEntity.ok("Password reset successfully.");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Invalid or expired token.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid token.");
+        }
+    }
 
     // Lay User theo Id
     @SecurityRequirement(name = "Bearer Authentication")

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.persistence.EntityNotFoundException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -46,10 +47,26 @@ public class ColorService {
     }
 
     @Transactional(readOnly = true)
+    public ColorDTO findbyId(Long id) {
+        log.debug("Request to get Color by id");
+
+        return colorRepository.findById(id)
+                .map(colorMapper::toDto)
+                .orElseThrow(() -> new EntityNotFoundException("Color not found with id " + id));
+    }
+
+    @Transactional(readOnly = true)
     public List<ColorDTO> findAll() {
         log.debug("Request to get all Color");
+        return colorRepository.findByStatus(1).stream()
+                .map(colorMapper::toDto)
+                .collect(Collectors.toCollection(LinkedList::new));
+    }
 
-        return colorRepository.findAll().stream()
+    @Transactional(readOnly = true)
+    public List<ColorDTO> findRemoved() {
+        log.debug("Request to get all Color");
+        return colorRepository.findByStatus(0).stream()
                 .map(colorMapper::toDto)
                 .collect(Collectors.toCollection(LinkedList::new));
     }

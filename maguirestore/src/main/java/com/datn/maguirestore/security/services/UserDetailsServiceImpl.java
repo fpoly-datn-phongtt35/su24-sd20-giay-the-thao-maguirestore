@@ -2,6 +2,7 @@ package com.datn.maguirestore.security.services;
 
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.repository.UserRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

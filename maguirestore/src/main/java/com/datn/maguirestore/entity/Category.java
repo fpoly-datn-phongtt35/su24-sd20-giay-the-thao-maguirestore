@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/** tuyenpv - Category. */
 @Entity
 @Table(name = "shoes_category")
 @Data

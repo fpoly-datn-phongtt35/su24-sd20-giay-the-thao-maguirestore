@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -38,4 +40,13 @@ public class Shoes extends AbstractAuditingEntity<Long> implements Serializable 
 
   @Column(name = "status")
   private Integer status;
+
+  @ManyToOne
+  @JoinColumn(name = "brand_id")
+  private Brand brand;
+
+  @ManyToOne
+  @JoinColumn(name = "category_id")
+  private Category category;
+
 }
