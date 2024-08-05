@@ -20,6 +20,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
@@ -31,7 +34,7 @@ public class DiscountService {
 
   private final DiscountRepository discountRepository;
   private final DiscountMapper discountMapper;
-
+  private final String baseCode = "KM";
   private final DiscountDetailsRepository discountDetailsRepository;
 
   private static final String ENTITY_NAME = "discount";
@@ -40,7 +43,7 @@ public class DiscountService {
     String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
     Discount discount = new Discount();
-    discount.setCode(discountDTO.getCode());
+    discount.setCode(generateCode());
     discount.setName(discountDTO.getName());
     discount.setStatus(Constants.STATUS.ACTIVE);
     discount.setStartDate(discountDTO.getStartDate());
@@ -77,6 +80,17 @@ public class DiscountService {
     dto.setEndDate(discount.getEndDate());
 
     return dto;
+  }
+
+  public String generateCode() {
+    Instant currentDateTime = DataUtils.getCurrentDateTime();
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String formattedDate = formatter.format(LocalDate.ofInstant(currentDateTime, ZoneId.of("UTC")));
+    String dateString = DataUtils.makeLikeStr(formattedDate);
+    List<Discount> list = discountRepository.findByCreatedDate(dateString);
+    int numberInDay = list.size() + 1;
+    String code = DataUtils.replaceSpecialCharacters(formattedDate);
+    return baseCode + code + numberInDay;
   }
 
   public DiscountUpdateResponse update(Long id, DiscountUpdateRequest discountDTO) {
