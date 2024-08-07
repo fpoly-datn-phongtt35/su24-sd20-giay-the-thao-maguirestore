@@ -17,6 +17,13 @@ public interface DiscountRepository extends JpaRepository<Discount, Long>, Disco
 
     Discount findByIdAndStatus(Long id, Integer status);
 
+    @Query(value = "SELECT o.* FROM discount o WHERE o.start_date <= NOW() AND o.end_date > NOW() AND o.status = 1", nativeQuery = true)
+    List<Discount> findAllActive();
+
+    @Query(value = "SELECT o.* FROM discount o WHERE o.end_date <= NOW() AND o.status = 1", nativeQuery = true)
+    List<Discount> findAllHetHan();
+
     @Query(value = "SELECT jo.* FROM discount jo WHERE jo.created_date LIKE :date", nativeQuery = true)
     List<Discount> findByCreatedDate(@Param("date") String date);
+
 }

@@ -42,7 +42,7 @@ public class PaymentController {
 
   private static final String ENTITY_NAME = "payment";
 
-  @Value("${jhipster.clientApp.name}")
+  @Value("${clientApp.name}")
   private String applicationName;
 
   private final PaymentService paymentService;
@@ -50,38 +50,27 @@ public class PaymentController {
 //  private final OrderService orderService;
   private final EmailService mailService;
 
-  @GetMapping("")
-  public String newPayments(
-      @RequestParam("price") BigDecimal price,
-      @RequestParam("receivedBy") String receivedBy,
-      @RequestParam("phone") String phone,
-      @RequestParam("email") String email,
-      @RequestParam("address") String address,
-      @RequestParam("province") Integer province,
-      @RequestParam("district") Integer district,
-      @RequestParam("ward") Integer ward,
-      @RequestParam("shipPrice") BigDecimal shipPrice,
-      @RequestParam("idOwner") String idOwner,
-      @RequestParam("arrSanPham") String arrSanPham,
-      @RequestParam("arrQuantity") String arrQuantity,
-      @RequestParam("arrPriceDiscount") String arrPriceDiscount
-  ) throws UnsupportedEncodingException {
-    return paymentService.createPayment(
-        price,
-        receivedBy,
-        phone,
-        email,
-        address,
-        province,
-        district,
-        ward,
-        shipPrice,
-        idOwner,
-        arrSanPham,
-        arrQuantity,
-        arrPriceDiscount
-    );
-  }
+//  @GetMapping("")
+//  public String newPayments(
+//      @RequestParam("price") BigDecimal price,
+//      @RequestParam("receivedBy") String receivedBy,
+//      @RequestParam("phone") String phone,
+//      @RequestParam("email") String email,
+//      @RequestParam("address") String address,
+//      @RequestParam("province") Integer province,
+//      @RequestParam("district") Integer district,
+//      @RequestParam("ward") Integer ward,
+//      @RequestParam("shipPrice") BigDecimal shipPrice,
+//      @RequestParam("idOwner") String idOwner,
+//      @RequestParam("arrSanPham") String arrSanPham,
+//      @RequestParam("arrQuantity") String arrQuantity,
+//      @RequestParam("arrPriceDiscount") String arrPriceDiscount
+//  ) throws UnsupportedEncodingException {
+//    return paymentService.createPayment(
+//        price, receivedBy, phone, email, address, province, district, ward,
+//        shipPrice, idOwner, arrSanPham, arrQuantity, arrPriceDiscount
+//    );
+//  }
 
   @PostMapping("")
   public ResponseEntity<PaymentDTO> createPayment(@RequestBody PaymentDTO paymentDTO) throws URISyntaxException {
