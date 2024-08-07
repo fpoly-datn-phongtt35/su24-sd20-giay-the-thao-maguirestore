@@ -13,7 +13,7 @@ import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
 public interface ShoesFileUploadMappingMapper extends EntityMapper<ShoesFileUploadMappingDTO, ShoesFileUploadMapping> {
-    @Mapping(target = "fileUpload", source = "fileUpload", qualifiedByName = "fileUploadId")
+    //@Mapping(target = "fileUpload", source = "fileUpload", qualifiedByName = "fileUploadId")
     @Mapping(target = "shoesDetails", source = "shoesDetails", qualifiedByName = "shoesDetailsId")
     ShoesFileUploadMappingDTO toDto(ShoesFileUploadMapping s);
 
