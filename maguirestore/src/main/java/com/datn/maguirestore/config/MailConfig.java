@@ -1,5 +1,6 @@
 package com.datn.maguirestore.config;
 
+import lombok.Getter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -10,8 +11,15 @@ import java.util.Properties;
 /**
  * @author nguyenkhanhhoa
  */
+@Getter
 @Configuration
 public class MailConfig {
+
+    private String from;
+
+    public void setFrom(String from) {
+        this.from = from;
+    }
 
     @Bean
     public JavaMailSender javaMailSender() {

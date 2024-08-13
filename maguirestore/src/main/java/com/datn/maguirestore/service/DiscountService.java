@@ -11,6 +11,7 @@ import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.service.mapper.DiscountMapper;
 import com.datn.maguirestore.util.DataUtils;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -158,5 +159,22 @@ public class DiscountService {
 
   public List<DiscountSearchDTO> search(String searchText) {
     return discountRepository.search(searchText);
+  }
+
+  public void scanDiscount() {
+    List<Discount> listDiscountA = discountRepository.findAllActive();
+    List<Discount> listDiscountB = discountRepository.findAllHetHan();
+    List<Discount> listSave = new ArrayList<>();
+    for (Discount discount : listDiscountA) {
+      discount.setStatus(1);
+      listSave.add(discount);
+    }
+    for (Discount discount : listDiscountB) {
+      discount.setStatus(2);
+      listSave.add(discount);
+    }
+    discountRepository.saveAll(listSave);
+    List<Long> discountId = listDiscountB.stream().map(Discount::getId).collect(Collectors.toList());
+    discountDetailsRepository.updateStatus(discountId, 0);
   }
 }
