@@ -48,7 +48,7 @@ export interface ShoesDetail {
 export class ShoesInspectComponent {
   get imageSrc() {
     const imageWith800x800 = this.shoesDetails.images.find((img: string) => img.includes('800x800'));
-    return imageWith800x800 || this.shoesDetails.images[0];
+    return this.shoesDetails.images[0] || imageWith800x800;
   }
   CartDetailSave: CartDetailSave = {};
   cartDetails: CartDetail[];
@@ -144,6 +144,7 @@ export class ShoesInspectComponent {
       const siid = params["siid"];
       const clid = params["clid"];
       this.productId = { shid: shid, brid: brid, siid: siid, clid: clid };
+
     });
     this.fetchProductDetails();
   }
@@ -178,9 +179,15 @@ export class ShoesInspectComponent {
     this.quantity = 1
     const apiUrl = `http://localhost:8088/api/v1/shoes-details/shop/detail`;
     // Make the HTTP request
+
     this.http.post<any>(apiUrl, this.productId).subscribe(
       (data: any) => {
+
+        // console.log(data);
+
         this.shoesDetails = data;
+
+        console.log(this.shoesDetails);
         this.shoesDetails.images = this.splitPaths(data.paths);
         this.sizeOptions = this.mergeLists(
           this.splitPaths(this.shoesDetails.size_names),

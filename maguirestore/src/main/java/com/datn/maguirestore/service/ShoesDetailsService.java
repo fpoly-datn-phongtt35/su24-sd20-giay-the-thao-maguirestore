@@ -7,7 +7,9 @@ import com.datn.maguirestore.entity.Shoes;
 import com.datn.maguirestore.entity.ShoesDetails;
 import com.datn.maguirestore.entity.Size;
 import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
+import com.datn.maguirestore.repository.BrandRepository;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
+import com.datn.maguirestore.repository.ShoesRepository;
 import com.datn.maguirestore.service.mapper.ShoesDetailsMapper;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -31,12 +33,17 @@ public class ShoesDetailsService {
 
     private final ShoesDetailsMapper shoesDetailsMapper;
 
+    private final BrandRepository brandRepository;
+    private final ShoesRepository shoesRepository;
+
 
     public ShoesDetailsDTO save(ShoesDetailsDTO shoesDetailsDTO) {
         log.debug("Request to save ShoesDetails : {}", shoesDetailsDTO);
 
         ShoesDetails shoesDetails = shoesDetailsMapper.toEntity(shoesDetailsDTO);
         shoesDetails.setStatus(1);
+        Shoes shoes = shoesRepository.findById(shoesDetailsDTO.getShoes().getId()).get();
+        shoesDetails.setBrand(brandRepository.findById(shoes.getBrand().getId()).get());
         shoesDetails = shoesDetailsRepository.save(shoesDetails);
         return shoesDetailsMapper.toDto(shoesDetails);
     }
