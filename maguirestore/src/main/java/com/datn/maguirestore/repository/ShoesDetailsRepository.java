@@ -23,8 +23,8 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
                     "   color_names, " +
                     "   sz.name as size_name, " +
                     "   cl.name as color_name, " +
-                    "   sh.code, " +
-                    "   sh.id, " +
+                    "   sd.*, " +
+//                    "   sh.id, " +
                     "   CONCAT(br.name, ' ', sh.name) as name, " +
                     "   iu.path, " +
                     "   GROUP_CONCAT(iu.path) as paths, " +
@@ -75,7 +75,7 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
     );
 
     @Query(
-            value = "select fu.path,sd.price,s.name,s.id as idsh,sz.id as idsz,c.id as idc,b.id as idb,\n" +
+            value = "select fu.path,sd.price,s.name,s.id as idShoe,sz.id as idSize,c.id as idColor,b.id as idBrand,\n" +
                     "    coalesce(max(discount_method),min(discount_method)) AS discountmethod,\n" +
                     "    max(\n" +
                     "    case\n" +

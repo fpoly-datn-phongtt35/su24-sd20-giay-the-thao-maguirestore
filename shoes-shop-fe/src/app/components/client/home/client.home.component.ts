@@ -6,6 +6,8 @@ import { ShoesdetailService } from "src/app/service/shoesdetail.service";
 import { ShoesDetailCustom } from "src/app/model/ShoesDetailCustom";
 import { CartDetailService } from "src/app/service/cart-detail.service";
 import { CartDetailCustomerService } from "src/app/service/cartdetailcustom.service";
+import { AppConstants } from "src/app/app-constants";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-client.home",
@@ -23,7 +25,8 @@ export class ClientHomeComponent implements OnInit {
     private router: Router,
     private shoesdetailService: ShoesdetailService,
     private cartDetailService: CartDetailService,
-    private cartDetailCustomerService: CartDetailCustomerService
+    private cartDetailCustomerService: CartDetailCustomerService,
+    private http: HttpClient
   ) {}
   ngOnInit(): void {
     this.images = [
@@ -53,7 +56,13 @@ export class ClientHomeComponent implements OnInit {
     }
     this.shoesdetailService.getNewShoesDetail().subscribe((response) => {
       this.shoesDetailCustom = response;
+      console.log(this.shoesDetailCustom);
     });
+    // this.http
+    //   .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes-details").subscribe((response) => {
+    //   this.shoesDetailCustom = response;
+    //   console.log(this.shoesDetailCustom);
+    // });
     this.shoesdetailService
       .getNewDiscountShoesDetail()
       .subscribe((response) => {
@@ -66,10 +75,10 @@ export class ClientHomeComponent implements OnInit {
 
   shoesDetail(shoesDetail: ShoesDetailCustom) {
     const queryParams = {
-      shid: shoesDetail.idsh,
-      brid: shoesDetail.idb,
-      siid: shoesDetail.idsz,
-      clid: shoesDetail.idc,
+      shid: shoesDetail.idShoe,
+      brid: shoesDetail.idBrand,
+      siid: shoesDetail.idSize,
+      clid: shoesDetail.idColor,
     };
 
     this.router.navigate(["/client/shoes-detail"], {
