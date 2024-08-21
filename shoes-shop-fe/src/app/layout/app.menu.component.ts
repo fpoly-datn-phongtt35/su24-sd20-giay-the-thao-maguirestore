@@ -32,11 +32,11 @@ export class AppMenuComponent implements OnInit {
             icon: "pi pi-fw pi-shopping-bag",
             routerLink: ["/admin/orders"],
           },
-          {
-            label: "Quản lý dổi trả",
-            icon: "pi pi-fw pi-shopping-bag",
-            routerLink: ["/admin/order-returns"],
-          },
+          // {
+          //   label: "Quản lý dổi trả",
+          //   icon: "pi pi-fw pi-shopping-bag",
+          //   routerLink: ["/admin/order-returns"],
+          // },
         ],
       },
       {
@@ -163,16 +163,6 @@ export class AppMenuComponent implements OnInit {
             label: "Chương trình giảm giá",
             icon: "pi pi-fw pi-globe",
             routerLink: ["/admin/discount"],
-          },
-        ],
-      },
-      {
-        label: "Khác",
-        items: [
-          {
-            label: "Tài liệu",
-            icon: "pi pi-fw pi-book",
-            routerLink: ["/documentation"],
           },
         ],
       },

@@ -3,6 +3,8 @@ package com.datn.maguirestore.controller;
 import com.datn.maguirestore.config.Constants;
 import com.datn.maguirestore.dto.*;
 import com.datn.maguirestore.entity.FileUpload;
+import com.datn.maguirestore.entity.ShoesDetails;
+import com.datn.maguirestore.entity.ShoesFileUploadMapping;
 import com.datn.maguirestore.entity.Size;
 import com.datn.maguirestore.errors.BadRequestAlertException;
 import com.datn.maguirestore.payload.request.ShoesDetailCreateRequest;
@@ -13,6 +15,7 @@ import com.datn.maguirestore.service.FileUploadService;
 import com.datn.maguirestore.service.ShoesDetailsService;
 import com.datn.maguirestore.service.ShoesFileUploadMappingService;
 import com.datn.maguirestore.service.mapper.FileUploadMapper;
+import com.datn.maguirestore.service.mapper.ShoesDetailsMapper;
 import com.datn.maguirestore.util.AWSS3Util;
 import com.datn.maguirestore.util.DataUtils;
 import com.datn.maguirestore.util.HeaderUtil;
@@ -83,7 +86,18 @@ public class ShoesDetailsController {
     @GetMapping("")
     public ResponseEntity<List<ShoesDetailsDTO>> getAllShoesDetails() {
         log.debug("REST request to get a page of ShoesDetails");
-        return ResponseEntity.ok(shoesDetailsService.fillAll());
+        List<ShoesDetailsDTO> page = shoesDetailsService.fillAll();
+        for (ShoesDetailsDTO x : page) {
+            ShoesDetails shoesDetails = ShoesDetailsMapper.INSTANCE.toEntity(x);
+            x.setImgPath(getAllFilePathsForShoesDetails(shoesDetails));
+        }
+        return ResponseEntity.ok(page);
+    }
+
+    public List<String> getAllFilePathsForShoesDetails(ShoesDetails shoesDetails) {
+        List<ShoesFileUploadMapping> mappings = shoesFileUploadMappingRepository.findByShoesDetails(shoesDetails);
+        List<String> filePaths = mappings.stream().map(mapping -> mapping.getFileUpload().getFilePath()).collect(Collectors.toList());
+        return filePaths;
     }
 
     @SecurityRequirement(name = "Bearer Authentication")
@@ -127,6 +141,10 @@ public class ShoesDetailsController {
                 x.getSiid(),
                 x.getClid()
         );
+
+//        System.out.println(shopShoesDTO.getBrandName());
+        System.out.println(shopShoesDTO.getQuantity());
+
         if (shopShoesDTO != null) {
             return ResponseEntity.ok().body(shopShoesDTO);
         } else {

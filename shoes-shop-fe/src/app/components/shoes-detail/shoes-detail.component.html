@@ -43,19 +43,19 @@
 				<th style="width: 4rem">
 					<p-tableHeaderCheckbox></p-tableHeaderCheckbox>
 				</th>
-				<th>Ảnh</th>
-				<th pSortableColumn="code">Code <p-sortIcon field="code"></p-sortIcon></th>
-				<th pSortableColumn="name" style="min-width:15rem">Tên Sản Phẩm <p-sortIcon field="name"></p-sortIcon>
+				<th style="white-space: nowrap;">Ảnh</th>
+				<th pSortableColumn="code" style="white-space: nowrap;">Code <p-sortIcon field="code"></p-sortIcon></th>
+				<th pSortableColumn="name" style="min-width:15rem;white-space: nowrap;">Tên Sản Phẩm <p-sortIcon field="name"></p-sortIcon>
 				</th>
-				<th pSortableColumn="tax" style="min-width:10rem">Thuế <p-sortIcon field="tax"></p-sortIcon>
-				<th pSortableColumn="importPrice" style="min-width:10rem">Giá Nhập(VNĐ) <p-sortIcon
+				<th pSortableColumn="tax" style="min-width:10rem; white-space: nowrap;">Thuế <p-sortIcon field="tax"></p-sortIcon>
+				<th pSortableColumn="importPrice" style="min-width:10rem; white-space: nowrap;">Giá Nhập(VNĐ) <p-sortIcon
 						field="importPrice"></p-sortIcon>
-				<th pSortableColumn="price" style="min-width:10rem">Giá Bán(VNĐ) <p-sortIcon field="price"></p-sortIcon>
-				<th pSortableColumn="quantity" style="min-width:10rem">Số Lượng(đôi) <p-sortIcon
+				<th pSortableColumn="price" style="min-width:10rem; white-space: nowrap;">Giá Bán(VNĐ) <p-sortIcon field="price"></p-sortIcon>
+				<th pSortableColumn="quantity" style="min-width:10rem"; white-space: nowrap;>Số Lượng(đôi) <p-sortIcon
 						field="quantity"></p-sortIcon>
-				<th pSortableColumn="status" style="min-width:10rem">Trạng Thái<p-sortIcon field="status"></p-sortIcon>
+				<th pSortableColumn="status" style="min-width:10rem; white-space: nowrap;">Trạng Thái<p-sortIcon field="status"></p-sortIcon>
 				</th>
-				<th>Action</th>
+				<th style="white-space: nowrap;">Action</th>
 			</tr>
 		</ng-template>
 		<ng-template pTemplate="body" let-product>
@@ -63,7 +63,7 @@
 				<td>
 					<p-tableCheckbox [value]="product"></p-tableCheckbox>
 				</td>
-				<td><img [src]="product.path" [alt]="product.name" width="50" class="shadow-4" /></td>
+				<td><img [src]="product.imgPath[0]" [alt]="product.name" width="50" class="shadow-4" /></td>
 				<td>{{ product.code }}</td>
 				<td>{{ product.shoes.name +'[' + product.color.name + '-' + product.size.name +']' }}</td>
 				<td>{{ product.tax }}</td>
