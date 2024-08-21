@@ -17,6 +17,8 @@ public class DiscountResponseDTO {
     private Long id;
     private String code;
     private String name;
+    private Instant startDate;
+    private Instant endDate;
     private Integer discountMethod;
     private BigDecimal discountAmount;
 
