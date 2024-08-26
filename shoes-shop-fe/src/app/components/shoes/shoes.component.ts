@@ -3,9 +3,7 @@ import { MessageService, SelectItem } from "primeng/api";
 import { ShoesService } from "../../service/shoes.service";
 import { Shoes } from "src/app/model/Shoes";
 import { ShoesSave } from "src/app/model/AddShoes";
-import { DialogModule } from "primeng/dialog";
 import { BrandService } from "src/app/service/brand.service";
-import { AutoCompleteCompleteEvent } from "primeng/autocomplete";
 import { CategoryService } from "src/app/service/category.service";
 
 @Component({
@@ -67,7 +65,7 @@ export class ShoesComponent implements OnInit {
     }
   }
 
-  page: number = 2;
+  page: number = 10;
   currentPage: number = 0;
 
   allShoes: Shoes[] = [];
