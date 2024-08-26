@@ -278,6 +278,8 @@ export class ShoesDetailComponent {
           this.product = {};
         },
       });
+    } else {
+      console.log("/");
     }
   }
 

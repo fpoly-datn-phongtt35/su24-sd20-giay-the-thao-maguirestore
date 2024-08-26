@@ -150,16 +150,16 @@ export class BrandComponent implements OnInit {
     showDialog() {
         this.displayAddDialog = true; // Hiển thị modal form thêm mới
         // Kiểm tra xem danh sách brand có phần tử không
-        // if (this.brand.length > 0) {
-        //   // Tìm độ dài của danh sách và tạo mã code mới
-        //   const newCode =
-        //     "BR" + (this.brand.length + 1).toString().padStart(3, "0");
-        //   // Đặt giá trị mã code mới vào newBrand.code
-        //   this.newBrand.code = newCode;
-        // } else {
-        //   // Nếu danh sách brand rỗng, sử dụng giá trị mặc định
-        //   this.newBrand.code = "BR001";
-        // }
+        if (this.brand.length > 0) {
+          // Tìm độ dài của danh sách và tạo mã code mới
+          const newCode =
+            "BR" + (this.brand.length + 1).toString().padStart(3, "0");
+          // Đặt giá trị mã code mới vào newBrand.code
+          this.newBrand.code = newCode;
+        } else {
+          // Nếu danh sách brand rỗng, sử dụng giá trị mặc định
+          this.newBrand.code = "BR001";
+        }
     }
 
     onSaveNewBrand() {

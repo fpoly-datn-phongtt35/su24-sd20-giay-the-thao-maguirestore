@@ -57,7 +57,7 @@ public class ShoesController {
         return ResponseEntity.ok().body(result);
     }
 
-    @SecurityRequirement(name = "Bearer Authentication")
+//    @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping()
     public ResponseEntity<List<ShoesDTO>> getAllShoes() {
         log.debug("REST request to get a page of Shoes");

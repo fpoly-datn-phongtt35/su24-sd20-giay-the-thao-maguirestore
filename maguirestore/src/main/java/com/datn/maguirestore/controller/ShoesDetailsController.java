@@ -142,9 +142,6 @@ public class ShoesDetailsController {
                 x.getClid()
         );
 
-//        System.out.println(shopShoesDTO.getBrandName());
-        System.out.println(shopShoesDTO.getQuantity());
-
         if (shopShoesDTO != null) {
             return ResponseEntity.ok().body(shopShoesDTO);
         } else {
@@ -197,6 +194,9 @@ public class ShoesDetailsController {
         if (shoesDetailsDTO.getId() == null) {
             throw new BadRequestAlertException("A new shoesDetails cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
+        System.out.println(shoesDetailsDTO);
+
         // Lưu thông tin giày vào cơ sở dữ liệu
         ShoesDetailsDTO result = shoesDetailsService.update(shoesDetailsDTO);
         // Kiểm tra nếu mảng images là null

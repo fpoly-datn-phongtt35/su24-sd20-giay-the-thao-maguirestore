@@ -27,7 +27,7 @@ export interface ShoesDetail {
   id?: number;
   code: string;
   price: number;
-  import_price: number;
+  importPrice: number;
   tax: number;
   quantity: number;
   status: number;
@@ -358,13 +358,14 @@ export class ShoesDetailAddComponent implements OnInit {
       for (const size of selectedSizes) {
         const shoes = this.formGroup?.get("shoes")?.value;
         const brand = this.formGroup?.get("brand")?.value;
+        console.log(brand);
         const variant: ShoesDetail = {
           shoes: { id: shoes.id, name: shoes.name },
           status: this.formGroup?.get("checked")?.value == false ? 0 : 1,
           quantity: this.formGroup?.get("quantity")?.value,
           brand: { id: brand.id, name: brand.name },
           description: this.formGroup?.get("description")?.value,
-          import_price: this.formGroup?.get("importPrice")?.value,
+          importPrice: this.formGroup?.get("importPrice")?.value,
           price: this.formGroup?.get("price")?.value,
           tax: this.formGroup?.get("tax")?.value,
           code: shoes.code + brand.code + color.code + size.code,

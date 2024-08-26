@@ -181,9 +181,6 @@ export class ShoesInspectComponent {
 
     this.http.post<any>(apiUrl, this.productId).subscribe(
       (data: any) => {
-
-        // console.log(data);
-
         this.shoesDetails = data;
 
         console.log(this.shoesDetails);
@@ -211,7 +208,7 @@ export class ShoesInspectComponent {
   }
 
   onColorChange() {
-    this.productId.siid = null;
+    this.productId.siid = this.selectedsize;
     this.productId.clid = this.selectedColor;
     this.fetchProductDetails();
     console.log(this.shoesDetails);
