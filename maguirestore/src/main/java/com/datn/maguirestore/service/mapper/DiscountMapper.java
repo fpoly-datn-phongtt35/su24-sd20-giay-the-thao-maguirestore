@@ -8,10 +8,10 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 
 @Mapper(componentModel = "spring")
-public interface DiscountMapper extends EntityMapper<DiscountDTO, Discount> {
+public interface DiscountMapper extends EntityMapper<DiscountResponseDTO, Discount> {
 
-    @Named("toDiscountEntity")
-    Discount toDiscountEntity(DiscountUpdateRequest updateDTO);
+//    @Named("toDiscountEntity")
+//    Discount toDiscountEntity(DiscountUpdateRequest updateDTO);
 
     @Named("toDiscountDTO")
     DiscountResponseDTO toDiscountDTO(Discount discount);

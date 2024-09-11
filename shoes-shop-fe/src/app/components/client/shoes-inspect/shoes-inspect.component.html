@@ -1,3 +1,5 @@
+
+
 <div class="surface-section px-4 py-8 md:px-6 lg:px-8">
     <p-toast></p-toast>
     <div class="grid mb-7">
@@ -6,7 +8,7 @@
           <div class="flex flex-column w-2 justify-content-between">
             <p-image width="120" preview="true"
               class="w-full cursor-pointer border-2 border-round border-transparent transition-colors transition-duration-150 border-primary ng-star-inserted"
-              [src]="shoesDetails.images[1]" />
+              [src]="shoesDetails.images[0]" />
             <p-image width="120" preview="true"
               class="w-full cursor-pointer border-2 border-round border-transparent transition-colors transition-duration-150 ng-star-inserted"
               [src]="shoesDetails.images[2]" />
@@ -41,8 +43,9 @@
           <div class="flex align-items-center">
             <span class="mr-3">
               <p-rating [(ngModel)]="shoesDetails.rating" [readonly]="false" [cancel]="false"></p-rating>
-            </span><span class="text-sm"><b class="text-900 mr-1">{{ feedbacks.length }}</b><span
-                class="text-500"></span>reviews</span>
+            <!-- </span><span class="text-sm"><b class="text-900 mr-1">{{ feedbacks.length }}</b><span
+                class="text-500"></span> -->
+                reviews</span>
           </div>
         </div>
         <div class="font-bold text-900 mb-3">Color</div>
@@ -79,7 +82,9 @@
           <div class="col-3 mx-0">
             <button (click)="clickByNow()" [disabled]="shoesDetails.quantity <= 0" label="Add to Cart" class="p-button">
               <span class="p-button-label">
-                {{ shoesDetails.quantity <= 0 ? "Hết hàng" : "Mua ngay" }} </span>
+                {{ shoesDetails.quantity <= 0 ? "Hết hàng" : "Mua ngay" }} 
+                  
+              </span>
             </button>
           </div>
           <div class="col-4 sm:col-6">
@@ -324,3 +329,4 @@
     <p-toast></p-toast>
     <p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
   </div>
+

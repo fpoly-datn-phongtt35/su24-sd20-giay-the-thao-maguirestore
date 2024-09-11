@@ -37,6 +37,10 @@ export interface ShoesDetail {
     id: number;
     name: string;
   };
+  brand: {
+    id: number;
+    name: string;
+  };
   color: {
     id: number;
     name: string;
@@ -68,6 +72,8 @@ export class ShoesDetailAddComponent implements OnInit {
   productDialog: boolean = false;
 
   shoes: any[]; //products mean shoes
+
+  brands: any[];
 
   sizes: any[];
 
@@ -166,6 +172,11 @@ export class ShoesDetailAddComponent implements OnInit {
       .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes")
       .subscribe((response) => {
         this.shoes = response;
+      });
+      this.http
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/brand")
+      .subscribe((response) => {
+        this.brands = response;
       });
     this.http
       .get<any>(AppConstants.BASE_URL_API + "/api/v1/sizes")
@@ -274,6 +285,8 @@ export class ShoesDetailAddComponent implements OnInit {
                 "Variants " +
                 variant.shoes.name +
                 "-" +
+                variant.brand.name +
+              "[" +
                 variant.color.name +
                 "-" +
                 variant.size.name +
@@ -345,22 +358,24 @@ export class ShoesDetailAddComponent implements OnInit {
       for (const size of selectedSizes) {
         const shoes = this.formGroup?.get("shoes")?.value;
         const brand = this.formGroup?.get("brand")?.value;
+        console.log(brand);
         const variant: ShoesDetail = {
           shoes: { id: shoes.id, name: shoes.name },
           status: this.formGroup?.get("checked")?.value == false ? 0 : 1,
           quantity: this.formGroup?.get("quantity")?.value,
+          brand: { id: brand.id, name: brand.name },
           description: this.formGroup?.get("description")?.value,
           importPrice: this.formGroup?.get("importPrice")?.value,
           price: this.formGroup?.get("price")?.value,
           tax: this.formGroup?.get("tax")?.value,
-          code: shoes.code + color.code + size.code,
+          code: shoes.code + brand.code + color.code + size.code,
           color: { id: color.id, name: color.name },
           size: { id: size.id, name: size.name },
           images: [...this.uploadedFiles],
         };
         const isCodeFound = await this.fetchProducts(
           shoes.id,
-          // brand.id,
+          brand.id,
           size.id,
           color.id
         );
@@ -373,6 +388,8 @@ export class ShoesDetailAddComponent implements OnInit {
               "Variants " +
               variant.shoes.name +
               "-" +
+              variant.brand.name +
+              "[" +
               variant.color.name +
               "-" +
               variant.size.name +
@@ -389,6 +406,8 @@ export class ShoesDetailAddComponent implements OnInit {
               "Variants " +
               variant.shoes.name +
               "-" +
+              variant.brand.name +
+              "[" +
               variant.color.name +
               "-" +
               variant.size.name +
@@ -403,8 +422,8 @@ export class ShoesDetailAddComponent implements OnInit {
     return variants;
   }
 
-  async fetchProducts(shid: any, siid: any, clid: any) {
-    const productId = { shid: shid, siid: siid, clid: clid };
+  async fetchProducts(shid: any, brid: any, siid: any, clid: any) {
+    const productId = { shid: shid, brid: brid, siid: siid, clid: clid };
     const apiUrl = `http://localhost:8088/api/v1/shoes-details/shop/detail`;
     // Make the HTTP request
     try {
@@ -538,12 +557,15 @@ export class ShoesDetailAddComponent implements OnInit {
     switch (filteredList) {
       case "shoes": {
         this.filteredShoes = filtered;
-        this.filteredBrands = filtered.map(shoe => shoe.brand);
-        console.log(this.filteredShoes);
-        console.log(this.filteredBrands);
+        // this.filteredBrands = filtered.map(shoe => shoe.brand);
+        // console.log(this.filteredShoes);
+        // console.log(this.filteredBrands);
         break;
       }
-
+      case "brands": {
+        this.filteredBrands = filtered;
+        break;
+      }
       case "sizes": {
         this.filteredSizes = filtered;
         break;

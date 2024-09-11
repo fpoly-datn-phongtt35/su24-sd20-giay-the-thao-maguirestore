@@ -18,12 +18,12 @@ export class DiscountService {
     });
   }
   public getDiscount(id: number) {
-    return this.http.get<any>(this.baseUrl + id, {
+    return this.http.get<any>(this.baseUrl + "/" + id, {
       withCredentials: true,
     });
   }
   public deleteDiscount(id: number) {
-    return this.http.delete<any>(this.baseUrl + id, {
+    return this.http.delete<any>(this.baseUrl + "/" + id, {
       withCredentials: true,
     });
   }

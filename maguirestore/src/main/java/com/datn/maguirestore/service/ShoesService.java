@@ -46,9 +46,6 @@ public class ShoesService {
         Shoes shoes = new Shoes();
         shoes.setCode(request.getCode());
         shoes.setName(request.getName());
-//        shoes.setDescription(request.getDescription());
-//        shoes.setCreatedBy(request.getCreatedBy());
-//        shoes.setCreatedDate(request.getCreatedDate());
         shoes.setStatus(1);
 
         Brand brand = new Brand();

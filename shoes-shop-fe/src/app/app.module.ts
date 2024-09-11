@@ -54,7 +54,7 @@ import { TreeSelectModule } from "primeng/treeselect";
 import { DropdownModule } from "primeng/dropdown";
 import { ConfirmDialogModule } from "primeng/confirmdialog";
 import { ToastModule } from "primeng/toast";
-// import { OderComponent } from "./components/oder/oder.component";
+import { OderComponent } from "./components/oder/oder.component";
 import { ShoesDetailComponent } from "./components/shoes-detail/shoes-detail.component";
 import { ShoesDetailAddComponent } from "./components/shoes-detail-add/shoes-detail-add.component";
 import { TabViewModule } from "primeng/tabview";
@@ -121,7 +121,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     // ShoesCategoryComponent,
     // ProductComponent,
     BrandComponent,
-    // OderComponent,
+    OderComponent,
 
     ShoesDetailComponent,
     ShoesDetailAddComponent,

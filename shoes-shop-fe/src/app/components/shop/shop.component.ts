@@ -85,7 +85,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
     ];
 
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/sizes")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/sizes")
       .subscribe((response) => {
         this.shoeSizes = response;
         this.shoeSizes.forEach((brand) =>
@@ -94,7 +94,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
         this.selectedSizes = null;
       });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/brands")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/brand")
       .subscribe((response) => {
         this.brands = response;
         this.brands.forEach((brand) =>
@@ -114,7 +114,7 @@ export class ShopComponent implements OnInit, AfterViewInit {
     };
     // Gửi yêu cầu POST
     this.http
-      .post<any>("http://localhost:8088/api/shoes-details/shop", searchData)
+      .post<any>("http://localhost:8088/api/v1/shoes-details/shop", searchData)
       .subscribe(
         (data) => {
           this.products = data;

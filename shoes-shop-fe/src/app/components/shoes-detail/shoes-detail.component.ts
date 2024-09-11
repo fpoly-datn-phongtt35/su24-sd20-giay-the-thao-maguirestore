@@ -89,7 +89,9 @@ export class ShoesDetailComponent {
       .get<any>(AppConstants.BASE_URL_API + "/api/v1/shoes-details")
       .subscribe((response) => {
         this.products = response;
+        console.log(response);
       });
+      
     this.statuses = [
       { label: "Khả dụng", value: 1 },
       { label: "Không khả dụng", value: 0 },
@@ -276,6 +278,8 @@ export class ShoesDetailComponent {
           this.product = {};
         },
       });
+    } else {
+      console.log("/");
     }
   }
 

@@ -47,8 +47,8 @@ export interface ShoesDetail {
 })
 export class ShoesInspectComponent {
   get imageSrc() {
-    const imageWith800x800 = this.shoesDetails.images.find((img: string) => img.includes('800x800'));
-    return imageWith800x800 || this.shoesDetails.images[0];
+    // const imageWith800x800 = this.shoesDetails.images.find((img: string) => img.includes('800x800'));
+    return this.shoesDetails.images[0];
   }
   CartDetailSave: CartDetailSave = {};
   cartDetails: CartDetail[];
@@ -100,7 +100,6 @@ export class ShoesInspectComponent {
       price: 50000,
       quantity: 100,
       images: [
-        "https://duyhung-bucket.s3.ap-southeast-1.amazonaws.com/images/badcb1487af6c62c6a0cb1487af6c62c6a0Screenshot2023-07-26163607.png",
         "https://tse3.mm.bing.net/th/id/OIP.AjzWApytAwaFTtBLVhLPdwHaHa?w=217&h=217&c=7&r=0&o=5&dpr=1.1&pid=1.7",
         "https://tse3.mm.bing.net/th/id/OIP.AjzWApytAwaFTtBLVhLPdwHaHa?w=217&h=217&c=7&r=0&o=5&dpr=1.1&pid=1.7",
         "https://tse3.mm.bing.net/th/id/OIP.AjzWApytAwaFTtBLVhLPdwHaHa?w=217&h=217&c=7&r=0&o=5&dpr=1.1&pid=1.7",
@@ -144,6 +143,7 @@ export class ShoesInspectComponent {
       const siid = params["siid"];
       const clid = params["clid"];
       this.productId = { shid: shid, brid: brid, siid: siid, clid: clid };
+
     });
     this.fetchProductDetails();
   }
@@ -178,9 +178,12 @@ export class ShoesInspectComponent {
     this.quantity = 1
     const apiUrl = `http://localhost:8088/api/v1/shoes-details/shop/detail`;
     // Make the HTTP request
+
     this.http.post<any>(apiUrl, this.productId).subscribe(
       (data: any) => {
         this.shoesDetails = data;
+
+        console.log(this.shoesDetails);
         this.shoesDetails.images = this.splitPaths(data.paths);
         this.sizeOptions = this.mergeLists(
           this.splitPaths(this.shoesDetails.size_names),
@@ -205,7 +208,7 @@ export class ShoesInspectComponent {
   }
 
   onColorChange() {
-    this.productId.siid = null;
+    this.productId.siid = this.selectedsize;
     this.productId.clid = this.selectedColor;
     this.fetchProductDetails();
     console.log(this.shoesDetails);

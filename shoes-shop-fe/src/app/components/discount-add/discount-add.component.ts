@@ -83,7 +83,7 @@ export class DiscountAddComponent implements OnInit {
       this.shoesDetails = response;
     });
     this.http
-      .get<any>(AppConstants.BASE_URL_API + "/api/brands")
+      .get<any>(AppConstants.BASE_URL_API + "/api/v1/brands")
       .subscribe((response) => {
         this.brands = response;
         this.brands.forEach((brand) =>
@@ -98,6 +98,7 @@ export class DiscountAddComponent implements OnInit {
     if (this.idDiscount != null && this.idDiscount != 0) {
       this.discountService.getDiscount(this.idDiscount).subscribe((res) => {
         this.formDiscount.get("id")?.setValue(res.id);
+        console.log(res);
         this.formDiscount.get("code")?.setValue(res.code);
         this.formDiscount.get("name")?.setValue(res.name);
         this.formDiscount.get("discountMethod")?.setValue(res.discountMethod);
@@ -105,10 +106,10 @@ export class DiscountAddComponent implements OnInit {
         this.formDiscount.get("discountStatus")?.setValue(res.discountStatus);
         this.formDiscount
           .get("startDate")
-          ?.setValue(new Date(res.startDate).toISOString().split("T")[0]);
+          ?.setValue(res.startDate.slice(0, -4));
         this.formDiscount
           .get("endDate")
-          ?.setValue(new Date(res.endDate).toISOString().split("T")[0]);
+          ?.setValue(res.endDate.slice(0, -4));
         for (let p of res.discountShoesDetailsDTOS) {
           this.selectedShoes.push(p);
           this.discountShoesDetails = p;
