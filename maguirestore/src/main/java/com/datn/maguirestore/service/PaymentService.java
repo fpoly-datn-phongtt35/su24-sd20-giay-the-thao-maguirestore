@@ -12,6 +12,7 @@ import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.repository.CartRepository;
+import com.datn.maguirestore.repository.OrderRepository;
 import com.datn.maguirestore.repository.PaymentRepository;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.repository.UserRepository;
@@ -51,7 +52,7 @@ public class PaymentService {
   private final PaymentRepository paymentRepository;
   private final PaymentMapper paymentMapper;
   private final UserRepository userRepository;
-//  private final OrderRepository orderRepository;
+  private final OrderRepository orderRepository;
   private final ShoesDetailsRepository shoesDetailsRepository;
 //  private final OrderDetailsRepository orderDetailsRepository;
   private final CartDetailsRepository cartDetailsRepository;
