@@ -1,11 +1,9 @@
 package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.config.Constants;
-import com.datn.maguirestore.config.Constants.PAYMENT_METHOD;
 import com.datn.maguirestore.config.PaypalConfig;
 import com.datn.maguirestore.dto.PaymentDTO;
 import com.datn.maguirestore.entity.Address;
-import com.datn.maguirestore.entity.Cart;
 import com.datn.maguirestore.entity.Order;
 import com.datn.maguirestore.entity.Payment;
 import com.datn.maguirestore.entity.User;
@@ -35,7 +33,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
