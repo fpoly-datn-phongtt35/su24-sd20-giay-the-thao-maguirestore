@@ -1,17 +1,16 @@
 package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.config.Constants;
-import com.datn.maguirestore.config.Constants.PAYMENT_METHOD;
 import com.datn.maguirestore.config.PaypalConfig;
 import com.datn.maguirestore.dto.PaymentDTO;
 import com.datn.maguirestore.entity.Address;
-import com.datn.maguirestore.entity.Cart;
 import com.datn.maguirestore.entity.Order;
 import com.datn.maguirestore.entity.Payment;
 import com.datn.maguirestore.entity.User;
 import com.datn.maguirestore.repository.AddressRepository;
 import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.repository.CartRepository;
+import com.datn.maguirestore.repository.OrderRepository;
 import com.datn.maguirestore.repository.PaymentRepository;
 import com.datn.maguirestore.repository.ShoesDetailsRepository;
 import com.datn.maguirestore.repository.UserRepository;
@@ -34,7 +33,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.TimeZone;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -51,7 +49,7 @@ public class PaymentService {
   private final PaymentRepository paymentRepository;
   private final PaymentMapper paymentMapper;
   private final UserRepository userRepository;
-//  private final OrderRepository orderRepository;
+  private final OrderRepository orderRepository;
   private final ShoesDetailsRepository shoesDetailsRepository;
 //  private final OrderDetailsRepository orderDetailsRepository;
   private final CartDetailsRepository cartDetailsRepository;
