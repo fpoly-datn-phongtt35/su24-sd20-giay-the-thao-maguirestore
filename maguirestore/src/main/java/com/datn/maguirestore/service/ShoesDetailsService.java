@@ -81,7 +81,18 @@ public class ShoesDetailsService {
     public ShoesDetailsDTO update(ShoesDetailsDTO shoesDetailsDTO) {
         log.debug("Request to update ShoesDetails : {}", shoesDetailsDTO);
 
-        ShoesDetails shoesDetails = shoesDetailsMapper.toEntity(shoesDetailsDTO);
+//        ShoesDetails shoesDetails = shoesDetailsMapper.toEntity(shoesDetailsDTO);
+        ShoesDetails shoesDetails = shoesDetailsRepository.findById(shoesDetailsDTO.getId()).get();
+        shoesDetails.setDescription(shoesDetailsDTO.getDescription());
+        shoesDetails.setImportPrice(shoesDetailsDTO.getImportPrice());
+        shoesDetails.setPrice(shoesDetailsDTO.getPrice());
+        shoesDetails.setQuantity(shoesDetailsDTO.getQuantity());
+        shoesDetails.setTax(shoesDetailsDTO.getTax());
+        shoesDetails.setCreatedBy(shoesDetailsDTO.getCreatedBy());
+        shoesDetails.setCreatedDate(shoesDetailsDTO.getCreatedDate());
+        shoesDetails.setLastModifiedBy(shoesDetailsDTO.getLastModifiedBy());
+        shoesDetails.setLastModifiedDate(shoesDetailsDTO.getLastModifiedDate());
+        shoesDetails.setBrand(shoesDetails.getShoes().getBrand());
         shoesDetails.setStatus(1);
         shoesDetails = shoesDetailsRepository.save(shoesDetails);
         return shoesDetailsMapper.toDto(shoesDetails);

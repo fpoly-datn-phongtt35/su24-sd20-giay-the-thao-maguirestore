@@ -60,21 +60,21 @@ export class DashboardComponent {
 
   ngOnInit() {
     this.http
-      .get<any>("http://localhost:8088/api/orders/revenue/monthly")
+      .get<any>("http://localhost:8088/api/v1/orders/revenue/monthly")
       .subscribe((response) => {
         this.onlineData = response;
         console.log(response);
 
       });
     this.http
-      .get<any>("http://localhost:8088/api/revenue/growth-percentage")
+      .get<any>("http://localhost:8088/api/v1/revenue/growth-percentage")
       .subscribe((response) => {
         this.offlineData = response;
         console.log(response);
       });
 
     this.http
-      .get<any>("http://localhost:8088/api/dashboard/order-number")
+      .get<any>("http://localhost:8088/api/v1/dashboard/order-number")
       .subscribe((response) => {
         this.orderNumbers = response;
       });
@@ -84,47 +84,47 @@ export class DashboardComponent {
     //     this.revenueOnWeek = response;
     //   });
     this.http
-      .get<any>("http://localhost:8088/api/dashboard/customers")
+      .get<any>("http://localhost:8088/api/v1/dashboard/customers")
       .subscribe((response) => {
         this.customers = response;
       });
     this.http
-      .get<any>("http://localhost:8088/api/dashboard/order-revenue-on")
+      .get<any>("http://localhost:8088/api/v1/dashboard/order-revenue-on")
       .subscribe((response) => {
         this.revenueOnOnline = response;
       });
     this.http
-      .get<any>("http://localhost:8088/api/dashboard/order-revenue-off")
+      .get<any>("http://localhost:8088/api/v1/dashboard/order-revenue-off")
       .subscribe((response) => {
         this.revenueOnShop = response;
       });
     this.http
-      .get<any>("http://localhost:8088/api/dashboard/best-selling")
+      .get<any>("http://localhost:8088/api/v1/dashboard/best-selling")
       .subscribe((response) => {
         this.bestSellingProduct = response;
         console.log(this.bestSellingProduct);
       });
     this.http
-      .get<any>("http://localhost:8088/api/feed-backs/count-unread")
+      .get<any>("http://localhost:8088/api/v1/feed-backs/count-unread")
       .subscribe((response) => {
         this.unreadFeedback = response;
         console.log(this.unreadFeedback);
       });
     this.http
-      .get<any>("http://localhost:8088/api/feed-backs/count")
+      .get<any>("http://localhost:8088/api/v1/feed-backs/count")
       .subscribe((response) => {
         this.allFeedback = response;
         console.log(this.allFeedback);
       });
     this.http
-      .get<any>("http://localhost:8088/api/orders/count")
+      .get<any>("http://localhost:8088/api/v1/orders/count")
       .subscribe((response) => {
         this.allOrder = response;
         console.log(this.allOrder);
       });
 
     this.http
-      .get<any>("http://localhost:8088/api/orders/seven-day")
+      .get<any>("http://localhost:8088/api/v1/orders/seven-day")
       .subscribe((response) => {
         this.revenueOnWeek = response;
         console.log(this.revenueOnWeek);
@@ -132,7 +132,7 @@ export class DashboardComponent {
       });
 
     this.http
-      .get<any>("http://localhost:8088/api/orders/price")
+      .get<any>("http://localhost:8088/api/v1/orders/price")
       .subscribe((response) => {
         this.allRevenue = response;
         console.log(this.allRevenue);

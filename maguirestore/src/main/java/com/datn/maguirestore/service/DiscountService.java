@@ -140,8 +140,13 @@ public class DiscountService {
       throw new BadRequestAlertException("Chương trình khuyến mại không tồn tại", "discount",
           "exist");
     }
+    DiscountResponseDTO dto = discountMapper.toDiscountDTO(discount);
+    System.out.println("????????????????");
+    System.out.println(dto.getStartDate());
+    System.out.println(dto.getEndDate());
+    System.out.println("????????????????");
 
-    return discountMapper.toDiscountDTO(discount);
+    return dto;
   }
 
   public void delete(Long id) throws Exception {

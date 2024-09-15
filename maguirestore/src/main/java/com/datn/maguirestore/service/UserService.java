@@ -11,6 +11,7 @@ import com.datn.maguirestore.repository.ResetTokenRepository;
 import com.datn.maguirestore.repository.UserRepository;
 import com.datn.maguirestore.security.jwt.JwtUtils;
 import com.datn.maguirestore.security.services.UserDetailsImpl;
+import com.datn.maguirestore.util.SecurityUtils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
@@ -187,6 +188,11 @@ public class UserService {
                     user.setActivated(false);
                     userRepository.save(user);
                 });
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<User> getUserWithAuthorities() {
+        return SecurityUtils.getCurrentUserLogin().flatMap(userRepository::findOneWithAuthoritiesByLogin);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.datn.maguirestore.repository;
 
 import com.datn.maguirestore.dto.CartDetailDTO;
+import com.datn.maguirestore.entity.Cart;
 import com.datn.maguirestore.entity.CartDetails;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -70,4 +71,6 @@ public interface CartDetailsRepository extends JpaRepository<CartDetails, Long> 
             nativeQuery = true
     )
     List<CartDetailDTO> findCartDetailsByCart_Id(@Param("idCart") Long idCart);
+
+    List<CartDetails> findCartDetailsByCart(Cart cart);
 }

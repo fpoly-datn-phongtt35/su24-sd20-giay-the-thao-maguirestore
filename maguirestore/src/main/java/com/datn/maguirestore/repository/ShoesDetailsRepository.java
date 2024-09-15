@@ -4,9 +4,11 @@ import com.datn.maguirestore.dto.ShoesDetailDTOCustom;
 import com.datn.maguirestore.dto.ShopShoesDTO;
 import com.datn.maguirestore.entity.ShoesDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -253,4 +255,23 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
             nativeQuery = true
     )
     List<ShoesDetailDTOCustom> getBestSeller();
+
+    @Query(
+            value = "select sd.*  from order_details od \n" +
+                    "join jhi_order jo on jo.id = od.order_id\n" +
+                    "join shoes_details sd on sd.id = od.shoes_details_id \n" +
+                    "where od.status <> -1\n" +
+                    "group by od.shoes_details_id \n" +
+                    "order by sum(od.quantity) desc limit 6",
+            nativeQuery = true
+    )
+    List<ShoesDetails> getTopBestSelling();
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE ShoesDetails sd SET sd.status = 0 WHERE sd.id = :shoesDetailsId")
+    int softDeleteShoesDetailsById(@Param("shoesDetailsId") Long shoesDetailsId);
+
+    List<ShoesDetails> findAllByShoes_IdInAndStatus(List<Long> ids, Integer status);
+    ShoesDetails findByIdAndStatus(Long id, Integer status);
 }

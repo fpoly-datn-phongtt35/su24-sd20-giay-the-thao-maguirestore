@@ -38,7 +38,7 @@ export class PayService {
     .set('arrSanPham', arrSanPham)
     .set('arrQuantity', arrQuantity)
     .set('arrPriceDiscount', arrPriceDiscount);
-    return this.http.get("http://localhost:8088/api/create-payment", {
+    return this.http.get("http://localhost:8088/api/v1/payment/create-payment", {
       params,
       responseType: 'text',
     });

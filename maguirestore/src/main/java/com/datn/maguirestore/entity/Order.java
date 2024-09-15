@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "order")
+@Table(name = "`order`")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -97,6 +97,12 @@ public class Order extends AbstractAuditingEntity<Long> implements Serializable 
 
   @Column(name = "phone")
   private String phone;
+
+  @Column(name = "payment_method")
+  private Integer paymentMethod;
+
+  @Column(name = "paid_method")
+  private Integer paidMethod;
 
   @Column(name = "ship_price", precision = 21, scale = 2)
   private BigDecimal shipPrice;

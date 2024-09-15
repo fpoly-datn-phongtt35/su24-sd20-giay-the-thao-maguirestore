@@ -45,8 +45,12 @@ public class OrderRepositoryCustomImpl implements OrderRepositoryCustom {
     public Query buildQuery(OrderSearchReqDTO orderSearchReqDTO) {
         Map<String, Object> params = new HashMap<>();
         StringBuilder query = new StringBuilder(
-                "select o.id,o.code,o.phone ,o.received_by as receivedBy, o.last_modified_by as lastModifiedBy , o.created_date as createdDate , o.total_price as totalPrice ,o.owner_id as idCustomer ,concat(ju.first_name , ' ' ,ju.last_name) as customer, o.status  from `shoes-store`.order o   \n" +
-                        "left join `shoes-store`.jhi_user ju on ju.id = o.owner_id \n" +
+                "select o.id,o.code,o.phone ,o.received_by as receivedBy, " +
+                        "o.last_modified_by as lastModifiedBy , o.created_date as createdDate , " +
+                        "o.total_price as totalPrice ,o.owner_id as idCustomer ," +
+                        "concat(ju.first_name , ' ' ,ju.last_name) as customer, o.status  " +
+                        "from `shoes-store`.order o   \n" +
+                        "left join `shoes-store`.users ju on ju.id = o.owner_id \n" +
                         " where 1 = 1"
         );
         if (StringUtils.isNotBlank(orderSearchReqDTO.getSearchText())) {
