@@ -17,8 +17,8 @@ public class PaypalConfig {
 
   public static String vnp_PayUrl = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
   public static String vnp_ReturnUrl = "http://localhost:8088/api/payment-callback";
-  public static String vnp_TmnCode = "YYEHSTLP";
-  public static String secretKey = "RWMLSDHGWWTUFHXXXJOPONIXHPMHJOSQ";
+  public static String vnp_TmnCode = "NRTP15LW";
+  public static String secretKey = "CFITOGFXOPNFUAL18JO7B0NAX9TGXGSL";
   public static String vnp_ApiUrl = "https://sandbox.vnpayment.vn/merchant_webapi/api/transaction";
 
   public static String md5(String message) {
