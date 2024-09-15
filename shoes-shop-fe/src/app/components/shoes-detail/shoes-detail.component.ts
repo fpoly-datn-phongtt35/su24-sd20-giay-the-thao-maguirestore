@@ -149,6 +149,8 @@ export class ShoesDetailComponent {
       status: productData.status,
     });
     this.productDialog = true;
+    console.log(this.product);
+    console.log(productData);
   }
 
   deleteProduct(product: Product) {
@@ -217,10 +219,10 @@ export class ShoesDetailComponent {
           this.product.quantity = this.productForm.get("quantity")?.value;
           this.product.description = this.productForm.get("description")?.value;
           this.product.status = this.productForm.get("status")?.value;
-          this.product.brand = { id: this.product.brand_id };
-          this.product.shoes = { id: this.product.shoes_id };
-          this.product.color = { id: this.product.color_id };
-          this.product.size = { id: this.product.size_id };
+          this.product.brand = { id: this.product.shoes.brand.id };
+          this.product.shoes = { id: this.product.shoes.id };
+          this.product.color = { id: this.product.color.id };
+          this.product.size = { id: this.product.size.id };
           console.log(this.product);
           let jsonBlob = new Blob([JSON.stringify(this.product)], {
             type: "application/json",

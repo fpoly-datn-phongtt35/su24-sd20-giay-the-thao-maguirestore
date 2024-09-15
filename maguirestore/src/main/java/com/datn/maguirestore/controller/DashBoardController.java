@@ -18,4 +18,28 @@ public class DashBoardController {
 
     private final DashBoardService dashboardService;
 
+    @GetMapping("/order-number")
+    public ResponseEntity<Integer> getOrderNumber() {
+        return ResponseEntity.ok(dashboardService.getOrderNumberInWeek());
+    }
+
+    @GetMapping("/customers")
+    public ResponseEntity<Integer> getCustomers() {
+        return ResponseEntity.ok(dashboardService.getTotalCustomer());
+    }
+
+    @GetMapping("/order-revenue-on")
+    public ResponseEntity<BigDecimal> getRevenueOn() {
+        return ResponseEntity.ok(dashboardService.getRevenueOnline());
+    }
+
+    @GetMapping("/order-revenue-off")
+    public ResponseEntity<BigDecimal> getRevenueOff() {
+        return ResponseEntity.ok(dashboardService.getRevenueOnShop());
+    }
+
+    @GetMapping("/best-selling")
+    public ResponseEntity<List<ShoesDetailsDTO>> getBestSelling() {
+        return ResponseEntity.ok(dashboardService.getAllBestSelling());
+    }
 }

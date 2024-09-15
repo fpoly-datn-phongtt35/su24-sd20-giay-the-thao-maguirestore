@@ -6,7 +6,7 @@ import { OrderSearchReq } from "../model/OrderSearchReq";
 })
 export class OrderService {
   constructor(private http: HttpClient) {}
-  baseUrl: string = "http://localhost:8088/api/orders";
+  baseUrl: string = "http://localhost:8088/api/v1/orders";
   public getOrders(orderSearchReq: OrderSearchReq) {
     return this.http.post<any>(this.baseUrl + "/search", orderSearchReq, {
       withCredentials: true,

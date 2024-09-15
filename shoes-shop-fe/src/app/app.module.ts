@@ -78,8 +78,8 @@ import { MultiSelectModule } from "primeng/multiselect";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { SliderModule } from "primeng/slider";
 import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
-// import { OrderDetailsComponent } from "./components/order-details/order-details.component";
-// import { PayComponent } from "./components/client/pay/pay.component";
+import { OrderDetailsComponent } from "./components/order-details/order-details.component";
+import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
 // import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
 import { AboutComponent } from "./components/client/about/about.component";
@@ -87,7 +87,7 @@ import { ContactComponent } from "./components/client/contact/contact.component"
 import { CardModule } from "primeng/card";
 import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
-// import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
+import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
 
 import { InplaceModule } from "primeng/inplace";
@@ -95,7 +95,7 @@ import { InplaceModule } from "primeng/inplace";
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
 // import { OrderReturnDetailsComponent } from "./components/order-return-details/order-return-details.component";
 import { ShoesComponent } from "./components/shoes/shoes.component";
-// import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
+import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 import { ColorRemovedComponent } from "./components/color-removed/color-removed.component";
 import { CategoryComponent } from "./components/category/category.component";
 import { BrandComponent } from "./components/brand/brand.component";
@@ -106,7 +106,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
 // import { CodeForgotPasswordComponent } from './components/client/code-forgot-password/code-forgot-password.component';
-// import { ShoesDeleteComponent } from './components/shoes-delete/shoes-delete.component';
+import { ShoesDeleteComponent } from './components/shoes-delete/shoes-delete.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -141,18 +141,18 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     ClientHomeComponent,
     CartComponent,
     ShoesInspectComponent,
-    // OrderDetailsComponent,
-    // PayComponent,
+    OrderDetailsComponent,
+    PayComponent,
     LoginCustomerComponent,
     // RegisterCustomerComponent,
     AboutComponent,
     ContactComponent,
     DiscountShoesComponent,
     // UserOrderComponent,
-    // PaySuccessComponent,
+    PaySuccessComponent,
     // PayFaileComponent,
     ShoesComponent,
-    // FeedbackManagComponent,
+    FeedbackManagComponent,
     // ReturnOrderComponent,
     // OrderReturnAdminComponent,
     // OrderReturnDetailsComponent,
@@ -163,7 +163,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
     BrandRemovedComponent,
     // ProfileComponent,
     // CodeForgotPasswordComponent,
-    // ShoesDeleteComponent,
+    ShoesDeleteComponent,
   ],
   imports: [
     AppLayoutModule,

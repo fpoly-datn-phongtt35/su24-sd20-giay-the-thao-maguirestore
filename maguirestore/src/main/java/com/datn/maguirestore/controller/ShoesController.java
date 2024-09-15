@@ -64,6 +64,12 @@ public class ShoesController {
         return ResponseEntity.ok(shoesService.fillAll());
     }
 
+    @GetMapping("/removed")
+    public ResponseEntity<List<ShoesDTO>> getRemovedShoes() {
+        log.debug("REST request to get a page of Shoes");
+        return ResponseEntity.ok(shoesService.fillAllNoActive());
+    }
+
     @SecurityRequirement(name = "Bearer Authentication")
     @GetMapping("/{id}")
     public ResponseEntity<ShoesDTO> getById(@PathVariable Long id) {

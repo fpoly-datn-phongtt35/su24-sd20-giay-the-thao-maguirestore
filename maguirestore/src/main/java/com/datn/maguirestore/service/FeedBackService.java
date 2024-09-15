@@ -65,5 +65,10 @@ public class FeedBackService {
         feedBackRepository.deleteById(id);
     }
 
+    public FeedBackDTO updateFeedbackStatus(Long id, Integer status) {
+        feedBackRepository.updateStatus(id, status);
+        FeedBack feedBack = feedBackRepository.findById(id).orElse(null);
+        return feedBackMapper.toDto(feedBack);
+    }
 
 }

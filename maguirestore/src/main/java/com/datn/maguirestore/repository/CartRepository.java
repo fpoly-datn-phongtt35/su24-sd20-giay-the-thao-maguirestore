@@ -13,4 +13,5 @@ public interface CartRepository extends JpaRepository<Cart, Long> {
     @Query("select cart from Cart cart where cart.user.login = ?#{principal.username}")
     List<Cart> findByOwnerIsCurrentUser();
 
+    Cart findByUserId(Long id);
 }

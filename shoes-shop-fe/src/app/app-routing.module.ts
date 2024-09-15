@@ -25,18 +25,18 @@ import { LayoutComponent } from "./layout/client/layout/layout.component";
 import { ClientHomeComponent } from "./components/client/home/client.home.component";
 import { CartComponent } from "./components/client/cart/cart.component";
 import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-inspect.component";
-// import { OrderDetailsComponent } from "./components/order-details/order-details.component";
-// import { PayComponent } from "./components/client/pay/pay.component";
+import { OrderDetailsComponent } from "./components/order-details/order-details.component";
+import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
 // import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
 // import { UserOrderComponent } from "./components/user-order/user-order.component";
 import { AboutComponent } from "./components/client/about/about.component";
 import { ContactComponent } from "./components/client/contact/contact.component";
-// import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
-// import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
+import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
+import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
 import { ShoesComponent } from "./components/shoes/shoes.component";
-// import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
+import { FeedbackManagComponent } from "./components/feedback-manag/feedback-manag.component";
 // import { ReturnOrderComponent } from "./components/return-order/return-order.component";
 // import { OrderReturnAdminComponent } from "./components/order-return-admin/order-return-admin.component";
 // import { OrderReturnDetailsComponent } from "./components/order-return-details/order-return-details.component";
@@ -51,7 +51,7 @@ import { CategoryRemovedComponent } from "./components/category-removed/category
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
 // import { ProfileComponent } from "./components/client/profile/profile.component";
 // import { CodeForgotPasswordComponent } from "./components/client/code-forgot-password/code-forgot-password.component";
-// import { ShoesDeleteComponent } from "./components/shoes-delete/shoes-delete.component";
+import { ShoesDeleteComponent } from "./components/shoes-delete/shoes-delete.component";
 const routes: Routes = [
   {
     ///ADMIN LINKS
@@ -62,7 +62,7 @@ const routes: Routes = [
       // { path: "home", component: HomeComponent }, //các component con (http://localhost:4200/admin/home)
       // { path: "shop", component: ShopComponent },
       // { path: "manage", component: ManageComponent },
-      // { path: "feedback", component: FeedbackManagComponent },
+      { path: "feedback", component: FeedbackManagComponent },
       // { path: "shoes", component: ProductComponent },
       // {
       //   path: "shoes-category",
@@ -85,12 +85,12 @@ const routes: Routes = [
       { path: "shoes", component: ShoesComponent },
       { path: "shoes-detail-add", component: ShoesDetailAddComponent },
       // { path: "users", component: UserComponent },
-      // { path: "order-details/:id", component: OrderDetailsComponent },
+      { path: "order-details/:id", component: OrderDetailsComponent },
       { path: "removedColor", component: ColorRemovedComponent },
       { path: "removedSize", component: SizeRemovedComponent },
       { path: "removedCategory", component: CategoryRemovedComponent },
       { path: "removedBrand", component: BrandRemovedComponent },
-      // { path: "removedShoes", component: ShoesDeleteComponent },
+      { path: "removedShoes", component: ShoesDeleteComponent },
     ],
   },
   {
@@ -104,18 +104,18 @@ const routes: Routes = [
       { path: "shoes-detail/:id", component: ShoesInspectComponent },
       // { path: "return-order/:id", component: ReturnOrderComponent },
       { path: "shop", component: ShopComponent },
-      // { path: "pay", component: PayComponent },
+      { path: "pay", component: PayComponent },
       { path: "about", component: AboutComponent },
       { path: "contact", component: ContactComponent },
       { path: "login-customer", component: LoginCustomerComponent },
       // { path: "register-customer", component: RegisterCustomerComponent },
-      // { path: "discount", component: DiscountShoesComponent },
+      { path: "discount", component: DiscountShoesComponent },
       { path: "login-customer", component: LoginCustomerComponent },
       // { path: "register-customer", component: RegisterCustomerComponent },
       // { path: "user-order", component: UserOrderComponent },
-      // { path: "pay-success", component: PaySuccessComponent },
+      { path: "pay-success", component: PaySuccessComponent },
       // { path: "pay-faile", component: PayFaileComponent },
-      // { path: "order-details/:id", component: OrderDetailsComponent },
+      { path: "order-details/:id", component: OrderDetailsComponent },
       // { path: "profile", component: ProfileComponent },
       // {
       //   path: "order-return-details/:id",
