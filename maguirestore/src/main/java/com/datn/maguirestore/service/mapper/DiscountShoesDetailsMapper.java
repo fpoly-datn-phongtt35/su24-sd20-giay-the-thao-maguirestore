@@ -1,5 +1,6 @@
 package com.datn.maguirestore.service.mapper;
 
+import com.datn.maguirestore.dto.DiscountDTO;
 import com.datn.maguirestore.dto.DiscountDetailsDTO;
 import com.datn.maguirestore.dto.DiscountShoesDetailsDTO;
 import com.datn.maguirestore.entity.DiscountDetails;

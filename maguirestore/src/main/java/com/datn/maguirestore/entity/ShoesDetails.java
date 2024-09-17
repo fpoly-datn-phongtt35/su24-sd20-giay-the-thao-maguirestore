@@ -1,5 +1,6 @@
 package com.datn.maguirestore.entity;
 
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,16 +34,16 @@ public class ShoesDetails extends AbstractAuditingEntity<Long> implements Serial
   private String code;
 
   @Column(name = "price")
-  private Float price;
+  private BigDecimal price;
 
   @Column(name = "import_price")
-  private Float importPrice;
+  private BigDecimal importPrice;
 
   @Column(name = "tax")
-  private Float tax;
+  private BigDecimal tax;
 
   @Column(name = "quantity")
-  private Integer quantity;
+  private Long quantity;
 
   @Column(name = "description")
   private String description;

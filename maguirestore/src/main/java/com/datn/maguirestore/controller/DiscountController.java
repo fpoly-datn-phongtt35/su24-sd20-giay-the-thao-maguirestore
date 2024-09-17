@@ -1,6 +1,7 @@
 package com.datn.maguirestore.controller;
 
 import com.datn.maguirestore.dto.DiscountDTO;
+
 import com.datn.maguirestore.dto.DiscountResponseDTO;
 import com.datn.maguirestore.dto.DiscountSearchDTO;
 import com.datn.maguirestore.payload.request.DiscountCreateRequest;
@@ -10,6 +11,7 @@ import com.datn.maguirestore.payload.request.DiscountUpdateRequest;
 import com.datn.maguirestore.payload.response.DiscountUpdateResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.service.DiscountService;
+import com.datn.maguirestore.service.dto2.DiscountCreateDTO;
 import com.datn.maguirestore.util.HeaderUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
@@ -43,19 +45,27 @@ public class DiscountController {
 
     /**
      * {@code POST  /discounts} : Create a new discount.
-     * @param createDTO
      * @return ResponseEntity<DiscountDTO>
-     * @throws URISyntaxException
      */
-    @SecurityRequirement(name = "Bearer Authentication")
+//    @SecurityRequirement(name = "Bearer Authentication")
+//    @PostMapping("")
+//    public ResponseEntity<DiscountDTO> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
+//        log.debug("REST request to save Discount : {}", createDTO);
+//        DiscountDTO discountDTO = discountService.createDiscount(createDTO);
+//        return ResponseEntity
+//                .created(new URI("/api/v1/discount" + discountDTO.getCode()))
+//                .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, discountDTO.getCode()))
+//                .body(discountDTO);
+//    }
+
     @PostMapping("")
-    public ResponseEntity<DiscountDTO> createDiscount(@Valid @RequestBody DiscountCreateRequest createDTO) throws Exception {
-        log.debug("REST request to save Discount : {}", createDTO);
-        DiscountDTO discountDTO = discountService.createDiscount(createDTO);
+    public ResponseEntity<DiscountResponseDTO> createDiscount(@Valid @RequestBody DiscountCreateDTO discountDTO) throws URISyntaxException {
+        log.debug("REST request to save Discount : {}", discountDTO);
+        DiscountResponseDTO result = discountService.save(discountDTO);
         return ResponseEntity
-                .created(new URI("/api/v1/discount" + discountDTO.getCode()))
-                .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, discountDTO.getCode()))
-                .body(discountDTO);
+            .created(new URI("/api/v1/discount" + result.getId()))
+            .headers(HeaderUtil.createEntityCreationAlert(applicationName, false, ENTITY_NAME, result.getId().toString()))
+            .body(result);
     }
 
     /**

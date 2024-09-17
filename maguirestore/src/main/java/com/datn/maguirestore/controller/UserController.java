@@ -53,7 +53,7 @@ public class UserController {
                     "firstName",
                     "lastName",
                     "email",
-                    "activated",
+                    "isDeleted",
                     "createdBy",
                     "createdDate",
                     "lastModifiedBy",
