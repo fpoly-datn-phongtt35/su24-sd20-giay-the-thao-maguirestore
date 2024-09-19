@@ -268,7 +268,11 @@ export class ShoesInspectComponent {
           if (this.check === null) {
             this.CartDetailSave.status = 1;
             this.CartDetailSave.quantity = this.quantity;
-            this.CartDetailSave.shoesDetails = this.shoesDetails;
+            this.CartDetailSave.shoesDetails = this.shoesDetails.id;
+            this.CartDetailSave.lastModifiedBy = sessionStorage.getItem('username');
+
+            console.log(this.CartDetailSave);
+            console.log(this.shoesDetails);
             this.cartDetailService
               .saveCartDetail(this.CartDetailSave)
               .subscribe((cartDetail: CartDetail) => {

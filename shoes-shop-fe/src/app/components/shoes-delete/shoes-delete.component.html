@@ -9,8 +9,8 @@
                 <th>ID</th>
                 <th>Mã</th>
                 <th>Tên</th>
-                <th>Người cập nhật</th>
-                <th>Ngày cập nhật</th>
+                <th>Brand</th>
+                <th>Thể loại</th>
                 <th></th>
             </tr>
         </ng-template>
@@ -37,8 +37,8 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
-                <td>{{ Shoes.lastModifiedBy }}</td>
-                <td>{{ Shoes.lastModifiedDate | date: 'dd/MM/yyyy'}}</td>
+                <td>{{ Shoes.brand.name }}</td>
+                <td>{{ Shoes.category.name}}</td>
                 <td>
                     <div class="flex align-items-center justify-content-center gap-2">
                         <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-spin pi-cog" style="font-size: 2rem" (click)="onRowEditInit(Shoes)" class="p-button-rounded p-button-text"></button>

@@ -67,10 +67,12 @@ public interface CartDetailsRepository extends JpaRepository<CartDetails, Long> 
                     "WHERE \n" +
                     "    cd.cart_id = :idCart \n" +
                     "    AND rn = 1\n" +
-                    "GROUP BY sd.id\n",
+                    "GROUP BY sd.id, cd.id, fu.path, s.id, c.id, b.id, sz.id \n",
             nativeQuery = true
     )
     List<CartDetailDTO> findCartDetailsByCart_Id(@Param("idCart") Long idCart);
 
     List<CartDetails> findCartDetailsByCart(Cart cart);
+
+    Long countByCart(Cart cart);
 }

@@ -26,7 +26,6 @@ export class PayComponent implements OnInit {
   totalPrice: number = 0;
   totalPayment: number = 0;
   tax: number = 0;
-
   fullName: string = "";
   phoneNumber: string = "";
   emailAddress: string = "";

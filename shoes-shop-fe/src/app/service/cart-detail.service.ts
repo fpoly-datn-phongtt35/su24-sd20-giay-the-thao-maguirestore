@@ -19,7 +19,7 @@ export class CartDetailService {
   }
 
   getAllCartDetailPath() {
-    return this.http.get<any>(this.apiUrl + "allCartDetail", {
+    return this.http.get<any>(this.apiUrl + "/allCartDetail", {
       withCredentials: true,
     });
   }
@@ -34,14 +34,14 @@ export class CartDetailService {
   }
 
   addQuanity(id: number) {
-    return this.http.put<number>(this.apiUrl + "add-quantity/" + id, {
+    return this.http.put<number>(this.apiUrl + "/add-quantity/1/" + id, {
       withCredentials: true,
     });
   }
 
   updateQuanity(id: number, quantity: number) {
     return this.http.put<number>(
-      this.apiUrl + "update-quantity/" + id + "/" + quantity,
+      this.apiUrl + "/update-quantity/" + id + "/" + quantity,
       {
         withCredentials: true,
       }
@@ -49,7 +49,7 @@ export class CartDetailService {
   }
 
   reduceQuanity(id: number) {
-    return this.http.put<number>(this.apiUrl + "reduce-quantity/" + id, {
+    return this.http.put<number>(this.apiUrl + "/reduce-quantity/" + id, {
       withCredentials: true,
     });
   }

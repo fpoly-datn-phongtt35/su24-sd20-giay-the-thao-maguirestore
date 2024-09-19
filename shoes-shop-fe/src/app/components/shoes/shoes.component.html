@@ -41,8 +41,8 @@
         <th>Mã</th>
         <th>Tên</th>
 
-        <th>Người cập nhật</th>
-        <th>Ngày cập nhật</th>
+        <th>Brand</th>
+        <th>Thể loại</th>
         <th>trạng thái</th>
         <th></th>
       </tr>
@@ -75,8 +75,8 @@
             </ng-template>
           </p-cellEditor>
         </td>
-        <td>{{ Shoes.lastModifiedBy }}</td>
-        <td>{{ Shoes.lastModifiedDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ Shoes.brand.name }}</td>
+        <td>{{ Shoes.category.name }}</td>
         <td>{{ Shoes.status == 0 ? "Khong hoat dong" : "hoat dong" }}</td>
         <td>
           <div class="flex align-items-center justify-content-center gap-2">

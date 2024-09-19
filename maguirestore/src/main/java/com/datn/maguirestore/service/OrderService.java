@@ -73,7 +73,7 @@ public class OrderService {
     public void verifyOrder(List<Long> orderId) {
         List<Order> orders = orderRepository.findAllByIdInAndStatus(orderId, Constants.ORDER_STATUS.PENDING);
         if (!Objects.equals(orderId.size(), orders.size())) {
-//            throw new BadRequestAlertException(Translator.toLocal("Hóa đơn không tồn tại"), ENTITY_NAME, "not_exist");
+            throw new BadRequestAlertException("Hóa đơn không tồn tại", ENTITY_NAME, "not_exist");
         }
         List<OrderDetails> orderDetailsList = orderDetailsRepository.findAllByOrder_IdInAndStatus(orderId, Constants.STATUS.ACTIVE);
         for (Order order : orders) {
@@ -85,7 +85,7 @@ public class OrderService {
                 .map(orderDetails -> {
                     ShoesDetails shoesDetails1 = orderDetails.getShoesDetails();
                     if (ObjectUtils.compare((long) shoesDetails1.getQuantity(), (long) orderDetails.getQuantity()) < 0) {
-//                        throw new BadRequestAlertException(Translator.toLocal("Số lượng không đủ"), ENTITY_NAME, "not_exist");
+                        throw new BadRequestAlertException("Số lượng không đủ", ENTITY_NAME, "not_exist");
                     }
                     shoesDetails1.setQuantity(shoesDetails1.getQuantity() - orderDetails.getQuantity());
                     return shoesDetails1;
@@ -107,6 +107,10 @@ public class OrderService {
             order.setLastModifiedDate(Instant.now().plus(7, ChronoUnit.HOURS));
             orderRepository.save(order);
         }
+
+        if(Constants.ORDER_STATUS.WAIT_DELIVERY.equals(order.getStatus())) {
+
+        }
         return orderMapper.toDto(order);
     }
 
@@ -119,7 +123,7 @@ public class OrderService {
 
     public OrderDTO save(OrderCreateDTO orderDTO) {
         String loggedUser = SecurityContextHolder.getContext().getAuthentication().getName();
-//        log.debug("Request to save Order : {}", orderDTO);
+        User user1 = userRepository.findByLogin(loggedUser).get();
 
         Order order = orderMapper.toOrderEntity(orderDTO);
         if (Objects.isNull(order.getId())) {
@@ -129,6 +133,7 @@ public class OrderService {
         }
         order.setLastModifiedBy(loggedUser);
         order.setPaidMethod(Constants.PAID_METHOD.OFF);
+        order.setOwner(user1);
         Payment payment = new Payment();
         payment.setPaymentMethod(orderDTO.getPaymentMethod());
         payment.setCode(orderDTO.getCode() + Instant.EPOCH.getNano());
@@ -296,5 +301,10 @@ public class OrderService {
 //            log.error(e.getMessage());
             return null;
         }
+    }
+
+    @Transactional
+    public List<Order> getOrderByStatusAndOwnerLogin(Integer status, String login) {
+        return orderRepository.getOrderByStatusAndOwnerLogin(status, login);
     }
 }
