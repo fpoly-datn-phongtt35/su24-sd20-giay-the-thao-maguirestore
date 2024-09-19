@@ -3,6 +3,7 @@ package com.datn.maguirestore.payload.request;
 import com.datn.maguirestore.entity.Color;
 import com.datn.maguirestore.entity.Shoes;
 import com.datn.maguirestore.entity.Size;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,13 +18,13 @@ import java.time.Instant;
 public class ShoesDetailCreateRequest {
     private Long id;
 
-    private Float price;
+    private BigDecimal price;
 
-    private Float importPrice;
+    private BigDecimal importPrice;
 
-    private Float tax;
+    private BigDecimal tax;
 
-    private Integer quantity;
+    private Long quantity;
 
     private String description;
 

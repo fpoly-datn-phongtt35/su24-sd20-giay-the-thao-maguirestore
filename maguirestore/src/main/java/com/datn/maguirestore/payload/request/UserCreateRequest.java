@@ -18,6 +18,6 @@ public class UserCreateRequest {
     private String firstName;
     private String lastName;
     private String phone;
-    private boolean activated = false;
+    private boolean isDeleted = false;
 
 }

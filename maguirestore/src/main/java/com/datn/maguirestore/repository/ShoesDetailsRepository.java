@@ -258,7 +258,7 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
 
     @Query(
             value = "select sd.*  from order_details od \n" +
-                    "join jhi_order jo on jo.id = od.order_id\n" +
+                    "join order jo on jo.id = od.order_id\n" +
                     "join shoes_details sd on sd.id = od.shoes_details_id \n" +
                     "where od.status <> -1\n" +
                     "group by od.shoes_details_id \n" +
@@ -274,4 +274,27 @@ public interface ShoesDetailsRepository extends JpaRepository<ShoesDetails, Long
 
     List<ShoesDetails> findAllByShoes_IdInAndStatus(List<Long> ids, Integer status);
     ShoesDetails findByIdAndStatus(Long id, Integer status);
+
+
+    @Query(
+        value = "SELECT sd.id, sd.shoes_id, sd.brand_id, MIN(sd.price) AS min_price " +
+            "FROM `shoes-store`.shoes_details sd " +
+            "WHERE sd.status = 1 AND sd.shoes_id = :shoesId " +
+            "GROUP BY sd.id, sd.shoes_id, sd.brand_id " +
+            "ORDER BY min_price LIMIT 1",
+        nativeQuery = true
+    )
+    ShoesDetails getMinPrice(@Param("shoesId") Long shoesId);
+
+//    @Query(
+//        value = "    SELECT\n" +
+//            "   sd.*     " +
+//            "    FROM\n" +
+//            "        `shoes-store`.shoes_details sd \n" +
+//            "WHERE status = 1 and shoes_id = :shoesId " +
+//            "    GROUP BY\n" +
+//            "        shoes_id, brand_id order by MIN(price) limit 1 \n",
+//        nativeQuery = true
+//    )
+//    ShoesDetails getMinPrice(@Param("shoesId") Long shoesId);
 }

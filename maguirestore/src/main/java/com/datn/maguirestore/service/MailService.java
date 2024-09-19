@@ -35,7 +35,6 @@ public class MailService {
         try {
             MimeMessageHelper message = new MimeMessageHelper(mimeMessage, isMultipart, StandardCharsets.UTF_8.name());
             message.setTo(to);
-//            message.setFrom(jHipsterProperties.getMail().getFrom());
             message.setSubject(subject);
             message.setText(new String(byteArrayResource, StandardCharsets.UTF_8), isHtml);
             //            message.addAttachment("response.docx", byteArrayResource);

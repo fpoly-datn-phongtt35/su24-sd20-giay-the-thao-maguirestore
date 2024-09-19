@@ -173,7 +173,7 @@ export class ShoesDetailAddComponent implements OnInit {
       .subscribe((response) => {
         this.shoes = response;
       });
-      this.http
+    this.http
       .get<any>(AppConstants.BASE_URL_API + "/api/v1/brand")
       .subscribe((response) => {
         this.brands = response;
@@ -286,7 +286,7 @@ export class ShoesDetailAddComponent implements OnInit {
                 variant.shoes.name +
                 "-" +
                 variant.brand.name +
-              "[" +
+                "[" +
                 variant.color.name +
                 "-" +
                 variant.size.name +
@@ -302,18 +302,16 @@ export class ShoesDetailAddComponent implements OnInit {
               type: "application/json",
             });
             console.log("blob");
-            objectTest.append(
-              "shoesDetailsDTO",
-              jsonBlob
-            );
-            
+            objectTest.append("shoesDetailsDTO", jsonBlob);
+
             variant.images.forEach((image) => {
               objectTest.append("images", image);
             });
             console.log(objectTest);
             this.http
               .post<any>(
-                AppConstants.BASE_URL_API + "/api/v1/shoes-details/shoes-details-image",
+                AppConstants.BASE_URL_API +
+                  "/api/v1/shoes-details/shoes-details-image",
                 objectTest,
                 httpOptions
               )
@@ -425,7 +423,7 @@ export class ShoesDetailAddComponent implements OnInit {
 
   async fetchProducts(shid: any, brid: any, siid: any, clid: any) {
     const productId = { shid: shid, brid: brid, siid: siid, clid: clid };
-    const apiUrl = `http://localhost:8088/api/v1/shoes-details/shop/detail`;
+    const apiUrl = `http://localhost:8088/api/v1/shoes-details`;
     // Make the HTTP request
     try {
       const response = await this.http.post<any>(apiUrl, productId).toPromise();
@@ -448,19 +446,19 @@ export class ShoesDetailAddComponent implements OnInit {
 
   async showTable() {
     // if (this.formGroup.valid) {
-      const selectedColors = this.formGroup?.get("color")?.value;
-      const selectedSizes = this.formGroup?.get("size")?.value;
+    const selectedColors = this.formGroup?.get("color")?.value;
+    const selectedSizes = this.formGroup?.get("size")?.value;
 
-      console.log(selectedColors);
-      console.log(selectedSizes);
+    console.log(selectedColors);
+    console.log(selectedSizes);
 
-      // Sử dụng await để đợi kết quả từ generateShoeVariants
-      this.shoeVariants = await this.generateShoeVariants(
-        selectedColors,
-        selectedSizes
-      );
-      console.log(this.shoeVariants);
-      this.displayTable = true;
+    // Sử dụng await để đợi kết quả từ generateShoeVariants
+    this.shoeVariants = await this.generateShoeVariants(
+      selectedColors,
+      selectedSizes
+    );
+    console.log(this.shoeVariants);
+    this.displayTable = true;
     // } else {
     //   this.markAllFormControlsAsTouched(this.formGroup);
     //   this.messageService.add({

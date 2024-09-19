@@ -68,7 +68,7 @@ public class ShoesDetailsController {
         log.debug("REST request to save ShoesDetails : {}", request);
 
         ShoesDetailsDTO result = shoesDetailsService.save(request);
-        return ResponseEntity.created(new URI("/api/shoes-details/" + result.getId())).body(result);
+        return ResponseEntity.created(new URI("/api/v1/shoes-details/" + result.getId())).body(result);
     }
 
     @SecurityRequirement(name = "Bearer Authentication")

@@ -1,23 +1,25 @@
-package com.datn.maguirestore.dto;
+package com.datn.maguirestore.service.dto2;
 
-import com.datn.maguirestore.entity.Color;
-import com.datn.maguirestore.entity.Shoes;
-import com.datn.maguirestore.entity.Size;
-
+import com.datn.maguirestore.dto.BrandDTO;
+import com.datn.maguirestore.dto.ColorDTO;
+import com.datn.maguirestore.dto.SizeDTO;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@SuppressWarnings("common-java:DuplicatedBlocks")
 public class ShoesDetailsDTO implements Serializable {
 
     private Long id;
@@ -26,7 +28,7 @@ public class ShoesDetailsDTO implements Serializable {
 
     private BigDecimal price;
 
-    private BigDecimal importPrice;
+    private BigDecimal import_price;
 
     private BigDecimal tax;
 
@@ -44,33 +46,15 @@ public class ShoesDetailsDTO implements Serializable {
 
     private Instant lastModifiedDate;
 
-    private Shoes shoes;
+    private ShoesDTO shoes;
 
-    private Size size;
+    private BrandDTO brand;
 
-    private Color color;
+    private SizeDTO size;
+
+    private ColorDTO color;
 
     private List<String> imgPath;
-
-    @Override
-    public String toString() {
-        return "ShoesDetailsDTO{" +
-                "id=" + id +
-                ", price=" + price +
-                ", importPrice=" + importPrice +
-                ", tax=" + tax +
-                ", quantity=" + quantity +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", createdBy='" + createdBy + '\'' +
-                ", createdDate=" + createdDate +
-                ", lastModifiedBy='" + lastModifiedBy + '\'' +
-                ", lastModifiedDate=" + lastModifiedDate +
-                ", shoes=" + shoes +
-                ", size=" + size +
-                ", color=" + color +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -93,4 +77,23 @@ public class ShoesDetailsDTO implements Serializable {
         return Objects.hash(this.id);
     }
 
+    // prettier-ignore
+    @Override
+    public String toString() {
+        return "ShoesDetailsDTO{" +
+            "id=" + getId() +
+            ", code='" + getCode() + "'" +
+            ", price=" + getPrice() +
+            ", quantity=" + getQuantity() +
+            ", status=" + getStatus() +
+            ", createdBy='" + getCreatedBy() + "'" +
+            ", createdDate='" + getCreatedDate() + "'" +
+            ", lastModifiedBy='" + getLastModifiedBy() + "'" +
+            ", lastModifiedDate='" + getLastModifiedDate() + "'" +
+            ", shoes=" + getShoes() +
+            ", brand=" + getBrand() +
+            ", size=" + getSize() +
+            ", color=" + getColor() +
+            "}";
+    }
 }

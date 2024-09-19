@@ -16,6 +16,7 @@ import com.datn.maguirestore.payload.response.UpdateDiscountDetailsResponse;
 import com.datn.maguirestore.repository.DiscountRepository;
 import com.datn.maguirestore.repository.DiscountDetailsRepository;
 import com.datn.maguirestore.repository.ShoesRepository;
+import com.datn.maguirestore.service.dto2.DiscountShoesDetailsDTO;
 import com.datn.maguirestore.service.mapper.DiscountShoesDetailsMapper;
 import java.util.ArrayList;
 import java.util.List;
