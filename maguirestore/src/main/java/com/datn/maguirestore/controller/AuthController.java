@@ -23,6 +23,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
@@ -50,6 +51,9 @@ public class AuthController {
     @SecurityRequirement(name = "Bearer Authentication")
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+
+        System.out.println(loginRequest.getLogin());
+        System.out.println(loginRequest.getPassword());
         try {
             otpService.deleteOtpByLogin(loginRequest.getLogin());
             Authentication authentication = authenticationManager.authenticate(
@@ -82,6 +86,22 @@ public class AuthController {
                     .map(GrantedAuthority::getAuthority)
                     .collect(Collectors.joining(","));
             JwtResponse jwtResponse = new JwtResponse(jwt, id, login, email, role);
+
+            UserDetails userDetail1 = User.builder()
+                    .username(login)
+                    .password("")  // Nếu có mật khẩu thực sự, bạn nên sử dụng mã hóa mật khẩu
+                    .roles("USER")
+                    .build();
+
+            // Tạo Authentication token và lưu vào SecurityContext
+            UsernamePasswordAuthenticationToken authenticationToken =
+                    new UsernamePasswordAuthenticationToken(userDetail1, null, userDetail1.getAuthorities());
+            System.out.println("???????????????????????");
+            System.out.println(authenticationToken);
+            System.out.println("???????????????????????");
+
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+
             return ResponseEntity.ok(jwtResponse);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("OTP is invalid or has expired");

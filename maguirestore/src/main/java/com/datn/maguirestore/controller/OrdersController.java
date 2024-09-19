@@ -77,7 +77,6 @@ public class OrdersController {
 
     @GetMapping("/orders/seven-day")
     public ResponseEntity<BigDecimal> getAllOrdersss() {
-//        log.debug("REST request to get a page of Orders");
         Instant endDate = ZonedDateTime.now().toInstant();
         Instant startDate = endDate.minusSeconds(60 * 60 * 24 * 7);
         return ResponseEntity.ok().body(orderRepository.calculateRevenueForLastSevenDays(startDate, endDate));
@@ -85,7 +84,6 @@ public class OrdersController {
 
     @GetMapping("/orders/price")
     public ResponseEntity<BigDecimal> getAllOrderss() {
-//        log.debug("REST request to get a page of Orders");
         return ResponseEntity.ok().body(orderRepository.sumTotalPriceForStatusThree());
     }
 
@@ -101,7 +99,6 @@ public class OrdersController {
 
     @GetMapping("/orders")
     public ResponseEntity<List<OrderDTO>> getAllOrders(@org.springdoc.api.annotations.ParameterObject Pageable pageable) {
-//        log.debug("REST request to get a page of Orders");
         Page<OrderDTO> page = orderService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
@@ -121,13 +118,11 @@ public class OrdersController {
 
     @PostMapping("/orders")
     public ResponseEntity<OrderDTO> createOrder(@RequestBody @Valid OrderCreateDTO orderDTO) throws URISyntaxException {
-//        log.debug("REST request to save Order : {}", orderDTO);
         if (orderDTO.getId() != null) {
             throw new BadRequestAlertException("A new order cannot already have an ID", ENTITY_NAME, "idexists");
         }
         OrderDTO result = orderService.save(orderDTO);
         byte[] byteArrayResource = this.orderService.getMailVerify(result.getId());
-        //            System.out.println(byteArrayResource);
 //        mailService.sendEmail1(result.getMailAddress(), "[MAGUIRE_STORE] Thông báo đặt hàng thành công", "", byteArrayResource, true, true);
         return ResponseEntity
                 .created(new URI("/api/orders/" + result.getId()))
@@ -155,8 +150,16 @@ public class OrdersController {
 
     @GetMapping("/orders/{id}")
     public ResponseEntity<OrderResDTO> getOrder(@PathVariable Long id) {
-//        log.debug("REST request to get Order : {}", id);
         OrderResDTO orderDTO = orderService.findOne(id);
         return ResponseEntity.ok(orderDTO);
+    }
+
+    @GetMapping("/users/find")
+    public ResponseEntity<List<Order>> findByLogin(@RequestParam Integer status, @RequestParam String login) {
+        List<Order> user = orderService.getOrderByStatusAndOwnerLogin(status, login);
+        System.out.println("????????????????????");
+        System.out.println(user);
+        System.out.println("????????????????????");
+        return ResponseEntity.ok(user);
     }
 }

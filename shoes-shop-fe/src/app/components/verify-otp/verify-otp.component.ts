@@ -10,10 +10,10 @@ import { CartDetailCustomerService } from "src/app/service/cartdetailcustom.serv
 
 @Component({
   selector: "app-login-customer",
-  templateUrl: "./login-customer.component.html",
-  styleUrls: ["./login-customer.component.css"],
+  templateUrl: "./verify-otp.component.html",
+  styleUrls: ["./verify-otp.component.css"],
 })
-export class LoginCustomerComponent {
+export class VerifyOTPComponent {
   loginForm: FormGroup;
 
   constructor(
@@ -26,7 +26,7 @@ export class LoginCustomerComponent {
   ) {
     this.loginForm = this.fb.group({
       login: ["", Validators.required],
-      password: ["", Validators.required],
+      otpCode: ["", Validators.required],
     });
   }
 
@@ -40,21 +40,23 @@ export class LoginCustomerComponent {
     if (this.router.url === "/logout") {
       this.router.navigate(["login"]);
     }
+
+    const loginValue = sessionStorage.getItem('login');
+    this.loginForm.patchValue({ login: loginValue });
   }
 
   login() {
     const user = this.loginForm.value;
     console.log(this.loginForm.value)
-    this.loginservice.login(user).subscribe({
+    this.loginservice.verifyOtp(user).subscribe({
       next: (body: any) => {
-        // if (body && body?.id_token) {
-        //   sessionStorage.setItem("access_token", body?.id_token);
-        //   this.router.navigate(["client/home"]);
-        // } else {
-        //   this.isValid = false;
-        // }
-        sessionStorage.setItem("login", user.login);
-        this.router.navigate(["client/verify-otp"]);
+        if (body && body?.token) {
+          sessionStorage.setItem("access_token", body?.token);
+          sessionStorage.setItem("username", body?.login);
+          this.router.navigate(["client/home"]);
+        } else {
+          this.isValid = false;
+        }
       },
       error: (error) => {
         console.error(error);

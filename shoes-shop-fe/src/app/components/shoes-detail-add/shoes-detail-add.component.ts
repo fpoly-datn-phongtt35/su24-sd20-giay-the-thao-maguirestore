@@ -115,7 +115,7 @@ export class ShoesDetailAddComponent implements OnInit {
     this.formGroup = this.fb.group({
       shoes: [null, Validators.required],
       checked: [false, Validators.required],
-      brand: [null, Validators.required],
+      // brand: [null, Validators.required],
       description: [null, Validators.required],
       importPrice: [
         null,
@@ -357,7 +357,8 @@ export class ShoesDetailAddComponent implements OnInit {
     for (const color of selectedColors) {
       for (const size of selectedSizes) {
         const shoes = this.formGroup?.get("shoes")?.value;
-        const brand = this.formGroup?.get("brand")?.value;
+        // const brand = this.formGroup?.get("brand")?.value;
+        const brand = shoes.brand;
         console.log(brand);
         const variant: ShoesDetail = {
           shoes: { id: shoes.id, name: shoes.name },

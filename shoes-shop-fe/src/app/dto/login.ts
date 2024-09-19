@@ -1,4 +1,4 @@
 export class Login {
     login:string;
-    passwordHash:string;
+    password:string;
 }
