@@ -57,7 +57,7 @@
             </small>
           </div>
         </li>
-        <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
+        <!-- <li class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap">
           <div class="text-500 w-2 md:w-2 font-medium">Thương hiệu</div>
           <div class="text-800 w-full md:w-8 md:flex-order-0 flex-order-1">
             <span class="p-float-label">
@@ -73,7 +73,7 @@
               Hãy chọn nhãn hiệu.
             </small>
           </div>
-        </li>
+        </li> -->
         <li
           class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap"
         >
@@ -135,56 +135,61 @@
               </small>
             </span>
           </div>
-          <div class="text-500 w-1 md:w-3rem font-medium">Thuế</div>
-          <div class="text-800 w-full md:w-15rem md:flex-order-0 flex-order-1">
-            <span class="p-float">
-              <p-inputNumber
-                id="p-float"
-                formControlName="tax"
-                inputId="currency-vn"
-                mode="currency"
-                currency="VND"
-                locale="vi-VN"
-                max="999999999"
-                [class.ng-invalid]="isFormControlInvalidAndTouched('tax')"
-                [class.ng-dirty]="isFormControlInvalidAndTouched('tax')"
-                >>
-              </p-inputNumber>
-              <small
-                class="p-error mx-2"
-                *ngIf="
-                  formGroup.get('importPrice')?.hasError('required') &&
-                  isFormControlInvalidAndTouched('tax')
-                "
-              >
-                Hãy nhập thuế.
-              </small>
-            </span>
-          </div>
-          <div class="text-500 w-1 md:w-5rem font-medium">Số lượng</div>
-          <div class="text-800 w-full md:w-10rem md:flex-order-0 flex-order-1">
-            <span class="p-float">
-              <p-inputNumber
-                id="p-float"
-                formControlName="quantity"
-                [class.ng-invalid]="isFormControlInvalidAndTouched('quantity')"
-                [class.ng-dirty]="isFormControlInvalidAndTouched('quantity')"
-                inputId="currency-vn"
-                max="999999"
-              >
-              </p-inputNumber>
-              <small
-                class="p-error"
-                *ngIf="
-                  formGroup.get('quantity')?.hasError('required') &&
-                  isFormControlInvalidAndTouched('quantity')
-                "
-              >
-                hãy nhập số lượng.
-              </small>
-            </span>
-          </div>
+          
         </li>
+        <li
+          class="flex align-items-center py-3 px-2 border-top-1 surface-border flex-wrap"
+        >
+        <div class="text-500 w-2 md:w-2 font-medium">Thuế</div>
+        <div class="text-800 w-1 md:w-15rem md:flex-order-0 flex-order-1">
+          <span class="p-float">
+            <p-inputNumber
+              id="p-float"
+              formControlName="tax"
+              inputId="currency-vn"
+              mode="currency"
+              currency="VND"
+              locale="vi-VN"
+              max="999999999"
+              [class.ng-invalid]="isFormControlInvalidAndTouched('tax')"
+              [class.ng-dirty]="isFormControlInvalidAndTouched('tax')"
+              >>
+            </p-inputNumber>
+            <small
+              class="p-error mx-2"
+              *ngIf="
+                formGroup.get('importPrice')?.hasError('required') &&
+                isFormControlInvalidAndTouched('tax')
+              "
+            >
+              Hãy nhập thuế.
+            </small>
+          </span>
+        </div>
+        <div class="text-500 w-1 md:w-5rem font-medium">Số lượng</div>
+        <div class="text-800 w-full md:w-10rem md:flex-order-0 flex-order-1">
+          <span class="p-float">
+            <p-inputNumber
+              id="p-float"
+              formControlName="quantity"
+              [class.ng-invalid]="isFormControlInvalidAndTouched('quantity')"
+              [class.ng-dirty]="isFormControlInvalidAndTouched('quantity')"
+              inputId="currency-vn"
+              max="999999"
+            >
+            </p-inputNumber>
+            <small
+              class="p-error"
+              *ngIf="
+                formGroup.get('quantity')?.hasError('required') &&
+                isFormControlInvalidAndTouched('quantity')
+              "
+            >
+              hãy nhập số lượng.
+            </small>
+          </span>
+        </div>
+      </li>
         <li
           class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap"
         >

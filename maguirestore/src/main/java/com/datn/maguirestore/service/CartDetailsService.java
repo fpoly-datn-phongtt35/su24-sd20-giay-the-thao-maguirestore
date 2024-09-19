@@ -2,6 +2,7 @@ package com.datn.maguirestore.service;
 
 import com.datn.maguirestore.dto.CartDetailsDTO;
 import com.datn.maguirestore.dto.CartDetailsRequestDTO;
+import com.datn.maguirestore.entity.Cart;
 import com.datn.maguirestore.entity.CartDetails;
 import com.datn.maguirestore.repository.CartDetailsRepository;
 import com.datn.maguirestore.repository.CartRepository;
@@ -66,13 +67,12 @@ public class CartDetailsService {
     }
 
     public void delete(Long id) {
-        log.debug("Request to mark Cart as inactive: {}", id);
 
         Optional<CartDetails> optionalCart = cartDetailsRepository.findById(id);
         if(optionalCart.isPresent()) {
             CartDetails cart = optionalCart.get();
-            cart.setStatus(0);
-            cartDetailsRepository.save(cart);
+//            cart.setStatus(0);
+            cartDetailsRepository.delete(cart);
         }
     }
 
@@ -88,5 +88,15 @@ public class CartDetailsService {
         details.setCart(cartRepository.findById(requestDTO.getCart()).get());
         details.setShoesDetails(shoesDetailsRepository.findById(requestDTO.getShoesDetails()).get());
         return details;
+    }
+
+//    @Transactional(readOnly = true)
+//    public Optional<CartDetailsDTO> findOne(Long id) {
+//        log.debug("Request to get CartDetails : {}", id);
+//        return cartDetailsRepository.findById(id).map(CartDetailsDTO::new);
+//    }
+
+    public Long countByCart(Cart cart) {
+        return cartDetailsRepository.countByCart(cart);
     }
 }

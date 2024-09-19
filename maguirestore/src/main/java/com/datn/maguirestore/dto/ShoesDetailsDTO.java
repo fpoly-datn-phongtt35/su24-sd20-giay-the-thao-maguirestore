@@ -64,6 +64,8 @@ public class ShoesDetailsDTO implements Serializable {
         this.color = color;
     }
 
+
+
     public List<String> getImgPath() {
         return imgPath;
     }

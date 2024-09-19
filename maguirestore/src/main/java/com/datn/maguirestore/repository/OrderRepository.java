@@ -51,7 +51,8 @@ public interface OrderRepository extends JpaRepository<Order, Long>, OrderReposi
   )
   BigDecimal getRevenueOnline();
 
-  List<Order> getOrderByStatusAndOwnerLogin(Integer status, String login);
+  @Query("SELECT o FROM Order o WHERE o.status = :status AND o.owner.login LIKE :login")
+  List<Order> getOrderByStatusAndOwnerLogin(@Param("status") Integer status,@Param("login") String login);
 
   Order getOrderByCode(String code);
 

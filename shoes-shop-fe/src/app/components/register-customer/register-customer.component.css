@@ -4,56 +4,55 @@
 .container {
     font-family: SemiBold;
 }
-.title-login{
+.title-register{
     font-weight: bold;
     font-size: 32px;
     font-family: SemiBold;
-    text-align: center;
 }
 .input{
-    width: 100%;
-    height: 48px;
-    margin-top: 15px;
+    margin-top: 20px;
 }
-.username, .password{
+input{
     width: 100%;
     height: 48px;
     border-radius: 9px;
-    padding: 0 10px;
 }
-.save{
-    width: 100%;
-    margin-top: 15px;
-    display: flex;
-    position: relative;
+.address{
+    height: 69px;
 }
-.forgotPassword{
-    position: absolute;
-    right: 0px;
+.col-4{
+    margin-top: 10px;
 }
 .button{
-    margin-top: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     position: relative;
-    width: 100%;
+    width: 475px;
     height: 48px;
 }
-.button-login{
+.button-register{
     width: 100%;
     height: 48px;
     position: absolute;
     left: 0px;
     border: 1px solid black;
-    border-radius: 16px;
+    border-radius: 15px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
-.text-login{
+.text-register{
+    border-radius: 9px;
+    font-weight: bold;
     position: absolute;
-    left: 7%;
-    top: 21%;
+    left: 5%;
+    top: 20%;
 }
-
+.col-lg-6{
+    background-color: white;
+    border-radius: 16px;
+    height: 400px;
+}
 .box{
     width: 100%;
     height: 400px;
@@ -69,25 +68,37 @@
     height: 48px;
     width: 100%;
     color: rgb(255, 255, 255);
-    border: 1px solid black;
-}
-.text-join{
-    font-weight: bold;
-    position: absolute;
-    left: 5%;
-    top: 22%;
-}
-.button-login:hover, .button-join:hover{
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-.icon {
-    position: absolute;
-    right: 5%;
-    top: 25%;
 }
 .icon-1{
     position: absolute;
     right: 5%;
     top: 25%;
 }
+.text-join{
+    font-weight: bold;
+    position: absolute;
+    left: 5%;
+    top: 20%;
+}
+.button-join:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+.button-register:hover{
+    background-color: white;
+    color: black;
+}
+.text {
+    padding: 0 10px;
+}
+.icon {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+}
+small{
+    color: red;
+}
+.custom-autocomplete {
+    height: 48px;
+  }

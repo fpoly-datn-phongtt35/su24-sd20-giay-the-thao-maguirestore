@@ -1,10 +1,11 @@
 <body class="body">
   <div class="container">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-6 p-3">
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <p-toast></p-toast>
-          <p class="title-login">Login</p>
+          <p class="title-login ">Login</p>
           <div class="input">
             <input
               class="username"
@@ -18,7 +19,7 @@
               class="password"
               type="password"
               placeholder="Mật khẩu"
-              formControlName="passwordHash"
+              formControlName="password"
             />
           </div>
           <div class="save">
@@ -37,7 +38,7 @@
             </button>
           </div>
         </form>
-        <div
+        <!-- <div
           style="
             display: flex;
             align-items: center;
@@ -54,10 +55,10 @@
               <small>Continue with Google</small>
             </a>
           </button>
-        </div>
+        </div> -->
       </div>
-      <div class="col-lg-1"></div>
-      <div class="col-lg-6">
+      <div class="col-lg-3"></div>
+      <!-- <div class="col-lg-6">
         <div class="box">
           <div class="group">
             <p class="title-label">ShoesStore Nhận thưởng ngay hôm nay.</p>
@@ -81,7 +82,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </body>

@@ -1,0 +1,43 @@
+<body class="body">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <p-toast></p-toast>
+            <p class="title-login">Nhập mã OTP</p>
+            <div class="input">
+              <input
+                class="username"
+                type="text"
+                placeholder="Tài khoản"
+                formControlName="login"
+                readonly
+              />
+            </div>
+            <div class="input">
+              <input
+                class="password"
+                type="password"
+                placeholder="otp"
+                formControlName="otpCode"
+              />
+            </div>
+
+            <div class="button">
+              <button class="button-login">
+                <div class="text-login" type="submit">Login</div>
+                <span class="icon">
+                  <i class="pi pi-arrow-right"></i>
+                </span>
+              </button>
+            </div>
+          </form>
+          
+        </div>
+        <div class="col-lg-3"></div>
+        
+      </div>
+    </div>
+  </body>
+  

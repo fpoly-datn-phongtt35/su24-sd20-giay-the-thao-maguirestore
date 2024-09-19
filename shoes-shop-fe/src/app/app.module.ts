@@ -81,12 +81,12 @@ import { ShoesInspectComponent } from "./components/client/shoes-inspect/shoes-i
 import { OrderDetailsComponent } from "./components/order-details/order-details.component";
 import { PayComponent } from "./components/client/pay/pay.component";
 import { LoginCustomerComponent } from "./components/login-customer/login-customer.component";
-// import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
+import { RegisterCustomerComponent } from "./components/register-customer/register-customer.component";
 import { AboutComponent } from "./components/client/about/about.component";
 import { ContactComponent } from "./components/client/contact/contact.component";
 import { CardModule } from "primeng/card";
 import { DiscountShoesComponent } from "./components/discount-shoes/discount-shoes.component";
-// import { UserOrderComponent } from "./components/user-order/user-order.component";
+import { UserOrderComponent } from "./components/user-order/user-order.component";
 import { PaySuccessComponent } from "./components/client/pay-success/pay-success.component";
 // import { PayFaileComponent } from "./components/client/pay-faile/pay-faile.component";
 
@@ -104,9 +104,10 @@ import { SizeRemovedComponent } from "./components/size-removed/size-removed.com
 import { CategoryRemovedComponent } from "./components/category-removed/category-removed.component";
 // import { SizeRemovedComponent } from "./components/size-removed/size-removed.component";
 // import { BrandRemovedComponent } from "./components/brand-removed/brand-removed.component";
-// import { ProfileComponent } from "./components/client/profile/profile.component";
+import { ProfileComponent } from "./components/client/profile/profile.component";
 // import { CodeForgotPasswordComponent } from './components/client/code-forgot-password/code-forgot-password.component';
 import { ShoesDeleteComponent } from './components/shoes-delete/shoes-delete.component';
+import { VerifyOTPComponent } from "./components/verify-otp/verify-otp.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -144,11 +145,11 @@ import { ShoesDeleteComponent } from './components/shoes-delete/shoes-delete.com
     OrderDetailsComponent,
     PayComponent,
     LoginCustomerComponent,
-    // RegisterCustomerComponent,
+    RegisterCustomerComponent,
     AboutComponent,
     ContactComponent,
     DiscountShoesComponent,
-    // UserOrderComponent,
+    UserOrderComponent,
     PaySuccessComponent,
     // PayFaileComponent,
     ShoesComponent,
@@ -161,9 +162,10 @@ import { ShoesDeleteComponent } from './components/shoes-delete/shoes-delete.com
     SizeRemovedComponent,
     CategoryRemovedComponent,
     BrandRemovedComponent,
-    // ProfileComponent,
+    ProfileComponent,
     // CodeForgotPasswordComponent,
     ShoesDeleteComponent,
+    VerifyOTPComponent,
   ],
   imports: [
     AppLayoutModule,

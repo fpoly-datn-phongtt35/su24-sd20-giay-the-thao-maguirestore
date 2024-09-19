@@ -32,17 +32,24 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
 
         String token = parseJwt(request);
 
         if (token != null) {
             try {
                 Claims claims = Jwts.parserBuilder()
-                    .setSigningKey(jwtUtils.getKey())
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody();
+                        .setSigningKey(jwtUtils.getKey())
+                        .build()
+                        .parseClaimsJws(token)
+                        .getBody();
+
+                String username = claims.getSubject();
+                if (username != null) {
+                    UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                    UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(authentication);
+                }
 
                 String tokenType = claims.get("type", String.class);
 
